@@ -151,7 +151,7 @@ FM_DIRECT = [
 ]
 FM_SHARED = [
     ("Cohesion funds (ERDF, ESF+)", "Reduce disparities between EU regions by funding infrastructure, jobs and SME competitiveness.", "Public authorities, SMEs, NGOs",
-     "https://ec.europa.eu/regional_policy/en/funding/"),
+     "https://ec.europa.eu/regional_policy/funding_en"),
     ("Common Agricultural Policy", "Supports farmers, food security and sustainable rural development.", "Farmers, rural associations",
      "https://agriculture.ec.europa.eu/common-agricultural-policy_en"),
     ("NextGenerationEU (RRF)", "The temporary recovery plan focused on the green and digital transitions.", "Public sector, companies, R&D&I",
