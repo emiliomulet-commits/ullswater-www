@@ -135,7 +135,7 @@ a.card{text-decoration:none;color:inherit;transition:border-color .15s,box-shado
 .card .ic{font-size:28px;margin-bottom:10px}.card .num{font-size:13px;font-weight:800;color:var(--gold2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
 .card.top{border-top:4px solid var(--gold)}
 .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;background:#eef1f8;color:var(--navy);border-radius:999px;padding:3px 10px;margin-bottom:10px;align-self:flex-start}
-.quote{border-left:4px solid var(--gold);padding:6px 0 6px 26px;font-size:21px;line-height:1.55;color:var(--navy);margin:0;font-weight:500}
+.quote{border-left:4px solid var(--gold);padding:6px 0 6px 26px;font-size:18.5px;line-height:1.55;color:var(--navy);margin:0;font-weight:500}
 .quote cite{display:block;font-size:15px;color:var(--muted);font-style:normal;margin-top:14px;font-weight:600}
 .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;align-items:stretch;margin:30px 0}
 .flow div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;position:relative;text-align:center}
@@ -148,7 +148,7 @@ a.card{text-decoration:none;color:inherit;transition:border-color .15s,box-shado
 .list li:last-child{border-bottom:0}.list .d{flex:0 0 108px;font-weight:700;color:var(--navy);font-size:15px}.list a{font-weight:600;text-decoration:none}.list a:hover{text-decoration:underline}
 .list small{display:block;color:var(--muted);font-size:13px}
 .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px}
-.panel h3 a{text-decoration:none}.panel .more{display:inline-block;margin-top:14px;font-weight:700;text-decoration:none}
+.panel h3 a{text-decoration:none}.panel .list li{flex-direction:column;gap:2px}.panel .list .d{flex:none;font-size:13px;color:var(--gold2)}.panel .more{display:inline-block;margin-top:14px;font-weight:700;text-decoration:none}
 .facts{display:grid;grid-template-columns:200px 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .facts dt,.facts dd{margin:0;padding:12px 18px;border-bottom:1px solid var(--line)}.facts dt{background:var(--bg);font-weight:700;color:var(--navy);font-size:15px}
 .facts dt:last-of-type,.facts dd:last-of-type{border-bottom:0}
@@ -257,7 +257,7 @@ def home(live, themes):
         stats = (f'<ul class="stats"><li><strong>{st["open"]}</strong>EU calls open now</li><li><strong>{st["forthcoming"]}</strong>forthcoming calls</li>'
                  f'<li><strong>{st["closingIn30Days"]}</strong>closing in 30 days</li><li><strong>{st["programmes"]}</strong>EU programmes tracked</li></ul>')
     h = hero("European funding advisors · Madrid", "Unlock European funding for your innovation", escape(C.MISSION), small=False,
-             actions=f'<a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a><a class="btn ghost" href="{C.CALLS}/">Explore {st.get("total", "all")} open EU calls →</a>',
+             actions=f'<a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a><a class="btn ghost" href="{C.CALLS}/">Explore {st.get("total", "all")} EU calls →</a>',
              extra=stats)
     svc = "".join(f'<a class="card top" href="/{s}/"><div class="num">0{i + 1}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Learn more →</span></a>'
                   for i, (s, t, d) in enumerate(C.SERVICES))
