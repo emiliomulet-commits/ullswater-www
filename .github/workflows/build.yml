@@ -1,0 +1,39 @@
+name: Build and deploy www
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "40 6 * * *"   # daily, after calls (05:00 UTC) and news have refreshed
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build site
+        run: python scripts/build.py
+      - name: Save live-data cache
+        run: |
+          git config user.name "ullswater-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add content/live_cache.json redirects.csv
+          git diff --cached --quiet || (git commit -m "Refresh live data cache [skip ci]" && git push)
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
