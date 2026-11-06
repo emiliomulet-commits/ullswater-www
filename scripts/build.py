@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 CACHE = ROOT / "content" / "live_cache.json"
 BASE = "https://www.ullswaterinvestments.com"
-STAGING = os.environ.get("STAGING") == "1"
+STAGING = os.environ.get("STAGING") == "1" or (ROOT / "STAGING").exists()
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 # Old Google Sites URL -> new destination (also exported as redirects.csv for Cloudflare)
