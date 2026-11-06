@@ -1,0 +1,122 @@
+{
+ "october-2025": {
+  "title": "EU funding news: October 2025",
+  "period": "October 2025",
+  "items": [
+   {
+    "category": "Defence & Security",
+    "title": "Commission welcomes political agreement on the European Defence Industry Programme",
+    "summary": "The European Commission has lauded the political agreement on the European Defence Industry Programme (EDIP), a critical financial instrument with a €1.5 billion budget for 2025–2027. This programme is designed to bolster Europe's defence industrial base by supporting common procurement, accelerating industrial ramp-up, and fortifying supply chains, particularly benefiting SMEs. It is a key component of the 'Preserving Peace' roadmap, aiming to ensure the EU is 'defence-ready' by 2030, and complements the broader European Defence Fund. The co-legislators agreed projects must have at least 65% EU-made content. The move aligns with the 'ReArm Europe Plan' to drive a significant surge in defence capability investments across Member States, enhancing autonomy and stimulating innovation.",
+    "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_25_2421"
+   },
+   {
+    "category": "Innovation & Startups",
+    "title": "Strong interest in EIC Accelerator funding with 923 companies applying for the final 2025 cut-off",
+    "summary": "The European Innovation Council (EIC) reported massive interest in its Accelerator funding, receiving 923 full applications from innovative start-ups and SMEs for the October 1st deadline. These companies collectively requested nearly €7 billion in funding for deep-tech projects. A significant 74% of applicants sought 'blended finance,' combining grants with equity investments, highlighting the strong demand for high-risk, high-impact technological support. Furthermore, 33% of proposals were submitted by women-led companies. The evaluation process is underway, with final funding decisions expected by the end of February 2026, solidifying the EIC’s crucial role in fostering disruptive European innovation across various strategic sectors.",
+    "url": "https://eic.ec.europa.eu/news/strong-interest-eic-accelerator-funding-923-companies-applying-final-2025-cut-2025-10-17_en"
+   },
+   {
+    "category": "Business Growth & Green Deal",
+    "title": "EIB Group increases 2025 financing ceiling to record €100 billion to step up investments",
+    "summary": "The European Investment Bank (EIB) Group has dramatically increased its 2025 financing ceiling to a record €100 billion, following endorsement from the 27 Member States. This substantial rise aims to boost key strategic investments across Europe. The revised plan focuses heavily on three critical areas: security and defence (now comprising 3.5% of total financing), strengthening energy grids and storage (with over €11 billion allocated), and advancing Europe's tech leadership through initiatives like TechEU. This move solidifies the EIB's role as the anchor financier for the green industrial revolution and the continent's commitment to strategic autonomy, ensuring investments flow efficiently into critical infrastructure and technological domains.",
+    "url": "https://www.eib.org/en/press/all/2025-247-eib-group-increases-2025-financing-ceiling-to-record-eur100-billion-to-step-up-investments-in-security-and-defence-energy-grids-and-europe-s-tech-leadership"
+   },
+   {
+    "category": "Defence & Innovation",
+    "title": "Commission to present defence transformation plan to boost innovation",
+    "summary": "The European Commission published its 2030 defence readiness roadmap on October 16th, emphasizing innovation as a 'critical component' for future defence capabilities. The roadmap commits to a full defence transformation plan to be presented in November, stressing the need for greater industrial agility and risk-taking in technology adoption. Key initiatives include establishing \"Defence Technology Alliances\" by the year's end to link innovators with military end-users and address critical capability gaps. The Commission is also planning a massive future funding channel of €131 billion from 2028 via the European Competitiveness Fund, with the explicit intention of opening up Horizon Europe to fund dual-use technology projects.",
+    "url": "https://sciencebusiness.net/news/commission-present-defence-transformation-plan-boost-innovation"
+   },
+   {
+    "category": "Business Regulation",
+    "title": "How the EU is making rules simpler for business",
+    "summary": "The European Parliament and EU institutions are actively pursuing a major simplification initiative to ease the administrative burden on businesses, particularly Small and Medium-sized Enterprises (SMEs). This effort aims to foster a more competitive environment, encouraging investment and job creation across the Single Market. Parliamentary discussions in October focused on 'omnibus' legislative packages covering defence, agriculture, and investment capacity. Key measures include exempting small importers from the Carbon Border Adjustment Mechanism (CBAM) and providing more adaptation time for battery producers. This push for simpler, more efficient legislation follows the mandate to make life \"better, fairer and easier for industry,\" supporting business growth and stability.",
+    "url": "https://www.europarl.europa.eu/topics/en/article/20251007STO30768/how-the-eu-is-making-rules-simpler-for-business"
+   },
+   {
+    "category": "Innovation & Support",
+    "title": "EU Funds €20M for Ukrainian Deep-Tech Start-ups & SMEs",
+    "summary": "The European Innovation Council (EIC) has launched a new funding initiative allocating €20 million specifically to support Ukrainian deep-tech Small and Medium-sized Enterprises (SMEs) and start-ups. This action is part of broader efforts to strengthen Ukraine's innovation capabilities during the conflict. The EIC hosted an info session on October 24, 2025, to outline the initiative's key aspects. Eligible companies can apply for grants up to €500,000 to advance their technologies from Technology Readiness Level (TRL) 4 to TRL 6-7. Priority sectors include artificial intelligence, robotics, biotechnology, and cybersecurity, which are crucial for Ukraine's resilience and future economic development. The initiative aims to facilitate the market deployment of high-impact deep-tech innovations.",
+    "url": "https://eunewsletter.eu/online-info-session-eic-support-for-the-ukrainian-tech-smes-and-start-ups/"
+   },
+   {
+    "category": "Innovation & Research",
+    "title": "MSCA Staff Exchanges 2025 call receives 363 proposals",
+    "summary": "The fifth call for the Marie Skłodowska-Curie Actions (MSCA) Staff Exchanges under Horizon Europe closed on October 8, 2025, receiving 363 proposals. The European Research Executive Agency (REA) noted a high demand, with applicants requesting a total budget close to €423.6 million. The EU is expected to fund between 80 and 90 projects with an indicative budget of around €97.7 million, supporting collaborative research through international and intersectoral staff exchanges. Proposals included participation from 2,757 organizations in 134 countries, with Italy, Spain, and the UK leading the submissions. The action aims to enhance research and innovation capacities and foster career development through mobility.",
+    "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/news/msca-staff-exchanges-2025-call-results"
+   },
+   {
+    "category": "Defence & Strategy",
+    "title": "EU unveils its Defence Roadmap: work to start in early 2026, aiming for 2030 readiness",
+    "summary": "The EU's Defence Readiness Roadmap, unveiled mid-October, confirms strategic areas needing urgent investment, including air and missile defense, advanced artillery, and drones. The roadmap proposes four initial European flagship initiatives: the European Drone Defence Initiative, the Eastern Flank Watch, the European Air Shield, and the European Space Shield. The Commission aims for Member States to set up capability coalitions by early 2026 to start industrial projects and organize at least 40% of defence procurement jointly. The ambitious goal is for these flagship initiatives to be fully operational by the end of 2026. This reflects a coordinated push to strengthen deterrence capabilities and significantly increase joint defence planning and procurement.",
+    "url": "https://www.eunews.it/en/2025/10/16/eu-unveils-its-defence-roadmap-work-to-start-in-early-2026-aiming-for-2030-readiness/"
+   },
+   {
+    "category": "Business & Sustainability",
+    "title": "European firms show resilience, invest in Green transition, and match US companies in adopting AI",
+    "summary": "A new European Investment Bank (EIB) survey, released on October 14, 2025, highlights the resilience of European firms and their strong commitment to the green transition, with 92% pursuing measures to reduce emissions and lower energy bills. Crucially, the survey found that European businesses are matching their US counterparts in the adoption of Artificial Intelligence (AI) technologies, with 37% of EU firms using generative AI. The EIB continues to direct nearly 60% of its annual investments towards climate action and environmental sustainability, confirming its role in driving the green industrial revolution. Despite geopolitical and trade tensions slowing overall investment, the focus on digitalization and sustainability remains robust.",
+    "url": "https://www.eib.org/en/press/all/2025-383-european-firms-show-resilience-invest-in-green-transition-and-match-us-companies-in-adopting-ai-technologies-new-eib-survey-shows"
+   }
+  ]
+ },
+ "november-2025": {
+  "title": "EU funding news: 28 October – 11 November 2025",
+  "period": "28 October – 11 November 2025",
+  "items": [
+   {
+    "category": "Innovation & Deep Tech",
+    "title": "EIC Adopts €1.4 Billion Work Programme for 2026",
+    "summary": "The European Innovation Council (EIC) has formally adopted its 2026 Work Programme, allocating €1.4 billion to support Europe's deep-tech innovators. The budget includes €634 million for the EIC Accelerator, €262 million for Pathfinder, and a new €300 million \"STEP Scale Up\" instrument designed to bridge the \"scale-up gap\" for growth-stage companies. This adoption sets the stage for the 2026 calls, with the EIC Pathfinder Open deadline set for 12 May 2026. The move comes amid massive demand, with one 2025 cut-off receiving €7 billion in funding requests.",
+    "url": "https://ncpflanders.be/news/eic-work-programme-2026-has-been-adopted-and-published"
+   },
+   {
+    "category": "Research & Policy",
+    "title": "Switzerland Re-joins Horizon Europe in Landmark R&I Agreement",
+    "summary": "The EU and Switzerland signed a pivotal agreement on 11 November 2025, formally associating Switzerland with Horizon Europe, the Digital Europe Programme, and Euratom. Crucially, the agreement is retroactive to 1 January 2025. This move restores full participation rights to Swiss entities, allowing them to lead consortia and receive direct EU funding for the first time in years. This fundamentally reshapes the European Research Area, enabling consortia for 2026 calls to fully integrate Swiss partners as funded leaders, ending a long period of administrative friction.",
+    "url": "https://europeansting.com/2025/11/11/switzerland-joins-horizon-europe-and-other-key-eu-research-and-innovation-programmes/"
+   },
+   {
+    "category": "Green Deal & Industry",
+    "title": "Innovation Fund Awards €2.9 Billion to 61 Net-Zero Industrial Projects",
+    "summary": "The European Commission announced €2.9 billion in grants from the Innovation Fund for 61 large-scale, net-zero technology projects. The funding, generated by the EU Emissions Trading System (ETS), was awarded after a call that was oversubscribed nine-to-one, with applicants requesting €21.7 billion. The selected projects span 19 industrial sectors, with a major focus on mainstreaming Carbon Capture and Storage (CCS) value chains in the cement and lime sectors. This demonstrates the Green Deal's industrial cycle in action: using ETS revenue to fund the very technologies that decarbonize industry.",
+    "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_25_2564"
+   },
+   {
+    "category": "Strategic Autonomy",
+    "title": "EU Commits €643 Million to 5 EV Battery Plants",
+    "summary": "CINEA announced that five strategic electric vehicle (EV) battery cell projects will receive €643 million in grants from a dedicated Innovation Fund call. The funding is an explicit move to \"strengthen technological competitiveness\" and \"reduce dependence on external suppliers,\" aligning with the Net-Zero Industry Act. One project, Leclanché SA, will receive €74.2 million to expand its German site, notably using a PFAS-free manufacturing technology. This is a clear example of the EU using targeted industrial policy to build a domestic, clean-tech manufacturing base.",
+    "url": "https://cinea.ec.europa.eu/news-events/news/five-innovative-electric-vehicle-battery-cell-projects-secure-eu643-million-under-innovation-fund-2025-11-10_en"
+   },
+   {
+    "category": "Digital & AI",
+    "title": "Digital Europe Programme Opens €204M in Calls for AI & Digital Wallets",
+    "summary": "The Commission has opened €204 million in new funding calls under the Digital Europe Programme. These calls are central to the EU's \"Digital Sovereignty\" agenda. Key topics include €15 million for the development of EU Digital Identity Wallets (deadline 9 Dec 2025), €14.4 million for AI in medical imaging, and €79.2 million for European Digital Innovation Hubs (EDIHs). The funding aims to build EU-specific digital infrastructure and standards, with most major calls closing on 3 March 2026.",
+    "url": "https://securitydelta.nl/news/overview/204-million-funding-for-digital-innovation-under-the-digital-europe-programme"
+   },
+   {
+    "category": "SME Financing",
+    "title": "EIB Group and Santander Launch €1 Billion Facility for SME Green Transition",
+    "summary": "The EIB Group and Santander announced a new €1 billion facility to support small and medium-sized businesses. This funding is specifically targeted at helping SMEs finance investments in two key areas: competitiveness and the green transition. The facility also includes dedicated support for boosting women-led businesses and promoting the construction of sustainable buildings. This operation is a prime example of the EIB's model of providing guarantees and loans to financial intermediaries like Santander, who then disburse the de-risked capital to the final SME beneficiaries.",
+    "url": "https://www.eif.org/news_centre/press_releases/all/index.htm?lang=-en"
+   },
+   {
+    "category": "Policy & Rule of Law",
+    "title": "EU Withholds €214.5M from Bulgaria's RRF Payment Over Failed Reform",
+    "summary": "The EU's \"performance-based\" funding model was demonstrated as the Commission disbursed a partial second payment of €438.6 million to Bulgaria from its Recovery and Resilience Facility (RRF) plan. However, it withheld €214.5 million. The disbursed funds were for 59 met milestones, including energy market liberalization. The frozen funds are linked to *one* failed milestone: the reform of the Anti-Corruption Commission, which the EU found lacked political independence. This action surgically links RRF cash to non-negotiable rule-of-law milestones.",
+    "url": "https://www.novinite.com/articles/235312/It%27s+Official%3A+Brussels+Freezes+%E2%82%AC214+Million+Payment+to+Bulgaria+Over+Flawed+Anti-Corruption+Reform"
+   },
+   {
+    "category": "Just Transition",
+    "title": "New €630 Million Grant Call Opens for Just Transition Regions (PSLF)",
+    "summary": "The second call for the Public Sector Loan Facility (PSLF) has opened with a €630 million grant budget. This facility is the \"third pillar\" of the Just Transition Mechanism, designed to support public entities in regions most affected by the green transition, such as former coal regions. This €630 million is the *grant component* of a \"blending instrument\". It acts as a subsidy to \"buy down the risk\" for much larger EIB *loans* for public projects, turning millions in grants into billions in transition investments. The first cut-off deadline is 27 January 2026.",
+    "url": "https://cinea.ec.europa.eu/funding-opportunities/calls-proposals/public-sector-loan-facility-call-proposals_en"
+   },
+   {
+    "category": "Environment & Climate",
+    "title": "LIFE Programme Awards €358 Million to 132 Local Green Projects",
+    "summary": "The European Commission announced €358 million in EU funding for 132 new projects under the LIFE Programme. This funding provides \"breadth\" to the Green Deal, complementing the \"depth\" of the multi-billion Innovation Fund. The projects are smaller, more localized, and cover a wide range of citizen-focused activities, including biodiversity, circular economy, and climate adaptation. Successful applicants range from \"a toad protection scheme in Belgium\" to \"a project to recycle ski gear in Italy\". The funding is allocated across Nature (€147M), Circular Economy (€76M), Climate (€58M), and Clean Energy (€77M).",
+    "url": "https://cinea.ec.europa.eu/news-events/news/132-new-life-projects-awarded-eu358-million-eu-funding-2025-11-07_en"
+   }
+  ]
+ }
+}

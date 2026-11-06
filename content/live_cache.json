@@ -1,0 +1,146 @@
+{
+ "stats": {
+  "updated": "2026-11-06T22:44:32+00:00",
+  "open": 198,
+  "forthcoming": 250,
+  "total": 448,
+  "closingIn30Days": 58,
+  "programmes": 22,
+  "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
+ },
+ "soon": [
+  {
+   "id": "FIERCE-45705096",
+   "title": "FIERCE 2nd Open Call for the Financial Support Programme",
+   "deadline": "2026-11-09",
+   "programme": "HORIZON",
+   "budget": 748317
+  },
+  {
+   "id": "NACHIP-46039280",
+   "title": "NACHIP - Second Open Call",
+   "deadline": "2026-11-09",
+   "programme": "I3",
+   "budget": null
+  },
+  {
+   "id": "EDF-EDIP-USI-2026-LS-IRA-MAB",
+   "title": "Missiles, ammunition and bombs",
+   "deadline": "2026-11-10",
+   "programme": "EDF",
+   "budget": 180000000
+  },
+  {
+   "id": "Biodiversa-plus-43966258",
+   "title": "Novel ecosystems: biodiversity, socio-ecological consequences and future trajectories",
+   "deadline": "2026-11-10",
+   "programme": "HORIZON",
+   "budget": 40000000
+  },
+  {
+   "id": "Water4All-44093037",
+   "title": "Water4All 2026 Joint Transnational Call “Sustainable water management”",
+   "deadline": "2026-11-10",
+   "programme": "HORIZON",
+   "budget": 34488619
+  },
+  {
+   "id": "I3FLOAT-46830380",
+   "title": "I3FLOAT 1st Open Call",
+   "deadline": "2026-11-10",
+   "programme": "I3",
+   "budget": 2520000
+  },
+  {
+   "id": "Culture Helps S-47365875",
+   "title": "Culture Helps Solidarity - Second call for proposals for collaboration grants",
+   "deadline": "2026-11-10",
+   "programme": "CREA",
+   "budget": 450000
+  },
+  {
+   "id": "SOCPL-2026-INFO-REPR",
+   "title": "SOCPL-2026-INFO-REPR",
+   "deadline": "2026-11-12",
+   "programme": "SOCPL",
+   "budget": 2500000
+  }
+ ],
+ "news": [
+  {
+   "title": "EIC sets 19 November info day on its 2027 funding opportunities",
+   "url": "https://news.ullswaterinvestments.com/2026/11/eic-2027-funding-info-day/",
+   "summary": "The online session will present Work Programme 2027 scheme by scheme, from Pathfinder to STEP Defence. Registration closes on 18 November.",
+   "category": "EIC, Defence & Equity",
+   "date": "2026-11-05"
+  },
+  {
+   "title": "CDTI Innovación commits €12.75 million to 19 R&D+I projects",
+   "url": "https://news.ullswaterinvestments.com/2026/11/cdti-council-19-projects-october/",
+   "summary": "All 19 October approvals are loans. Ten companies get CDTI funding for the first time, 15 are SMEs and 13 operations are co-financed by POPE.",
+   "category": "Spain",
+   "date": "2026-11-04"
+  },
+  {
+   "title": "Open Research Europe becomes fee-free in 11 countries",
+   "url": "https://news.ullswaterinvestments.com/2026/11/open-research-europe-fee-free-11-countries/",
+   "summary": "Researchers in 11 countries can now publish on the Commission's open-access platform without publication fees, under a collective funding model.",
+   "category": "Research Policy",
+   "date": "2026-11-03"
+  },
+  {
+   "title": "EU and Bpifrance plan €150 million guarantee for Ukraine partnerships",
+   "url": "https://news.ullswaterinvestments.com/2026/11/bpifrance-eu-guarantees-ukraine-dual-use-partnerships/",
+   "summary": "The arrangement under the Ukraine Investment Framework targets French–Ukrainian industrial ties in defence and dual-use technology.",
+   "category": "EIC, Defence & Equity",
+   "date": "2026-11-03"
+  }
+ ],
+ "events": [
+  {
+   "slug": "european-research-innovation-days-2026",
+   "title": "European Research and Innovation Days 2026",
+   "start": "2026-11-10",
+   "end": "2026-11-11",
+   "type": "conference",
+   "programme": "horizon-europe",
+   "mode": "hybrid",
+   "location": "Brussels and online",
+   "organiser": "European Commission",
+   "summary": "The seventh edition of the Commission's flagship research and innovation event, gathering policymakers, researchers, innovators, business leaders and civil society.",
+   "registration_url": "https://research-and-innovation.ec.europa.eu/events/european-research-and-innovation-days_en",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/2026/11/european-research-innovation-days-2026/"
+  },
+  {
+   "slug": "horizon-europe-cluster-5-info-day",
+   "title": "Horizon Europe Cluster 5 Info Day: Climate, Energy and Mobility",
+   "start": "2026-11-19",
+   "end": "2026-11-19",
+   "type": "info-day",
+   "programme": "cluster-5",
+   "mode": "hybrid",
+   "location": "Charlemagne, Brussels, and online",
+   "organiser": "European Commission and CINEA",
+   "summary": "A hybrid day presenting the 2027 funding topics of Cluster 5, with policy context and advice on preparing a strong proposal.",
+   "registration_url": "https://research-innovation-community.ec.europa.eu/events/1BlOchF5f8ViHvC1DosGqo/overview",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/2026/11/horizon-europe-cluster-5-info-day/"
+  },
+  {
+   "slug": "horizon-europe-cluster-5-brokerage",
+   "title": "Horizon Europe Cluster 5 onsite brokerage event",
+   "start": "2026-11-19",
+   "end": "2026-11-19",
+   "type": "brokerage",
+   "programme": "cluster-5",
+   "mode": "onsite",
+   "location": "Charlemagne, Brussels",
+   "organiser": "GREENET",
+   "summary": "An onsite networking and brokerage session held after the Cluster 5 Info Day, from 16:00 to 19:00 at the same venue.",
+   "registration_url": "https://research-innovation-community.ec.europa.eu/events/1BlOchF5f8ViHvC1DosGqo/overview",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/2026/11/horizon-europe-cluster-5-brokerage/"
+  }
+ ]
+}
