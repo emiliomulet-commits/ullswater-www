@@ -98,7 +98,7 @@ a{color:var(--navy)}a:hover{color:var(--navy2)}img{max-width:100%}
 .staging{background:#fff4d6;color:#5c4510;text-align:center;font-size:14px;padding:6px}
 header.site{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20}
 header.site .wrap{display:flex;align-items:center;gap:18px;min-height:70px}
-.brand{color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;margin-right:auto}
+.brand{color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;margin-right:auto}.brand img{display:block;height:46px;width:auto}footer.site .flogo{height:44px;width:auto;display:block;margin:0 0 14px}
 .brand .mk{width:38px;height:38px;border-radius:9px;background:var(--gold);color:var(--navy);font-weight:800;display:grid;place-items:center;font-size:21px}
 .brand b{display:block;font-size:17px;line-height:1.1;letter-spacing:.01em}.brand small{display:block;color:var(--gold);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 nav.main{display:flex;align-items:center;gap:2px}
@@ -175,7 +175,7 @@ footer.site .legal a{display:inline;margin-left:16px}
  .burger{display:block}nav.main{display:none;position:absolute;left:0;right:0;top:70px;background:var(--navy2);flex-direction:column;align-items:stretch;padding:10px 16px 18px;max-height:calc(100vh - 70px);overflow-y:auto}
  nav.main.open{display:flex}.dd .menu,.dd .menu.wide{position:static;grid-template-columns:1fr;min-width:0;box-shadow:none;border:0;background:transparent;display:block;padding:0 0 0 12px;min-width:0}.dd .menu a{color:#cfd8ee}.dd .menu .lbl{color:var(--gold)}.dd .menu.wide{display:none}.dd.open .menu.wide{display:grid}.dd .menu hr{border-color:#334}.dd>button{text-align:left}
  header .btn.hide-m{display:none}}
-@media (max-width:640px){body{font-size:16px}.hero h1{font-size:36px}.hero.sm h1{font-size:31px}.hero .wrap{padding:56px 22px 52px}h2{font-size:28px}.g2,.g3,.g4{grid-template-columns:1fr}
+@media (max-width:640px){body{font-size:16px}.brand img{height:38px}.hero h1{font-size:36px}.hero.sm h1{font-size:31px}.hero .wrap{padding:56px 22px 52px}h2{font-size:28px}.g2,.g3,.g4{grid-template-columns:1fr}
  .flow{grid-template-columns:1fr}.flow div+div{margin-left:0;margin-top:30px}.flow div+div::before{content:"↓";left:50%;top:-27px;transform:translateX(-50%)}
  .phase{grid-template-columns:1fr;gap:6px}footer.site .cols{grid-template-columns:1fr}footer.site a{overflow-wrap:anywhere}.facts{grid-template-columns:1fr}.facts dt{border-bottom:0}.cta{padding:30px}.list li{flex-direction:column;gap:2px}.list .d{flex:none}}
 """
@@ -187,7 +187,7 @@ document.addEventListener('click',function(e){document.querySelectorAll('.dd.ope
 
 ORG = {"@context": "https://schema.org", "@type": "ProfessionalService", "@id": BASE + "/#org", "name": "Ullswater Investments",
        "legalName": "Ullswater Investments S.L.", "url": BASE + "/", "email": C.EMAIL, "taxID": "B10740942",
-       "description": "Madrid-based European funding advisory firm: Horizon Europe, EIC, Digital Europe, InvestEU and EIF, CDTI, ENISA and Red.es.",
+       "logo": BASE + "/assets/logo.svg", "description": "Madrid-based European funding advisory firm: Horizon Europe, EIC, Digital Europe, InvestEU and EIF, CDTI, ENISA and Red.es.",
        "address": {"@type": "PostalAddress", "streetAddress": "Calle Ramírez de Arellano 17", "postalCode": "28043", "addressLocality": "Madrid", "addressCountry": "ES"},
        "founder": {"@type": "Person", "name": "Emilio Mulet", "jobTitle": "Managing Partner"}, "areaServed": "Europe", "knowsLanguage": ["en", "es"],
        "sameAs": [C.CALLS + "/", C.NEWS + "/", C.EVENTS + "/"]}
@@ -198,7 +198,7 @@ def header(themes, current):
         return ' aria-current="page"' if k == current else ""
     tl = "".join(f'<a href="{C.CALLS}/theme/{t["slug"]}/">{escape(t["short"])}</a>' for t in themes)
     return f"""<header class="site"><div class="wrap">
-<a class="brand" href="/" aria-label="Ullswater Investments home"><span class="mk" aria-hidden="true">U</span><span><b>Ullswater Investments</b><small>EU Funding Advisors</small></span></a>
+<a class="brand" href="/" aria-label="Ullswater Investments, home"><img src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26"></a>
 <nav class="main" aria-label="Main">
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>Calls</button><div class="menu wide"><div>
 <div class="lbl">Live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a>
@@ -211,7 +211,7 @@ def header(themes, current):
 
 
 FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
-<div><h4>Ullswater Investments</h4><p style="margin:0 0 10px">European funding advisors. Grants, loans and equity for innovation, from Madrid to Brussels.</p>
+<div><img class="flogo" src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26" loading="lazy"><p style="margin:0 0 10px">European funding advisors. Grants, loans and equity for innovation, from Madrid to Brussels.</p>
 <p style="margin:0">Calle Ramírez de Arellano 17<br>28043 Madrid, Spain<br><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
 <div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
 <div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a></div>
@@ -442,6 +442,7 @@ def main():
     (SITE / "assets").mkdir(parents=True)
     (SITE / "assets" / "site.css").write_text(CSS, encoding="utf-8")
     (SITE / "assets" / "site.js").write_text(JS, encoding="utf-8")
+    shutil.copy(ROOT / "content" / "logo.svg", SITE / "assets" / "logo.svg")
     (SITE / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#233567"/><text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" text-anchor="middle" fill="#c9a646">U</text></svg>', encoding="utf-8")
     pages = {"/": home(live, themes), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
              "/strategic-positioning/": strategic_positioning(themes), "/about/": about(themes), "/courses/": courses(themes),
