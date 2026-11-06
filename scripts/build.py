@@ -107,7 +107,7 @@ nav.main>a:hover,nav.main .dd>button:hover,nav.main [aria-current]{background:rg
 .dd .menu{display:none;position:absolute;right:0;top:100%;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(17,24,39,.16);padding:8px;min-width:280px}
 .dd:hover .menu,.dd:focus-within .menu,.dd.open .menu{display:block}
 .dd .menu a{display:block;color:var(--ink);text-decoration:none;padding:7px 10px;border-radius:6px;font-size:15px}.dd .menu a:hover{background:var(--bg)}
-.dd .menu hr{border:0;border-top:1px solid var(--line);margin:6px 4px}.dd .menu .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2);font-weight:700;padding:6px 10px 2px}
+.dd .menu.wide{min-width:560px;display:none;grid-template-columns:1fr 1fr;gap:4px 12px}.dd:hover .menu.wide,.dd:focus-within .menu.wide,.dd.open .menu.wide{display:grid}.dd .menu.wide a{padding:5px 10px}.dd .menu hr{border:0;border-top:1px solid var(--line);margin:6px 4px}.dd .menu .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2);font-weight:700;padding:6px 10px 2px}
 .btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;text-decoration:none;padding:11px 20px;border-radius:7px;white-space:nowrap;border:0;font:inherit;font-weight:700;cursor:pointer}
 .btn:hover{background:#d8b85a;color:var(--navy)}.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff}.btn.ghost:hover{background:rgba(255,255,255,.1)}
 .btn.line{background:#fff;border:1px solid var(--line);color:var(--navy)}
@@ -172,7 +172,7 @@ footer.site .legal{border-top:1px solid #26314f;margin-top:34px;padding-top:20px
 footer.site .legal a{display:inline;margin-left:16px}
 @media (max-width:960px){.g3,.g4{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}footer.site .cols{grid-template-columns:1fr 1fr}.flow.f4{grid-template-columns:1fr 1fr;gap:14px}.flow.f4 div{margin-left:0}.flow.f4 div::before{display:none}
  .burger{display:block}nav.main{display:none;position:absolute;left:0;right:0;top:70px;background:var(--navy2);flex-direction:column;align-items:stretch;padding:10px 16px 18px}
- nav.main.open{display:flex}.dd .menu{position:static;box-shadow:none;border:0;background:transparent;display:block;padding:0 0 0 12px;min-width:0}.dd .menu a{color:#cfd8ee}.dd .menu .lbl{color:var(--gold)}.dd .menu hr{border-color:#334}.dd>button::after{content:""}
+ nav.main.open{display:flex}.dd .menu,.dd .menu.wide{position:static;grid-template-columns:1fr;min-width:0;box-shadow:none;border:0;background:transparent;display:block;padding:0 0 0 12px;min-width:0}.dd .menu a{color:#cfd8ee}.dd .menu .lbl{color:var(--gold)}.dd .menu.wide{min-width:560px;display:none;grid-template-columns:1fr 1fr;gap:4px 12px}.dd:hover .menu.wide,.dd:focus-within .menu.wide,.dd.open .menu.wide{display:grid}.dd .menu.wide a{padding:5px 10px}.dd .menu hr{border-color:#334}.dd>button::after{content:""}
  header .btn.hide-m{display:none}}
 @media (max-width:640px){body{font-size:16px}.hero h1{font-size:36px}.hero.sm h1{font-size:31px}.hero .wrap{padding:56px 22px 52px}h2{font-size:28px}.g2,.g3,.g4{grid-template-columns:1fr}
  .flow{grid-template-columns:1fr}.flow div+div{margin-left:0;margin-top:30px}.flow div+div::before{content:"↓";left:50%;top:-27px;transform:translateX(-50%)}
@@ -181,6 +181,7 @@ footer.site .legal a{display:inline;margin-left:16px}
 
 JS = """(function(){var b=document.querySelector('.burger'),n=document.querySelector('nav.main');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
 document.querySelectorAll('.dd>button').forEach(function(x){x.addEventListener('click',function(){var d=x.parentNode,o=d.classList.toggle('open');x.setAttribute('aria-expanded',o)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')});if(document.activeElement)document.activeElement.blur()}});
 document.addEventListener('click',function(e){document.querySelectorAll('.dd.open').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})});})();"""
 
 ORG = {"@context": "https://schema.org", "@type": "ProfessionalService", "@id": BASE + "/#org", "name": "Ullswater Investments",
@@ -198,9 +199,9 @@ def header(themes, current):
     return f"""<header class="site"><div class="wrap">
 <a class="brand" href="/" aria-label="Ullswater Investments home"><span class="mk" aria-hidden="true">U</span><span><b>Ullswater Investments</b><small>EU Funding Advisors</small></span></a>
 <nav class="main" aria-label="Main">
-<div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>Calls</button><div class="menu">
+<div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>Calls</button><div class="menu wide"><div>
 <div class="lbl">Live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a>
-<hr><div class="lbl">By theme</div>{tl}</div></div>
+</div><div><div class="lbl">By theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('services')}>Services</button><div class="menu">
 <a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div></div>
 <a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a href="/courses/"{cur('courses')}>Courses</a><a href="/about/"{cur('about')}>About</a>
