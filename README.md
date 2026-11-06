@@ -1,6 +1,6 @@
 # www.ullswaterinvestments.com
 
-Static site of Ullswater Investments · EU Funding Advisors, migrated from Google Sites (November 2026).
+Static site of Ullswater Investments · EU Funding Advisors, migrated from Google Sites (November 2026). Review copy: https://new.ullswaterinvestments.com.
 
 - `scripts/content.py` – all editorial texts (edit here).
 - `scripts/build.py` – generator. Pulls live data at build time from calls.ullswaterinvestments.com
