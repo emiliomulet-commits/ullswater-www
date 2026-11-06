@@ -10,6 +10,6 @@ Static site of Ullswater Investments · EU Funding Advisors, migrated from Googl
 - `redirects.csv` – old Google Sites URLs → new destinations (301), for Cloudflare Bulk Redirects.
   The site also contains redirect stubs at each old path as a fallback.
 - GitHub Actions rebuilds on every push and daily at 06:40 UTC.
-- The `STAGING` file builds the noindex review copy for new.ullswaterinvestments.com. Delete it when www goes live.
+- Live on www.ullswaterinvestments.com since 7 Nov 2026. Re-create an empty `STAGING` file to build a noindex review copy.
 
 Local build: `python3 scripts/build.py` → `site/`.

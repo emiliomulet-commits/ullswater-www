@@ -40,6 +40,16 @@ REDIRECTS = {
 }
 
 
+AI_BOTS = [  # search/answer engines and AI assistants we explicitly welcome
+    "Googlebot", "Google-Extended", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User",
+    "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User",
+    "Applebot", "Applebot-Extended", "DuckAssistBot", "MistralAI-User", "CCBot"]
+ROBOTS = ("# www.ullswaterinvestments.com: public content, open to search engines and AI assistants.\n"
+          + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in AI_BOTS)
+          + "User-agent: *\nAllow: /\n\n"
+          + f"Sitemap: {BASE}/sitemap.xml\nSitemap: {C.CALLS}/sitemap.xml\nSitemap: {C.NEWS}/sitemap.xml\n")
+
+
 def fetch(url, binary=False):
     req = urllib.request.Request(url, headers={"User-Agent": "ullswater-www-build"})
     with urllib.request.urlopen(req, timeout=60) as r:
@@ -462,8 +472,7 @@ def main():
     urls = [p for p in pages]
     (SITE / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         + "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{today}</lastmod></url>" for u in urls) + "</urlset>\n", encoding="utf-8")
-    (SITE / "robots.txt").write_text("User-agent: *\nDisallow: /\n" if STAGING else
-        f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\nSitemap: {C.CALLS}/sitemap.xml\n", encoding="utf-8")
+    (SITE / "robots.txt").write_text("User-agent: *\nDisallow: /\n" if STAGING else ROBOTS, encoding="utf-8")
     (SITE / "llms.txt").write_text(f"""# Ullswater Investments · EU Funding Advisors
 
 > Madrid-based European funding advisory firm (Ullswater Investments S.L.). We match projects with EU grants, EIB loans and EIF-backed venture capital, build consortia and write Horizon Europe, EIC and Digital Europe proposals.
