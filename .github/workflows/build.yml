@@ -37,3 +37,6 @@ jobs:
           path: site
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify IndexNow (Bing and others)
+        if: ${{ success() }}
+        run: python scripts/indexnow.py site/sitemap.xml www.ullswaterinvestments.com

@@ -491,6 +491,8 @@ def main():
 """, encoding="utf-8")
     (SITE / "CNAME").write_text("new.ullswaterinvestments.com\n" if STAGING else "www.ullswaterinvestments.com\n", encoding="utf-8")
     (SITE / ".nojekyll").write_text("", encoding="utf-8")
+    key = (ROOT / "content" / "indexnow_key.txt").read_text().strip()
+    (SITE / f"{key}.txt").write_text(key, encoding="utf-8")
     with open(ROOT / "redirects.csv", "w", encoding="utf-8") as f:
         f.write("source,target,status\n")
         for old, new in sorted(redirects.items()):
