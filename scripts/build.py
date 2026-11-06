@@ -25,6 +25,7 @@ SITE = ROOT / "site"
 CACHE = ROOT / "content" / "live_cache.json"
 BASE = "https://www.ullswaterinvestments.com"
 STAGING = os.environ.get("STAGING") == "1" or (ROOT / "STAGING").exists()
+VER = datetime.now(timezone.utc).strftime("%Y%m%d%H%M")
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 # Old Google Sites URL -> new destination (also exported as redirects.csv for Cloudflare)
@@ -228,8 +229,8 @@ def page(path, title, desc, body, themes, current="", jsonld=None):
 <meta property="og:type" content="website"><meta property="og:site_name" content="Ullswater Investments · EU Funding Advisors"><meta property="og:title" content="{escape(title)}"><meta property="og:description" content="{escape(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="EU Funding News" href="{C.NEWS}/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css"><script type="application/ld+json">{json.dumps(lds if len(lds) > 1 else ORG, ensure_ascii=False)}</script></head><body>
-<a class="skip" href="#main">Skip to content</a>{banner}{header(themes, current)}<main id="main">{body}</main>{FOOTER}<script src="/assets/site.js" defer></script></body></html>"""
+<link rel="stylesheet" href="/assets/site.css?v={VER}"><script type="application/ld+json">{json.dumps(lds if len(lds) > 1 else ORG, ensure_ascii=False)}</script></head><body>
+<a class="skip" href="#main">Skip to content</a>{banner}{header(themes, current)}<main id="main">{body}</main>{FOOTER}<script src="/assets/site.js?v={VER}" defer></script></body></html>"""
 
 
 def hero(kicker, h1, lead, crumbs="", small=True, actions="", extra=""):
