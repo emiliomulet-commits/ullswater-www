@@ -3,7 +3,8 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "40 6 * * *"   # daily, after calls (05:00 UTC) and news have refreshed
+    - cron: "43 6 * * *"   # daily, after calls (05:07 UTC) and news have refreshed
+    - cron: "53 13 * * *"  # backup run in case GitHub drops the morning schedule
   workflow_dispatch:
 permissions:
   contents: write

@@ -1,7 +1,8 @@
 name: Daily site health check (search and AI visibility)
 on:
   schedule:
-    - cron: "15 7 * * *"   # every day, after the www build
+    - cron: "19 7 * * *"   # every day, after the www build
+    - cron: "23 14 * * *"  # second check after the backup builds
   workflow_dispatch:
 permissions:
   contents: read

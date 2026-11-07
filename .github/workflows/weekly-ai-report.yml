@@ -1,7 +1,8 @@
 name: Weekly AI visibility and Search Console report
 on:
   schedule:
-    - cron: "30 5 * * 1"   # Mondays 05:30 UTC
+    - cron: "31 5 * * 1"   # Mondays 05:31 UTC
+    - cron: "41 15 * * 1"  # backup on Monday afternoon if the morning run was dropped
   workflow_dispatch:
 permissions:
   contents: write
@@ -16,8 +17,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Skip if this week's report already exists
+        id: skip
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] && grep -q "week of $(date -u +%F)" reports/ai-visibility.md 2>/dev/null; then echo "skip=1" >> "$GITHUB_OUTPUT"; fi
       - run: pip install google-auth requests
+        if: steps.skip.outputs.skip != '1'
       - name: AI visibility (ChatGPT, Claude, Gemini, Perplexity)
+        if: steps.skip.outputs.skip != '1'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -29,16 +36,19 @@ jobs:
           PERPLEXITY_MODEL: ${{ vars.PERPLEXITY_MODEL }}
         run: python scripts/ai_visibility.py
       - name: Search Console
+        if: steps.skip.outputs.skip != '1'
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
         run: python scripts/gsc_report.py
       - name: Save the report
+        if: steps.skip.outputs.skip != '1'
         run: |
           git config user.name "ullswater-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/ai_visibility.csv reports/ai-visibility.md reports/search-console.md
           git diff --cached --quiet || (git commit -m "Weekly AI visibility and Search Console report [skip ci]" && git pull --rebase && git push)
       - name: Send the report (GitHub issue, notified by email)
+        if: steps.skip.outputs.skip != '1'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
