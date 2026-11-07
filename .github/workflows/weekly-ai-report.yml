@@ -1,0 +1,48 @@
+name: Weekly AI visibility and Search Console report
+on:
+  schedule:
+    - cron: "30 5 * * 1"   # Mondays 05:30 UTC
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: weekly-report
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install google-auth requests
+      - name: AI visibility (ChatGPT, Claude, Gemini, Perplexity)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          PERPLEXITY_MODEL: ${{ vars.PERPLEXITY_MODEL }}
+        run: python scripts/ai_visibility.py
+      - name: Search Console
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: python scripts/gsc_report.py
+      - name: Save the report
+        run: |
+          git config user.name "ullswater-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/ai_visibility.csv reports/ai-visibility.md reports/search-console.md
+          git diff --cached --quiet || (git commit -m "Weekly AI visibility and Search Console report [skip ci]" && git pull --rebase && git push)
+      - name: Send the report (GitHub issue, notified by email)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create weekly-report --color 233567 --force >/dev/null 2>&1 || true
+          for n in $(gh issue list --state open --label weekly-report --json number -q '.[].number'); do gh issue close "$n"; done
+          cat reports/ai-visibility.md > body.md; echo >> body.md; cat reports/search-console.md >> body.md
+          gh issue create --title "📊 Weekly AI visibility report — $(date -u +%F)" --label weekly-report --body-file body.md

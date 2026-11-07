@@ -1,0 +1,44 @@
+name: Daily site health check (search and AI visibility)
+on:
+  schedule:
+    - cron: "15 7 * * *"   # every day, after the www build
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: write
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check sites
+        id: check
+        run: |
+          mkdir -p reports
+          set +e
+          python scripts/monitor.py | tee monitor.out
+          echo "status=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+      - name: Self-repair (rebuild www)
+        if: steps.check.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if grep -q REBUILD monitor.out; then gh workflow run build.yml --ref main && echo "Rebuild of www requested"; fi
+      - name: Open or update the alert issue
+        if: steps.check.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(gh issue list --state open --label site-health --json number -q '.[0].number')
+          gh label create site-health --color B42318 --force >/dev/null 2>&1 || true
+          if [ -n "$n" ]; then gh issue comment "$n" --body-file reports/monitor.md; else gh issue create --title "⚠️ Site health check failed" --label site-health --body-file reports/monitor.md; fi
+      - name: Close the alert issue when everything is fine
+        if: steps.check.outputs.status == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for n in $(gh issue list --state open --label site-health --json number -q '.[].number'); do gh issue close "$n" --comment "All checks passed ✅"; done

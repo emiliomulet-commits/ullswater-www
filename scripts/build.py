@@ -19,6 +19,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from content import *  # noqa: E402,F401,F403
 import content as C  # noqa: E402
+import guides  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -72,6 +73,7 @@ def load_live():
                       key=lambda c: c["deadline"])[:8]
         live["stats"] = data["stats"]
         live["soon"] = [{k: c.get(k) for k in ("id", "title", "deadline", "programme", "budget")} for c in soon]
+        live["calls"] = [{k: c.get(k) for k in ("id", "title", "status", "deadline", "programme", "kind", "budget", "url")} for c in data["calls"]]
     except Exception as e:  # keep the last good copy
         print("calls fetch failed:", e)
     try:
@@ -160,6 +162,9 @@ a.card{text-decoration:none;color:inherit;transition:border-color .15s,box-shado
 .list small{display:block;color:var(--muted);font-size:13px}
 .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px}
 .panel h3 a{text-decoration:none}.panel .list li{flex-direction:column;gap:2px}.panel .list .d{flex:none;font-size:13px;color:var(--gold2)}.panel .more{display:inline-block;margin-top:14px;font-weight:700;text-decoration:none}
+table.gt{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table.gt th{background:var(--navy);color:#fff;text-align:left;padding:10px 14px;font-weight:600}table.gt td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top}
+table.gt td small{display:block;color:var(--muted);font-size:12px}table.gt a{font-weight:600;text-decoration:none}table.gt tr:nth-child(even) td{background:#fafbfc}
 .facts{display:grid;grid-template-columns:200px 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .facts dt,.facts dd{margin:0;padding:12px 18px;border-bottom:1px solid var(--line)}.facts dt{background:var(--bg);font-weight:700;color:var(--navy);font-size:15px}
 .facts dt:last-of-type,.facts dd:last-of-type{border-bottom:0}
@@ -211,7 +216,7 @@ def header(themes, current):
 <a class="brand" href="/" aria-label="Ullswater Investments, home"><img src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26"></a>
 <nav class="main" aria-label="Main">
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>Calls</button><div class="menu wide"><div>
-<div class="lbl">Live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a>
+<div class="lbl">Live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a><a href="/guides/"><b>EU funding guides</b></a>
 </div><div><div class="lbl">By theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('services')}>Services</button><div class="menu">
 <a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div></div>
@@ -225,13 +230,13 @@ FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 <p style="margin:0">Calle Ramírez de Arellano 17<br>28043 Madrid, Spain<br><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
 <div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
 <div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a></div>
-<div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a></div>
+<div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a></div>
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
 
 
 def page(path, title, desc, body, themes, current="", jsonld=None):
     canon = BASE + path
-    lds = [ORG] + ([jsonld] if jsonld else [])
+    lds = [ORG] + (jsonld if isinstance(jsonld, list) else [jsonld] if jsonld else [])
     robots = '<meta name="robots" content="noindex,nofollow">' if STAGING else '<meta name="robots" content="index,follow,max-image-preview:large">'
     banner = '<div class="staging">Review copy of the new www.ullswaterinvestments.com, not yet live.</div>' if STAGING else ""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -458,6 +463,9 @@ def main():
              "/strategic-positioning/": strategic_positioning(themes), "/about/": about(themes), "/courses/": courses(themes),
              "/privacy/": privacy(themes), "/legal/": legal(themes)}
     pages.update(archive_pages(themes))
+    if live.get("calls"):
+        for path, (title, desc, body, ld) in guides.build(live["calls"], C.CALLS).items():
+            pages[path] = page(path, title, desc, body, themes, "calls", ld)
     for path, html_ in pages.items():
         d = SITE / path.strip("/")
         d.mkdir(parents=True, exist_ok=True)
@@ -483,6 +491,9 @@ def main():
 - [Strategic Positioning]({BASE}/strategic-positioning/)
 - [Executive Programme in EU Funding for Defence and Dual-Use]({BASE}/courses/)
 - [About and company facts]({BASE}/about/)
+
+## Guides (data-driven, updated daily)
+- [EU funding guides index]({BASE}/guides/): Horizon Europe clusters 1–6, EU Missions, EIC, MSCA/ERC, Digital Europe, European Defence Fund, cascade funding
 
 ## Live data
 - [Open EU funding calls, updated daily]({C.CALLS}/) · [JSON]({C.CALLS}/data/calls.json)
