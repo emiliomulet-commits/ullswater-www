@@ -31,7 +31,7 @@ jobs:
           git config user.name "ullswater-bot"
           git config user.email "actions@users.noreply.github.com"
           git add content/live_cache.json redirects.csv
-          git diff --cached --quiet || (git commit -m "Refresh live data cache [skip ci]" && git push)
+          git diff --cached --quiet || (git commit -m "Refresh live data cache [skip ci]" && git pull --rebase -X theirs && git push)
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
