@@ -185,7 +185,7 @@ SP_HOW = [("Strategic ecosystem mapping", "A roadmap of the institutions, policy
           ("Tailored intelligence", "Curated, actionable intelligence so you can anticipate change and seize opportunities.")]
 
 # ---------- About ----------
-ABOUT_INTRO = ("Ullswater Investments is a Madrid-based European funding advisory and venture-building firm. We help SMEs, start-ups, technology centres and consortia secure and "
+ABOUT_INTRO = ("Ullswater Investments is a European funding advisory and venture-building firm with offices in Madrid and Brussels. We help SMEs, start-ups, technology centres and consortia secure and "
                "manage EU and Spanish public funding, including Horizon Europe, the EIC, Digital Europe, CDTI, ENISA and Red.es, with particular expertise in data spaces, "
                "health data and sovereign AI.")
 ABOUT_SECTIONS = [
@@ -200,6 +200,7 @@ FACTS = [
     ("Legal name", "Ullswater Investments S.L."),
     ("Tax ID (CIF)", "B10740942"),
     ("Headquarters", "Calle Ramírez de Arellano 17, 28043 Madrid, Spain"),
+    ("Brussels office", "Square de Meeûs 37, 1000 Brussels, Belgium (European Quarter)"),
     ("Managing Partner", "Emilio Mulet"),
     ("Programmes", "Horizon Europe, EIC (Pathfinder, Transition, Accelerator), Digital Europe, InvestEU and EIF, LIFE, Innovation Fund, CDTI, ENISA, Red.es"),
     ("Languages", "English, Spanish"),
@@ -245,4 +246,18 @@ MODULES = [
         ("Sustainability and energy in defence", "Lower emissions, renewable energy at military bases and greener logistics."),
         ("Resilient supply chains", "Reducing dependencies, diversifying suppliers and strategic European production."),
         ("EDIP and joint procurement", "The European Defence Industry Programme and collaborative procurement between Member States.")]),
+]
+
+# ---------- Offices ----------
+OFFICES = [
+    {"city": "Madrid", "role": "Headquarters", "street": "Calle Ramírez de Arellano 17", "postcode": "28043", "locality": "Madrid", "country": "Spain", "cc": "ES",
+     "note": "Our headquarters, working with SMEs, technology centres and public bodies across Spain.",
+     "img": "/assets/img/office-madrid.jpg", "alt": "Madrid skyline, Cuatro Torres business area",
+     "credit": "Photo: Madrid, Cuatro Torres Business Area · Wikimedia Commons (CC0)",
+     "map": "https://www.google.com/maps/search/?api=1&query=Calle+Ram%C3%ADrez+de+Arellano+17%2C+28043+Madrid"},
+    {"city": "Brussels", "role": "European Quarter office", "street": "Square de Meeûs 37", "postcode": "1000", "locality": "Brussels", "country": "Belgium", "cc": "BE",
+     "note": "In the heart of the European Quarter, near Place du Luxembourg, a few minutes' walk from the European Parliament and Bruxelles-Luxembourg station.",
+     "img": "/assets/img/office-brussels.jpg", "alt": "Square de Meeûs park in Brussels with its gilded winged statue",
+     "credit": "Photo: Square de Meeûs, Brussels · Romaine, Wikimedia Commons (CC0)",
+     "map": "https://www.google.com/maps/search/?api=1&query=Square+de+Mee%C3%BBs+37%2C+1000+Brussels"},
 ]

@@ -165,6 +165,11 @@ a.card{text-decoration:none;color:inherit;transition:border-color .15s,box-shado
 table.gt{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 table.gt th{background:var(--navy);color:#fff;text-align:left;padding:10px 14px;font-weight:600}table.gt td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top}
 table.gt td small{display:block;color:var(--muted);font-size:12px}table.gt a{font-weight:600;text-decoration:none}table.gt tr:nth-child(even) td{background:#fafbfc}
+.office{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.office figure{margin:0;position:relative}.office img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.office figcaption{position:absolute;right:8px;bottom:6px;font-size:11px;color:#fff;background:rgba(17,26,51,.55);padding:2px 8px;border-radius:4px}
+.office .ob{padding:22px 26px 26px}.office h3{font-size:24px;margin:0 0 8px}.office address{font-style:normal;font-weight:600;color:var(--ink);margin-bottom:10px}
+.office p{color:var(--muted);font-size:16px;margin:0 0 14px}.office .go{font-weight:700;text-decoration:none}
 .facts{display:grid;grid-template-columns:200px 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .facts dt,.facts dd{margin:0;padding:12px 18px;border-bottom:1px solid var(--line)}.facts dt{background:var(--bg);font-weight:700;color:var(--navy);font-size:15px}
 .facts dt:last-of-type,.facts dd:last-of-type{border-bottom:0}
@@ -202,8 +207,9 @@ document.addEventListener('click',function(e){document.querySelectorAll('.dd.ope
 
 ORG = {"@context": "https://schema.org", "@type": "ProfessionalService", "@id": BASE + "/#org", "name": "Ullswater Investments",
        "legalName": "Ullswater Investments S.L.", "url": BASE + "/", "email": C.EMAIL, "taxID": "B10740942",
-       "logo": BASE + "/assets/logo.svg", "description": "Madrid-based European funding advisory firm: Horizon Europe, EIC, Digital Europe, InvestEU and EIF, CDTI, ENISA and Red.es.",
+       "logo": BASE + "/assets/logo.svg", "description": "European funding advisory firm with offices in Madrid and Brussels: Horizon Europe, EIC, Digital Europe, InvestEU and EIF, CDTI, ENISA and Red.es.",
        "address": {"@type": "PostalAddress", "streetAddress": "Calle Ramírez de Arellano 17", "postalCode": "28043", "addressLocality": "Madrid", "addressCountry": "ES"},
+       "location": [{"@type": "Place", "name": f"Ullswater Investments {o['city']}", "address": {"@type": "PostalAddress", "streetAddress": o["street"], "postalCode": o["postcode"], "addressLocality": o["locality"], "addressCountry": o["cc"]}, "hasMap": o["map"]} for o in C.OFFICES],
        "founder": {"@type": "Person", "name": "Emilio Mulet", "jobTitle": "Managing Partner"}, "areaServed": "Europe", "knowsLanguage": ["en", "es"],
        "sameAs": [C.CALLS + "/", C.NEWS + "/", C.EVENTS + "/"]}
 
@@ -226,8 +232,8 @@ def header(themes, current):
 
 
 FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
-<div><img class="flogo" src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26" loading="lazy"><p style="margin:0 0 10px">European funding advisors. Grants, loans and equity for innovation, from Madrid to Brussels.</p>
-<p style="margin:0">Calle Ramírez de Arellano 17<br>28043 Madrid, Spain<br><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
+<div><img class="flogo" src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26" loading="lazy"><p style="margin:0 0 10px">European funding advisors in Madrid and Brussels. Grants, loans and equity for innovation.</p>
+<p style="margin:0 0 8px"><b style="color:#fff">Madrid</b> · Calle Ramírez de Arellano 17, 28043 Madrid, Spain</p><p style="margin:0 0 8px"><b style="color:#fff">Brussels</b> · Square de Meeûs 37, 1000 Brussels, Belgium</p><p style="margin:0"><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
 <div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
 <div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a></div>
 <div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a></div>
@@ -261,6 +267,18 @@ def cta(title="Ready to discuss your European strategy?", text="Let's find the r
 <div class="actions" style="margin:0"><a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">{label}</a><a class="btn ghost" href="mailto:{C.EMAIL}">Email us</a></div></div></div></section>"""
 
 
+def offices_band(alt=False):
+    cards = ""
+    for o in C.OFFICES:
+        cards += (f'<article class="office"><figure><img src="{o["img"]}" alt="{escape(o["alt"])}" width="1000" height="625" loading="lazy"><figcaption>{escape(o["credit"])}</figcaption></figure>'
+                  f'<div class="ob"><span class="tag">{escape(o["role"])}</span><h3>{escape(o["city"])}</h3>'
+                  f'<address>{escape(o["street"])}<br>{escape(o["postcode"])} {escape(o["locality"])}, {escape(o["country"])}</address>'
+                  f'<p>{escape(o["note"])}</p><a class="go" href="{o["map"]}" target="_blank" rel="noopener">Get directions ↗</a></div></article>')
+    return f"""<section class="band{' alt' if alt else ''}" id="offices"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Our offices</p><h2>Madrid and Brussels</h2>
+<p class="sub">From our headquarters in Madrid and our office in the heart of the European Quarter in Brussels, we work alongside the European institutions and our clients across Europe.</p>
+<div class="grid g2">{cards}</div><p style="margin-top:18px;color:var(--muted);font-size:15px">Visits by appointment: <a href="{C.BOOK}" target="_blank" rel="noopener">book a meeting</a> or write to <a href="mailto:{C.EMAIL}">{C.EMAIL}</a>.</p></div></section>"""
+
+
 def tools_band():
     cards = "".join(f'<a class="card" href="{u}"><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Open →</span></a>' for t, d, u in C.TOOLS)
     return f"""<section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Free tools</p><h2>Find, test and team up for EU calls</h2>
@@ -273,7 +291,7 @@ def home(live, themes):
     if st:
         stats = (f'<ul class="stats"><li><strong>{st["open"]}</strong>EU calls open now</li><li><strong>{st["forthcoming"]}</strong>forthcoming calls</li>'
                  f'<li><strong>{st["closingIn30Days"]}</strong>closing in 30 days</li><li><strong>{st["programmes"]}</strong>EU programmes tracked</li></ul>')
-    h = hero("European funding advisors · Madrid", "Unlock European funding for your innovation", escape(C.MISSION), small=False,
+    h = hero("European funding advisors · Madrid · Brussels", "Unlock European funding for your innovation", escape(C.MISSION), small=False,
              actions=f'<a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a><a class="btn ghost" href="{C.CALLS}/">Explore {st.get("total", "all")} EU calls →</a>',
              extra=stats)
     svc = "".join(f'<a class="card top" href="/{s}/"><div class="num">0{i + 1}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Learn more →</span></a>'
@@ -304,9 +322,9 @@ def home(live, themes):
 <div class="flow"><div><b>1</b><strong>European Investment Fund</strong><span>Acts as cornerstone investor</span></div><div><b>2</b><strong>Private VC funds</strong><span>Receive EIF capital</span></div><div><b>3</b><strong>High-growth companies</strong><span>Raise from EIF-backed VCs</span></div></div>
 <h3 style="margin-top:40px">Are you investment ready?</h3><p class="sub" style="margin-bottom:20px">Professional VC investors run rigorous due diligence. Investment readiness means preparing your company to meet their standards in four domains.</p>
 <div class="grid g4">{vc}</div><div class="actions"><a class="btn" href="/investment-readiness/">Become fundable →</a></div></div></section>
-{tools_band()}{cta()}"""
+{offices_band(alt=False)}{tools_band()}{cta()}"""
     return page("/", "Ullswater Investments · EU Funding Advisors | Horizon Europe, EIC, EIF and InvestEU",
-                "Madrid-based European funding advisors: we match projects with EU grants, EIB loans and EIF-backed capital, build consortia and write winning Horizon Europe, EIC and Digital Europe proposals.",
+                "European funding advisors in Madrid and Brussels: we match projects with EU grants, EIB loans and EIF-backed capital, build consortia and write winning Horizon Europe, EIC and Digital Europe proposals.",
                 body, themes, "home")
 
 
@@ -375,7 +393,7 @@ def about(themes):
     body = hero("About", "About Ullswater Investments", escape(C.ABOUT_INTRO), crumbs("About")) + f"""
 <section class="band"><div class="wrap split"><div class="prose">{secs}</div><div><h2>Company facts</h2><dl class="facts">{facts}</dl>
 <p style="color:var(--muted);font-size:14px;margin-top:12px">Last reviewed: {fmt(date.today().isoformat())}</p></div></div></section>
-{tools_band()}{cta()}"""
+{offices_band(alt=True)}{cta()}"""
     return page("/about/", "About Ullswater Investments: EU funding advisors in Madrid", "Ullswater Investments S.L. is a Madrid-based European funding advisory and venture-building firm for SMEs, start-ups, technology centres and consortia.",
                 body, themes, "about", {"@context": "https://schema.org", "@type": "AboutPage", "url": BASE + "/about/", "mainEntity": {"@id": BASE + "/#org"}})
 
@@ -432,7 +450,7 @@ def privacy(themes):
 
 def legal(themes):
     body = hero("Legal", "Legal notice", "Information required by Spanish Law 34/2002 on information society services (LSSI).", crumbs("Legal notice")) + f"""
-<section class="band"><div class="wrap narrow"><dl class="facts"><dt>Owner</dt><dd>Ullswater Investments S.L.</dd><dt>CIF</dt><dd>B10740942</dd><dt>Address</dt><dd>Calle Ramírez de Arellano 17, 28043 Madrid, Spain</dd>
+<section class="band"><div class="wrap narrow"><dl class="facts"><dt>Owner</dt><dd>Ullswater Investments S.L.</dd><dt>CIF</dt><dd>B10740942</dd><dt>Registered office</dt><dd>Calle Ramírez de Arellano 17, 28043 Madrid, Spain</dd><dt>Brussels office</dt><dd>Square de Meeûs 37, 1000 Brussels, Belgium</dd>
 <dt>Email</dt><dd><a href="mailto:{C.EMAIL}">{C.EMAIL}</a></dd></dl>
 <div class="prose" style="margin-top:28px"><p>Information on EU calls, news and events is compiled from official sources and is provided for guidance only. Always check the official call documents before applying.
 Links to third-party websites are provided for convenience; we are not responsible for their content.</p></div></div></section>"""
@@ -458,6 +476,7 @@ def main():
     (SITE / "assets" / "site.css").write_text(CSS, encoding="utf-8")
     (SITE / "assets" / "site.js").write_text(JS, encoding="utf-8")
     shutil.copy(ROOT / "content" / "logo.svg", SITE / "assets" / "logo.svg")
+    shutil.copytree(ROOT / "content" / "img", SITE / "assets" / "img")
     (SITE / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#233567"/><text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" text-anchor="middle" fill="#c9a646">U</text></svg>', encoding="utf-8")
     pages = {"/": home(live, themes), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
              "/strategic-positioning/": strategic_positioning(themes), "/about/": about(themes), "/courses/": courses(themes),
@@ -483,7 +502,7 @@ def main():
     (SITE / "robots.txt").write_text("User-agent: *\nDisallow: /\n" if STAGING else ROBOTS, encoding="utf-8")
     (SITE / "llms.txt").write_text(f"""# Ullswater Investments · EU Funding Advisors
 
-> Madrid-based European funding advisory firm (Ullswater Investments S.L.). We match projects with EU grants, EIB loans and EIF-backed venture capital, build consortia and write Horizon Europe, EIC and Digital Europe proposals.
+> European funding advisory firm (Ullswater Investments S.L.) with offices in Madrid (Calle Ramírez de Arellano 17, 28043 Madrid) and Brussels (Square de Meeûs 37, 1000 Brussels, European Quarter). We match projects with EU grants, EIB loans and EIF-backed venture capital, build consortia and write Horizon Europe, EIC and Digital Europe proposals.
 
 ## Services
 - [Investment Readiness]({BASE}/investment-readiness/)
