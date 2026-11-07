@@ -2,7 +2,7 @@
 Edit the texts here; build.py turns them into pages."""
 
 BOOK = "https://calendar.google.com/calendar/embed?src=7a3bd11cf6e17f080e9d1a55ed62c5c1d079b85adca160751fc60cc917432da2@group.calendar.google.com"
-EMAIL = "emilio.mulet@ullswaterinvestments.com"
+EMAIL = "eufunding@ullswaterinvestments.com"
 CALLS = "https://calls.ullswaterinvestments.com"
 NEWS = "https://news.ullswaterinvestments.com"
 EVENTS = "https://events.ullswaterinvestments.com"
