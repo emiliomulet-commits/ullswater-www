@@ -271,7 +271,7 @@ PROJECTS_STATS = [("6", "European R&D projects"), ("14+", "countries in our cons
 PROJECTS_FEATURED = "proactedge"
 PROJECTS = [
     {"slug": "proactedge", "acronym": "ProAct-Edge", "title": "Trusted Industrial Edge Intelligence Platform",
-     "programme": "ITEA 4 · Call 2026 · 26018", "challenge": "Smart Industry · Edge AI", "status": "proposal", "group": "lead", "live": False,
+     "programme": "ITEA 4 · Call 2026 · 26018", "challenge": "Smart Industry · Edge AI", "status": "proposal", "group": "lead", "live": True,
      "role": "Proxy project leader",
      "pitch": "Edge AI that warns weeks before a machine fails, explains every alert in plain language and keeps all industrial data inside the plant.",
      "contribution": "Proxy project leader of the whole consortium, with ACD (Türkiye). We lead the elevator-manufacturing pilot in Spain (UC-ES1), edge AI and MES/AGV integration.",
@@ -295,7 +295,7 @@ PROJECTS = [
      "contribution": "Data-space connectors, usage policies, consent and audit, and on-premise sovereign AI (Global Data Care, COGNITIV).",
      "facts": [("22", "partners"), ("8", "countries"), ("6", "pilots and studies"), ("2028–30", "planned period")]},
     {"slug": "ehdsjungle", "acronym": "EHDS-JUNGLE", "title": "Clinical intelligence for the European Health Data Space",
-     "programme": "ITEA · Call 2026 · 26041", "challenge": "Smart Health · EHDS", "status": "proposal", "group": "advisor", "live": False,
+     "programme": "ITEA · Call 2026 · 26041", "challenge": "Smart Health · EHDS", "status": "proposal", "group": "advisor", "live": True,
      "role": "Funding advisor · project portal",
      "pitch": "Interprets multilingual health records and reconciles conflicting care pathways for patients with several chronic conditions, under auditable policies.",
      "contribution": "Funding strategy and project portal, with Accuro Technology as Spanish national coordinator.",
