@@ -68,6 +68,22 @@ def _slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
+
+SHORT = {  # page <title> (≤60 characters with the suffix); the H1 keeps the full name
+    "horizon-europe-cluster-1-health": "Horizon Europe Health Calls",
+    "horizon-europe-cluster-2-culture-society": "Horizon Europe Culture & Society Calls",
+    "horizon-europe-cluster-3-civil-security": "Horizon Europe Civil Security Calls",
+    "horizon-europe-cluster-4-digital-industry-space": "Horizon Europe Digital & Industry Calls",
+    "horizon-europe-cluster-5-climate-energy-mobility": "Horizon Europe Climate & Energy Calls",
+    "horizon-europe-cluster-6-food-environment": "Horizon Europe Food & Environment Calls",
+    "eu-missions": "EU Missions Calls",
+    "european-innovation-council-eic": "EIC Calls",
+    "msca-erc-research-infrastructures": "MSCA, ERC & Infrastructure Calls",
+    "digital-europe-programme": "Digital Europe Calls",
+    "european-defence-fund": "European Defence Fund Calls",
+    "cascade-funding-open-calls": "Cascade Funding Open Calls",
+}
+
 def build(calls, calls_base, today=None):
     """Return {path: (title, description, body_html, jsonld)} plus the index entry."""
     today = today or date.today()
@@ -113,14 +129,14 @@ def build(calls, calls_base, today=None):
                    "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": c["title"], "url": c["url"]} for i, c in enumerate(upcoming[:20])]}]
         desc = (f"{len(op)} open and {len(fc)} forthcoming {title}, next deadline "
                 f"{_fmt(nxt['deadline']) if nxt else 'to be announced'}. Deadlines and budgets from the EU Funding & Tenders Portal, updated daily.")
-        out[f"/guides/{slug}/"] = (f"{h1} | Ullswater Investments", desc, body, jsonld)
+        out[f"/guides/{slug}/"] = (f"{SHORT.get(slug, title)} {today.year}–{today.year + 1} | Ullswater", desc, body, jsonld)
         tiles.append((slug, title, len(op), len(fc), nxt))
     cards = "".join(f'<a class="card" href="/guides/{s}/"><h3>{escape(t)}</h3><p>{o} open · {f} forthcoming'
                     f'{" · next deadline " + _fmt(n["deadline"]) if n else ""}</p><span class="go">Read the guide →</span></a>' for s, t, o, f, n in tiles)
     body = f"""<section class="hero sm"><div class="wrap"><div class="crumbs"><a href="/">Home</a> › Guides</div><p class="kicker">Guides · updated {_fmt(today.isoformat())}</p>
 <h1>EU funding guides {today.year}–{today.year + 1}</h1><p class="lead">Practical, data-driven guides to the main EU funding programmes: what each one funds, how many calls are open, the next deadlines and budgets. Updated every day from the European Commission.</p></div></section>
-<section class="band"><div class="wrap"><div class="grid g3">{cards}</div></div></section>"""
-    out["/guides/"] = (f"EU funding guides {today.year}–{today.year + 1}: Horizon Europe, EIC, Digital Europe, EDF | Ullswater Investments",
+<section class="band"><div class="wrap"><h2>Guides by programme</h2><div class="grid g3">{cards}</div></div></section>"""
+    out["/guides/"] = (f"EU Funding Guides {today.year}–{today.year + 1} | Ullswater Investments",
                        "Data-driven guides to Horizon Europe clusters, EU Missions, EIC, MSCA and ERC, Digital Europe, the European Defence Fund and cascade funding, updated daily.",
                        body, {"@context": "https://schema.org", "@type": "CollectionPage", "name": "EU funding guides", "url": "https://www.ullswaterinvestments.com/guides/"})
     return out
