@@ -219,6 +219,7 @@ section.pj{padding:84px 0 88px;border-top:4px solid var(--gold)}
 .pj-join{background:var(--bg);border:1px dashed var(--gold);border-radius:10px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;text-decoration:none;color:inherit}
 .pj-join .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}.pj-join h3{font-size:22px;margin:6px 0 8px}.pj-join p{margin:0;color:var(--muted);font-size:15px}.pj-join .go{font-weight:700;color:var(--navy)}
 .pj-join:hover{border-style:solid}
+.pj-feat .st{align-self:flex-start;width:max-content;display:inline-block}
 .pj-note{font-size:14px;color:var(--muted);margin:22px 0 0}
 .chips{display:flex;gap:8px;flex-wrap:wrap}.chips button{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:15px;font-weight:600;cursor:pointer}
 .chips button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
