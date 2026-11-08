@@ -186,16 +186,57 @@ details.mod ol{margin:0;padding:0 22px 18px 60px}details.mod li{margin-bottom:10
 .cta{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;padding:46px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .cta h2{color:#fff;margin:0 0 6px}.cta p{margin:0;color:#cbd3ea;font-size:18px}
 footer.site{background:#111a33;color:#aab4cf;font-size:15px;padding:52px 0 30px}
-footer.site .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+footer.site .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:30px}
 footer.site h4{color:#fff;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
 footer.site a{color:#dfe5f5;text-decoration:none;display:block;margin-bottom:7px}footer.site a:hover{color:var(--gold)}
 footer.site .legal{border-top:1px solid #26314f;margin-top:34px;padding-top:20px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer.site .legal a{display:inline;margin-left:16px}
+.st{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;border-radius:4px;padding:3px 8px;text-transform:uppercase;white-space:nowrap}
+.st.funded{background:#dcfce7;color:#166534}.st.prop{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+section.pj{padding:84px 0 88px;border-top:4px solid var(--gold)}
+.pj-head{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-end;justify-content:space-between;margin-bottom:38px}
+.pj-head>div:first-child{flex:1 1 540px;max-width:700px}.pj-head h2{font-size:40px;line-height:1.15}.pj-head .sub{margin:0}
+.pj-stats{display:grid;grid-template-columns:repeat(3,auto);border:1px solid var(--line);border-radius:10px;margin:0;padding:0;list-style:none}
+.pj-stats li{padding:16px 24px;font-size:14px;line-height:1.35;color:var(--muted);max-width:150px}.pj-stats li+li{border-left:1px solid var(--line)}
+.pj-stats strong{display:block;font-size:34px;line-height:1.15;color:var(--navy);font-weight:800}
+.pj-feat{background:#0f1b3d;color:#fff;border-radius:14px;display:flex;flex-wrap:wrap;overflow:hidden;margin-bottom:24px}
+.pj-feat .main{flex:1 1 560px;padding:44px 48px;display:flex;flex-direction:column;gap:16px}
+.pj-feat .role{align-self:flex-start;background:var(--gold);color:#0f1b3d;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:4px}
+.pj-feat .prog{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+.pj-feat h3{color:#fff;font-size:34px;line-height:1.15;margin:0;font-weight:800}.pj-feat h3 span{display:block;font-size:21px;font-weight:400;color:#c8d1e8;margin-top:6px;line-height:1.35}
+.pj-feat p{margin:0;color:#dfe5f3;font-size:17px;max-width:640px}
+.pj-feat .what{border-top:1px solid rgba(255,255,255,.18);padding-top:16px}.pj-feat .what b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.pj-feat .side{flex:0 1 340px;background:var(--navy);padding:44px 40px;display:flex;flex-direction:column;justify-content:center;gap:20px;margin:0;list-style:none}
+.pj-feat .side strong{display:block;font-size:30px;line-height:1.15;color:#fff;font-weight:800}.pj-feat .side li{color:#c8d1e8;font-size:14px}
+.pj-card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--navy);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:border-color .15s,box-shadow .15s}
+.pj-card:hover{border-color:var(--gold);box-shadow:0 10px 28px rgba(35,53,103,.1)}
+.pj-card .top{display:flex;justify-content:space-between;align-items:center;gap:8px}.pj-card .prog{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}
+.pj-card h3{font-size:24px;margin:0;font-weight:800}.pj-card .t{font-weight:600;font-size:15px;line-height:1.45;color:var(--ink);margin-top:-6px}
+.pj-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
+.pj-role{background:var(--bg);border-radius:8px;padding:11px 14px;margin-top:auto}.pj-role b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}.pj-role span{color:var(--navy);font-weight:700;font-size:15px}
+.pj-card .ft{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;color:var(--muted)}.pj-card .ft a{font-weight:700;text-decoration:none;font-size:15px}
+.soon{font-size:14px;color:var(--muted);font-weight:600}
+.pj-join{background:var(--bg);border:1px dashed var(--gold);border-radius:10px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;text-decoration:none;color:inherit}
+.pj-join .k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}.pj-join h3{font-size:22px;margin:6px 0 8px}.pj-join p{margin:0;color:var(--muted);font-size:15px}.pj-join .go{font-weight:700;color:var(--navy)}
+.pj-join:hover{border-style:solid}
+.pj-note{font-size:14px;color:var(--muted);margin:22px 0 0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chips button{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.pj-row{border:1px solid var(--line);border-radius:10px;display:flex;flex-wrap:wrap;overflow:hidden;background:#fff;margin-top:20px}.pj-row:hover{border-color:var(--gold)}
+.pj-row .a{flex:0 1 280px;background:var(--navy);color:#fff;padding:28px;display:flex;flex-direction:column;gap:8px;justify-content:space-between}
+.pj-row .a .prog{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}.pj-row .a h2{color:#fff;font-size:30px;margin:0;font-weight:800}.pj-row .a .ch{color:#c8d1e8;font-size:15px;line-height:1.45}
+.pj-row .a .st.prop{background:rgba(255,255,255,.12);color:#fff;border:0;align-self:flex-start}.pj-row .a .st.funded{align-self:flex-start}
+.pj-row .b{flex:1 1 420px;padding:28px 32px;display:flex;flex-direction:column;gap:10px}.pj-row .b .t{font-size:18px;font-weight:700}.pj-row .b p{margin:0;color:var(--muted);font-size:16px}
+.pj-row .b ul{list-style:none;padding:0;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14px;color:var(--muted)}.pj-row .b ul strong{color:var(--ink)}
+.pj-row .c{flex:0 1 320px;padding:28px;background:var(--bg);display:flex;flex-direction:column;gap:10px;justify-content:space-between}
+.pj-row .c b{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}.pj-row .c .r{font-size:17px;font-weight:700;color:var(--navy);line-height:1.35}.pj-row .c p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+.pj-row .c .btn{align-self:flex-start;background:var(--navy);color:#fff;font-size:15px}.pj-row .c .btn:hover{background:var(--navy2);color:#fff}
+.pj-row[hidden]{display:none}
 @media (max-width:960px){.g3,.g4{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}footer.site .cols{grid-template-columns:1fr 1fr}.flow.f4{grid-template-columns:1fr 1fr;gap:14px}.flow.f4 div{margin-left:0}.flow.f4 div::before{display:none}
  .burger{display:block}nav.main{display:none;position:absolute;left:0;right:0;top:70px;background:var(--navy2);flex-direction:column;align-items:stretch;padding:10px 16px 18px;max-height:calc(100vh - 70px);overflow-y:auto}
  nav.main.open{display:flex}.dd .menu,.dd .menu.wide{position:static;grid-template-columns:1fr;min-width:0;box-shadow:none;border:0;background:transparent;display:block;padding:0 0 0 12px;min-width:0}.dd .menu a{color:#cfd8ee}.dd .menu .lbl{color:var(--gold)}.dd .menu.wide{display:none}.dd.open .menu.wide{display:grid}.dd .menu hr{border-color:#334}.dd>button{text-align:left}
  header .btn.hide-m{display:none}}
-@media (max-width:640px){body{font-size:16px}.brand img{height:38px}.hero h1{font-size:36px}.hero.sm h1{font-size:31px}.hero .wrap{padding:56px 22px 52px}h2{font-size:28px}.g2,.g3,.g4{grid-template-columns:1fr}
+@media (max-width:640px){body{font-size:16px}.pj-head h2{font-size:30px}.pj-stats li{padding:12px 14px}.pj-stats strong{font-size:26px}.pj-feat .main{padding:28px 22px}.pj-feat h3{font-size:27px}.pj-feat .side{padding:24px 22px;flex-direction:row;flex-wrap:wrap}.pj-feat .side li{flex:1 1 40%}section.pj{padding:52px 0 56px}.brand img{height:38px}.hero h1{font-size:36px}.hero.sm h1{font-size:31px}.hero .wrap{padding:56px 22px 52px}h2{font-size:28px}.g2,.g3,.g4{grid-template-columns:1fr}
  .flow{grid-template-columns:1fr}.flow div+div{margin-left:0;margin-top:30px}.flow div+div::before{content:"↓";left:50%;top:-27px;transform:translateX(-50%)}
  .phase{grid-template-columns:1fr;gap:6px}footer.site .cols{grid-template-columns:1fr}footer.site a{overflow-wrap:anywhere}.facts{grid-template-columns:1fr}.facts dt{border-bottom:0}.cta{padding:30px}.list li{flex-direction:column;gap:2px}.list .d{flex:none}}
 """
@@ -203,6 +244,7 @@ footer.site .legal a{display:inline;margin-left:16px}
 JS = """(function(){var b=document.querySelector('.burger'),n=document.querySelector('nav.main');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
 document.querySelectorAll('.dd>button').forEach(function(x){x.addEventListener('click',function(){var d=x.parentNode,o=d.classList.toggle('open');x.setAttribute('aria-expanded',o)})});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')});if(document.activeElement)document.activeElement.blur()}});
+document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){var g=b.dataset.g,n=0;document.querySelectorAll('.chips button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.pj-row').forEach(function(r){var on=g==='all'||r.dataset.g===g;r.hidden=!on;if(on)n++});var c=document.getElementById('pj-count');if(c)c.textContent=n+(n===1?' project':' projects')})});
 document.addEventListener('click',function(e){document.querySelectorAll('.dd.open').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})});})();"""
 
 ORG = {"@context": "https://schema.org", "@type": "ProfessionalService", "@id": BASE + "/#org", "name": "Ullswater Investments",
@@ -226,15 +268,101 @@ def header(themes, current):
 </div><div><div class="lbl">By theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('services')}>Services</button><div class="menu">
 <a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div></div>
-<a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a href="/courses/"{cur('courses')}>Courses</a><a href="/about/"{cur('about')}>About</a>
+<a href="/projects/"{cur('projects')}>Projects</a><a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a href="/courses/"{cur('courses')}>Courses</a><a href="/about/"{cur('about')}>About</a>
 </nav><a class="btn hide-m" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a>
 <button class="burger" type="button" aria-label="Menu" aria-expanded="false">☰</button></div></header>"""
+
+
+def project_url(p):
+    """Public landing of a project (its own subdomain), or the /projects/ anchor while it is not deployed."""
+    return f"https://{p['slug']}.ullswaterinvestments.com/" if p.get("live") else f"/projects/#{p['slug']}"
+
+
+def project_link(p, label="Project site ↗"):
+    return (f'<a href="{project_url(p)}" target="_blank" rel="noopener">{label}</a>' if p.get("live")
+            else '<span class="soon">Project site coming soon</span>')
+
+
+def status_tag(p, long=False):
+    if p["status"] == "funded":
+        return '<span class="st funded">Funded</span>'
+    return f'<span class="st prop">{"Proposal · under evaluation" if long else "Proposal 2026"}</span>'
+
+
+def projects_band():
+    f = next(p for p in C.PROJECTS if p["slug"] == C.PROJECTS_FEATURED)
+    stats = "".join(f"<li><strong>{n}</strong>{escape(t)}</li>" for n, t in C.PROJECTS_STATS)
+    side = "".join(f"<li><strong>{escape(v)}</strong>{escape(k)}</li>" for v, k in f["facts"])
+    feat_btn = (f'<a class="btn" href="{project_url(f)}" target="_blank" rel="noopener">Visit the project site ↗</a>' if f.get("live")
+                else f'<a class="btn" href="/projects/#{f["slug"]}">Read more</a>')
+    cards = ""
+    for p in C.PROJECTS:
+        if p is f:
+            continue
+        meta = " · ".join(f"{v} {k}" for v, k in p["facts"][:2])
+        cards += (f'<article class="pj-card"><div class="top"><span class="prog">{escape(p["programme"])}</span>{status_tag(p)}</div>'
+                  f'<h3>{escape(p["acronym"])}</h3><div class="t">{escape(p["title"])}</div><p>{escape(p["pitch"])}</p>'
+                  f'<div class="pj-role"><b>Our role</b><span>{escape(p["role"])}</span></div>'
+                  f'<div class="ft"><span>{escape(meta)}</span>{project_link(p)}</div></article>')
+    cards += ('<a class="pj-join" href="/projects/"><div><div class="k">Building a consortium?</div><h3>Bring us into your next European project</h3>'
+              '<p>As partner, national coordinator or funding advisor: from the project outline to the national applications.</p></div>'
+              '<span class="go">See all projects and how we take part →</span></a>')
+    return f"""<section class="pj" id="projects" aria-labelledby="pj-h"><div class="wrap">
+<div class="pj-head"><div><p class="kicker" style="color:var(--gold2)">European R&amp;D projects · ITEA · Eureka · CDTI</p><h2 id="pj-h">Our participation in European projects</h2>
+<p class="sub">{escape(C.PROJECTS_INTRO)}</p></div><ul class="pj-stats">{stats}</ul></div>
+<article class="pj-feat"><div class="main"><span class="role">{escape(f["role"])}</span><span class="prog">{escape(f["programme"])}</span>
+<h3>{escape(f["acronym"])}<span>{escape(f["title"])}</span></h3><p>{escape(f["pitch"])}</p>
+<div class="what"><b>What Ullswater does</b>{escape(f["contribution"])}</div>
+<div class="actions" style="margin-top:6px">{feat_btn}<a class="btn ghost" href="/projects/">All our projects</a></div></div>
+<ul class="side">{side}</ul></article>
+<div class="grid g3">{cards}</div>
+<p class="pj-note">Programmes: ITEA 4 (Eureka Cluster on software innovation), Eureka bilateral calls and CDTI. Proposal projects are under evaluation; their content reflects the submitted proposal.</p>
+</div></section>"""
+
+
+def projects_ld():
+    return {"@context": "https://schema.org", "@type": "ItemList", "name": "European R&D projects with Ullswater Investments",
+            "itemListElement": [{"@type": "ListItem", "position": i + 1, "item": {
+                "@type": "ResearchProject", "name": f"{p['acronym']} · {p['title']}", "alternateName": p["acronym"], "description": p["pitch"],
+                "url": project_url(p) if p.get("live") else f"{BASE}/projects/#{p['slug']}",
+                "funder": [{"@type": "Organization", "name": x.strip()} for x in p["programme"].split("·")[:2]],
+                "member": {"@id": BASE + "/#org"}}} for i, p in enumerate(C.PROJECTS)]}
+
+
+def projects_page(themes):
+    chips = "".join(f'<button type="button" data-g="{g}" aria-pressed="{str(g == "all").lower()}">{escape(t)}</button>' for g, t in C.PROJECT_GROUPS)
+    ways = "".join(f'<div class="card"><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for t, d in C.PROJECT_WAYS)
+    rows = ""
+    for p in C.PROJECTS:
+        facts = "".join(f"<li><strong>{escape(v)}</strong> {escape(k)}</li>" for v, k in p["facts"])
+        btn = (f'<a class="btn" href="{project_url(p)}" target="_blank" rel="noopener">Visit project site ↗</a>' if p.get("live")
+               else '<span class="soon">Project site coming soon</span>')
+        rows += (f'<article class="pj-row" id="{p["slug"]}" data-g="{p["group"]}"><div class="a"><div><div class="prog">{escape(p["programme"])}</div>'
+                 f'<h2>{escape(p["acronym"])}</h2><div class="ch">{escape(p["challenge"])}</div></div>'
+                 f'{status_tag(p, long=True)}</div>'
+                 f'<div class="b"><div class="t">{escape(p["title"])}</div><p>{escape(p["pitch"])}</p><ul>{facts}</ul></div>'
+                 f'<div class="c"><div><b>Our role</b><div class="r">{escape(p["role"])}</div><p>{escape(p["contribution"])}</p></div>{btn}</div></article>')
+    n = len(C.PROJECTS)
+    st = "".join(f"<li><strong>{a}</strong>{escape(b)}</li>" for a, b in C.PROJECTS_STATS)
+    body = hero("European R&amp;D projects · ITEA · Eureka · CDTI", "Our participation in European projects",
+                "From project leader to funding advisor: the European R&amp;D consortia where Ullswater Investments and its technology company, Software in a Box, are working today.",
+                crumbs("Projects"), extra=f'<ul class="stats">{st}</ul>') + f"""
+<section class="band alt" style="padding:52px 0"><div class="wrap"><h2 style="font-size:24px">How we take part</h2><div class="grid g3">{ways}</div></div></section>
+<section class="band"><div class="wrap"><div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+<p id="pj-count" style="margin:0;font-size:24px;font-weight:700;color:var(--navy)" aria-live="polite">{n} projects</p><div class="chips" role="group" aria-label="Filter by our role">{chips}</div></div>
+{rows}
+<p class="pj-note">Updated {fmt(date.today().isoformat())} · Source: project proposals and consortium documents. Proposal projects reflect the submitted proposal and do not necessarily reflect the views of the funding bodies.</p></div></section>
+{cta("Building a consortium for ITEA, Eureka or Horizon Europe?", "We join as partner, national coordinator or funding advisor, from the project outline to the national applications.", "Schedule a meeting")}"""
+    return page("/projects/", "Our participation in European projects | Ullswater Investments",
+                "European R&D projects where Ullswater Investments takes part as project leader, national coordinator, partner or funding advisor: ITEA, Eureka and CDTI.",
+                body, themes, "projects", projects_ld())
 
 
 FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 <div><img class="flogo" src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26" loading="lazy"><p style="margin:0 0 10px">European funding advisors in Madrid and Brussels. Grants, loans and equity for innovation.</p>
 <p style="margin:0 0 8px"><b style="color:#fff">Madrid</b> · Calle Ramírez de Arellano 17, 28043 Madrid, Spain</p><p style="margin:0 0 8px"><b style="color:#fff">Brussels</b> · Square de Meeûs 37, 1000 Brussels, Belgium</p><p style="margin:0"><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
 <div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
+<div><h4>Projects</h4>{"".join(f'<a href="{project_url(p)}">{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
 <div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a></div>
 <div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a></div>
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
@@ -292,7 +420,7 @@ def home(live, themes):
         stats = (f'<ul class="stats"><li><strong>{st["open"]}</strong>EU calls open now</li><li><strong>{st["forthcoming"]}</strong>forthcoming calls</li>'
                  f'<li><strong>{st["closingIn30Days"]}</strong>closing in 30 days</li><li><strong>{st["programmes"]}</strong>EU programmes tracked</li></ul>')
     h = hero("European funding advisors · Madrid · Brussels", "Unlock European funding for your innovation", escape(C.MISSION), small=False,
-             actions=f'<a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a><a class="btn ghost" href="{C.CALLS}/">Explore {st.get("total", "all")} EU calls →</a>',
+             actions=f'<a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a><a class="btn ghost" href="{C.CALLS}/">Explore {st.get("total", "all")} EU calls →</a><a class="btn ghost" href="#projects">Our European projects ↓</a>',
              extra=stats)
     svc = "".join(f'<a class="card top" href="/{s}/"><div class="num">0{i + 1}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Learn more →</span></a>'
                   for i, (s, t, d) in enumerate(C.SERVICES))
@@ -311,7 +439,7 @@ def home(live, themes):
 <div class="panel"><h3><a href="{C.NEWS}/">Latest news</a></h3><ul class="list">{news}</ul><a class="more" href="{C.NEWS}/">EU Funding News →</a></div>
 <div class="panel"><h3><a href="{C.EVENTS}/">Upcoming events</a></h3><ul class="list">{evs}</ul><a class="more" href="{C.EVENTS}/">All events →</a></div></div></div></section>"""
     vc = "".join(f'<div class="card"><div class="ic" aria-hidden="true">{i}</div><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for i, t, d in C.VC_DOMAINS)
-    body = h + f"""
+    body = h + projects_band() + f"""
 <section class="band"><div class="wrap split"><div><p class="kicker" style="color:var(--gold2)">Who we are</p><h2>Senior advisors for EU grants, loans and equity</h2>
 <p class="sub" style="margin-bottom:0">{escape(C.TEAM)}</p></div><blockquote class="quote">{escape(C.PARTNER_QUOTE)}<cite>Emilio Mulet, Managing Partner</cite></blockquote></div></section>
 <section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Our services</p><h2>From the right call to a funded project</h2><p class="sub">Three complementary services that take you from strategy to signed grant agreement or investment.</p><div class="grid g3">{svc}</div></div></section>
@@ -480,7 +608,7 @@ def main():
     (SITE / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#233567"/><text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" text-anchor="middle" fill="#c9a646">U</text></svg>', encoding="utf-8")
     pages = {"/": home(live, themes), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
              "/strategic-positioning/": strategic_positioning(themes), "/about/": about(themes), "/courses/": courses(themes),
-             "/privacy/": privacy(themes), "/legal/": legal(themes)}
+             "/privacy/": privacy(themes), "/legal/": legal(themes), "/projects/": projects_page(themes)}
     pages.update(archive_pages(themes))
     if live.get("calls"):
         for path, (title, desc, body, ld) in guides.build(live["calls"], C.CALLS).items():
@@ -499,6 +627,11 @@ def main():
     urls = [p for p in pages]
     (SITE / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         + "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{today}</lastmod></url>" for u in urls) + "</urlset>\n", encoding="utf-8")
+    (SITE / "data").mkdir(exist_ok=True)
+    (SITE / "data" / "projects.json").write_text(json.dumps({"updated": today, "projects": [
+        {**{k: p[k] for k in ("slug", "acronym", "title", "programme", "challenge", "status", "group", "role", "pitch", "contribution")},
+         "facts": [{"value": v, "label": k} for v, k in p["facts"]], "url": project_url(p) if p.get("live") else BASE + project_url(p)} for p in C.PROJECTS]},
+        ensure_ascii=False, indent=1), encoding="utf-8")
     (SITE / "robots.txt").write_text("User-agent: *\nDisallow: /\n" if STAGING else ROBOTS, encoding="utf-8")
     (SITE / "llms.txt").write_text(f"""# Ullswater Investments · EU Funding Advisors
 
@@ -511,6 +644,9 @@ def main():
 - [Executive Programme in EU Funding for Defence and Dual-Use]({BASE}/courses/)
 - [About and company facts]({BASE}/about/)
 
+## European projects
+- [Our participation in European projects]({BASE}/projects/) · [JSON]({BASE}/data/projects.json)
+""" + "".join(f"- {p['acronym']}: {p['title']} ({p['programme']}); our role: {p['role']}" + (f" · {project_url(p)}" if p.get("live") else "") + "\n" for p in C.PROJECTS) + f"""
 ## Guides (data-driven, updated daily)
 - [EU funding guides index]({BASE}/guides/): Horizon Europe clusters 1–6, EU Missions, EIC, MSCA/ERC, Digital Europe, European Defence Fund, cascade funding
 
