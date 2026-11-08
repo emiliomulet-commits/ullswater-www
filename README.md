@@ -12,7 +12,16 @@ Static site of Ullswater Investments · EU Funding Advisors, migrated from Googl
 - GitHub Actions rebuilds on every push and daily at 06:40 UTC.
 - Live on www.ullswaterinvestments.com since 7 Nov 2026. Re-create an empty `STAGING` file to build a noindex review copy.
 
-Local build: `python3 scripts/build.py` → `site/`.
+Local build: `pip install beautifulsoup4 && python3 scripts/build.py` → `site/`.
+
+## Spanish version (/es/)
+- Every page is generated in English and then translated into its Spanish twin under `/es/` by `scripts/i18n.py`
+  (EN | ES switcher in the header, hreflang tags, both languages in the sitemap).
+- Translations live in `content/i18n_es.json` (English segment → Spanish). Numbers are masked as `{0}`, `{1}`… so changing figures do not need new entries.
+  To change a Spanish text, edit its entry there.
+- New texts (new calls, news, events, or edited English copy) are translated automatically during the build with Claude
+  when the `ANTHROPIC_API_KEY` secret is set, and saved back to the dictionary. Without the key they stay in English;
+  the list is written to `content/i18n_es_missing.json` (not committed).
 
 ## Agents (automatic)
 | Agent | Workflow | When | What it does |

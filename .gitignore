@@ -1,3 +1,4 @@
 site/
 __pycache__/
 reports/monitor.md
+content/i18n_es_missing.json

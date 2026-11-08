@@ -24,13 +24,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Build site
+      - name: Install dependencies
+        run: pip install beautifulsoup4
+      - name: Build site (English + Spanish; new Spanish texts are translated with Claude when the key is set)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
         run: python scripts/build.py
       - name: Save live-data cache
         run: |
           git config user.name "ullswater-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add content/live_cache.json redirects.csv
+          git add content/live_cache.json content/i18n_es.json redirects.csv
           git diff --cached --quiet || (git commit -m "Refresh live data cache [skip ci]" && git pull --rebase -X theirs && git push)
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

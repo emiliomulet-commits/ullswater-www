@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from content import *  # noqa: E402,F401,F403
 import content as C  # noqa: E402
 import guides  # noqa: E402
+import i18n  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -233,6 +234,7 @@ section.pj{padding:84px 0 88px;border-top:4px solid var(--gold)}
 .pj-row .c b{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}.pj-row .c .r{font-size:17px;font-weight:700;color:var(--navy);line-height:1.35}.pj-row .c p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
 .pj-row .c .btn{align-self:flex-start;background:var(--navy);color:#fff;font-size:15px}.pj-row .c .btn:hover{background:var(--navy2);color:#fff}
 .pj-row[hidden]{display:none}
+.lang{display:flex;border:1px solid rgba(255,255,255,.35);border-radius:6px;overflow:hidden;font-size:13px;font-weight:700}.lang a{color:#e6ebf7;text-decoration:none;padding:6px 9px;letter-spacing:.04em}.lang a[aria-current]{background:var(--gold);color:var(--navy)}.lang a:not([aria-current]):hover{background:rgba(255,255,255,.12)}
 @media (max-width:960px){.g3,.g4{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}footer.site .cols{grid-template-columns:1fr 1fr}.flow.f4{grid-template-columns:1fr 1fr;gap:14px}.flow.f4 div{margin-left:0}.flow.f4 div::before{display:none}
  .burger{display:block}nav.main{display:none;position:absolute;left:0;right:0;top:70px;background:var(--navy2);flex-direction:column;align-items:stretch;padding:10px 16px 18px;max-height:calc(100vh - 70px);overflow-y:auto}
  nav.main.open{display:flex}.dd .menu,.dd .menu.wide{position:static;grid-template-columns:1fr;min-width:0;box-shadow:none;border:0;background:transparent;display:block;padding:0 0 0 12px;min-width:0}.dd .menu a{color:#cfd8ee}.dd .menu .lbl{color:var(--gold)}.dd .menu.wide{display:none}.dd.open .menu.wide{display:grid}.dd .menu hr{border-color:#334}.dd>button{text-align:left}
@@ -245,7 +247,7 @@ section.pj{padding:84px 0 88px;border-top:4px solid var(--gold)}
 JS = """(function(){var b=document.querySelector('.burger'),n=document.querySelector('nav.main');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
 document.querySelectorAll('.dd>button').forEach(function(x){x.addEventListener('click',function(){var d=x.parentNode,o=d.classList.toggle('open');x.setAttribute('aria-expanded',o)})});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')});if(document.activeElement)document.activeElement.blur()}});
-document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){var g=b.dataset.g,n=0;document.querySelectorAll('.chips button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.pj-row').forEach(function(r){var on=g==='all'||r.dataset.g===g;r.hidden=!on;if(on)n++});var c=document.getElementById('pj-count');if(c)c.textContent=n+(n===1?' project':' projects')})});
+document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){var g=b.dataset.g,n=0;document.querySelectorAll('.chips button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.pj-row').forEach(function(r){var on=g==='all'||r.dataset.g===g;r.hidden=!on;if(on)n++});var c=document.getElementById('pj-count');var es=document.documentElement.lang==='es';if(c)c.textContent=n+(es?(n===1?' proyecto':' proyectos'):(n===1?' project':' projects'))})});
 document.addEventListener('click',function(e){document.querySelectorAll('.dd.open').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})});})();"""
 
 ORG = {"@context": "https://schema.org", "@type": "ProfessionalService", "@id": BASE + "/#org", "name": "Ullswater Investments",
@@ -369,18 +371,22 @@ FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
 
 
-def page(path, title, desc, body, themes, current="", jsonld=None):
+def page(path, title, desc, body, themes, current="", jsonld=None, bilingual=True):
     canon = BASE + path
+    alt = (f'<link rel="alternate" hreflang="en" href="{BASE}{path}"><link rel="alternate" hreflang="es" href="{BASE}/es{path}"><link rel="alternate" hreflang="x-default" href="{BASE}{path}">'
+           if bilingual else "")
+    switch = (f'<nav class="lang" aria-label="Language"><a href="{path}" hreflang="en" lang="en" data-lang="en" aria-current="true">EN</a>'
+              f'<a href="/es{path}" hreflang="es" lang="es" data-lang="es">ES</a></nav>' if bilingual else "")
     lds = [ORG] + (jsonld if isinstance(jsonld, list) else [jsonld] if jsonld else [])
     robots = '<meta name="robots" content="noindex,nofollow">' if STAGING else '<meta name="robots" content="index,follow,max-image-preview:large">'
     banner = '<div class="staging">Review copy of the new www.ullswaterinvestments.com, not yet live.</div>' if STAGING else ""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{escape(title)}</title><meta name="description" content="{escape(desc)}">{'' if path == '/404.html' else f'<link rel="canonical" href="{canon}">'}{robots}
+<title>{escape(title)}</title><meta name="description" content="{escape(desc)}">{'' if path == '/404.html' else f'<link rel="canonical" href="{canon}">'}{alt}{robots}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Ullswater Investments · EU Funding Advisors"><meta property="og:title" content="{escape(title)}"><meta property="og:description" content="{escape(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="EU Funding News" href="{C.NEWS}/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v={VER}"><script type="application/ld+json">{json.dumps(lds if len(lds) > 1 else ORG, ensure_ascii=False)}</script></head><body>
-<a class="skip" href="#main">Skip to content</a>{banner}{header(themes, current)}<main id="main">{body}</main>{FOOTER}<script src="/assets/site.js?v={VER}" defer></script></body></html>"""
+<a class="skip" href="#main">Skip to content</a>{banner}{header(themes, current).replace('<button class="burger"', switch + '<button class="burger"')}<main id="main">{body}</main>{FOOTER}<script src="/assets/site.js?v={VER}" defer></script></body></html>"""
 
 
 def hero(kicker, h1, lead, crumbs="", small=True, actions="", extra=""):
@@ -592,6 +598,22 @@ def redirect_stub(target):
 <body><p>This page has moved to <a href="{escape(target)}">{escape(target)}</a>.</p></body></html>"""
 
 
+def build_es(pages):
+    """Write the Spanish twin of every page under /es/. New texts are translated with the API when a key is available."""
+    t = i18n.Translator()
+    es_paths = set(pages)
+    out = {p: i18n.to_es(h, p, es_paths, t) for p, h in pages.items()}
+    if t.missing and i18n.translate_missing(t):
+        t.missing = {}
+        out = {p: i18n.to_es(h, p, es_paths, t) for p, h in pages.items()}
+    for p, h in out.items():
+        d = SITE / "es" / p.strip("/")
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "index.html").write_text(h, encoding="utf-8")
+    (ROOT / "content" / "i18n_es_missing.json").write_text(json.dumps(sorted(t.missing), ensure_ascii=False, indent=0), encoding="utf-8")
+    return len(out), len(t.missing)
+
+
 def main():
     live = load_live()
     themes = live.get("themes", [])
@@ -623,11 +645,15 @@ def main():
         d.mkdir(parents=True, exist_ok=True)
         (d / "index.html").write_text(redirect_stub(new), encoding="utf-8")
     (SITE / "404.html").write_text(page("/404.html", "Page not found | Ullswater Investments", "Page not found.",
-        hero("404", "Page not found", "The page you are looking for has moved or no longer exists.", actions=f'<a class="btn" href="/">Home</a><a class="btn ghost" href="{C.CALLS}/">Open EU calls</a>'), themes), encoding="utf-8")
+        hero("404", "Page not found", "The page you are looking for has moved or no longer exists.", actions=f'<a class="btn" href="/">Home</a><a class="btn ghost" href="{C.CALLS}/">Open EU calls</a>'), themes, bilingual=False), encoding="utf-8")
+    es_count, missing = build_es(pages)
     today = date.today().isoformat()
-    urls = [p for p in pages]
-    (SITE / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-        + "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{today}</lastmod></url>" for u in urls) + "</urlset>\n", encoding="utf-8")
+
+    def alts(u):
+        return (f'<xhtml:link rel="alternate" hreflang="en" href="{BASE}{u}"/><xhtml:link rel="alternate" hreflang="es" href="{BASE}/es{u}"/>'
+                f'<xhtml:link rel="alternate" hreflang="x-default" href="{BASE}{u}"/>')
+    (SITE / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'
+        + "".join(f"<url><loc>{BASE}{p}{u}</loc><lastmod>{today}</lastmod>{alts(u)}</url>" for u in pages for p in ("", "/es")) + "</urlset>\n", encoding="utf-8")
     (SITE / "data").mkdir(exist_ok=True)
     (SITE / "data" / "projects.json").write_text(json.dumps({"updated": today, "projects": [
         {**{k: p[k] for k in ("slug", "acronym", "title", "programme", "challenge", "status", "group", "role", "pitch", "contribution")},
@@ -651,6 +677,9 @@ def main():
 ## Guides (data-driven, updated daily)
 - [EU funding guides index]({BASE}/guides/): Horizon Europe clusters 1–6, EU Missions, EIC, MSCA/ERC, Digital Europe, European Defence Fund, cascade funding
 
+## Spanish version
+- Every page is also available in Spanish under {BASE}/es/ (e.g. [Proyectos europeos]({BASE}/es/projects/)), linked with hreflang.
+
 ## Live data
 - [Open EU funding calls, updated daily]({C.CALLS}/) · [JSON]({C.CALLS}/data/calls.json)
 - [EU Funding News]({C.NEWS}/) · [RSS]({C.NEWS}/feed.xml)
@@ -664,7 +693,7 @@ def main():
         f.write("source,target,status\n")
         for old, new in sorted(redirects.items()):
             f.write(f"www.ullswaterinvestments.com{old},{new if new.startswith('http') else BASE + new},301\n")
-    print(f"Built {len(pages)} pages and {len(redirects)} redirects (staging={STAGING})")
+    print(f"Built {len(pages)} pages + {es_count} Spanish pages ({missing} texts still in English) and {len(redirects)} redirects (staging={STAGING})")
 
 
 if __name__ == "__main__":
