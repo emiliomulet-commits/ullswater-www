@@ -261,3 +261,55 @@ OFFICES = [
      "credit": "Photo: Square de Meeûs, Brussels · Romaine, Wikimedia Commons (CC0)",
      "map": "https://www.google.com/maps/search/?api=1&query=Square+de+Mee%C3%BBs+37%2C+1000+Brussels"},
 ]
+
+# ---------- European projects (home section + /projects/ + /data/projects.json) ----------
+# One entry per project. Facts come from each project's landing page; keep them in step.
+# group: lead | partner | advisor   status: proposal | funded   live: True once the subdomain is deployed
+PROJECTS_INTRO = ("We do not only advise on European funding. We sit inside the consortia: leading projects, coordinating national teams "
+                  "and building the technology with industry, hospitals and research centres.")
+PROJECTS_STATS = [("6", "European R&D projects"), ("14+", "countries in our consortia"), ("3", "leadership roles")]
+PROJECTS_FEATURED = "proactedge"
+PROJECTS = [
+    {"slug": "proactedge", "acronym": "ProAct-Edge", "title": "Trusted Industrial Edge Intelligence Platform",
+     "programme": "ITEA 4 · Call 2026 · 26018", "challenge": "Smart Industry · Edge AI", "status": "proposal", "group": "lead", "live": True,
+     "role": "Proxy project leader",
+     "pitch": "Edge AI that warns weeks before a machine fails, explains every alert in plain language and keeps all industrial data inside the plant.",
+     "contribution": "Proxy project leader of the whole consortium, with ACD (Türkiye). We lead the elevator-manufacturing pilot in Spain (UC-ES1), edge AI and MES/AGV integration.",
+     "facts": [("22", "partners"), ("8", "countries"), ("6", "industrial pilots"), ("2027–30", "planned period")]},
+    {"slug": "hoskit", "acronym": "HOSKIT", "title": "Holistic Sovereignty Kit for Digital Systems",
+     "programme": "ITEA 4 · Call 2026 · 26013", "challenge": "Safety & Security · Digital sovereignty", "status": "proposal", "group": "lead", "live": True,
+     "role": "Spanish national coordinator",
+     "pitch": "Use the best cloud, AI and software services without losing the power to leave: see your dependencies, cost an exit and switch when conditions change.",
+     "contribution": "Through Software in a Box, our technology company: coordination of the Spanish consortium, the AI layer and the on-premise AI substitution option.",
+     "facts": [("25", "partners"), ("7", "countries"), ("4", "sovereignty dimensions"), ("2027–30", "planned period")]},
+    {"slug": "samba", "acronym": "SAMBA", "title": "Small language models for supervised industrial agentic AI",
+     "programme": "ITEA · Call 2026 · 26039", "challenge": "Smart Industry · Agentic AI", "status": "proposal", "group": "lead", "live": True,
+     "role": "Spanish use-case owner · TI1 lead",
+     "pitch": "On-premise agents that read plant data, investigate events and propose responses in existing factories and warehouses. People with authority decide.",
+     "contribution": "We own the Spanish industrial use case and lead innovation TI1: MCP servers and the edge small-language-model platform.",
+     "facts": [("23", "organisations"), ("9", "countries"), ("6+1", "pilots and testbed"), ("2028–30", "planned period")]},
+    {"slug": "cognigene", "acronym": "CogniGENE", "title": "Early detection of cognitive and neuropsychiatric change",
+     "programme": "ITEA 4 · Call 2026 · 26008", "challenge": "Smart Health", "status": "proposal", "group": "partner", "live": True,
+     "role": "Partner · data-space integration (WP5)",
+     "pitch": "One shared timeline from home to hospital that follows each person against their own baseline, so clinicians spot sustained change earlier.",
+     "contribution": "Data-space connectors, usage policies, consent and audit, and on-premise sovereign AI (Global Data Care, COGNITIV).",
+     "facts": [("22", "partners"), ("8", "countries"), ("6", "pilots and studies"), ("2028–30", "planned period")]},
+    {"slug": "ehdsjungle", "acronym": "EHDS-JUNGLE", "title": "Clinical intelligence for the European Health Data Space",
+     "programme": "ITEA · Call 2026 · 26041", "challenge": "Smart Health · EHDS", "status": "proposal", "group": "advisor", "live": True,
+     "role": "Funding advisor · project portal",
+     "pitch": "Interprets multilingual health records and reconciles conflicting care pathways for patients with several chronic conditions, under auditable policies.",
+     "contribution": "Funding strategy and project portal, with Accuro Technology as Spanish national coordinator.",
+     "facts": [("3", "use cases: Finland, Spain, Türkiye"), ("5", "core innovations"), ("2028–30", "planned period")]},
+    {"slug": "drmbank", "acronym": "DR-MBANK", "title": "Disaster Resilient Mobile Bank Branch",
+     "programme": "Eureka · CDTI INNOGLOBAL 2025", "challenge": "FinTech · Resilience", "status": "funded", "group": "advisor", "live": True,
+     "role": "Funding advisor · project portal",
+     "pitch": "A modular, offline-first mobile bank branch with a multilingual voice and vision AI agent, for disaster-affected and underserved areas.",
+     "contribution": "Funding strategy for the Eureka (Türkiye–Spain) and CDTI INNOGLOBAL lines, and project portal.",
+     "facts": [("2", "countries: Türkiye, Spain"), ("2", "funding lines"), ("5", "core innovations")]},
+]
+PROJECT_GROUPS = [("all", "All projects"), ("lead", "Leading & coordinating"), ("partner", "Partner"), ("advisor", "Funding advisor")]
+PROJECT_WAYS = [
+    ("Leading and coordinating", "Project leadership, national coordination and ownership of use cases and innovations."),
+    ("Building the technology", "Federated data spaces, usage policies, edge AI and on-premise sovereign AI from Software in a Box."),
+    ("Securing the funding", "Funding strategy for the international and national lines, and a public portal for every project."),
+]
