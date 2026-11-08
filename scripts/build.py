@@ -192,7 +192,7 @@ footer.site a{color:#dfe5f5;text-decoration:none;display:block;margin-bottom:7px
 footer.site .legal{border-top:1px solid #26314f;margin-top:34px;padding-top:20px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer.site .legal a{display:inline;margin-left:16px}
 .st{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;border-radius:4px;padding:3px 8px;text-transform:uppercase;white-space:nowrap}
-.st.funded{background:#dcfce7;color:#166534}.st.prop{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.st.funded{background:#dcfce7;color:#166534}.st.open{background:#fef3c7;color:#92400e;border:1px solid #f59e0b}.st.prop{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
 section.pj{padding:84px 0 88px;border-top:4px solid var(--gold)}
 .pj-head{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-end;justify-content:space-between;margin-bottom:38px}
 .pj-head>div:first-child{flex:1 1 540px;max-width:700px}.pj-head h2{font-size:40px;line-height:1.15}.pj-head .sub{margin:0}
@@ -225,7 +225,7 @@ section.pj{padding:84px 0 88px;border-top:4px solid var(--gold)}
 .pj-row{border:1px solid var(--line);border-radius:10px;display:flex;flex-wrap:wrap;overflow:hidden;background:#fff;margin-top:20px}.pj-row:hover{border-color:var(--gold)}
 .pj-row .a{flex:0 1 280px;background:var(--navy);color:#fff;padding:28px;display:flex;flex-direction:column;gap:8px;justify-content:space-between}
 .pj-row .a .prog{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}.pj-row .a h2{color:#fff;font-size:30px;margin:0;font-weight:800}.pj-row .a .ch{color:#c8d1e8;font-size:15px;line-height:1.45}
-.pj-row .a .st.prop{background:rgba(255,255,255,.12);color:#fff;border:0;align-self:flex-start}.pj-row .a .st.funded{align-self:flex-start}
+.pj-row .a .st.prop{background:rgba(255,255,255,.12);color:#fff;border:0;align-self:flex-start}.pj-row .a .st.funded{align-self:flex-start}.pj-row .a .st.open{align-self:flex-start}
 .pj-row .b{flex:1 1 420px;padding:28px 32px;display:flex;flex-direction:column;gap:10px}.pj-row .b .t{font-size:18px;font-weight:700}.pj-row .b p{margin:0;color:var(--muted);font-size:16px}
 .pj-row .b ul{list-style:none;padding:0;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14px;color:var(--muted)}.pj-row .b ul strong{color:var(--ink)}
 .pj-row .c{flex:0 1 320px;padding:28px;background:var(--bg);display:flex;flex-direction:column;gap:10px;justify-content:space-between}
@@ -285,8 +285,8 @@ def project_link(p, label="Project site ↗"):
 
 def status_tag(p, long=False):
     if p["status"] == "funded":
-        return '<span class="st funded">Funded</span>'
-    return f'<span class="st prop">{"Proposal · under evaluation" if long else "Proposal 2026"}</span>'
+        return '<span class="st funded">Funded · in execution</span>'
+    return f'<span class="st open">{"In preparation · open to new partners" if long else "Open to new partners"}</span>'
 
 
 def projects_band():
@@ -304,19 +304,19 @@ def projects_band():
                   f'<h3>{escape(p["acronym"])}</h3><div class="t">{escape(p["title"])}</div><p>{escape(p["pitch"])}</p>'
                   f'<div class="pj-role"><b>Our role</b><span>{escape(p["role"])}</span></div>'
                   f'<div class="ft"><span>{escape(meta)}</span>{project_link(p)}</div></article>')
-    cards += ('<a class="pj-join" href="/projects/"><div><div class="k">Building a consortium?</div><h3>Bring us into your next European project</h3>'
-              '<p>As partner, national coordinator or funding advisor: from the project outline to the national applications.</p></div>'
-              '<span class="go">See all projects and how we take part →</span></a>')
+    cards += (f'<a class="pj-join" href="mailto:{C.EMAIL}?subject=Joining%20one%20of%20your%20European%20consortia"><div><div class="k">Consortia still open</div><h3>Join one of these projects as a partner</h3>'
+              '<p>All these projects except DR-MBANK are still in preparation. Tell us what your organisation brings and we will work with you, hand in hand, to bring you into the consortium.</p></div>'
+              '<span class="go">Talk to us about joining →</span></a>')
     return f"""<section class="pj" id="projects" aria-labelledby="pj-h"><div class="wrap">
 <div class="pj-head"><div><p class="kicker" style="color:var(--gold2)">European R&amp;D projects · ITEA · Eureka · CDTI</p><h2 id="pj-h">Our participation in European projects</h2>
 <p class="sub">{escape(C.PROJECTS_INTRO)}</p></div><ul class="pj-stats">{stats}</ul></div>
-<article class="pj-feat"><div class="main"><span class="role">{escape(f["role"])}</span><span class="prog">{escape(f["programme"])}</span>
+<article class="pj-feat"><div class="main"><span class="role">{escape(f["role"])}</span> {status_tag(f)}<span class="prog">{escape(f["programme"])}</span>
 <h3>{escape(f["acronym"])}<span>{escape(f["title"])}</span></h3><p>{escape(f["pitch"])}</p>
 <div class="what"><b>What Ullswater does</b>{escape(f["contribution"])}</div>
 <div class="actions" style="margin-top:6px">{feat_btn}<a class="btn ghost" href="/projects/">All our projects</a></div></div>
 <ul class="side">{side}</ul></article>
 <div class="grid g3">{cards}</div>
-<p class="pj-note">Programmes: ITEA 4 (Eureka Cluster on software innovation), Eureka bilateral calls and CDTI. Proposal projects are under evaluation; their content reflects the submitted proposal.</p>
+<p class="pj-note">Programmes: ITEA 4 (Eureka Cluster on software innovation), Eureka bilateral calls and CDTI. {escape(C.PROJECTS_OPEN_NOTE)}</p>
 </div></section>"""
 
 
@@ -345,14 +345,14 @@ def projects_page(themes):
     n = len(C.PROJECTS)
     st = "".join(f"<li><strong>{a}</strong>{escape(b)}</li>" for a, b in C.PROJECTS_STATS)
     body = hero("European R&amp;D projects · ITEA · Eureka · CDTI", "Our participation in European projects",
-                "From project leader to funding advisor: the European R&amp;D consortia where Ullswater Investments and its technology company, Software in a Box, are working today.",
+                "From project leader to funding advisor: the European R&amp;D consortia that Ullswater Investments and its technology company, Software in a Box, are preparing today. Their consortia are still open to new partners, except DR-MBANK, which is already in execution.",
                 crumbs("Projects"), extra=f'<ul class="stats">{st}</ul>') + f"""
 <section class="band alt" style="padding:52px 0"><div class="wrap"><h2 style="font-size:24px">How we take part</h2><div class="grid g3">{ways}</div></div></section>
 <section class="band"><div class="wrap"><div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
 <p id="pj-count" style="margin:0;font-size:24px;font-weight:700;color:var(--navy)" aria-live="polite">{n} projects</p><div class="chips" role="group" aria-label="Filter by our role">{chips}</div></div>
 {rows}
-<p class="pj-note">Updated {fmt(date.today().isoformat())} · Source: project proposals and consortium documents. Proposal projects reflect the submitted proposal and do not necessarily reflect the views of the funding bodies.</p></div></section>
-{cta("Building a consortium for ITEA, Eureka or Horizon Europe?", "We join as partner, national coordinator or funding advisor, from the project outline to the national applications.", "Schedule a meeting")}"""
+<p class="pj-note">Updated {fmt(date.today().isoformat())} · Source: draft proposals and consortium documents. {escape(C.PROJECTS_OPEN_NOTE)} Content does not necessarily reflect the views of the funding bodies.</p></div></section>
+{cta("Want to join one of these consortia?", "These projects are still in preparation and open to new partners (except DR-MBANK). Tell us what you bring and we will work with you to bring you in.", "Schedule a meeting")}"""
     return page("/projects/", "Our participation in European projects | Ullswater Investments",
                 "European R&D projects where Ullswater Investments takes part as project leader, national coordinator, partner or funding advisor: ITEA, Eureka and CDTI.",
                 body, themes, "projects", projects_ld())
@@ -630,7 +630,7 @@ def main():
     (SITE / "data").mkdir(exist_ok=True)
     (SITE / "data" / "projects.json").write_text(json.dumps({"updated": today, "projects": [
         {**{k: p[k] for k in ("slug", "acronym", "title", "programme", "challenge", "status", "group", "role", "pitch", "contribution")},
-         "facts": [{"value": v, "label": k} for v, k in p["facts"]], "url": project_url(p) if p.get("live") else BASE + project_url(p)} for p in C.PROJECTS]},
+         "open_to_new_partners": p["status"] != "funded", "facts": [{"value": v, "label": k} for v, k in p["facts"]], "url": project_url(p) if p.get("live") else BASE + project_url(p)} for p in C.PROJECTS]},
         ensure_ascii=False, indent=1), encoding="utf-8")
     (SITE / "robots.txt").write_text("User-agent: *\nDisallow: /\n" if STAGING else ROBOTS, encoding="utf-8")
     (SITE / "llms.txt").write_text(f"""# Ullswater Investments · EU Funding Advisors

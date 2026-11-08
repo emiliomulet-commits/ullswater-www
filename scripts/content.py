@@ -266,7 +266,11 @@ OFFICES = [
 # One entry per project. Facts come from each project's landing page; keep them in step.
 # group: lead | partner | advisor   status: proposal | funded   live: True once the subdomain is deployed
 PROJECTS_INTRO = ("We do not only advise on European funding. We sit inside the consortia: leading projects, coordinating national teams "
-                  "and building the technology with industry, hospitals and research centres.")
+                  "and building the technology with industry, hospitals and research centres. These projects are still being prepared "
+                  "and their consortia remain open: we can work hand in hand with you to bring new partners into any of them. "
+                  "The only exception is DR-MBANK, which is already funded and in execution.")
+PROJECTS_OPEN_NOTE = ("Projects marked \u201cOpen to new partners\u201d are in preparation: their consortia can still take on new partners and their "
+                      "content reflects the current draft proposal. DR-MBANK is funded and in execution and does not accept new partners.")
 PROJECTS_STATS = [("6", "European R&D projects"), ("14+", "countries in our consortia"), ("3", "leadership roles")]
 PROJECTS_FEATURED = "proactedge"
 PROJECTS = [
