@@ -145,7 +145,7 @@ h3{font-size:20px;color:var(--navy);margin:0 0 8px;line-height:1.3}
 .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;display:flex;flex-direction:column}
 a.card{text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s,transform .15s}a.card:hover{border-color:var(--gold);box-shadow:0 10px 28px rgba(35,53,103,.1);transform:translateY(-2px)}
 .card p{margin:0 0 12px;color:var(--muted);font-size:16px}.card .go{margin-top:auto;font-weight:700;color:var(--navy);font-size:15px}
-.card .ic{font-size:28px;margin-bottom:10px}.card .num{font-size:13px;font-weight:800;color:var(--gold2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.card .ic{width:48px;height:48px;border-radius:10px;background:#eef1f8;color:var(--navy);display:grid;place-items:center;margin-bottom:14px}.card .num{font-size:13px;font-weight:800;color:var(--gold2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
 .card.top{border-top:4px solid var(--gold)}
 .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;background:#eef1f8;color:var(--navy);border-radius:999px;padding:3px 10px;margin-bottom:10px;align-self:flex-start}
 .quote{border-left:4px solid var(--gold);padding:6px 0 6px 26px;font-size:18.5px;line-height:1.55;color:var(--navy);margin:0;font-weight:500}
@@ -153,7 +153,7 @@ a.card{text-decoration:none;color:inherit;transition:border-color .15s,box-shado
 .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;align-items:stretch;margin:30px 0}
 .flow div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;position:relative;text-align:center}
 .flow div+div{margin-left:38px}.flow div+div::before{content:"→";position:absolute;left:-31px;top:50%;transform:translateY(-50%);color:var(--gold2);font-size:24px;font-weight:700}
-.flow b{display:block;font-size:30px;color:var(--gold2)}.flow strong{display:block;color:var(--navy);font-size:18px}.flow span{color:var(--muted);font-size:15px}
+.flow b{display:flex;justify-content:center;font-size:30px;line-height:1.2;color:var(--gold2);margin-bottom:6px}.flow strong{display:block;color:var(--navy);font-size:18px}.flow span{color:var(--muted);font-size:15px}
 .flow.f4{grid-template-columns:repeat(4,1fr)}
 .split{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
 .prose p{margin:0 0 18px}.prose h2{margin-top:10px}.prose ul{padding-left:22px}.prose li{margin-bottom:8px}
@@ -187,7 +187,7 @@ details.mod ol{margin:0;padding:0 22px 18px 60px}details.mod li{margin-bottom:10
 .cta h2{color:#fff;margin:0 0 6px}.cta p{margin:0;color:#cbd3ea;font-size:18px}
 footer.site{background:#111a33;color:#aab4cf;font-size:15px;padding:52px 0 30px}
 footer.site .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:30px}
-footer.site h4{color:#fff;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
+footer.site .fh{color:#fff;line-height:1.4;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
 footer.site a{color:#dfe5f5;text-decoration:none;display:block;margin-bottom:7px}footer.site a:hover{color:var(--gold)}
 footer.site .legal{border-top:1px solid #26314f;margin-top:34px;padding-top:20px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer.site .legal a{display:inline;margin-left:16px}
@@ -254,6 +254,32 @@ ORG = {"@context": "https://schema.org", "@type": "ProfessionalService", "@id": 
        "location": [{"@type": "Place", "name": f"Ullswater Investments {o['city']}", "address": {"@type": "PostalAddress", "streetAddress": o["street"], "postalCode": o["postcode"], "addressLocality": o["locality"], "addressCountry": o["cc"]}, "hasMap": o["map"]} for o in C.OFFICES],
        "founder": {"@type": "Person", "name": "Emilio Mulet", "jobTitle": "Managing Partner"}, "areaServed": "Europe", "knowsLanguage": ["en", "es"],
        "sameAs": [C.CALLS + "/", C.NEWS + "/", C.EVENTS + "/"]}
+
+
+# Line icons (24px, stroke = currentColor) replacing the emoji kept in content.py, per the design system ("simple line icons, no emoji").
+_IC = {
+    "🔬": '<path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/>',
+    "🌱": '<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>',
+    "⚡": '<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>',
+    "🛡️": '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    "📈": '<path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/>',
+    "🏦": '<path d="M3 22h18"/><path d="M6 18v-7"/><path d="M10 18v-7"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="m12 2 8 5H4l8-5z"/>',
+    "👥": '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    "💡": '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.1 14c.2-1 .7-1.7 1.4-2.5A5.9 5.9 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>',
+    "💶": '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>',
+    "🔍": '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+    "📍": '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+    "📝": '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
+    "🏆": '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>',
+}
+
+
+def icon(e, size=28):
+    d = _IC.get(e)
+    if not d:
+        return ""
+    return (f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
+            f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{d}</svg>')
 
 
 def header(themes, current):
@@ -353,33 +379,41 @@ def projects_page(themes):
 {rows}
 <p class="pj-note">Updated {fmt(date.today().isoformat())} · Source: project proposals and consortium documents. Proposal projects reflect the submitted proposal and do not necessarily reflect the views of the funding bodies.</p></div></section>
 {cta("Building a consortium for ITEA, Eureka or Horizon Europe?", "We join as partner, national coordinator or funding advisor, from the project outline to the national applications.", "Schedule a meeting")}"""
-    return page("/projects/", "Our participation in European projects | Ullswater Investments",
+    return page("/projects/", "Our Participation in European Projects | Ullswater",
                 "European R&D projects where Ullswater Investments takes part as project leader, national coordinator, partner or funding advisor: ITEA, Eureka and CDTI.",
-                body, themes, "projects", projects_ld())
+                body, themes, "projects", projects_ld(), og="projects")
 
 
 FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 <div><img class="flogo" src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26" loading="lazy"><p style="margin:0 0 10px">European funding advisors in Madrid and Brussels. Grants, loans and equity for innovation.</p>
 <p style="margin:0 0 8px"><b style="color:#fff">Madrid</b> · Calle Ramírez de Arellano 17, 28043 Madrid, Spain</p><p style="margin:0 0 8px"><b style="color:#fff">Brussels</b> · Square de Meeûs 37, 1000 Brussels, Belgium</p><p style="margin:0"><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
-<div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
-<div><h4>Projects</h4>{"".join(f'<a href="{project_url(p)}">{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
-<div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a></div>
-<div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a></div>
+<div><h2 class="fh">Services</h2><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
+<div><h2 class="fh">Projects</h2>{"".join(f'<a href="{project_url(p)}">{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
+<div><h2 class="fh">Free tools</h2><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a></div>
+<div><h2 class="fh">Insights</h2><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a></div>
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
 
 
-def page(path, title, desc, body, themes, current="", jsonld=None):
+# Cloudflare Web Analytics (cookieless, no personal data). The token is public by design.
+ANALYTICS = "<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"73cd5a993de94bab8a1633c300f22c48\"}'></script>"
+
+
+def page(path, title, desc, body, themes, current="", jsonld=None, og="default"):
     canon = BASE + path
+    if len(title) > 60 and title.endswith(" | Ullswater Investments"):  # keep titles within Google's ~60 characters
+        title = title[:-len(" | Ullswater Investments")] + " | Ullswater"
+    if len(desc) > 160:  # data-driven descriptions: cut at a word boundary
+        desc = desc[:157].rsplit(" ", 1)[0].rstrip(",;:·–-.") + "…"
     lds = [ORG] + (jsonld if isinstance(jsonld, list) else [jsonld] if jsonld else [])
     robots = '<meta name="robots" content="noindex,nofollow">' if STAGING else '<meta name="robots" content="index,follow,max-image-preview:large">'
     banner = '<div class="staging">Review copy of the new www.ullswaterinvestments.com, not yet live.</div>' if STAGING else ""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{escape(title)}</title><meta name="description" content="{escape(desc)}">{'' if path == '/404.html' else f'<link rel="canonical" href="{canon}">'}{robots}
-<meta property="og:type" content="website"><meta property="og:site_name" content="Ullswater Investments · EU Funding Advisors"><meta property="og:title" content="{escape(title)}"><meta property="og:description" content="{escape(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ullswater Investments · EU Funding Advisors"><meta property="og:title" content="{escape(title)}"><meta property="og:description" content="{escape(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="en_GB"><meta property="og:image" content="{BASE}/assets/og/{og}.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{escape(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{BASE}/assets/og/{og}.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="EU Funding News" href="{C.NEWS}/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v={VER}"><script type="application/ld+json">{json.dumps(lds if len(lds) > 1 else ORG, ensure_ascii=False)}</script></head><body>
-<a class="skip" href="#main">Skip to content</a>{banner}{header(themes, current)}<main id="main">{body}</main>{FOOTER}<script src="/assets/site.js?v={VER}" defer></script></body></html>"""
+<a class="skip" href="#main">Skip to content</a>{banner}{header(themes, current)}<main id="main">{body}</main>{FOOTER}<script src="/assets/site.js?v={VER}" defer></script>{"" if STAGING else ANALYTICS}</body></html>"""
 
 
 def hero(kicker, h1, lead, crumbs="", small=True, actions="", extra=""):
@@ -424,7 +458,7 @@ def home(live, themes):
              extra=stats)
     svc = "".join(f'<a class="card top" href="/{s}/"><div class="num">0{i + 1}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Learn more →</span></a>'
                   for i, (s, t, d) in enumerate(C.SERVICES))
-    explore = "".join(f'<a class="card" href="{u}" target="_blank" rel="noopener"><div class="ic" aria-hidden="true">{ic}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Explore ↗</span></a>'
+    explore = "".join(f'<a class="card" href="{u}" target="_blank" rel="noopener"><div class="ic">{icon(ic)}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Explore ↗</span></a>'
                       for t, d, u, ic in C.EXPLORE)
     soon = "".join(f'<li><span class="d">{fmt(c["deadline"])}</span><span><a href="{C.CALLS}/call/{re.sub(r"[^a-z0-9]+", "-", c["id"].lower()).strip("-")}/">{escape(c["title"])}</a><small>{escape(c["id"])}</small></span></li>'
                    for c in live.get("soon", []))
@@ -438,7 +472,7 @@ def home(live, themes):
 <div class="grid g3"><div class="panel"><h3><a href="{C.CALLS}/closing-soon/">Closing soon</a></h3><ul class="list">{soon}</ul><a class="more" href="{C.CALLS}/">All open calls →</a></div>
 <div class="panel"><h3><a href="{C.NEWS}/">Latest news</a></h3><ul class="list">{news}</ul><a class="more" href="{C.NEWS}/">EU Funding News →</a></div>
 <div class="panel"><h3><a href="{C.EVENTS}/">Upcoming events</a></h3><ul class="list">{evs}</ul><a class="more" href="{C.EVENTS}/">All events →</a></div></div></div></section>"""
-    vc = "".join(f'<div class="card"><div class="ic" aria-hidden="true">{i}</div><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for i, t, d in C.VC_DOMAINS)
+    vc = "".join(f'<div class="card"><div class="ic">{icon(i)}</div><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for i, t, d in C.VC_DOMAINS)
     body = h + projects_band() + f"""
 <section class="band"><div class="wrap split"><div><p class="kicker" style="color:var(--gold2)">Who we are</p><h2>Senior advisors for EU grants, loans and equity</h2>
 <p class="sub" style="margin-bottom:0">{escape(C.TEAM)}</p></div><blockquote class="quote">{escape(C.PARTNER_QUOTE)}<cite>Emilio Mulet, Managing Partner</cite></blockquote></div></section>
@@ -451,8 +485,8 @@ def home(live, themes):
 <h3 style="margin-top:40px">Are you investment ready?</h3><p class="sub" style="margin-bottom:20px">Professional VC investors run rigorous due diligence. Investment readiness means preparing your company to meet their standards in four domains.</p>
 <div class="grid g4">{vc}</div><div class="actions"><a class="btn" href="/investment-readiness/">Become fundable →</a></div></div></section>
 {offices_band(alt=False)}{tools_band()}{cta()}"""
-    return page("/", "Ullswater Investments · EU Funding Advisors | Horizon Europe, EIC, EIF and InvestEU",
-                "European funding advisors in Madrid and Brussels: we match projects with EU grants, EIB loans and EIF-backed capital, build consortia and write winning Horizon Europe, EIC and Digital Europe proposals.",
+    return page("/", "EU Funding Advisors in Madrid & Brussels | Ullswater",
+                "EU funding advisors in Madrid and Brussels: we match projects with EU grants, EIB loans and EIF-backed capital, and build winning Horizon Europe and EIC bids.",
                 body, themes, "home")
 
 
@@ -466,12 +500,12 @@ def investment_readiness(themes):
     body = hero("Service", "Investment Readiness", "Prepare your company and your proposal to meet the standards of EU evaluators, the EIB and EIF-backed investors.", crumbs("Investment Readiness"),
                 actions=f'<a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">Book a readiness review</a><a class="btn ghost" href="{C.CALLS}/review/">Try the free AI pre-check</a>') + f"""
 <section class="band"><div class="wrap split"><div class="prose">{''.join(f'<p>{escape(p)}</p>' for p in C.IR_INTRO)}</div>
-<div><div class="panel"><h3>What funders need to see</h3><p style="color:var(--muted);margin-top:0">{escape(C.IR_NEED)}</p><h3 style="margin-top:22px">Common stumbling blocks we help you avoid</h3><ul class="check warn">{''.join(f'<li>{escape(x)}</li>' for x in C.IR_PITFALLS)}</ul></div></div></div></section>
+<div><div class="panel"><h2 style="font-size:20px">What funders need to see</h2><p style="color:var(--muted);margin-top:0">{escape(C.IR_NEED)}</p><h2 style="font-size:20px;margin-top:22px">Common stumbling blocks we help you avoid</h2><ul class="check warn">{''.join(f'<li>{escape(x)}</li>' for x in C.IR_PITFALLS)}</ul></div></div></div></section>
 <section class="band alt"><div class="wrap narrow"><blockquote class="quote">{escape(C.IR_QUOTE)}<cite>Emilio Mulet, Managing Partner, Ullswater Investments</cite></blockquote></div></section>
 <section class="band"><div class="wrap"><p class="kicker" style="color:var(--gold2)">A visual guide</p><h2>Keys to an excellent proposal</h2><p class="sub">EU evaluators and investment managers review many applications against tight deadlines. They look for proposals that are clear, coherent and easy to assess.</p>
 {phases}<div class="panel" style="margin-top:20px"><h3>Useful official resources</h3><ul class="check">{links}</ul></div></div></section>
 {cta("Ready to submit your proposal?", "Book an Investment Readiness review: we check strategic alignment, viability and presentation before you submit.", "Book a review")}"""
-    return page("/investment-readiness/", "Investment Readiness for EU grants, EIB loans and EIF-backed VC | Ullswater Investments",
+    return page("/investment-readiness/", "Investment Readiness for EU Funding | Ullswater",
                 "Prepare your company and proposal for EU evaluators, the EIB and EIF-backed investors: strategic alignment, viability and professional execution.", body, themes, "services",
                 {"@context": "https://schema.org", "@type": "Service", "name": "Investment Readiness", "provider": {"@id": BASE + "/#org"}, "areaServed": "Europe"})
 
@@ -492,13 +526,13 @@ def fund_matching(themes):
 <h2 style="margin-top:56px">Shared management: funds managed nationally and regionally</h2><p class="sub">Funds allocated to Member States and managed by their own agencies, key for regional and sectoral development.</p><div class="grid g3">{progs(C.FM_SHARED)}</div></div></section>
 <section class="band"><div class="wrap"><h2>Where to start</h2><p class="sub">Three gateways to EU grants, EIB loans and the InvestEU guarantee.</p><div class="grid g3">{gw}</div></div></section>
 {tools_band()}{cta("Unlock European funding for your growth", "Tell us about your project and we will map the instruments and calls that fit.", "Schedule a consultation")}"""
-    return page("/eu-fund-matching/", "EU Fund Matching: the right EU grant, loan or equity for your project | Ullswater Investments",
+    return page("/eu-fund-matching/", "EU Fund Matching: Grants, Loans and Equity | Ullswater",
                 "We match your project with the right EU programme and call: Horizon Europe, Digital Europe, LIFE, EIB loans, InvestEU and EIF-backed venture capital.", body, themes, "services",
                 {"@context": "https://schema.org", "@type": "Service", "name": "EU Fund Matching", "provider": {"@id": BASE + "/#org"}, "areaServed": "Europe"})
 
 
 def strategic_positioning(themes):
-    proc = "".join(f'<div><b aria-hidden="true">{i}</b><strong>{escape(t)}</strong><span>{escape(d)}</span></div>' for i, t, d in C.SP_PROCESS)
+    proc = "".join(f'<div><b>{icon(i, 32)}</b><strong>{escape(t)}</strong><span>{escape(d)}</span></div>' for i, t, d in C.SP_PROCESS)
 
     def cards(items, cls=""):
         return "".join(f'<div class="card {cls}"><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for t, d in items)
@@ -510,7 +544,7 @@ def strategic_positioning(themes):
 <section class="band"><div class="wrap"><h2>The strategic value of visibility</h2><p class="sub">Being known and respected by the European Commission or the EIB is not marketing: it is a competitive advantage.</p><div class="grid g3">{cards(C.SP_VALUE)}</div></div></section>
 <section class="band alt"><div class="wrap"><h2>How we elevate your European positioning</h2><p class="sub">We act as your strategic partner in Brussels and beyond, building long-term influence and reputation at European level.</p><div class="grid g2">{cards(C.SP_HOW, 'top')}</div></div></section>
 {cta("Ready to elevate your European strategy?", "Partner with Ullswater Investments to navigate the EU landscape and secure your position.", "Contact us")}"""
-    return page("/strategic-positioning/", "Strategic Positioning in the EU funding ecosystem | Ullswater Investments",
+    return page("/strategic-positioning/", "Strategic Positioning in the EU Ecosystem | Ullswater",
                 "How Ullswater Investments helps companies and research organisations become visible, credible partners for the European Commission, the EIB and EU consortia.", body, themes, "services",
                 {"@context": "https://schema.org", "@type": "Service", "name": "Strategic Positioning", "provider": {"@id": BASE + "/#org"}, "areaServed": "Europe"})
 
@@ -534,7 +568,7 @@ def courses(themes):
                 actions=f'<a class="btn" href="{mail}">Request programme information</a>') + f"""
 <section class="band"><div class="wrap narrow"><h2>Programme</h2><p class="sub">Six modules covering the strategic framework, the European Defence Fund, synergies with other EU instruments, proposal writing, project management and technology trends.</p>{mods}</div></section>
 {cta("Bring the programme to your organisation", "In-company and open editions, in English or Spanish.", "Book a meeting")}"""
-    return page("/courses/", "Executive Programme in EU Funding for Defence and Dual-Use | Ullswater Investments",
+    return page("/courses/", "EU Funding for Defence and Dual-Use: Executive Course",
                 "Six-module executive programme on financing defence, security and dual-use technology projects with EU funds: EDF, EDIP, Horizon Europe Cluster 3 and more.", body, themes, "courses",
                 {"@context": "https://schema.org", "@type": "Course", "name": C.COURSE_TITLE, "description": C.COURSE_FOR, "provider": {"@id": BASE + "/#org"}, "inLanguage": ["en", "es"]})
 
@@ -553,8 +587,8 @@ def archive_pages(themes):
         out[path] = page(path, f"{a['title']} | Ullswater Investments", f"Archive briefing: {len(a['items'])} EU funding and policy developments, {a['period']}.", body, themes)
         tiles += f'<a class="card" href="{path}"><h3>{escape(a["period"])}</h3><p>{len(a["items"])} news items</p><span class="go">Read →</span></a>'
     body = hero("News archive", "EU funding news archive", "Earlier monthly briefings, kept for reference. Current news is published daily on EU Funding News.", crumbs("News archive"),
-                actions=f'<a class="btn" href="{C.NEWS}/">EU Funding News →</a>') + f'<section class="band"><div class="wrap"><div class="grid g3">{tiles}</div></div></section>'
-    out["/news/archive/"] = page("/news/archive/", "EU funding news archive | Ullswater Investments", "Archive of earlier EU funding news briefings by Ullswater Investments.", body, themes)
+                actions=f'<a class="btn" href="{C.NEWS}/">EU Funding News →</a>') + f'<section class="band"><div class="wrap"><h2>Monthly briefings</h2><div class="grid g3">{tiles}</div></div></section>'
+    out["/news/archive/"] = page("/news/archive/", "EU funding news archive | Ullswater Investments", "Archive of monthly EU funding briefings by Ullswater Investments: Horizon Europe, EIC, CDTI and policy news from October and November 2025, kept for reference.", body, themes)
     return out
 
 
@@ -568,12 +602,12 @@ def privacy(themes):
 <li><b>Partner board and directory.</b> Requests and profiles you submit are reviewed by us before publication. Only the organisation details you agree to publish are shown; your email is never published and contact goes through us (legal basis: consent).</li>
 <li><b>AI pre-check and assistant.</b> Text you type is sent to an AI model run on Cloudflare Workers AI to generate the answer. Do not include confidential or personal data. We use the text only to produce the response.</li>
 </ul>
-<h2>Processors</h2><p>Google (Workspace: Forms, Sheets, Gmail), Cloudflare (DNS, security and AI inference) and GitHub (website hosting) process data on our behalf under their data processing terms.</p>
+<h2>Processors</h2><p>Google (Workspace: Forms, Sheets, Gmail), Cloudflare (DNS, security, AI inference and cookieless web analytics) and GitHub (website hosting) process data on our behalf under their data processing terms.</p>
 <h2>Retention</h2><p>We keep data for as long as needed for the purpose for which it was collected, or until you withdraw consent or ask us to delete it.</p>
 <h2>Your rights</h2><p>You can request access, rectification, erasure, restriction, portability or object to processing by writing to <a href="mailto:{C.EMAIL}">{C.EMAIL}</a>. You may also lodge a complaint with the Spanish Data Protection Agency (<a href="https://www.aepd.es/" rel="noopener">AEPD</a>).</p>
-<h2>Cookies</h2><p>This website does not use advertising or tracking cookies. Fonts are loaded from Google Fonts.</p>
+<h2>Cookies and statistics</h2><p>This website does not use advertising or tracking cookies. We measure visits with Cloudflare Web Analytics, which sets no cookies and does not collect personal data or fingerprint visitors; it only records aggregate page views. Fonts are loaded from Google Fonts.</p>
 <p style="color:var(--muted);font-size:14px">Last updated: {fmt(date.today().isoformat())}</p></div></section>"""
-    return page("/privacy/", "Privacy policy | Ullswater Investments", "Privacy policy of Ullswater Investments S.L.", body, themes)
+    return page("/privacy/", "Privacy policy | Ullswater Investments", "How Ullswater Investments S.L. handles personal data on this website, calls, news and events: contact, alerts, partner board, AI tools, processors and your rights.", body, themes)
 
 
 def legal(themes):
@@ -582,7 +616,7 @@ def legal(themes):
 <dt>Email</dt><dd><a href="mailto:{C.EMAIL}">{C.EMAIL}</a></dd></dl>
 <div class="prose" style="margin-top:28px"><p>Information on EU calls, news and events is compiled from official sources and is provided for guidance only. Always check the official call documents before applying.
 Links to third-party websites are provided for convenience; we are not responsible for their content.</p></div></div></section>"""
-    return page("/legal/", "Legal notice | Ullswater Investments", "Legal notice of Ullswater Investments S.L.", body, themes)
+    return page("/legal/", "Legal notice | Ullswater Investments", "Legal notice of Ullswater Investments S.L. (CIF B10740942), EU funding advisors with offices in Madrid and Brussels, under Spanish Law 34/2002 (LSSI).", body, themes)
 
 
 def redirect_stub(target):
@@ -605,6 +639,7 @@ def main():
     (SITE / "assets" / "site.js").write_text(JS, encoding="utf-8")
     shutil.copy(ROOT / "content" / "logo.svg", SITE / "assets" / "logo.svg")
     shutil.copytree(ROOT / "content" / "img", SITE / "assets" / "img")
+    shutil.copytree(ROOT / "content" / "og", SITE / "assets" / "og")
     (SITE / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#233567"/><text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" text-anchor="middle" fill="#c9a646">U</text></svg>', encoding="utf-8")
     pages = {"/": home(live, themes), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
              "/strategic-positioning/": strategic_positioning(themes), "/about/": about(themes), "/courses/": courses(themes),
