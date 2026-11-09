@@ -1,10 +1,10 @@
 {
  "stats": {
-  "updated": "2026-11-09T11:02:36+00:00",
+  "updated": "2026-11-09T13:49:35+00:00",
   "open": 200,
   "forthcoming": 250,
   "total": 450,
-  "closingIn30Days": 59,
+  "closingIn30Days": 60,
   "programmes": 22,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
@@ -206,6 +206,16 @@
    "kind": "cascade",
    "budget": 37723260,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44092120"
+  },
+  {
+   "id": "SYSTEMEU-45659376",
+   "title": "SYSTEMEU - Financial Support to Third Parties (FSTP)",
+   "status": "open",
+   "deadline": "2026-11-16",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 7550000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45659376"
   },
   {
    "id": "BATTLEVERSE-46905650",
@@ -618,6 +628,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48400288"
   },
   {
+   "id": "ZMINA.Resilience-47365856",
+   "title": "ZMINA:Resilience. Second call for co-creation funding of international cooperation projects",
+   "status": "open",
+   "deadline": "2026-12-04",
+   "programme": "CREA",
+   "kind": "cascade",
+   "budget": 187500,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47365856"
+  },
+  {
    "id": "DIGITAL-JU-CHIPS-2026-SG-JAPAN",
    "title": "International collaboration EU and Japan on semiconductors",
    "status": "open",
@@ -648,16 +668,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EUBA-EFSA-2026-BIOHAW-01"
   },
   {
-   "id": "UNITE-45659376",
-   "title": "UNITE Open Call 2 for Joint Interregional Projects",
-   "status": "open",
-   "deadline": "2026-12-10",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 6000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45659376"
-  },
-  {
    "id": "SoS2LearnDBS-46939903",
    "title": "SoS2LearnDBS 1st Open Call for Transition Agendas (OC-TAg1-SoS2LearnDBS-2026)",
    "status": "open",
@@ -666,16 +676,6 @@
    "kind": "cascade",
    "budget": 1125000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46939903"
-  },
-  {
-   "id": "ZMINA.Resilience-47365856",
-   "title": "ZMINA:Resilience. Rolling call for International Showcasing of co-creation projects",
-   "status": "open",
-   "deadline": "2026-12-14",
-   "programme": "CREA",
-   "kind": "cascade",
-   "budget": 950000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47365856"
   },
   {
    "id": "Valleys-48351491",
@@ -2048,6 +2048,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/JTM-2026-PSLF-STANDALONE-PROJECTS"
   },
   {
+   "id": "FACTEUR-48165818",
+   "title": "Emergency Response - Support Grants",
+   "status": "open",
+   "deadline": "2027-12-31",
+   "programme": "DIGITAL",
+   "kind": "cascade",
+   "budget": 450000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48165818"
+  },
+  {
    "id": "BIRDS in BG - 2-46357639",
    "title": "ReAction – Rapid Response Grants",
    "status": "open",
@@ -2056,16 +2066,6 @@
    "kind": "cascade",
    "budget": 300000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46357639"
-  },
-  {
-   "id": "FACTEUR-48165818",
-   "title": "EFCSN Permanent Call for Protection Grants",
-   "status": "open",
-   "deadline": "2028-05-31",
-   "programme": "DIGITAL",
-   "kind": "cascade",
-   "budget": 340169,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48165818"
   },
   {
    "id": "PPPA-SPORT-2026-EMERGENCY-YOUTH",
@@ -4734,7 +4734,9 @@
    "summary": "The seventh edition of the Commission's flagship research and innovation event, gathering policymakers, researchers, innovators, business leaders and civil society.",
    "registration_url": "https://research-and-innovation.ec.europa.eu/events/european-research-and-innovation-days_en",
    "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/2026/11/european-research-innovation-days-2026/"
+   "url": "https://events.ullswaterinvestments.com/events/european-research-innovation-days-2026/",
+   "theme": null,
+   "calls": []
   },
   {
    "slug": "eit-hei-call-2026-mel-framework-impact-domains",
@@ -4749,7 +4751,11 @@
    "summary": "Online info session of the EIT Higher Education Initiative Call for Proposals 2026, focused on the framework for monitoring, evaluation and learning (MEL) and the impact domains and actions that projects are expected to address.",
    "registration_url": "https://eit-hei.eu/events/mel-framework-and-the-impact-domains-and-actions-call-2026-info-sessions/",
    "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/2026/11/eit-hei-call-2026-mel-framework-impact-domains/"
+   "url": "https://events.ullswaterinvestments.com/events/eit-hei-call-2026-mel-framework-impact-domains/",
+   "theme": null,
+   "calls": [
+    "EIT HEI-48939733"
+   ]
   },
   {
    "slug": "lump-sum-funding-horizon-europe-webinar",
@@ -4764,7 +4770,9 @@
    "summary": "A two-hour Commission webinar explaining how lump sum grants work in Horizon Europe and what that means when writing a proposal.",
    "registration_url": "https://ec.europa.eu/research/participants/docs/h2020-funding-guide/other/event261112.htm",
    "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/2026/11/lump-sum-funding-horizon-europe-webinar/"
+   "url": "https://events.ullswaterinvestments.com/events/lump-sum-funding-horizon-europe-webinar/",
+   "theme": null,
+   "calls": []
   }
  ]
 }
