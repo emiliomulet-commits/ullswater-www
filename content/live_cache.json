@@ -1,10 +1,10 @@
 {
  "stats": {
-  "updated": "2026-11-08T18:02:15+00:00",
-  "open": 198,
-  "forthcoming": 251,
-  "total": 449,
-  "closingIn30Days": 57,
+  "updated": "2026-11-09T11:02:36+00:00",
+  "open": 200,
+  "forthcoming": 250,
+  "total": 450,
+  "closingIn30Days": 59,
   "programmes": 22,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
@@ -798,6 +798,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIE-2027-02-CONNECT-01"
   },
   {
+   "id": "EITFood BP26-28-48939719",
+   "title": "Open Call for Implementing Participants of the Empowering Women in Agrifood (EWA) Programme 2027-2028",
+   "status": "open",
+   "deadline": "2027-01-05",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 1556000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48939719"
+  },
+  {
    "id": "RCH-47942210",
    "title": "Foundations for climate-resilient cultural heritage - Assessing and managing impact and risk, dealing with damage and loss",
    "status": "open",
@@ -859,7 +869,7 @@
   },
   {
    "id": "EIT HEI-48939733",
-   "title": "Call for Proposals 2026",
+   "title": "EIT Higher Education Initiative – Call for Proposals 2026",
    "status": "open",
    "deadline": "2027-01-13",
    "programme": "HORIZON",
@@ -1048,16 +1058,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48106227"
   },
   {
-   "id": "EITFood BP26-28-48939719",
-   "title": "Proof of Concept & Technology Validation Call",
-   "status": "open",
-   "deadline": "2027-01-18",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 930000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48939719"
-  },
-  {
    "id": "EU4H-2027-SANTE-OG",
    "title": "Call for proposals for operating grants in 2027 to non-governmental organisations: financial contribution to the functioning of health non-governmental organisations implementing one or more specific objectives of Regulation (EU) 2021/522  (OA-g-26-91 )",
    "status": "open",
@@ -1186,6 +1186,16 @@
    "kind": "topic",
    "budget": 32500000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-02-05"
+  },
+  {
+   "id": "EDITO 2-47374969",
+   "title": "INTEGRATION OF INNOVATIVE OCEAN SOLUTIONS INTO EDITO",
+   "status": "open",
+   "deadline": "2027-01-29",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 700000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47374969"
   },
   {
    "id": "HORIZON-CL4-2027-01-MAT-PROD-17",
@@ -1456,6 +1466,16 @@
    "kind": "topic",
    "budget": 23300000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/CREA-MEDIA-2027-TVONLINE-3"
+  },
+  {
+   "id": "GRAIL-48401116",
+   "title": "GRAIL Open Call — Genesis (1st Open Call)",
+   "status": "open",
+   "deadline": "2027-02-10",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 1000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48401116"
   },
   {
    "id": "GreenChips-EDU-45114064",
@@ -2058,24 +2078,14 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/PPPA-SPORT-2026-EMERGENCY-YOUTH"
   },
   {
-   "id": "EDITO 2-47374969",
-   "title": "INTEGRATION OF INNOVATIVE OCEAN SOLUTIONS INTO EDITO",
+   "id": "O-CEI-45703720",
+   "title": "O-CEI 2nd OPEN CALL FOR UPTAKE PROJECTS",
    "status": "forthcoming",
-   "deadline": "2027-01-29",
+   "deadline": "2027-01-14",
    "programme": "HORIZON",
    "kind": "cascade",
-   "budget": 700000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47374969"
-  },
-  {
-   "id": "GRAIL-48401116",
-   "title": "GRAIL Open Call — Genesis (1st Open Call)",
-   "status": "forthcoming",
-   "deadline": "2027-02-10",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 1000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48401116"
+   "budget": 1600000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45703720"
   },
   {
    "id": "HORIZON-BRIDGING-2027-05-01",
@@ -4565,7 +4575,7 @@
    "short": "AI & GenAI",
    "old": "/calls/calls-for-genai",
    "count": 54,
-   "open": 24
+   "open": 25
   },
   {
    "slug": "eic",
@@ -4588,8 +4598,8 @@
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 56,
-   "open": 53
+   "count": 57,
+   "open": 55
   },
   {
    "slug": "health",
@@ -4682,32 +4692,32 @@
  ],
  "news": [
   {
+   "title": "EIT HEI Call 2026: up to €1.25M for university-led deep-tech consortia",
+   "url": "https://news.ullswaterinvestments.com/2026/11/eit-hei-call-2026-universities-deep-tech/",
+   "summary": "The EIT Higher Education Initiative is funding HEI-led consortia that build deep-tech and manufacturing innovation capacity. Deadline: 13 January 2027.",
+   "category": "Horizon Europe",
+   "date": "2026-11-09"
+  },
+  {
+   "title": "EU and India conclude talks on India joining Horizon Europe",
+   "url": "https://news.ullswaterinvestments.com/2026/11/india-horizon-europe-association-concluded/",
+   "summary": "Association is envisaged for January 2027. Indian organisations would then be able to receive funding directly and lead Pillar II collaborative projects.",
+   "category": "Research Policy",
+   "date": "2026-11-06"
+  },
+  {
+   "title": "EIC 2027 work programme opens over €1.8 billion for deep tech",
+   "url": "https://news.ullswaterinvestments.com/2026/11/eic-2027-work-programme-1-8-billion/",
+   "summary": "The Commission has adopted the EIC's 2027 plan: €578 million for the Accelerator, €248 million for Pathfinder and €100 million for a defence equity call.",
+   "category": "EIC, Defence & Equity",
+   "date": "2026-11-05"
+  },
+  {
    "title": "EIC sets 19 November info day on its 2027 funding opportunities",
    "url": "https://news.ullswaterinvestments.com/2026/11/eic-2027-funding-info-day/",
    "summary": "The online session will present Work Programme 2027 scheme by scheme, from Pathfinder to STEP Defence. Registration closes on 18 November.",
    "category": "EIC, Defence & Equity",
    "date": "2026-11-05"
-  },
-  {
-   "title": "CDTI Innovación commits €12.75 million to 19 R&D+I projects",
-   "url": "https://news.ullswaterinvestments.com/2026/11/cdti-council-19-projects-october/",
-   "summary": "All 19 October approvals are loans. Ten companies get CDTI funding for the first time, 15 are SMEs and 13 operations are co-financed by POPE.",
-   "category": "Spain",
-   "date": "2026-11-04"
-  },
-  {
-   "title": "Open Research Europe becomes fee-free in 11 countries",
-   "url": "https://news.ullswaterinvestments.com/2026/11/open-research-europe-fee-free-11-countries/",
-   "summary": "Researchers in 11 countries can now publish on the Commission's open-access platform without publication fees, under a collective funding model.",
-   "category": "Research Policy",
-   "date": "2026-11-03"
-  },
-  {
-   "title": "EU and Bpifrance plan €150 million guarantee for Ukraine partnerships",
-   "url": "https://news.ullswaterinvestments.com/2026/11/bpifrance-eu-guarantees-ukraine-dual-use-partnerships/",
-   "summary": "The arrangement under the Ukraine Investment Framework targets French–Ukrainian industrial ties in defence and dual-use technology.",
-   "category": "EIC, Defence & Equity",
-   "date": "2026-11-03"
   }
  ],
  "events": [
@@ -4727,34 +4737,34 @@
    "url": "https://events.ullswaterinvestments.com/2026/11/european-research-innovation-days-2026/"
   },
   {
-   "slug": "horizon-europe-cluster-5-info-day",
-   "title": "Horizon Europe Cluster 5 Info Day: Climate, Energy and Mobility",
-   "start": "2026-11-19",
-   "end": "2026-11-19",
+   "slug": "eit-hei-call-2026-mel-framework-impact-domains",
+   "title": "EIT HEI Call 2026 info session: MEL Framework and the Impact Domains and Actions",
+   "start": "2026-11-11",
+   "end": "2026-11-11",
    "type": "info-day",
-   "programme": "cluster-5",
-   "mode": "hybrid",
-   "location": "Charlemagne, Brussels, and online",
-   "organiser": "European Commission and CINEA",
-   "summary": "A hybrid day presenting the 2027 funding topics of Cluster 5, with policy context and advice on preparing a strong proposal.",
-   "registration_url": "https://research-innovation-community.ec.europa.eu/events/1BlOchF5f8ViHvC1DosGqo/overview",
+   "programme": "horizon-europe",
+   "mode": "online",
+   "location": "Online",
+   "organiser": "EIT Higher Education Initiative",
+   "summary": "Online info session of the EIT Higher Education Initiative Call for Proposals 2026, focused on the framework for monitoring, evaluation and learning (MEL) and the impact domains and actions that projects are expected to address.",
+   "registration_url": "https://eit-hei.eu/events/mel-framework-and-the-impact-domains-and-actions-call-2026-info-sessions/",
    "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/2026/11/horizon-europe-cluster-5-info-day/"
+   "url": "https://events.ullswaterinvestments.com/2026/11/eit-hei-call-2026-mel-framework-impact-domains/"
   },
   {
-   "slug": "horizon-europe-cluster-5-brokerage",
-   "title": "Horizon Europe Cluster 5 onsite brokerage event",
-   "start": "2026-11-19",
-   "end": "2026-11-19",
-   "type": "brokerage",
-   "programme": "cluster-5",
-   "mode": "onsite",
-   "location": "Charlemagne, Brussels",
-   "organiser": "GREENET",
-   "summary": "An onsite networking and brokerage session held after the Cluster 5 Info Day, from 16:00 to 19:00 at the same venue.",
-   "registration_url": "https://research-innovation-community.ec.europa.eu/events/1BlOchF5f8ViHvC1DosGqo/overview",
+   "slug": "lump-sum-funding-horizon-europe-webinar",
+   "title": "Lump Sum Funding in Horizon Europe: How does it work? How to write a proposal?",
+   "start": "2026-11-12",
+   "end": "2026-11-12",
+   "type": "webinar",
+   "programme": "horizon-europe",
+   "mode": "online",
+   "location": "Online",
+   "organiser": "European Commission",
+   "summary": "A two-hour Commission webinar explaining how lump sum grants work in Horizon Europe and what that means when writing a proposal.",
+   "registration_url": "https://ec.europa.eu/research/participants/docs/h2020-funding-guide/other/event261112.htm",
    "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/2026/11/horizon-europe-cluster-5-brokerage/"
+   "url": "https://events.ullswaterinvestments.com/2026/11/lump-sum-funding-horizon-europe-webinar/"
   }
  ]
 }

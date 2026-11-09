@@ -35,3 +35,8 @@ Local build: `pip install beautifulsoup4 && python3 scripts/build.py` → `site/
 - `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `PERPLEXITY_API_KEY` (any missing key is simply skipped).
 - Optional repository variables to change models: `OPENAI_MODEL` (default gpt-5.4), `ANTHROPIC_MODEL` (claude-sonnet-5-5), `GEMINI_MODEL` (gemini-3.5-flash), `PERPLEXITY_MODEL` (sonar).
 - `GSC_SERVICE_ACCOUNT_JSON`: in Google Cloud Console create a project → enable "Google Search Console API" → IAM → Service accounts → create one → Keys → Add key (JSON). In Search Console → Settings → Users and permissions → Add user: the service account e-mail, permission "Restricted". Paste the whole JSON as the secret.
+
+## Site structure (Nov 2026)
+- `/sitemap-index.xml` lists every sitemap of the network: www, `/sitemap-projects.xml` (project landings on their own subdomains), calls, news (+ Google News) and events. Submit it once in Search Console (domain property).
+- Main menu order matches the network menu of calls, news and events: EU calls · News · Events · Projects (+ Services, Courses here) · About.
+- Calls pages exist only on calls.ullswaterinvestments.com; shared taxonomy in its `/data/taxonomy.json`.

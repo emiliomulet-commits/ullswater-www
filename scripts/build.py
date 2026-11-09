@@ -49,7 +49,7 @@ AI_BOTS = [  # search/answer engines and AI assistants we explicitly welcome
 ROBOTS = ("# www.ullswaterinvestments.com: public content, open to search engines and AI assistants.\n"
           + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in AI_BOTS)
           + "User-agent: *\nAllow: /\n\n"
-          + f"Sitemap: {BASE}/sitemap.xml\nSitemap: {C.CALLS}/sitemap.xml\nSitemap: {C.NEWS}/sitemap.xml\n")
+          + f"Sitemap: {BASE}/sitemap-index.xml\nSitemap: {BASE}/sitemap.xml\nSitemap: {C.CALLS}/sitemap.xml\nSitemap: {C.NEWS}/sitemap.xml\nSitemap: {C.EVENTS}/sitemap.xml\n")
 
 
 def fetch(url, binary=False):
@@ -266,12 +266,12 @@ def header(themes, current):
     return f"""<header class="site"><div class="wrap">
 <a class="brand" href="/" aria-label="Ullswater Investments, home"><img src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26"></a>
 <nav class="main" aria-label="Main">
-<div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>Calls</button><div class="menu wide"><div>
+<div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>EU calls</button><div class="menu wide"><div>
 <div class="lbl">Live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a><a href="/guides/"><b>EU funding guides</b></a>
 </div><div><div class="lbl">By theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
+<a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a href="/projects/"{cur('projects')}>Projects</a>
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('services')}>Services</button><div class="menu">
-<a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div></div>
-<a href="/projects/"{cur('projects')}>Projects</a><a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a href="/courses/"{cur('courses')}>Courses</a><a href="/about/"{cur('about')}>About</a>
+<a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div></div><a href="/courses/"{cur('courses')}>Courses</a><a href="/about/"{cur('about')}>About</a>
 </nav><a class="btn hide-m" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a>
 <button class="burger" type="button" aria-label="Menu" aria-expanded="false">☰</button></div></header>"""
 
@@ -655,6 +655,13 @@ def main():
                 f'<xhtml:link rel="alternate" hreflang="x-default" href="{BASE}{u}"/>')
     (SITE / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'
         + "".join(f"<url><loc>{BASE}{p}{u}</loc><lastmod>{today}</lastmod>{alts(u)}</url>" for u in pages for p in ("", "/es")) + "</urlset>\n", encoding="utf-8")
+    # Sitemap index for the whole Ullswater network (www, project landings, calls, news, events).
+    # Cross-subdomain entries are valid because the domain property ullswaterinvestments.com is verified in Search Console.
+    (SITE / "sitemap-projects.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        + "".join(f"<url><loc>{project_url(p)}</loc><lastmod>{today}</lastmod></url>" for p in C.PROJECTS if p.get("live")) + "</urlset>\n", encoding="utf-8")
+    smaps = [f"{BASE}/sitemap.xml", f"{BASE}/sitemap-projects.xml", f"{C.CALLS}/sitemap.xml", f"{C.NEWS}/sitemap.xml", f"{C.NEWS}/news-sitemap.xml", f"{C.EVENTS}/sitemap.xml"]
+    (SITE / "sitemap-index.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        + "".join(f"<sitemap><loc>{u}</loc><lastmod>{today}</lastmod></sitemap>" for u in smaps) + "</sitemapindex>\n", encoding="utf-8")
     (SITE / "data").mkdir(exist_ok=True)
     (SITE / "data" / "projects.json").write_text(json.dumps({"updated": today, "projects": [
         {**{k: p[k] for k in ("slug", "acronym", "title", "programme", "challenge", "status", "group", "role", "pitch", "contribution")},
