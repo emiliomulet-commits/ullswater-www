@@ -145,6 +145,13 @@ Rules:
 - Official Spanish names: Horizon Europe -> Horizonte Europa; Digital Europe Programme -> Programa Europa Digital; European Innovation Council -> Consejo Europeo de Innovación (EIC); European Investment Fund -> Fondo Europeo de Inversiones (FEI); European Investment Bank -> Banco Europeo de Inversiones (BEI); European Defence Fund -> Fondo Europeo de Defensa; European Commission -> Comisión Europea; call (for proposals) -> convocatoria; grant -> subvención.
 - Professional, concise, natural Spanish for executives; use "usted"-free neutral style (imperatives in tú are fine for buttons: "Reserva una reunión").
 """
+# EU terminology glossary (246 terms + style rules), brought over from the Spanish pilot site (ullswater-web-es, Nov 2026).
+_G = ROOT / "content" / "glosario-es.json"
+if _G.exists():
+    _g = json.loads(_G.read_text(encoding="utf-8"))
+    PROMPT += ("\nAlways use this official EU terminology (English -> Spanish):\n"
+               + "\n".join(f"- {x['en']} -> {x['es']}" for x in _g.get("terminos", []))
+               + "\nStyle rules for call titles:\n" + "\n".join(f"- {r}" for r in _g.get("reglas", [])) + "\n")
 
 
 def translate_missing(t, limit=1500):

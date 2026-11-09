@@ -17,6 +17,7 @@ Local build: `pip install beautifulsoup4 && python3 scripts/build.py` → `site/
 ## Spanish version (/es/)
 - Every page is generated in English and then translated into its Spanish twin under `/es/` by `scripts/i18n.py`
   (EN | ES switcher in the header, hreflang tags, both languages in the sitemap).
+- EU terminology glossary for new translations: `content/glosario-es.json` (246 terms and style rules, from the former Spanish pilot `ullswater-web-es`, archived Nov 2026). Its 222 translated call titles were merged into the dictionary.
 - Translations live in `content/i18n_es.json` (English segment → Spanish). Numbers are masked as `{0}`, `{1}`… so changing figures do not need new entries.
   To change a Spanish text, edit its entry there.
 - New texts (new calls, news, events, or edited English copy) are translated automatically during the build with Claude
