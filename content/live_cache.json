@@ -1,28 +1,14 @@
 {
  "stats": {
-  "updated": "2026-11-09T13:49:35+00:00",
+  "updated": "2026-11-09T22:38:40+00:00",
   "open": 200,
-  "forthcoming": 250,
-  "total": 450,
-  "closingIn30Days": 60,
+  "forthcoming": 249,
+  "total": 449,
+  "closingIn30Days": 58,
   "programmes": 22,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
  "soon": [
-  {
-   "id": "FIERCE-45705096",
-   "title": "FIERCE 2nd Open Call for the Financial Support Programme",
-   "deadline": "2026-11-09",
-   "programme": "HORIZON",
-   "budget": 748317
-  },
-  {
-   "id": "NACHIP-46039280",
-   "title": "NACHIP - Second Open Call",
-   "deadline": "2026-11-09",
-   "programme": "I3",
-   "budget": null
-  },
   {
    "id": "EDF-EDIP-USI-2026-LS-IRA-MAB",
    "title": "Missiles, ammunition and bombs",
@@ -64,29 +50,23 @@
    "deadline": "2026-11-12",
    "programme": "SOCPL",
    "budget": 2500000
+  },
+  {
+   "id": "I3-2026-INV1",
+   "title": "I3-2026-INV1 - Interregional Innovation Investments Strand 1",
+   "deadline": "2026-11-12",
+   "programme": "I3",
+   "budget": 28200000
+  },
+  {
+   "id": "I3-2026-INV2a",
+   "title": "I3-2026-INV2a - Interregional Innovation Investments Strand 2a",
+   "deadline": "2026-11-12",
+   "programme": "I3",
+   "budget": 30200000
   }
  ],
  "calls": [
-  {
-   "id": "FIERCE-45705096",
-   "title": "FIERCE 2nd Open Call for the Financial Support Programme",
-   "status": "open",
-   "deadline": "2026-11-09",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 748317,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45705096"
-  },
-  {
-   "id": "NACHIP-46039280",
-   "title": "NACHIP - Second Open Call",
-   "status": "open",
-   "deadline": "2026-11-09",
-   "programme": "I3",
-   "kind": "cascade",
-   "budget": null,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46039280"
-  },
   {
    "id": "EDF-EDIP-USI-2026-LS-IRA-MAB",
    "title": "Missiles, ammunition and bombs",
@@ -206,16 +186,6 @@
    "kind": "cascade",
    "budget": 37723260,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44092120"
-  },
-  {
-   "id": "SYSTEMEU-45659376",
-   "title": "SYSTEMEU - Financial Support to Third Parties (FSTP)",
-   "status": "open",
-   "deadline": "2026-11-16",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 7550000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45659376"
   },
   {
    "id": "BATTLEVERSE-46905650",
@@ -598,6 +568,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/CREA-MEDIA-2027-DEVSLATE"
   },
   {
+   "id": "InnovativeSMEs-44087099",
+   "title": "European Partnership on Innovative SMEs/Innowwide CALL 5",
+   "status": "open",
+   "deadline": "2026-12-01",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 4200000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44087099"
+  },
+  {
    "id": "Nostradamus-45657640",
    "title": "NOSTRADAMUS - Open Call #1: Funding Digital Applications for Sustainable and Efficient Agriculture",
    "status": "open",
@@ -626,16 +606,6 @@
    "kind": "cascade",
    "budget": 8000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48400288"
-  },
-  {
-   "id": "ZMINA.Resilience-47365856",
-   "title": "ZMINA:Resilience. Second call for co-creation funding of international cooperation projects",
-   "status": "open",
-   "deadline": "2026-12-04",
-   "programme": "CREA",
-   "kind": "cascade",
-   "budget": 187500,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47365856"
   },
   {
    "id": "DIGITAL-JU-CHIPS-2026-SG-JAPAN",
@@ -668,6 +638,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EUBA-EFSA-2026-BIOHAW-01"
   },
   {
+   "id": "UNITE-45659376",
+   "title": "UNITE Open Call 2 for Joint Interregional Projects",
+   "status": "open",
+   "deadline": "2026-12-10",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 6000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45659376"
+  },
+  {
    "id": "SoS2LearnDBS-46939903",
    "title": "SoS2LearnDBS 1st Open Call for Transition Agendas (OC-TAg1-SoS2LearnDBS-2026)",
    "status": "open",
@@ -676,6 +656,16 @@
    "kind": "cascade",
    "budget": 1125000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46939903"
+  },
+  {
+   "id": "ZMINA.Resilience-47365856",
+   "title": "ZMINA:Resilience. Rolling call for International Showcasing of co-creation projects",
+   "status": "open",
+   "deadline": "2026-12-14",
+   "programme": "CREA",
+   "kind": "cascade",
+   "budget": 950000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47365856"
   },
   {
    "id": "Valleys-48351491",
@@ -806,6 +796,16 @@
    "kind": "cascade",
    "budget": 1556000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48939719"
+  },
+  {
+   "id": "StandICT.eu 2029-46950864",
+   "title": "Open Call 4 - Short Term and Long Term Funding to support ICT standardisation",
+   "status": "open",
+   "deadline": "2027-01-08",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 650000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46950864"
   },
   {
    "id": "RCH-47942210",
@@ -2048,16 +2048,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/JTM-2026-PSLF-STANDALONE-PROJECTS"
   },
   {
-   "id": "FACTEUR-48165818",
-   "title": "Emergency Response - Support Grants",
-   "status": "open",
-   "deadline": "2027-12-31",
-   "programme": "DIGITAL",
-   "kind": "cascade",
-   "budget": 450000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48165818"
-  },
-  {
    "id": "BIRDS in BG - 2-46357639",
    "title": "ReAction – Rapid Response Grants",
    "status": "open",
@@ -2066,6 +2056,16 @@
    "kind": "cascade",
    "budget": 300000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46357639"
+  },
+  {
+   "id": "FACTEUR-48165818",
+   "title": "EFCSN Permanent Call for Protection Grants",
+   "status": "open",
+   "deadline": "2028-05-31",
+   "programme": "DIGITAL",
+   "kind": "cascade",
+   "budget": 340169,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48165818"
   },
   {
    "id": "PPPA-SPORT-2026-EMERGENCY-YOUTH",
@@ -2166,16 +2166,6 @@
    "kind": "topic",
    "budget": 14000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-08"
-  },
-  {
-   "id": "InnovativeSMEs-44087099",
-   "title": "European Partnership on Innovative SMEs/Eurostars: joint transnational call for proposals (CALL 12 of Eurostars-3)",
-   "status": "forthcoming",
-   "deadline": "2027-03-04",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 86439583,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44087099"
   },
   {
    "id": "HORIZON-WIDERA-2027-05-ERA-05",
@@ -4590,15 +4580,15 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 70,
-   "open": 70
+   "count": 69,
+   "open": 69
   },
   {
    "slug": "cascade-funding",
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 57,
+   "count": 56,
    "open": 55
   },
   {
@@ -4678,8 +4668,8 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 56,
-   "open": 52
+   "count": 55,
+   "open": 51
   },
   {
    "slug": "international-cooperation",
