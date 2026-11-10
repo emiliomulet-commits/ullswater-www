@@ -268,7 +268,7 @@ ORG = {"@context": "https://schema.org", "@type": "ProfessionalService", "@id": 
        "knowsLanguage": ["en", "es"],
        "knowsAbout": ["EU funding", "Horizon Europe", "European Innovation Council (EIC)", "Digital Europe Programme", "European Defence Fund", "InvestEU", "European Investment Bank (EIB) loans",
                       "European Investment Fund (EIF)", "CDTI", "ENISA", "Red.es", "ITEA / Eureka", "EU grant proposal writing", "Consortium building", "Data spaces", "Gaia-X", "Artificial intelligence"],
-       "sameAs": [LINKEDIN, YOUTUBE, C.CALLS + "/", C.NEWS + "/", C.EVENTS + "/"]}
+       "sameAs": ["https://www.wikidata.org/wiki/Q142106306", LINKEDIN, YOUTUBE, C.CALLS + "/", C.NEWS + "/", C.EVENTS + "/"]}
 WEBSITE = {"@context": "https://schema.org", "@type": "WebSite", "@id": BASE + "/#website", "url": BASE + "/", "name": "Ullswater Investments · EU Funding Advisors",
            "inLanguage": ["en", "es"], "publisher": {"@id": BASE + "/#org"}}
 
