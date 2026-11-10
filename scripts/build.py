@@ -250,13 +250,45 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.qu
 document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){var g=b.dataset.g,n=0;document.querySelectorAll('.chips button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.pj-row').forEach(function(r){var on=g==='all'||r.dataset.g===g;r.hidden=!on;if(on)n++});var c=document.getElementById('pj-count');var es=document.documentElement.lang==='es';if(c)c.textContent=n+(es?(n===1?' proyecto':' proyectos'):(n===1?' project':' projects'))})});
 document.addEventListener('click',function(e){document.querySelectorAll('.dd.open').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})});})();"""
 
+LINKEDIN = "https://www.linkedin.com/company/ullswater-investments"
+YOUTUBE = "https://www.youtube.com/@ullswaterinvestments"
 ORG = {"@context": "https://schema.org", "@type": "ProfessionalService", "@id": BASE + "/#org", "name": "Ullswater Investments",
+       "alternateName": ["Ullswater Investments · EU Funding Advisors", "Ullswater Investments S.L.", "Ullswater EU Funding"],
        "legalName": "Ullswater Investments S.L.", "url": BASE + "/", "email": C.EMAIL, "taxID": "B10740942",
-       "logo": BASE + "/assets/logo.svg", "description": "European funding advisory firm with offices in Madrid and Brussels: Horizon Europe, EIC, Digital Europe, InvestEU and EIF, CDTI, ENISA and Red.es.",
+       "logo": {"@type": "ImageObject", "@id": BASE + "/#logo", "url": BASE + "/assets/logo.png", "contentUrl": BASE + "/assets/logo.png", "width": 1200, "height": 159, "caption": "Ullswater Investments"},
+       "image": BASE + "/assets/og.png",
+       "slogan": "EU funding advisors: grants, loans and equity for European innovation",
+       "description": "European funding advisory firm with offices in Madrid and Brussels: Horizon Europe, EIC, Digital Europe, InvestEU and EIF, CDTI, ENISA and Red.es. Specialists in data spaces, AI and consortium building.",
        "address": {"@type": "PostalAddress", "streetAddress": "Calle Ramírez de Arellano 17", "postalCode": "28043", "addressLocality": "Madrid", "addressCountry": "ES"},
        "location": [{"@type": "Place", "name": f"Ullswater Investments {o['city']}", "address": {"@type": "PostalAddress", "streetAddress": o["street"], "postalCode": o["postcode"], "addressLocality": o["locality"], "addressCountry": o["cc"]}, "hasMap": o["map"]} for o in C.OFFICES],
-       "founder": {"@type": "Person", "name": "Emilio Mulet", "jobTitle": "Managing Partner"}, "areaServed": "Europe", "knowsLanguage": ["en", "es"],
-       "sameAs": [C.CALLS + "/", C.NEWS + "/", C.EVENTS + "/"]}
+       "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "email": C.EMAIL, "availableLanguage": ["English", "Spanish"], "areaServed": "EU"},
+       "founder": {"@type": "Person", "@id": BASE + "/about/#emilio-mulet", "name": "Emilio Mulet", "jobTitle": "Managing Partner", "worksFor": {"@id": BASE + "/#org"}},
+       "areaServed": [{"@type": "Place", "name": "European Union"}, {"@type": "Country", "name": "Spain"}, {"@type": "Country", "name": "Belgium"}],
+       "knowsLanguage": ["en", "es"],
+       "knowsAbout": ["EU funding", "Horizon Europe", "European Innovation Council (EIC)", "Digital Europe Programme", "European Defence Fund", "InvestEU", "European Investment Bank (EIB) loans",
+                      "European Investment Fund (EIF)", "CDTI", "ENISA", "Red.es", "ITEA / Eureka", "EU grant proposal writing", "Consortium building", "Data spaces", "Gaia-X", "Artificial intelligence"],
+       "sameAs": [LINKEDIN, YOUTUBE, C.CALLS + "/", C.NEWS + "/", C.EVENTS + "/"]}
+WEBSITE = {"@context": "https://schema.org", "@type": "WebSite", "@id": BASE + "/#website", "url": BASE + "/", "name": "Ullswater Investments · EU Funding Advisors",
+           "inLanguage": ["en", "es"], "publisher": {"@id": BASE + "/#org"}}
+
+
+def breadcrumb_ld(path, title):
+    """BreadcrumbList for every inner page: Home › (section) › page."""
+    if path in ("/", "/404.html"):
+        return None
+    name = re.split(r" [|·] Ullswater", title)[0].strip()
+    items = [("Home", BASE + "/")]
+    parts = [x for x in path.strip("/").split("/") if x]
+    if len(parts) > 1 and parts[0] in ("guides", "news"):
+        items.append(({"guides": "EU funding guides", "news": "News archive"}[parts[0]], f"{BASE}/{parts[0]}/" if parts[0] == "guides" else f"{BASE}/news/archive/"))
+    items.append((name, BASE + path))
+    seen, out = set(), []
+    for n, u in items:
+        if u not in seen:
+            seen.add(u)
+            out.append((n, u))
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList",
+            "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(out)]}
 
 
 def header(themes, current):
@@ -367,7 +399,7 @@ FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 <div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
 <div><h4>Projects</h4>{"".join(f'<a href="{project_url(p)}">{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
 <div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a></div>
-<div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a></div>
+<div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a><a href="{LINKEDIN}" target="_blank" rel="noopener me">LinkedIn ↗</a><a href="{YOUTUBE}" target="_blank" rel="noopener me">YouTube ↗</a></div>
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
 
 
@@ -377,12 +409,15 @@ def page(path, title, desc, body, themes, current="", jsonld=None, bilingual=Tru
            if bilingual else "")
     switch = (f'<nav class="lang" aria-label="Language"><a href="{path}" hreflang="en" lang="en" data-lang="en" aria-current="true">EN</a>'
               f'<a href="/es{path}" hreflang="es" lang="es" data-lang="es">ES</a></nav>' if bilingual else "")
-    lds = [ORG] + (jsonld if isinstance(jsonld, list) else [jsonld] if jsonld else [])
+    lds = [ORG] + ([WEBSITE] if path == "/" else []) + (jsonld if isinstance(jsonld, list) else [jsonld] if jsonld else [])
+    bc = breadcrumb_ld(path, title)
+    if bc and not any(isinstance(x, dict) and x.get("@type") == "BreadcrumbList" for x in lds):
+        lds.append(bc)
     robots = '<meta name="robots" content="noindex,nofollow">' if STAGING else '<meta name="robots" content="index,follow,max-image-preview:large">'
     banner = '<div class="staging">Review copy of the new www.ullswaterinvestments.com, not yet live.</div>' if STAGING else ""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{escape(title)}</title><meta name="description" content="{escape(desc)}">{'' if path == '/404.html' else f'<link rel="canonical" href="{canon}">'}{alt}{robots}
-<meta property="og:type" content="website"><meta property="og:site_name" content="Ullswater Investments · EU Funding Advisors"><meta property="og:title" content="{escape(title)}"><meta property="og:description" content="{escape(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ullswater Investments · EU Funding Advisors"><meta property="og:title" content="{escape(title)}"><meta property="og:description" content="{escape(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="en_GB"><meta property="og:image" content="{BASE}/assets/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ullswater Investments · EU Funding Advisors"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{BASE}/assets/og.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="EU Funding News" href="{C.NEWS}/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v={VER}"><script type="application/ld+json">{json.dumps(lds if len(lds) > 1 else ORG, ensure_ascii=False)}</script></head><body>
@@ -599,6 +634,30 @@ def redirect_stub(target):
 <body><p>This page has moved to <a href="{escape(target)}">{escape(target)}</a>.</p></body></html>"""
 
 
+def es_breadcrumbs(h):
+    """Point the BreadcrumbList of a Spanish page to the /es/ URLs, with Spanish names."""
+    m = re.search(r'<script type="application/ld\+json">(.*?)</script>', h, re.S)
+    tm = re.search(r"<title>(.*?)</title>", h, re.S)
+    if not m or not tm:
+        return h
+    try:
+        lds = json.loads(m.group(1))
+    except ValueError:
+        return h
+    if not isinstance(lds, list):
+        return h
+    from html import unescape
+    es_title = re.split(r" [|·] Ullswater", unescape(tm.group(1)))[0].strip()
+    names = {"Home": "Inicio", "EU funding guides": "Guías de financiación UE", "News archive": "Archivo de noticias"}
+    for x in lds:
+        if x.get("@type") == "BreadcrumbList":
+            items = x["itemListElement"]
+            for i, it in enumerate(items):
+                it["item"] = it["item"].replace(BASE + "/", BASE + "/es/", 1) if not it["item"].startswith(BASE + "/es/") else it["item"]
+                it["name"] = es_title if i == len(items) - 1 else names.get(it["name"], it["name"])
+    return h[:m.start(1)] + json.dumps(lds, ensure_ascii=False) + h[m.end(1):]
+
+
 def build_es(pages):
     """Write the Spanish twin of every page under /es/. New texts are translated with the API when a key is available."""
     t = i18n.Translator()
@@ -607,12 +666,43 @@ def build_es(pages):
     if t.missing and i18n.translate_missing(t):
         t.missing = {}
         out = {p: i18n.to_es(h, p, es_paths, t) for p, h in pages.items()}
+    out = {p: es_breadcrumbs(h) for p, h in out.items()}
     for p, h in out.items():
         d = SITE / "es" / p.strip("/")
         d.mkdir(parents=True, exist_ok=True)
         (d / "index.html").write_text(h, encoding="utf-8")
     (ROOT / "content" / "i18n_es_missing.json").write_text(json.dumps(sorted(t.missing), ensure_ascii=False, indent=0), encoding="utf-8")
     return len(out), len(t.missing)
+
+
+def write_llms_full(pages):
+    """llms-full.txt: the readable English text of every page, so AI assistants can read the whole site in one request."""
+    from bs4 import BeautifulSoup
+    order = ["/", "/eu-fund-matching/", "/investment-readiness/", "/strategic-positioning/", "/projects/", "/about/", "/courses/"]
+    paths = order + sorted(p for p in pages if p not in order and p not in ("/privacy/", "/legal/"))
+    out = [f"# Ullswater Investments · EU Funding Advisors: full text of {BASE}\n",
+           f"> Generated on {date.today().isoformat()}. Spanish versions of every page are under {BASE}/es/. Live EU calls: {C.CALLS}/ · News: {C.NEWS}/ · Events: {C.EVENTS}/\n"]
+    for p in paths:
+        if p not in pages:
+            continue
+        soup = BeautifulSoup(pages[p], "html.parser")
+        main_ = soup.find("main")
+        if not main_:
+            continue
+        for x in main_.select("script,style,nav,form,.chips"):
+            x.decompose()
+        title = soup.title.get_text(strip=True) if soup.title else p
+        lines, last = [], None
+        for el in main_.find_all(["h1", "h2", "h3", "p", "li", "dt", "dd", "td", "blockquote"]):
+            if el.find(["p", "li", "h2", "h3"]):
+                continue
+            t = " ".join(el.get_text(" ", strip=True).split())
+            if not t or t == last:
+                continue
+            last = t
+            lines.append(("## " if el.name == "h1" else "### " if el.name in ("h2", "h3") else "- " if el.name in ("li", "dt", "dd", "td") else "") + t)
+        out.append(f"\n---\n\n# {title}\nURL: {BASE}{p}\n\n" + "\n".join(lines) + "\n")
+    (SITE / "llms-full.txt").write_text("\n".join(out), encoding="utf-8")
 
 
 def main():
@@ -628,6 +718,8 @@ def main():
     (SITE / "assets" / "site.css").write_text(CSS, encoding="utf-8")
     (SITE / "assets" / "site.js").write_text(JS, encoding="utf-8")
     shutil.copy(ROOT / "content" / "logo.svg", SITE / "assets" / "logo.svg")
+    shutil.copy(ROOT / "content" / "logo.png", SITE / "assets" / "logo.png")
+    shutil.copy(ROOT / "content" / "og.png", SITE / "assets" / "og.png")
     shutil.copytree(ROOT / "content" / "img", SITE / "assets" / "img")
     (SITE / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#233567"/><text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" text-anchor="middle" fill="#c9a646">U</text></svg>', encoding="utf-8")
     pages = {"/": home(live, themes), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
@@ -685,6 +777,9 @@ def main():
 ## Guides (data-driven, updated daily)
 - [EU funding guides index]({BASE}/guides/): Horizon Europe clusters 1–6, EU Missions, EIC, MSCA/ERC, Digital Europe, European Defence Fund, cascade funding
 
+## Full text
+- [llms-full.txt]({BASE}/llms-full.txt): the full English text of every page of this site in one file
+
 ## Spanish version
 - Every page is also available in Spanish under {BASE}/es/ (e.g. [Proyectos europeos]({BASE}/es/projects/)), linked with hreflang.
 
@@ -693,6 +788,7 @@ def main():
 - [EU Funding News]({C.NEWS}/) · [RSS]({C.NEWS}/feed.xml)
 - [EU Funding Events]({C.EVENTS}/)
 """, encoding="utf-8")
+    write_llms_full(pages)
     (SITE / "CNAME").write_text("new.ullswaterinvestments.com\n" if STAGING else "www.ullswaterinvestments.com\n", encoding="utf-8")
     (SITE / ".nojekyll").write_text("", encoding="utf-8")
     key = (ROOT / "content" / "indexnow_key.txt").read_text().strip()
