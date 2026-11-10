@@ -41,3 +41,6 @@ Local build: `pip install beautifulsoup4 && python3 scripts/build.py` → `site/
 - `/sitemap-index.xml` lists every sitemap of the network: www, `/sitemap-projects.xml` (project landings on their own subdomains), calls, news (+ Google News) and events. Submit it once in Search Console (domain property).
 - Main menu order matches the network menu of calls, news and events: EU calls · News · Events · Projects (+ Services, Courses here) · About.
 - Calls pages exist only on calls.ullswaterinvestments.com; shared taxonomy in its `/data/taxonomy.json`.
+
+## External links open in a new tab (Nov 2026)
+`scripts/extlinks.py` runs at the end of every build (English and Spanish pages): links outside the Ullswater network get `target="_blank" rel="noopener noreferrer"`, a small ↗ icon (unless the text already has one) and a hidden "(opens in a new tab)" / "(se abre en una pestaña nueva)" label. Links between our own sites (`*.ullswaterinvestments.com`) stay in the same tab. Check with `python3 scripts/extlinks.py site --check`.

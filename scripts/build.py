@@ -701,6 +701,7 @@ def main():
         f.write("source,target,status\n")
         for old, new in sorted(redirects.items()):
             f.write(f"www.ullswaterinvestments.com{old},{new if new.startswith('http') else BASE + new},301\n")
+    import extlinks; extlinks.run(SITE)  # external links open in a new tab (shared rule, see scripts/extlinks.py)
     print(f"Built {len(pages)} pages + {es_count} Spanish pages ({missing} texts still in English) and {len(redirects)} redirects (staging={STAGING})")
 
 
