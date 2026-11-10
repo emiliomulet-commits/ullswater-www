@@ -1,28 +1,14 @@
 {
  "stats": {
-  "updated": "2026-11-09T22:38:40+00:00",
-  "open": 200,
-  "forthcoming": 249,
-  "total": 449,
-  "closingIn30Days": 58,
-  "programmes": 22,
+  "updated": "2026-11-10T13:25:42+00:00",
+  "open": 199,
+  "forthcoming": 251,
+  "total": 450,
+  "closingIn30Days": 55,
+  "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
  "soon": [
-  {
-   "id": "EDF-EDIP-USI-2026-LS-IRA-MAB",
-   "title": "Missiles, ammunition and bombs",
-   "deadline": "2026-11-10",
-   "programme": "EDF",
-   "budget": 180000000
-  },
-  {
-   "id": "Biodiversa-plus-43966258",
-   "title": "Novel ecosystems: biodiversity, socio-ecological consequences and future trajectories",
-   "deadline": "2026-11-10",
-   "programme": "HORIZON",
-   "budget": 40000000
-  },
   {
    "id": "Water4All-44093037",
    "title": "Water4All 2026 Joint Transnational Call “Sustainable water management”",
@@ -36,13 +22,6 @@
    "deadline": "2026-11-10",
    "programme": "I3",
    "budget": 2520000
-  },
-  {
-   "id": "Culture Helps S-47365875",
-   "title": "Culture Helps Solidarity - Second call for proposals for collaboration grants",
-   "deadline": "2026-11-10",
-   "programme": "CREA",
-   "budget": 450000
   },
   {
    "id": "SOCPL-2026-INFO-REPR",
@@ -64,29 +43,30 @@
    "deadline": "2026-11-12",
    "programme": "I3",
    "budget": 30200000
+  },
+  {
+   "id": "EDF-EDIP-P-2026-2027-FNLC-SA-SEAP",
+   "title": "Support for the functioning of SEAPs, including  for the purpose of establishing, managing and maintaining defence industrial readiness pools",
+   "deadline": "2026-11-12",
+   "programme": "EDF",
+   "budget": 10000000
+  },
+  {
+   "id": "POLICY ENLARGE-48351428",
+   "title": "R&I Policy Support for Enlargement Countries",
+   "deadline": "2026-11-12",
+   "programme": "HORIZON",
+   "budget": 300000
+  },
+  {
+   "id": "AENAON-47039365",
+   "title": "AENAON Open Call 1",
+   "deadline": "2026-11-13",
+   "programme": "DIGITAL",
+   "budget": 2100000
   }
  ],
  "calls": [
-  {
-   "id": "EDF-EDIP-USI-2026-LS-IRA-MAB",
-   "title": "Missiles, ammunition and bombs",
-   "status": "open",
-   "deadline": "2026-11-10",
-   "programme": "EDF",
-   "kind": "topic",
-   "budget": 180000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EDF-EDIP-USI-2026-LS-IRA-MAB"
-  },
-  {
-   "id": "Biodiversa-plus-43966258",
-   "title": "Novel ecosystems: biodiversity, socio-ecological consequences and future trajectories",
-   "status": "open",
-   "deadline": "2026-11-10",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 40000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/43966258"
-  },
   {
    "id": "Water4All-44093037",
    "title": "Water4All 2026 Joint Transnational Call “Sustainable water management”",
@@ -106,16 +86,6 @@
    "kind": "cascade",
    "budget": 2520000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46830380"
-  },
-  {
-   "id": "Culture Helps S-47365875",
-   "title": "Culture Helps Solidarity - Second call for proposals for collaboration grants",
-   "status": "open",
-   "deadline": "2026-11-10",
-   "programme": "CREA",
-   "kind": "cascade",
-   "budget": 450000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47365875"
   },
   {
    "id": "SOCPL-2026-INFO-REPR",
@@ -568,16 +538,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/CREA-MEDIA-2027-DEVSLATE"
   },
   {
-   "id": "InnovativeSMEs-44087099",
-   "title": "European Partnership on Innovative SMEs/Innowwide CALL 5",
-   "status": "open",
-   "deadline": "2026-12-01",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 4200000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44087099"
-  },
-  {
    "id": "Nostradamus-45657640",
    "title": "NOSTRADAMUS - Open Call #1: Funding Digital Applications for Sustainable and Efficient Agriculture",
    "status": "open",
@@ -728,6 +688,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45656490"
   },
   {
+   "id": "EITFood BP26-28-48939719",
+   "title": "Seedbed Venture Catalyst Call for Startups",
+   "status": "open",
+   "deadline": "2026-12-16",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 480000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48939719"
+  },
+  {
    "id": "LIFE25-CET-LIFE EUCF 3.0-48256791",
    "title": "European City Facility – Eighth Call for Applications: Support local authorities in developing investment concepts for sustainable energy",
    "status": "open",
@@ -788,14 +758,24 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIE-2027-02-CONNECT-01"
   },
   {
-   "id": "EITFood BP26-28-48939719",
-   "title": "Open Call for Implementing Participants of the Empowering Women in Agrifood (EWA) Programme 2027-2028",
+   "id": "PPPA-SPORT-2026-EMERGENCY-YOUTH",
+   "title": "Sport Supports - emergency sport actions for youth",
    "status": "open",
-   "deadline": "2027-01-05",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 1556000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48939719"
+   "deadline": "2027-01-07",
+   "programme": "PPPA",
+   "kind": "topic",
+   "budget": 1920000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/PPPA-SPORT-2026-EMERGENCY-YOUTH"
+  },
+  {
+   "id": "ED-2026-CZECHIA-FPA",
+   "title": "Selection of partners to carry out EUROPE DIRECT activities in CZECHIA (2027-2030)",
+   "status": "open",
+   "deadline": "2027-01-07",
+   "programme": "ED",
+   "kind": "topic",
+   "budget": 444000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ED-2026-CZECHIA-FPA"
   },
   {
    "id": "StandICT.eu 2029-46950864",
@@ -1958,6 +1938,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/DIGITAL-ECCC-2027-DEPLOY-CYBER-12-CBCH"
   },
   {
+   "id": "Biodiversa-plus-43966258",
+   "title": "Novel ecosystems: biodiversity, socio-ecological consequences and future trajectories",
+   "status": "open",
+   "deadline": "2027-04-16",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 40000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/43966258"
+  },
+  {
    "id": "CREA-CROSS-2027-INNOVLAB",
    "title": "Creative Innovation Lab",
    "status": "open",
@@ -2068,16 +2058,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48165818"
   },
   {
-   "id": "PPPA-SPORT-2026-EMERGENCY-YOUTH",
-   "title": "Sport Supports - emergency sport actions for youth",
-   "status": "forthcoming",
-   "deadline": "2027-01-07",
-   "programme": "PPPA",
-   "kind": "topic",
-   "budget": 1920000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/PPPA-SPORT-2026-EMERGENCY-YOUTH"
-  },
-  {
    "id": "O-CEI-45703720",
    "title": "O-CEI 2nd OPEN CALL FOR UPTAKE PROJECTS",
    "status": "forthcoming",
@@ -2166,6 +2146,16 @@
    "kind": "topic",
    "budget": 14000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-08"
+  },
+  {
+   "id": "InnovativeSMEs-44087099",
+   "title": "European Partnership on Innovative SMEs/Eurostars: joint transnational call for proposals (CALL 12 of Eurostars-3)",
+   "status": "forthcoming",
+   "deadline": "2027-03-04",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 86439583,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44087099"
   },
   {
    "id": "HORIZON-WIDERA-2027-05-ERA-05",
@@ -2826,6 +2816,16 @@
    "kind": "topic",
    "budget": 3000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL6-2027-03-GOVERNANCE-03"
+  },
+  {
+   "id": "HORIZON-EIC-2027-DEFENCE-01",
+   "title": "EIC STEP Defence",
+   "status": "forthcoming",
+   "deadline": "2027-06-01",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 100000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2027-DEFENCE-01"
   },
   {
    "id": "HORIZON-MSCA-2027-CITIZENS-01-01",
@@ -4348,6 +4348,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2027-DN-01-01"
   },
   {
+   "id": "HORIZON-EIC-2027-STEP",
+   "title": "EIC STEP Scale Up",
+   "status": "forthcoming",
+   "deadline": "2027-11-24",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 290000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2027-STEP"
+  },
+  {
    "id": "HORIZON-CL5-2027-07-D3-11",
    "title": "Demonstration of hydropower technologies for efficient and forward-looking refurbishment of existing hydropower plants",
    "status": "forthcoming",
@@ -4572,7 +4582,7 @@
    "title": "European Innovation Council (EIC) calls",
    "short": "EIC",
    "old": "/calls/eic-pre-accelerator",
-   "count": 4,
+   "count": 6,
    "open": 4
   },
   {
@@ -4580,16 +4590,16 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 69,
-   "open": 69
+   "count": 66,
+   "open": 66
   },
   {
    "slug": "cascade-funding",
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 56,
-   "open": 55
+   "count": 55,
+   "open": 53
   },
   {
    "slug": "health",
@@ -4660,8 +4670,8 @@
    "title": "Digital Europe and European Defence Fund calls",
    "short": "Digital Europe & Defence",
    "old": "/calls/digital-europe-defence",
-   "count": 31,
-   "open": 31
+   "count": 30,
+   "open": 30
   },
   {
    "slug": "other-eu-programmes",
@@ -4669,7 +4679,7 @@
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
    "count": 55,
-   "open": 51
+   "open": 52
   },
   {
    "slug": "international-cooperation",
