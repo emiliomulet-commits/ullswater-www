@@ -305,10 +305,10 @@ PROJECTS = [
      "contribution": "Funding strategy and project portal, with Accuro Technology as Spanish national coordinator.",
      "facts": [("3", "use cases: Finland, Spain, Türkiye"), ("5", "core innovations"), ("2028–30", "planned period")]},
     {"slug": "drmbank", "acronym": "DR-MBANK", "title": "Disaster Resilient Mobile Bank Branch",
-     "programme": "Eureka · CDTI INNOGLOBAL 2025", "challenge": "FinTech · Resilience", "status": "funded", "group": "advisor", "live": True,
+     "programme": "Eureka · Türkiye–Spain", "challenge": "FinTech · Resilience", "status": "funded", "group": "advisor", "live": True,
      "role": "Funding advisor · project portal",
      "pitch": "A modular, offline-first mobile bank branch with a multilingual voice and vision AI agent, for disaster-affected and underserved areas.",
-     "contribution": "Funding strategy for the Eureka (Türkiye–Spain) and CDTI INNOGLOBAL lines, and project portal.",
+     "contribution": "Funding strategy for the Eureka (Türkiye–Spain) international line and the Spanish national line, and project portal.",
      "facts": [("2", "countries: Türkiye, Spain"), ("2", "funding lines"), ("5", "core innovations")]},
 ]
 PROJECT_GROUPS = [("all", "All projects"), ("lead", "Leading & coordinating"), ("partner", "Partner"), ("advisor", "Funding advisor")]
