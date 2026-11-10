@@ -311,7 +311,7 @@ def projects_band():
               '<p>All these projects except DR-MBANK are still in preparation. Tell us what your organisation brings and we will work with you, hand in hand, to bring you into the consortium.</p></div>'
               '<span class="go">Talk to us about joining →</span></a>')
     return f"""<section class="pj" id="projects" aria-labelledby="pj-h"><div class="wrap">
-<div class="pj-head"><div><p class="kicker" style="color:var(--gold2)">European R&amp;D projects · ITEA · Eureka · CDTI</p><h2 id="pj-h">Our participation in European projects</h2>
+<div class="pj-head"><div><p class="kicker" style="color:var(--gold2)">European R&amp;D projects · ITEA · Eureka</p><h2 id="pj-h">Our participation in European projects</h2>
 <p class="sub">{escape(C.PROJECTS_INTRO)}</p></div><ul class="pj-stats">{stats}</ul></div>
 <article class="pj-feat"><div class="main"><span class="role">{escape(f["role"])}</span> {status_tag(f)}<span class="prog">{escape(f["programme"])}</span>
 <h3>{escape(f["acronym"])}<span>{escape(f["title"])}</span></h3><p>{escape(f["pitch"])}</p>
@@ -319,7 +319,7 @@ def projects_band():
 <div class="actions" style="margin-top:6px">{feat_btn}<a class="btn ghost" href="/projects/">All our projects</a></div></div>
 <ul class="side">{side}</ul></article>
 <div class="grid g3">{cards}</div>
-<p class="pj-note">Programmes: ITEA 4 (Eureka Cluster on software innovation), Eureka bilateral calls and CDTI. {escape(C.PROJECTS_OPEN_NOTE)}</p>
+<p class="pj-note">Programmes: ITEA 4 (Eureka Cluster on software innovation) and Eureka bilateral calls. {escape(C.PROJECTS_OPEN_NOTE)}</p>
 </div></section>"""
 
 
@@ -347,7 +347,7 @@ def projects_page(themes):
                  f'<div class="c"><div><b>Our role</b><div class="r">{escape(p["role"])}</div><p>{escape(p["contribution"])}</p></div>{btn}</div></article>')
     n = len(C.PROJECTS)
     st = "".join(f"<li><strong>{a}</strong>{escape(b)}</li>" for a, b in C.PROJECTS_STATS)
-    body = hero("European R&amp;D projects · ITEA · Eureka · CDTI", "Our participation in European projects",
+    body = hero("European R&amp;D projects · ITEA · Eureka", "Our participation in European projects",
                 "From project leader to funding advisor: the European R&amp;D consortia that Ullswater Investments and its technology company, Software in a Box, are preparing today. Their consortia are still open to new partners, except DR-MBANK, which is already in execution.",
                 crumbs("Projects"), extra=f'<ul class="stats">{st}</ul>') + f"""
 <section class="band alt" style="padding:52px 0"><div class="wrap"><h2 style="font-size:24px">How we take part</h2><div class="grid g3">{ways}</div></div></section>
@@ -357,7 +357,7 @@ def projects_page(themes):
 <p class="pj-note">Updated {fmt(date.today().isoformat())} · Source: draft proposals and consortium documents. {escape(C.PROJECTS_OPEN_NOTE)} Content does not necessarily reflect the views of the funding bodies.</p></div></section>
 {cta("Want to join one of these consortia?", "These projects are still in preparation and open to new partners (except DR-MBANK). Tell us what you bring and we will work with you to bring you in.", "Schedule a meeting")}"""
     return page("/projects/", "Our participation in European projects | Ullswater Investments",
-                "European R&D projects where Ullswater Investments takes part as project leader, national coordinator, partner or funding advisor: ITEA, Eureka and CDTI.",
+                "European R&D projects where Ullswater Investments takes part as project leader, national coordinator, partner or funding advisor: ITEA and Eureka.",
                 body, themes, "projects", projects_ld())
 
 
