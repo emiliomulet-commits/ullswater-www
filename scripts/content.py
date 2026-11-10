@@ -199,7 +199,9 @@ ABOUT_SECTIONS = [
 FACTS = [
     ("Legal name", "Ullswater Investments S.L."),
     ("Tax ID (CIF)", "B10740942"),
-    ("Headquarters", "Calle Ramírez de Arellano 17, 28043 Madrid, Spain"),
+    ("Founded", "27 May 2022 (Registro Mercantil de Madrid)"),
+    ("Registered office", "Calle Costa Brava 15, 2º C, 28034 Madrid, Spain"),
+    ("Madrid office", "Calle Ramírez de Arellano 17, 28043 Madrid, Spain"),
     ("Brussels office", "Square de Meeûs 37, 1000 Brussels, Belgium (European Quarter)"),
     ("Managing Partner", "Emilio Mulet"),
     ("Programmes", "Horizon Europe, EIC (Pathfinder, Transition, Accelerator), Digital Europe, InvestEU and EIF, LIFE, Innovation Fund, CDTI, ENISA, Red.es"),

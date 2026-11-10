@@ -254,7 +254,7 @@ LINKEDIN = "https://www.linkedin.com/company/ullswater-investments"
 YOUTUBE = "https://www.youtube.com/@ullswaterinvestments"
 ORG = {"@context": "https://schema.org", "@type": "ProfessionalService", "@id": BASE + "/#org", "name": "Ullswater Investments",
        "alternateName": ["Ullswater Investments · EU Funding Advisors", "Ullswater Investments S.L.", "Ullswater EU Funding"],
-       "legalName": "Ullswater Investments S.L.", "url": BASE + "/", "email": C.EMAIL, "taxID": "B10740942",
+       "legalName": "Ullswater Investments S.L.", "url": BASE + "/", "email": C.EMAIL, "taxID": "B10740942", "foundingDate": "2022-05-27",
        "logo": {"@type": "ImageObject", "@id": BASE + "/#logo", "url": BASE + "/assets/logo.png", "contentUrl": BASE + "/assets/logo.png", "width": 1200, "height": 159, "caption": "Ullswater Investments"},
        "image": BASE + "/assets/og.png",
        "slogan": "EU funding advisors: grants, loans and equity for European innovation",
@@ -622,7 +622,7 @@ def privacy(themes):
 
 def legal(themes):
     body = hero("Legal", "Legal notice", "Information required by Spanish Law 34/2002 on information society services (LSSI).", crumbs("Legal notice")) + f"""
-<section class="band"><div class="wrap narrow"><dl class="facts"><dt>Owner</dt><dd>Ullswater Investments S.L.</dd><dt>CIF</dt><dd>B10740942</dd><dt>Registered office</dt><dd>Calle Ramírez de Arellano 17, 28043 Madrid, Spain</dd><dt>Brussels office</dt><dd>Square de Meeûs 37, 1000 Brussels, Belgium</dd>
+<section class="band"><div class="wrap narrow"><dl class="facts"><dt>Owner</dt><dd>Ullswater Investments S.L.</dd><dt>CIF</dt><dd>B10740942</dd><dt>Registered office</dt><dd>Calle Costa Brava 15, 2º C, 28034 Madrid, Spain</dd><dt>Madrid office</dt><dd>Calle Ramírez de Arellano 17, 28043 Madrid, Spain</dd><dt>Commercial register</dt><dd>Registro Mercantil de Madrid · incorporated on 27 May 2022</dd><dt>Brussels office</dt><dd>Square de Meeûs 37, 1000 Brussels, Belgium</dd>
 <dt>Email</dt><dd><a href="mailto:{C.EMAIL}">{C.EMAIL}</a></dd></dl>
 <div class="prose" style="margin-top:28px"><p>Information on EU calls, news and events is compiled from official sources and is provided for guidance only. Always check the official call documents before applying.
 Links to third-party websites are provided for convenience; we are not responsible for their content.</p></div></div></section>"""
