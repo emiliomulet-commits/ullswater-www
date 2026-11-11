@@ -1,9 +1,9 @@
 {
  "stats": {
-  "updated": "2026-11-10T19:57:10+00:00",
-  "open": 200,
-  "forthcoming": 250,
-  "total": 450,
+  "updated": "2026-11-11T12:40:50+00:00",
+  "open": 201,
+  "forthcoming": 251,
+  "total": 452,
   "closingIn30Days": 54,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
@@ -696,6 +696,16 @@
    "kind": "cascade",
    "budget": 3720000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48256791"
+  },
+  {
+   "id": "Cultural Horizons-47365875",
+   "title": "Cultural Horizons: Artistic Mobility",
+   "status": "open",
+   "deadline": "2026-12-28",
+   "programme": "CREA",
+   "kind": "cascade",
+   "budget": 220000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47365875"
   },
   {
    "id": "EUROfusion-43549596",
@@ -2076,6 +2086,16 @@
    "kind": "cascade",
    "budget": 1600000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45703720"
+  },
+  {
+   "id": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
+   "title": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
+   "status": "forthcoming",
+   "deadline": "2027-02-25",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 166000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2027-PATHFINDEROPEN-two-stage"
   },
   {
    "id": "HORIZON-BRIDGING-2027-05-01",
@@ -4582,7 +4602,7 @@
    "title": "European Innovation Council (EIC) calls",
    "short": "EIC",
    "old": "/calls/eic-pre-accelerator",
-   "count": 7,
+   "count": 8,
    "open": 5
   },
   {
@@ -4590,16 +4610,16 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 65,
-   "open": 65
+   "count": 66,
+   "open": 66
   },
   {
    "slug": "cascade-funding",
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 54,
-   "open": 53
+   "count": 55,
+   "open": 54
   },
   {
    "slug": "health",
@@ -4678,8 +4698,8 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 54,
-   "open": 51
+   "count": 55,
+   "open": 52
   },
   {
    "slug": "international-cooperation",
@@ -4699,6 +4719,13 @@
    "date": "2026-11-09"
   },
   {
+   "title": "EIB alliance channels over €10 billion into European scale-ups",
+   "url": "https://news.ullswaterinvestments.com/2026/11/eib-tech-champions-alliance-10-billion-scale-ups/",
+   "summary": "Fifteen institutional investors and seven Member States join the EIB Group's European Tech Champions alliance, aiming to mobilise up to €80 billion.",
+   "category": "EIC, Defence & Equity",
+   "date": "2026-11-09"
+  },
+  {
    "title": "EU and India conclude talks on India joining Horizon Europe",
    "url": "https://news.ullswaterinvestments.com/2026/11/india-horizon-europe-association-concluded/",
    "summary": "Association is envisaged for January 2027. Indian organisations would then be able to receive funding directly and lead Pillar II collaborative projects.",
@@ -4709,13 +4736,6 @@
    "title": "EIC 2027 work programme opens over €1.8 billion for deep tech",
    "url": "https://news.ullswaterinvestments.com/2026/11/eic-2027-work-programme-1-8-billion/",
    "summary": "The Commission has adopted the EIC's 2027 plan: €578 million for the Accelerator, €248 million for Pathfinder and €100 million for a defence equity call.",
-   "category": "EIC, Defence & Equity",
-   "date": "2026-11-05"
-  },
-  {
-   "title": "EIC sets 19 November info day on its 2027 funding opportunities",
-   "url": "https://news.ullswaterinvestments.com/2026/11/eic-2027-funding-info-day/",
-   "summary": "The online session will present Work Programme 2027 scheme by scheme, from Pathfinder to STEP Defence. Registration closes on 18 November.",
    "category": "EIC, Defence & Equity",
    "date": "2026-11-05"
   }
