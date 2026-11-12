@@ -1,42 +1,14 @@
 {
  "stats": {
-  "updated": "2026-11-11T12:40:50+00:00",
-  "open": 201,
-  "forthcoming": 251,
+  "updated": "2026-11-12T13:42:36+00:00",
+  "open": 202,
+  "forthcoming": 250,
   "total": 452,
-  "closingIn30Days": 54,
+  "closingIn30Days": 50,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
  "soon": [
-  {
-   "id": "SOCPL-2026-INFO-REPR",
-   "title": "SOCPL-2026-INFO-REPR",
-   "deadline": "2026-11-12",
-   "programme": "SOCPL",
-   "budget": 2500000
-  },
-  {
-   "id": "I3-2026-INV1",
-   "title": "I3-2026-INV1 - Interregional Innovation Investments Strand 1",
-   "deadline": "2026-11-12",
-   "programme": "I3",
-   "budget": 28200000
-  },
-  {
-   "id": "I3-2026-INV2a",
-   "title": "I3-2026-INV2a - Interregional Innovation Investments Strand 2a",
-   "deadline": "2026-11-12",
-   "programme": "I3",
-   "budget": 30200000
-  },
-  {
-   "id": "EDF-EDIP-P-2026-2027-FNLC-SA-SEAP",
-   "title": "Support for the functioning of SEAPs, including  for the purpose of establishing, managing and maintaining defence industrial readiness pools",
-   "deadline": "2026-11-12",
-   "programme": "EDF",
-   "budget": 10000000
-  },
   {
    "id": "POLICY ENLARGE-48351428",
    "title": "R&I Policy Support for Enlargement Countries",
@@ -64,49 +36,37 @@
    "deadline": "2026-11-16",
    "programme": "EDF",
    "budget": 1200000
+  },
+  {
+   "id": "HORIZON-JU-EUROHPC-2026-TIPT-09-01",
+   "title": "Trapped-Ion Platform Technologies",
+   "deadline": "2026-11-17",
+   "programme": "HORIZON",
+   "budget": 20000000
+  },
+  {
+   "id": "HORIZON-JU-EUROHPC-2026-SPT-10-01",
+   "title": "Superconducting Platform Technologies",
+   "deadline": "2026-11-17",
+   "programme": "HORIZON",
+   "budget": 20000000
+  },
+  {
+   "id": "HORIZON-JU-EUROHPC-2026-QEXP-14-01",
+   "title": "Quantum Experimental Pilot Lines for Quantum Technologies",
+   "deadline": "2026-11-17",
+   "programme": "HORIZON",
+   "budget": 15000000
+  },
+  {
+   "id": "HORIZON-JU-EUROHPC-2026-QTI-13-01",
+   "title": "Quantum-Testing Infrastructure for Quantum Technologies",
+   "deadline": "2026-11-17",
+   "programme": "HORIZON",
+   "budget": 20000000
   }
  ],
  "calls": [
-  {
-   "id": "SOCPL-2026-INFO-REPR",
-   "title": "SOCPL-2026-INFO-REPR",
-   "status": "open",
-   "deadline": "2026-11-12",
-   "programme": "SOCPL",
-   "kind": "topic",
-   "budget": 2500000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/SOCPL-2026-INFO-REPR"
-  },
-  {
-   "id": "I3-2026-INV1",
-   "title": "I3-2026-INV1 - Interregional Innovation Investments Strand 1",
-   "status": "open",
-   "deadline": "2026-11-12",
-   "programme": "I3",
-   "kind": "topic",
-   "budget": 28200000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/I3-2026-INV1"
-  },
-  {
-   "id": "I3-2026-INV2a",
-   "title": "I3-2026-INV2a - Interregional Innovation Investments Strand 2a",
-   "status": "open",
-   "deadline": "2026-11-12",
-   "programme": "I3",
-   "kind": "topic",
-   "budget": 30200000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/I3-2026-INV2a"
-  },
-  {
-   "id": "EDF-EDIP-P-2026-2027-FNLC-SA-SEAP",
-   "title": "Support for the functioning of SEAPs, including  for the purpose of establishing, managing and maintaining defence industrial readiness pools",
-   "status": "open",
-   "deadline": "2026-11-12",
-   "programme": "EDF",
-   "kind": "topic",
-   "budget": 10000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EDF-EDIP-P-2026-2027-FNLC-SA-SEAP"
-  },
   {
    "id": "POLICY ENLARGE-48351428",
    "title": "R&I Policy Support for Enlargement Countries",
@@ -1028,6 +988,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/43971674"
   },
   {
+   "id": "O-CEI-45703720",
+   "title": "O-CEI 2nd OPEN CALL FOR UPTAKE PROJECTS",
+   "status": "open",
+   "deadline": "2027-01-14",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 1600000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45703720"
+  },
+  {
    "id": "Women TechEU 2 EIC-48106227",
    "title": "Women TechEU Open Call",
    "status": "open",
@@ -1036,6 +1006,16 @@
    "kind": "cascade",
    "budget": 12000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48106227"
+  },
+  {
+   "id": "NASCHA-46827222",
+   "title": "First Open Call",
+   "status": "open",
+   "deadline": "2027-01-18",
+   "programme": "I3",
+   "kind": "cascade",
+   "budget": 600000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
   },
   {
    "id": "EU4H-2027-SANTE-OG",
@@ -1518,6 +1498,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EDF-EDIP-USI-2027-LS-IRA-CUXS"
   },
   {
+   "id": "EDF-EDIP-P-2026-2027-FNLC-SA-SEAP",
+   "title": "Support for the functioning of SEAPs, including  for the purpose of establishing, managing and maintaining defence industrial readiness pools",
+   "status": "open",
+   "deadline": "2027-02-16",
+   "programme": "EDF",
+   "kind": "topic",
+   "budget": 10000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EDF-EDIP-P-2026-2027-FNLC-SA-SEAP"
+  },
+  {
    "id": "EDF-EDIP-P-2027-LS-IRA-KEC",
    "title": "Key electronic components",
    "status": "open",
@@ -1778,6 +1768,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2026-EUED"
   },
   {
+   "id": "EMFAF-2027-PIA-ScientificAdviceFisheries",
+   "title": "Improving scientific knowledge to strengthen the science-basis of management decisions under the CFP",
+   "status": "open",
+   "deadline": "2027-02-23",
+   "programme": "EMFAF",
+   "kind": "topic",
+   "budget": 1800000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EMFAF-2027-PIA-ScientificAdviceFisheries"
+  },
+  {
    "id": "CERV-2026-CITIZENS-REM-TRANSITION",
    "title": "Remembering democratic transitions, the (re-)building of democratic institutions, and strengthening society based on the rule of law, democracy, and fundamental rights.",
    "status": "open",
@@ -1906,6 +1906,16 @@
    "kind": "topic",
    "budget": 218400000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-EUR-UNIV"
+  },
+  {
+   "id": "ERC-2027-POC",
+   "title": "Proof of Concept Grant",
+   "status": "open",
+   "deadline": "2027-03-10",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 60000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERC-2027-POC"
   },
   {
    "id": "BP26-28 EITCC-48939704",
@@ -2076,16 +2086,6 @@
    "kind": "cascade",
    "budget": 340169,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48165818"
-  },
-  {
-   "id": "O-CEI-45703720",
-   "title": "O-CEI 2nd OPEN CALL FOR UPTAKE PROJECTS",
-   "status": "forthcoming",
-   "deadline": "2027-01-14",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 1600000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45703720"
   },
   {
    "id": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
@@ -4610,16 +4610,16 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 66,
-   "open": 66
+   "count": 62,
+   "open": 62
   },
   {
    "slug": "cascade-funding",
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 55,
-   "open": 54
+   "count": 56,
+   "open": 56
   },
   {
    "slug": "health",
@@ -4682,8 +4682,8 @@
    "title": "Excellent science and widening participation calls",
    "short": "Science & Widening",
    "old": "/calls/horizon-science-widening",
-   "count": 37,
-   "open": 9
+   "count": 38,
+   "open": 10
   },
   {
    "slug": "digital-europe-defence",
@@ -4698,8 +4698,8 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 55,
-   "open": 52
+   "count": 54,
+   "open": 51
   },
   {
    "slug": "international-cooperation",
@@ -4742,42 +4742,6 @@
  ],
  "events": [
   {
-   "slug": "european-research-innovation-days-2026",
-   "title": "European Research and Innovation Days 2026",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "type": "conference",
-   "programme": "horizon-europe",
-   "mode": "hybrid",
-   "location": "Brussels and online",
-   "organiser": "European Commission",
-   "summary": "The seventh edition of the Commission's flagship research and innovation event, gathering policymakers, researchers, innovators, business leaders and civil society.",
-   "registration_url": "https://research-and-innovation.ec.europa.eu/events/european-research-and-innovation-days_en",
-   "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/events/european-research-innovation-days-2026/",
-   "theme": null,
-   "calls": []
-  },
-  {
-   "slug": "eit-hei-call-2026-mel-framework-impact-domains",
-   "title": "EIT HEI Call 2026 info session: MEL Framework and the Impact Domains and Actions",
-   "start": "2026-11-11",
-   "end": "2026-11-11",
-   "type": "info-day",
-   "programme": "horizon-europe",
-   "mode": "online",
-   "location": "Online",
-   "organiser": "EIT Higher Education Initiative",
-   "summary": "Online info session of the EIT Higher Education Initiative Call for Proposals 2026, focused on the framework for monitoring, evaluation and learning (MEL) and the impact domains and actions that projects are expected to address.",
-   "registration_url": "https://eit-hei.eu/events/mel-framework-and-the-impact-domains-and-actions-call-2026-info-sessions/",
-   "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/events/eit-hei-call-2026-mel-framework-impact-domains/",
-   "theme": null,
-   "calls": [
-    "EIT HEI-48939733"
-   ]
-  },
-  {
    "slug": "lump-sum-funding-horizon-europe-webinar",
    "title": "Lump Sum Funding in Horizon Europe: How does it work? How to write a proposal?",
    "start": "2026-11-12",
@@ -4793,6 +4757,44 @@
    "url": "https://events.ullswaterinvestments.com/events/lump-sum-funding-horizon-europe-webinar/",
    "theme": null,
    "calls": []
+  },
+  {
+   "slug": "eit-hei-call-2026-kpi-expectations",
+   "title": "EIT HEI Call 2026 info session: KPI Expectations",
+   "start": "2026-11-13",
+   "end": "2026-11-13",
+   "type": "info-day",
+   "programme": "horizon-europe",
+   "mode": "online",
+   "location": "Online",
+   "organiser": "EIT Higher Education Initiative",
+   "summary": "Online info session of the EIT Higher Education Initiative Call for Proposals 2026, focused on the key performance indicators expected from funded projects.",
+   "registration_url": "https://eit-hei.eu/events/kpi-expectations-call-2026-info-sessions/",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/events/eit-hei-call-2026-kpi-expectations/",
+   "theme": null,
+   "calls": [
+    "EIT HEI-48939733"
+   ]
+  },
+  {
+   "slug": "eit-hei-call-2026-application-budget-planning",
+   "title": "EIT HEI Call 2026 info session: Application and Budget Planning",
+   "start": "2026-11-17",
+   "end": "2026-11-17",
+   "type": "info-day",
+   "programme": "horizon-europe",
+   "mode": "online",
+   "location": "Online",
+   "organiser": "EIT Higher Education Initiative",
+   "summary": "Online info session of the EIT Higher Education Initiative Call for Proposals 2026, focused on the application process and how to plan the project budget.",
+   "registration_url": "https://eit-hei.eu/events/application-and-budget-planning-call-2026-info-sessions/",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/events/eit-hei-call-2026-application-budget-planning/",
+   "theme": null,
+   "calls": [
+    "EIT HEI-48939733"
+   ]
   }
  ]
 }
