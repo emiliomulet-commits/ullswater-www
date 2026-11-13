@@ -1,10 +1,10 @@
 {
  "stats": {
-  "updated": "2026-11-12T20:19:55+00:00",
+  "updated": "2026-11-13T13:02:13+00:00",
   "open": 203,
   "forthcoming": 250,
   "total": 453,
-  "closingIn30Days": 50,
+  "closingIn30Days": 52,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
@@ -4752,23 +4752,6 @@
  ],
  "events": [
   {
-   "slug": "lump-sum-funding-horizon-europe-webinar",
-   "title": "Lump Sum Funding in Horizon Europe: How does it work? How to write a proposal?",
-   "start": "2026-11-12",
-   "end": "2026-11-12",
-   "type": "webinar",
-   "programme": "horizon-europe",
-   "mode": "online",
-   "location": "Online",
-   "organiser": "European Commission",
-   "summary": "A two-hour Commission webinar explaining how lump sum grants work in Horizon Europe and what that means when writing a proposal.",
-   "registration_url": "https://ec.europa.eu/research/participants/docs/h2020-funding-guide/other/event261112.htm",
-   "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/events/lump-sum-funding-horizon-europe-webinar/",
-   "theme": null,
-   "calls": []
-  },
-  {
    "slug": "eit-hei-call-2026-kpi-expectations",
    "title": "EIT HEI Call 2026 info session: KPI Expectations",
    "start": "2026-11-13",
@@ -4805,6 +4788,23 @@
    "calls": [
     "EIT HEI-48939733"
    ]
+  },
+  {
+   "slug": "horizon-europe-cluster-5-info-day",
+   "title": "Horizon Europe Cluster 5 Info Day: Climate, Energy and Mobility",
+   "start": "2026-11-19",
+   "end": "2026-11-19",
+   "type": "info-day",
+   "programme": "cluster-5",
+   "mode": "hybrid",
+   "location": "Charlemagne, Brussels, and online",
+   "organiser": "European Commission and CINEA",
+   "summary": "A hybrid day presenting the 2027 funding topics of Cluster 5, with policy context and advice on preparing a strong proposal.",
+   "registration_url": "https://research-innovation-community.ec.europa.eu/events/1BlOchF5f8ViHvC1DosGqo/overview",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/events/horizon-europe-cluster-5-info-day/",
+   "theme": "climate-energy-mobility",
+   "calls": []
   }
  ]
 }
