@@ -1,28 +1,14 @@
 {
  "stats": {
-  "updated": "2026-11-16T13:33:59+00:00",
+  "updated": "2026-11-16T22:26:59+00:00",
   "open": 202,
-  "forthcoming": 251,
-  "total": 453,
-  "closingIn30Days": 54,
+  "forthcoming": 250,
+  "total": 452,
+  "closingIn30Days": 53,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
  "soon": [
-  {
-   "id": "SBEP-44092120",
-   "title": "Building a sustainable and innovative Blue Economy: mastering digital opportunities and fostering resilience",
-   "deadline": "2026-11-16",
-   "programme": "HORIZON",
-   "budget": 37723260
-  },
-  {
-   "id": "BATTLEVERSE-46905650",
-   "title": "Open Call for Cutting-Edge Defence Solutions",
-   "deadline": "2026-11-16",
-   "programme": "EDF",
-   "budget": 1200000
-  },
   {
    "id": "HORIZON-JU-EUROHPC-2026-TIPT-09-01",
    "title": "Trapped-Ion Platform Technologies",
@@ -64,29 +50,23 @@
    "deadline": "2026-11-17",
    "programme": "HORIZON",
    "budget": 24000000
+  },
+  {
+   "id": "DUT-44121492",
+   "title": "Driving Urban Transitions (DUT) Call 2026",
+   "deadline": "2026-11-17",
+   "programme": "HORIZON",
+   "budget": 80000000
+  },
+  {
+   "id": "PPPA-2026-REGIONAL-SUBMARINE-ISM-CABLE-HUBS",
+   "title": "Integrated Surveillance mechanism: Regional Cable hubs",
+   "deadline": "2026-11-19",
+   "programme": "PPPA",
+   "budget": 3940000
   }
  ],
  "calls": [
-  {
-   "id": "SBEP-44092120",
-   "title": "Building a sustainable and innovative Blue Economy: mastering digital opportunities and fostering resilience",
-   "status": "open",
-   "deadline": "2026-11-16",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 37723260,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44092120"
-  },
-  {
-   "id": "BATTLEVERSE-46905650",
-   "title": "Open Call for Cutting-Edge Defence Solutions",
-   "status": "open",
-   "deadline": "2026-11-16",
-   "programme": "EDF",
-   "kind": "cascade",
-   "budget": 1200000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46905650"
-  },
   {
    "id": "HORIZON-JU-EUROHPC-2026-TIPT-09-01",
    "title": "Trapped-Ion Platform Technologies",
@@ -456,6 +436,16 @@
    "kind": "topic",
    "budget": 22374320,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/CREA-MEDIA-2027-DEVSLATE"
+  },
+  {
+   "id": "InnovativeSMEs-44087099",
+   "title": "European Partnership on Innovative SMEs/Innowwide CALL 5",
+   "status": "open",
+   "deadline": "2026-12-01",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 4200000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44087099"
   },
   {
    "id": "Nostradamus-45657640",
@@ -1998,6 +1988,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48351428"
   },
   {
+   "id": "SBEP-44092120",
+   "title": "Building a sustainable and innovative Blue Economy: mastering digital opportunities and fostering resilience",
+   "status": "open",
+   "deadline": "2027-06-14",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 37723260,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44092120"
+  },
+  {
    "id": "EEN2EIC-43849514",
    "title": "Open Call 4bis for the selection of EEN organisations delivering Investment Readiness Services (IRS) and Follow-up Support – EEN2EIC",
    "status": "open",
@@ -2176,16 +2176,6 @@
    "kind": "topic",
    "budget": 14000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-08"
-  },
-  {
-   "id": "InnovativeSMEs-44087099",
-   "title": "European Partnership on Innovative SMEs/Eurostars: joint transnational call for proposals (CALL 12 of Eurostars-3)",
-   "status": "forthcoming",
-   "deadline": "2027-03-04",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 86439583,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44087099"
   },
   {
    "id": "HORIZON-WIDERA-2027-05-ERA-05",
@@ -4620,15 +4610,15 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 58,
-   "open": 58
+   "count": 57,
+   "open": 57
   },
   {
    "slug": "cascade-funding",
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 57,
+   "count": 56,
    "open": 56
   },
   {
@@ -4700,8 +4690,8 @@
    "title": "Digital Europe and European Defence Fund calls",
    "short": "Digital Europe & Defence",
    "old": "/calls/digital-europe-defence",
-   "count": 31,
-   "open": 31
+   "count": 30,
+   "open": 30
   },
   {
    "slug": "other-eu-programmes",
