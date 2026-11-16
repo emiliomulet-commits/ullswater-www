@@ -88,6 +88,12 @@ def load_live():
             items.append({"title": it.findtext("title"), "url": it.findtext("link"), "summary": it.findtext("description") or "",
                           "category": it.findtext("category") or "", "date": parsedate_to_datetime(it.findtext("pubDate")).date().isoformat()})
         live["news"] = items[:4]
+        # Spanish versions of the same articles (news.ullswaterinvestments.com/es/feed.xml), matched by URL
+        es_items = {it.findtext("link"): it for it in ET.fromstring(fetch(NEWS + "/es/feed.xml")).iter("item")}
+        for n in live["news"]:
+            it = es_items.get(n["url"].replace(NEWS + "/", NEWS + "/es/", 1))
+            if it is not None:
+                n["title_es"], n["summary_es"], n["category_es"] = it.findtext("title"), it.findtext("description") or "", it.findtext("category") or ""
     except Exception as e:
         print("news fetch failed:", e)
     try:
@@ -661,9 +667,16 @@ def es_breadcrumbs(h):
     return h[:m.start(1)] + json.dumps(lds, ensure_ascii=False) + h[m.end(1):]
 
 
-def build_es(pages):
+def build_es(pages, live=None):
     """Write the Spanish twin of every page under /es/. New texts are translated with the API when a key is available."""
     t = i18n.Translator()
+    live = live or {}
+    for n in live.get("news", []):
+        for k in ("title", "summary", "category"):
+            t.add_exact(n.get(k), n.get(k + "_es"))
+    for e in live.get("events", []):
+        for k in ("title", "summary", "location"):
+            t.add_exact(e.get(k), e.get(k + "_es"))
     es_paths = set(pages)
     out = {p: i18n.to_es(h, p, es_paths, t) for p, h in pages.items()}
     if t.missing and i18n.translate_missing(t):
@@ -742,7 +755,7 @@ def main():
         (d / "index.html").write_text(redirect_stub(new), encoding="utf-8")
     (SITE / "404.html").write_text(page("/404.html", "Page not found | Ullswater Investments", "Page not found.",
         hero("404", "Page not found", "The page you are looking for has moved or no longer exists.", actions=f'<a class="btn" href="/">Home</a><a class="btn ghost" href="{C.CALLS}/">Open EU calls</a>'), themes, bilingual=False), encoding="utf-8")
-    es_count, missing = build_es(pages)
+    es_count, missing = build_es(pages, live)
     today = date.today().isoformat()
 
     def alts(u):

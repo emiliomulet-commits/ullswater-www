@@ -57,9 +57,17 @@ class Translator:
     def __init__(self):
         self.d = load()
         self.missing = {}
+        self.exact = {}  # live texts with an official Spanish version (news. and events. feeds), matched verbatim
+
+    def add_exact(self, en, es):
+        if en and es:
+            self.exact[" ".join(str(en).split())] = str(es)
 
     def tr(self, s):
         core = s.strip()
+        hit = self.exact.get(" ".join(core.split()))
+        if hit is not None:
+            return s[:len(s) - len(s.lstrip())] + hit + s[len(s.rstrip()):]
         if not core or not needs(re.sub(r"<[^>]+>", "", core)):
             return s
         key, nums = mask(" ".join(core.split()))
@@ -128,6 +136,10 @@ def to_es(html, path, es_paths, t):
                 p, _, frag = h.partition("#")
                 if p in es_paths:
                     tag["href"] = "/es" + p + ("#" + frag if frag else "")
+            # news. and events. have Spanish versions under /es/ (calls. stays English only)
+            m = re.match(r"(https://(?:news|events)\.ullswaterinvestments\.com)(/[^?#]*)?(.*)$", h)
+            if m and not (m.group(2) or "/").startswith(("/es/", "/calls/", "/assets/")) and not re.search(r"\.(ics|json|txt)$", m.group(2) or ""):
+                tag["href"] = m.group(1) + "/es" + (m.group(2) or "/") + m.group(3)
     for a in body.select("a[data-lang]"):
         if a["data-lang"] == "es":
             a["aria-current"] = "true"
