@@ -4765,10 +4765,14 @@
    "registration_url": "https://eit-hei.eu/events/application-and-budget-planning-call-2026-info-sessions/",
    "status": "scheduled",
    "url": "https://events.ullswaterinvestments.com/events/eit-hei-call-2026-application-budget-planning/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/eit-hei-call-2026-application-budget-planning/",
    "theme": null,
    "calls": [
     "EIT HEI-48939733"
-   ]
+   ],
+   "title_es": "Sesión informativa de la convocatoria EIT HEI 2026: solicitud y planificación del presupuesto",
+   "summary_es": "Sesión informativa en línea de la convocatoria 2026 de la Iniciativa de Educación Superior del EIT, centrada en el proceso de solicitud y en cómo planificar el presupuesto del proyecto.",
+   "location_es": "En línea"
   },
   {
    "slug": "horizon-europe-cluster-5-info-day",
@@ -4784,8 +4788,12 @@
    "registration_url": "https://research-innovation-community.ec.europa.eu/events/1BlOchF5f8ViHvC1DosGqo/overview",
    "status": "scheduled",
    "url": "https://events.ullswaterinvestments.com/events/horizon-europe-cluster-5-info-day/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/horizon-europe-cluster-5-info-day/",
    "theme": "climate-energy-mobility",
-   "calls": []
+   "calls": [],
+   "title_es": "Jornada informativa del Clúster 5 de Horizonte Europa: Clima, Energía y Movilidad",
+   "summary_es": "Jornada híbrida que presenta los temas de financiación de 2027 del Clúster 5, con contexto político y consejos para preparar una propuesta sólida.",
+   "location_es": "Charlemagne, Bruselas, y en línea"
   },
   {
    "slug": "horizon-europe-cluster-5-brokerage",
@@ -4801,8 +4809,12 @@
    "registration_url": "https://research-innovation-community.ec.europa.eu/events/1BlOchF5f8ViHvC1DosGqo/overview",
    "status": "scheduled",
    "url": "https://events.ullswaterinvestments.com/events/horizon-europe-cluster-5-brokerage/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/horizon-europe-cluster-5-brokerage/",
    "theme": "climate-energy-mobility",
-   "calls": []
+   "calls": [],
+   "title_es": "Evento presencial de brokerage del Clúster 5 de Horizonte Europa",
+   "summary_es": "Sesión presencial de networking y brokerage tras la jornada informativa del Clúster 5, de 16:00 a 19:00 en el mismo lugar.",
+   "location_es": "Charlemagne, Bruselas"
   }
  ]
 }
