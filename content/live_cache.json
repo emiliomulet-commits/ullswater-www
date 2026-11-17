@@ -1,142 +1,72 @@
 {
  "stats": {
-  "updated": "2026-11-16T22:26:59+00:00",
-  "open": 202,
-  "forthcoming": 250,
-  "total": 452,
-  "closingIn30Days": 53,
+  "updated": "2026-11-17T14:18:50+00:00",
+  "open": 209,
+  "forthcoming": 237,
+  "total": 446,
+  "closingIn30Days": 47,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
  "soon": [
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-TIPT-09-01",
-   "title": "Trapped-Ion Platform Technologies",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "budget": 20000000
-  },
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-SPT-10-01",
-   "title": "Superconducting Platform Technologies",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "budget": 20000000
-  },
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-QEXP-14-01",
-   "title": "Quantum Experimental Pilot Lines for Quantum Technologies",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "budget": 15000000
-  },
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-QTI-13-01",
-   "title": "Quantum-Testing Infrastructure for Quantum Technologies",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "budget": 20000000
-  },
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-NAPT-11-01",
-   "title": "Neutral-Atom Platform Technologies",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "budget": 20000000
-  },
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-NQKD-12-01",
-   "title": "Next-Generation QKD Systems",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "budget": 24000000
-  },
-  {
-   "id": "DUT-44121492",
-   "title": "Driving Urban Transitions (DUT) Call 2026",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "budget": 80000000
-  },
   {
    "id": "PPPA-2026-REGIONAL-SUBMARINE-ISM-CABLE-HUBS",
    "title": "Integrated Surveillance mechanism: Regional Cable hubs",
    "deadline": "2026-11-19",
    "programme": "PPPA",
    "budget": 3940000
+  },
+  {
+   "id": "GroundWork-46597762",
+   "title": "GroundWork Open Call",
+   "deadline": "2026-11-19",
+   "programme": "HORIZON",
+   "budget": 891000
+  },
+  {
+   "id": "Govtech4all 2.0-46807003",
+   "title": "Service request: 𝘏𝘰𝘸 𝘮𝘪𝘨𝘩𝘵 𝘸𝘦 𝘪𝘮𝘱𝘳𝘰𝘷𝘦 𝘢𝘤𝘤𝘦𝘴𝘴 𝘵𝘰 𝘤𝘳𝘪𝘵𝘪𝘤𝘢𝘭 𝘤𝘪𝘷𝘪𝘭 𝘱𝘳𝘰𝘵𝘦𝘤𝘵𝘪𝘰𝘯 𝘪𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘧𝘰𝘳 𝘳𝘦𝘴𝘪𝘥𝘦𝘯𝘵𝘴 - 𝘦𝘴𝘱𝘦𝘤𝘪𝘢𝘭𝘭𝘺 𝘵𝘩𝘰𝘴𝘦 𝘸𝘩𝘰 𝘥𝘰 𝘯𝘰𝘵 𝘶𝘴𝘦 𝘮𝘰𝘣𝘪𝘭𝘦 𝘢𝘱𝘱𝘴 - 𝘴𝘰 𝘵𝘩𝘢𝘵 𝘵𝘩𝘦𝘺 𝘤𝘢𝘯 𝘳𝘦𝘤𝘦𝘪𝘷𝘦 𝘤𝘭𝘦𝘢𝘳, 𝘵𝘪𝘮𝘦𝘭𝘺 𝘨𝘶𝘪𝘥𝘢𝘯𝘤𝘦 𝘣𝘺 𝘱𝘩𝘰𝘯𝘦 𝘥𝘶𝘳𝘪𝘯𝘨 𝘦𝘮𝘦𝘳𝘨𝘦𝘯𝘤𝘪𝘦𝘴?",
+   "deadline": "2026-11-23",
+   "programme": "DIGITAL",
+   "budget": 70000
+  },
+  {
+   "id": "CoPower-47589185",
+   "title": "Comprehensive and inclusive support for women and girls' victims of GBV",
+   "deadline": "2026-11-23",
+   "programme": "CERV",
+   "budget": 900000
+  },
+  {
+   "id": "HORIZON-MSCA-2026-DN-01-01",
+   "title": "MSCA Doctoral Networks 2026",
+   "deadline": "2026-11-24",
+   "programme": "HORIZON",
+   "budget": 1884101538
+  },
+  {
+   "id": "HORIZON-RAISE-2026-01-03",
+   "title": "RAISE Doctoral Networks for AI in Science (RAISE pilot)",
+   "deadline": "2026-11-24",
+   "programme": "HORIZON",
+   "budget": 90000000
+  },
+  {
+   "id": "CEF-DIG-2026-CABLE-REPAIR-CAPACITIES-WORKS",
+   "title": "Submarine Cable Repair Capacities - Works",
+   "deadline": "2026-11-25",
+   "programme": "CEF",
+   "budget": 40000000
+  },
+  {
+   "id": "HORIZON-CL6-2026-04-GOVERNANCE-01",
+   "title": "Additional activities for the European Partnership of Agriculture of Data",
+   "deadline": "2026-11-26",
+   "programme": "HORIZON",
+   "budget": 60000000
   }
  ],
  "calls": [
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-TIPT-09-01",
-   "title": "Trapped-Ion Platform Technologies",
-   "status": "open",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 20000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-EUROHPC-2026-TIPT-09-01"
-  },
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-SPT-10-01",
-   "title": "Superconducting Platform Technologies",
-   "status": "open",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 20000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-EUROHPC-2026-SPT-10-01"
-  },
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-QEXP-14-01",
-   "title": "Quantum Experimental Pilot Lines for Quantum Technologies",
-   "status": "open",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 15000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-EUROHPC-2026-QEXP-14-01"
-  },
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-QTI-13-01",
-   "title": "Quantum-Testing Infrastructure for Quantum Technologies",
-   "status": "open",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 20000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-EUROHPC-2026-QTI-13-01"
-  },
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-NAPT-11-01",
-   "title": "Neutral-Atom Platform Technologies",
-   "status": "open",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 20000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-EUROHPC-2026-NAPT-11-01"
-  },
-  {
-   "id": "HORIZON-JU-EUROHPC-2026-NQKD-12-01",
-   "title": "Next-Generation QKD Systems",
-   "status": "open",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 24000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-JU-EUROHPC-2026-NQKD-12-01"
-  },
-  {
-   "id": "DUT-44121492",
-   "title": "Driving Urban Transitions (DUT) Call 2026",
-   "status": "open",
-   "deadline": "2026-11-17",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 80000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44121492"
-  },
   {
    "id": "PPPA-2026-REGIONAL-SUBMARINE-ISM-CABLE-HUBS",
    "title": "Integrated Surveillance mechanism: Regional Cable hubs",
@@ -478,16 +408,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48400288"
   },
   {
-   "id": "ZMINA.Resilience-47365856",
-   "title": "ZMINA:Resilience. Second call for co-creation funding of international cooperation projects",
-   "status": "open",
-   "deadline": "2026-12-04",
-   "programme": "CREA",
-   "kind": "cascade",
-   "budget": 187500,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47365856"
-  },
-  {
    "id": "DIGITAL-JU-CHIPS-2026-SG-JAPAN",
    "title": "International collaboration EU and Japan on semiconductors",
    "status": "open",
@@ -536,6 +456,16 @@
    "kind": "cascade",
    "budget": 1125000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46939903"
+  },
+  {
+   "id": "ZMINA.Resilience-47365856",
+   "title": "ZMINA:Resilience. Rolling call for International Showcasing of co-creation projects",
+   "status": "open",
+   "deadline": "2026-12-14",
+   "programme": "CREA",
+   "kind": "cascade",
+   "budget": 950000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47365856"
   },
   {
    "id": "Valleys-48351491",
@@ -596,6 +526,16 @@
    "kind": "cascade",
    "budget": 200000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45656490"
+  },
+  {
+   "id": "EITFood BP26-28-48939719",
+   "title": "Seedbed Venture Catalyst Call for Startups",
+   "status": "open",
+   "deadline": "2026-12-16",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 480000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48939719"
   },
   {
    "id": "LIFE25-CET-LIFE EUCF 3.0-48256791",
@@ -666,16 +606,6 @@
    "kind": "topic",
    "budget": 40000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIE-2027-02-CONNECT-01"
-  },
-  {
-   "id": "EITFood BP26-28-48939719",
-   "title": "Open Call for Implementing Participants of the Empowering Women in Agrifood (EWA) Programme 2027-2028",
-   "status": "open",
-   "deadline": "2027-01-05",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 1556000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48939719"
   },
   {
    "id": "CIPHER-47039365",
@@ -1928,6 +1858,126 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/DIGITAL-ECCC-2027-DEPLOY-CYBER-12-CBCH"
   },
   {
+   "id": "HORIZON-CL4-2027-04-DIGITAL-EMERGING-06",
+   "title": "International cooperation in AI (IA)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 3000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-06"
+  },
+  {
+   "id": "HORIZON-CL4-2027-04-DIGITAL-EMERGING-10",
+   "title": "Horizon scanning and foresight in future enabling digital technologies (CSA)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 4000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-10"
+  },
+  {
+   "id": "HORIZON-CL4-2027-04-DIGITAL-EMERGING-04",
+   "title": "Apply AI: Challenge-Driven AI Innovation Booster in Apply AI prioritised sectors (RIA) (Partnership in AI, Data and Robotics)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 42000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-04"
+  },
+  {
+   "id": "HORIZON-CL4-2027-04-DIGITAL-EMERGING-11",
+   "title": "EU Frontier AI Initiative:  Developing frontier AI solutions that are safe and computationally efficient within Apply AI (RIA)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 44000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-11"
+  },
+  {
+   "id": "HORIZON-CL4-2027-04-DATA-09",
+   "title": "Energy efficiency and sustainability of AI data processing in Data Centres (IA)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 39000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DATA-09"
+  },
+  {
+   "id": "HORIZON-CL4-2027-04-DATA-08",
+   "title": "Demand-side 3C pilot demonstrators on converged Telco Edge Cloud Infrastructure (IA)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 38000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DATA-08"
+  },
+  {
+   "id": "HORIZON-CL4-2027-04-HUMAN-01",
+   "title": "Advanced and Innovative hardware components for Virtual Worlds (RIA) (Virtual Worlds Partnership)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 39000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-HUMAN-01"
+  },
+  {
+   "id": "HORIZON-CL4-2027-04-HUMAN-02",
+   "title": "Create a thriving and competitive Virtual Worlds and Web 4.0 ecosystem (CSA) (Virtual Worlds Partnership)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 3000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-HUMAN-02"
+  },
+  {
+   "id": "HORIZON-CL4-2027-04-HUMAN-07",
+   "title": "Facilitate the engagement of European stakeholders in international digital standardisation (CSA)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 7000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-HUMAN-07"
+  },
+  {
+   "id": "HORIZON-CL4-2027-04-DIGITAL-EMERGING-05",
+   "title": "Apply AI: AI-Driven Robotics for Industry: Enabling System Integration and Adoption (IA) (Partnership in AI, Data and Robotics)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 18000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-05"
+  },
+  {
+   "id": "HORIZON-CL4-2027-04-DATA-03",
+   "title": "New approaches for decentralized, federated and sustainable AI data processing (RIA)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 35000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DATA-03"
+  },
+  {
+   "id": "HORIZON-CL4-2027-05-DIGITAL-EMERGING-03",
+   "title": "Advanced integrated photonic devices for extended features and ultra-low power consumption (RIA) (Photonics Partnership)",
+   "status": "open",
+   "deadline": "2027-03-18",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 25000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-05-DIGITAL-EMERGING-03"
+  },
+  {
    "id": "Water4All-44093037",
    "title": "Water4All 2026 Joint Transnational Call “Sustainable water management”",
    "status": "open",
@@ -1936,6 +1986,16 @@
    "kind": "cascade",
    "budget": 34488619,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44093037"
+  },
+  {
+   "id": "DUT-44121492",
+   "title": "Driving Urban Transitions (DUT) Call 2026",
+   "status": "open",
+   "deadline": "2027-04-15",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 80000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44121492"
   },
   {
    "id": "Biodiversa-plus-43966258",
@@ -2068,16 +2128,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2027-ACCELERATOR-01"
   },
   {
-   "id": "FACTEUR-48165818",
-   "title": "Emergency Response - Support Grants",
-   "status": "open",
-   "deadline": "2027-12-31",
-   "programme": "DIGITAL",
-   "kind": "cascade",
-   "budget": 450000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48165818"
-  },
-  {
    "id": "BIRDS in BG - 2-46357639",
    "title": "ReAction – Rapid Response Grants",
    "status": "open",
@@ -2086,6 +2136,26 @@
    "kind": "cascade",
    "budget": 300000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46357639"
+  },
+  {
+   "id": "FACTEUR-48165818",
+   "title": "EFCSN Permanent Call for Protection Grants",
+   "status": "open",
+   "deadline": "2028-05-31",
+   "programme": "DIGITAL",
+   "kind": "cascade",
+   "budget": 340169,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48165818"
+  },
+  {
+   "id": "HUMA-2028-2034-PARTNERSHIP-CERT",
+   "title": "EU Humanitarian Partnership Certificate 2028-2034",
+   "status": "open",
+   "deadline": "2033-06-30",
+   "programme": "HUMA",
+   "kind": "topic",
+   "budget": null,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HUMA-2028-2034-PARTNERSHIP-CERT"
   },
   {
    "id": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
@@ -2226,126 +2296,6 @@
    "kind": "topic",
    "budget": 29000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-WIDERA-2027-05-ERA-02"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-DIGITAL-EMERGING-06",
-   "title": "International cooperation in AI (IA)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 3000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-06"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-DIGITAL-EMERGING-10",
-   "title": "Horizon scanning and foresight in future enabling digital technologies (CSA)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 4000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-10"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-DIGITAL-EMERGING-04",
-   "title": "Apply AI: Challenge-Driven AI Innovation Booster in Apply AI prioritised sectors (RIA) (Partnership in AI, Data and Robotics)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 42000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-04"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-DIGITAL-EMERGING-11",
-   "title": "EU Frontier AI Initiative:  Developing frontier AI solutions that are safe and computationally efficient within Apply AI (RIA)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 44000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-11"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-DATA-09",
-   "title": "Energy efficiency and sustainability of AI data processing in Data Centres (IA)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 39000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DATA-09"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-DATA-08",
-   "title": "Demand-side 3C pilot demonstrators on converged Telco Edge Cloud Infrastructure (IA)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 38000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DATA-08"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-HUMAN-01",
-   "title": "Advanced and Innovative hardware components for Virtual Worlds (RIA) (Virtual Worlds Partnership)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 39000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-HUMAN-01"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-HUMAN-02",
-   "title": "Create a thriving and competitive Virtual Worlds and Web 4.0 ecosystem (CSA) (Virtual Worlds Partnership)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 3000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-HUMAN-02"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-HUMAN-07",
-   "title": "Facilitate the engagement of European stakeholders in international digital standardisation (CSA)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 7000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-HUMAN-07"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-DIGITAL-EMERGING-05",
-   "title": "Apply AI: AI-Driven Robotics for Industry: Enabling System Integration and Adoption (IA) (Partnership in AI, Data and Robotics)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 18000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DIGITAL-EMERGING-05"
-  },
-  {
-   "id": "HORIZON-CL4-2027-04-DATA-03",
-   "title": "New approaches for decentralized, federated and sustainable AI data processing (RIA)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 35000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-04-DATA-03"
-  },
-  {
-   "id": "HORIZON-CL4-2027-05-DIGITAL-EMERGING-03",
-   "title": "Advanced integrated photonic devices for extended features and ultra-low power consumption (RIA) (Photonics Partnership)",
-   "status": "forthcoming",
-   "deadline": "2027-03-18",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 25000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-05-DIGITAL-EMERGING-03"
   },
   {
    "id": "HORIZON-CL5-2027-02-D2-05",
@@ -4576,16 +4526,6 @@
    "kind": "topic",
    "budget": null,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-SPACE-07-84"
-  },
-  {
-   "id": "HUMA-2028-2034-PARTNERSHIP-CERT",
-   "title": "EU Humanitarian Partnership Certificate 2028-2034",
-   "status": "forthcoming",
-   "deadline": "2033-06-30",
-   "programme": "HUMA",
-   "kind": "topic",
-   "budget": null,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HUMA-2028-2034-PARTNERSHIP-CERT"
   }
  ],
  "themes": [
@@ -4595,7 +4535,7 @@
    "short": "AI & GenAI",
    "old": "/calls/calls-for-genai",
    "count": 54,
-   "open": 25
+   "open": 32
   },
   {
    "slug": "eic",
@@ -4610,8 +4550,8 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 57,
-   "open": 57
+   "count": 51,
+   "open": 51
   },
   {
    "slug": "cascade-funding",
@@ -4650,8 +4590,8 @@
    "title": "Digital, industry and space calls (Cluster 4)",
    "short": "Digital, Industry & Space",
    "old": "/calls/horizon-digital",
-   "count": 41,
-   "open": 22
+   "count": 35,
+   "open": 28
   },
   {
    "slug": "climate-energy-mobility",
@@ -4707,10 +4647,20 @@
    "short": "International cooperation",
    "old": "/calls/international-cooperation",
    "count": 2,
-   "open": 1
+   "open": 2
   }
  ],
  "news": [
+  {
+   "title": "EIC Accelerator picks 35 deep tech firms for €84 million in grants",
+   "url": "https://news.ullswaterinvestments.com/2026/11/eic-accelerator-35-companies-84-million/",
+   "summary": "Out of 453 full applications, 35 start-ups and SMEs from 17 countries were selected; 32 of them will be assessed for EIC Fund equity of up to €10 million each.",
+   "category": "EIC, Defence & Equity",
+   "date": "2026-11-16",
+   "title_es": "El EIC Accelerator elige 35 empresas deep tech para 84 millones en subvenciones",
+   "summary_es": "De 453 solicitudes completas, se han seleccionado 35 startups y pymes de 17 países; 32 de ellas serán evaluadas para recibir capital del EIC Fund de hasta 10 millones de euros cada una.",
+   "category_es": "EIC, defensa y capital"
+  },
   {
    "title": "EHDS webinar on 25 November: benefits of health data secondary use",
    "url": "https://news.ullswaterinvestments.com/2026/11/ehds-webinar-4-secondary-use-health-data/",
@@ -4740,16 +4690,6 @@
    "title_es": "El CDTI abre el 17 de noviembre la convocatoria INNTERCONECTA-STEP de 150 M€",
    "summary_es": "La convocatoria de consorcios regionales de I+D financia proyectos liderados por empresas en tecnologías STEP, con al menos 10 millones de euros reservados para la salud de la mujer.",
    "category_es": "España"
-  },
-  {
-   "title": "Australia signs deal to join Horizon Europe's Pillar II",
-   "url": "https://news.ullswaterinvestments.com/2026/11/australia-signs-horizon-europe-association/",
-   "summary": "Australian organisations will be able to join and lead Pillar II consortia, with transitional access to calls from January 2027.",
-   "category": "Research Policy",
-   "date": "2026-11-12",
-   "title_es": "Australia firma su asociación al Pilar II de Horizonte Europa",
-   "summary_es": "Las entidades australianas podrán participar en consorcios del Pilar II y liderarlos, con acceso transitorio a las convocatorias desde enero de 2027.",
-   "category_es": "Política de investigación"
   }
  ],
  "events": [
