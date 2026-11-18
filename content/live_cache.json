@@ -1,9 +1,9 @@
 {
  "stats": {
-  "updated": "2026-11-18T13:53:14+00:00",
-  "open": 210,
-  "forthcoming": 244,
-  "total": 454,
+  "updated": "2026-11-18T20:50:19+00:00",
+  "open": 212,
+  "forthcoming": 245,
+  "total": 457,
   "closingIn30Days": 45,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
@@ -986,6 +986,16 @@
    "kind": "topic",
    "budget": 4000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/IMCAP-2027-INFOME"
+  },
+  {
+   "id": "AGROBOOST-45658229",
+   "title": "AGROBOOST Open Call 1 (AGROBOOST-OC1)",
+   "status": "open",
+   "deadline": "2027-01-25",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 240000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45658229"
   },
   {
    "id": "ERASMUS-EDU-2022-ECHE-CERT-FP",
@@ -2128,6 +2138,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/JTM-2026-PSLF-STANDALONE-PROJECTS"
   },
   {
+   "id": "HORIZON-EIC-2027-STEP",
+   "title": "EIC STEP Scale Up",
+   "status": "open",
+   "deadline": "2027-11-24",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 290000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2027-STEP"
+  },
+  {
    "id": "HORIZON-EIC-2027-ACCELERATOR-01",
    "title": "Short proposal",
    "status": "open",
@@ -2166,6 +2186,26 @@
    "kind": "topic",
    "budget": null,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HUMA-2028-2034-PARTNERSHIP-CERT"
+  },
+  {
+   "id": "ERASMUS-SPORT-2027-SNCESE",
+   "title": "Not-for-profit European sport events",
+   "status": "forthcoming",
+   "deadline": "2027-01-19",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 12000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-SPORT-2027-SNCESE"
+  },
+  {
+   "id": "ERASMUS-SPORT-2027-LSSNCESE",
+   "title": "Large scale not-for-profit European sport event",
+   "status": "forthcoming",
+   "deadline": "2027-01-19",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 3000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-SPORT-2027-LSSNCESE"
   },
   {
    "id": "COLOURS-46906387",
@@ -4398,16 +4438,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2027-DN-01-01"
   },
   {
-   "id": "HORIZON-EIC-2027-STEP",
-   "title": "EIC STEP Scale Up",
-   "status": "forthcoming",
-   "deadline": "2027-11-24",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 290000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2027-STEP"
-  },
-  {
    "id": "HORIZON-CL5-2027-07-D3-11",
    "title": "Demonstration of hydropower technologies for efficient and forward-looking refurbishment of existing hydropower plants",
    "status": "forthcoming",
@@ -4614,8 +4644,8 @@
    "title": "AI and generative AI calls",
    "short": "AI & GenAI",
    "old": "/calls/calls-for-genai",
-   "count": 54,
-   "open": 32
+   "count": 55,
+   "open": 33
   },
   {
    "slug": "eic",
@@ -4623,7 +4653,7 @@
    "short": "EIC",
    "old": "/calls/eic-pre-accelerator",
    "count": 8,
-   "open": 5
+   "open": 6
   },
   {
    "slug": "closing-this-year",
@@ -4638,8 +4668,8 @@
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 59,
-   "open": 57
+   "count": 60,
+   "open": 58
   },
   {
    "slug": "health",
@@ -4718,7 +4748,7 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 59,
+   "count": 61,
    "open": 51
   },
   {
