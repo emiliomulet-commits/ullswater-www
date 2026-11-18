@@ -1,10 +1,10 @@
 {
  "stats": {
-  "updated": "2026-11-17T21:16:17+00:00",
-  "open": 211,
-  "forthcoming": 238,
-  "total": 449,
-  "closingIn30Days": 46,
+  "updated": "2026-11-18T13:53:14+00:00",
+  "open": 210,
+  "forthcoming": 244,
+  "total": 454,
+  "closingIn30Days": 45,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
@@ -366,16 +366,6 @@
    "kind": "topic",
    "budget": 22374320,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/CREA-MEDIA-2027-DEVSLATE"
-  },
-  {
-   "id": "InnovativeSMEs-44087099",
-   "title": "European Partnership on Innovative SMEs/Innowwide CALL 5",
-   "status": "open",
-   "deadline": "2026-12-01",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 4200000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44087099"
   },
   {
    "id": "Nostradamus-45657640",
@@ -2188,6 +2178,26 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46906387"
   },
   {
+   "id": "ERASMUS-EDU-2027-PEX-EMJM-MOB",
+   "title": "Erasmus Mundus Joint Masters",
+   "status": "forthcoming",
+   "deadline": "2027-02-16",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 164621400,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-PEX-EMJM-MOB"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-EMJM-DESIGN",
+   "title": "Erasmus Mundus Design Measures",
+   "status": "forthcoming",
+   "deadline": "2027-02-16",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 3000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-EMJM-DESIGN"
+  },
+  {
    "id": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
    "title": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
    "status": "forthcoming",
@@ -2276,6 +2286,46 @@
    "kind": "topic",
    "budget": 14000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-08"
+  },
+  {
+   "id": "InnovativeSMEs-44087099",
+   "title": "European Partnership on Innovative SMEs/Eurostars: joint transnational call for proposals (CALL 12 of Eurostars-3)",
+   "status": "forthcoming",
+   "deadline": "2027-03-04",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 86439583,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44087099"
+  },
+  {
+   "id": "ERASMUS-SPORT-2027-CB",
+   "title": "ERASMUS-SPORT-2027-CB - Capacity Building in the Field of Sport",
+   "status": "forthcoming",
+   "deadline": "2027-03-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 2620000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-SPORT-2027-CB"
+  },
+  {
+   "id": "ERASMUS-SPORT-2027-SCP",
+   "title": "Cooperation Partnerships",
+   "status": "forthcoming",
+   "deadline": "2027-03-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 69243000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-SPORT-2027-SCP"
+  },
+  {
+   "id": "ERASMUS-SPORT-2027-SSCP",
+   "title": "Small-scale Partnerships",
+   "status": "forthcoming",
+   "deadline": "2027-03-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 69243000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-SPORT-2027-SSCP"
   },
   {
    "id": "HORIZON-WIDERA-2027-05-ERA-05",
@@ -4580,8 +4630,8 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 50,
-   "open": 50
+   "count": 49,
+   "open": 49
   },
   {
    "slug": "cascade-funding",
@@ -4589,7 +4639,7 @@
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
    "count": 59,
-   "open": 58
+   "open": 57
   },
   {
    "slug": "health",
@@ -4668,7 +4718,7 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 54,
+   "count": 59,
    "open": 51
   },
   {
@@ -4681,6 +4731,26 @@
   }
  ],
  "news": [
+  {
+   "title": "Innovation Fund 2026: €5.2 billion in five calls opening 3 December",
+   "url": "https://news.ullswaterinvestments.com/2026/11/innovation-fund-2026-calls-5-2-billion-info-days/",
+   "summary": "The Commission will launch three grant calls and two auctions under the Innovation Fund on 3 December, with online info days on 9, 10 and 15 December.",
+   "category": "Climate & Energy",
+   "date": "2026-11-17",
+   "title_es": "Innovation Fund 2026: 5.200 millones en cinco convocatorias",
+   "summary_es": "La Comisión abrirá el 3 de diciembre tres convocatorias de subvenciones y dos subastas del Innovation Fund, con jornadas informativas en línea los días 9, 10 y 15 de diciembre.",
+   "category_es": "Clima y energía"
+  },
+  {
+   "title": "EIC Fund survey: 64% say it was essential to close their round",
+   "url": "https://news.ullswaterinvestments.com/2026/11/eic-fund-survey-64-percent-essential-investment-round/",
+   "summary": "A survey of 182 companies backed by the EIC Fund finds strong support for its role in fundraising, while asking for faster processes and more follow-on capacity.",
+   "category": "EIC, Defence & Equity",
+   "date": "2026-11-17",
+   "title_es": "Encuesta EIC Fund: el 64% lo ve esencial para cerrar su ronda",
+   "summary_es": "Una encuesta a 182 empresas respaldadas por el EIC Fund confirma su peso en la captación de inversión, aunque piden procesos más rápidos y más capacidad de seguimiento.",
+   "category_es": "EIC, defensa y capital"
+  },
   {
    "title": "EIC Accelerator picks 35 deep tech firms for €84 million in grants",
    "url": "https://news.ullswaterinvestments.com/2026/11/eic-accelerator-35-companies-84-million/",
@@ -4700,52 +4770,9 @@
    "title_es": "Webinario del EHDS el 25 de noviembre: beneficios del uso secundario de datos sanitarios",
    "summary_es": "El cuarto webinario de la serie de la Comisión de apoyo a las partes interesadas del EHDS debate los beneficios, retos e incentivos de reutilizar los datos sanitarios. Abierto a todos.",
    "category_es": "Salud y datos sanitarios"
-  },
-  {
-   "title": "EU launches first global alliance of climate and health funders",
-   "url": "https://news.ullswaterinvestments.com/2026/11/global-climate-health-research-funders-alliance/",
-   "summary": "Launched at COP 31 with the Wellcome Trust, the initiative will align research funders' priorities. A secretariat starts work in January 2027.",
-   "category": "Health & Health Data",
-   "date": "2026-11-13",
-   "title_es": "La UE lanza la primera alianza mundial de financiadores de clima y salud",
-   "summary_es": "Presentada en la COP 31 con el Wellcome Trust, la iniciativa alineará las prioridades de los financiadores de la investigación. Una secretaría empezará a funcionar en enero de 2027.",
-   "category_es": "Salud y datos sanitarios"
-  },
-  {
-   "title": "CDTI opens €150 million INNTERCONECTA-STEP call on 17 November",
-   "url": "https://news.ullswaterinvestments.com/2026/11/cdti-innterconecta-step-2026-150-million/",
-   "summary": "Spain's regional R&D consortia call funds company-led projects in STEP technologies, with at least €10 million reserved for women's health.",
-   "category": "Spain",
-   "date": "2026-11-12",
-   "title_es": "El CDTI abre el 17 de noviembre la convocatoria INNTERCONECTA-STEP de 150 M€",
-   "summary_es": "La convocatoria de consorcios regionales de I+D financia proyectos liderados por empresas en tecnologías STEP, con al menos 10 millones de euros reservados para la salud de la mujer.",
-   "category_es": "España"
   }
  ],
  "events": [
-  {
-   "slug": "eit-hei-call-2026-application-budget-planning",
-   "title": "EIT HEI Call 2026 info session: Application and Budget Planning",
-   "start": "2026-11-17",
-   "end": "2026-11-17",
-   "type": "info-day",
-   "programme": "horizon-europe",
-   "mode": "online",
-   "location": "Online",
-   "organiser": "EIT Higher Education Initiative",
-   "summary": "Online info session of the EIT Higher Education Initiative Call for Proposals 2026, focused on the application process and how to plan the project budget.",
-   "registration_url": "https://eit-hei.eu/events/application-and-budget-planning-call-2026-info-sessions/",
-   "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/events/eit-hei-call-2026-application-budget-planning/",
-   "url_es": "https://events.ullswaterinvestments.com/es/events/eit-hei-call-2026-application-budget-planning/",
-   "theme": null,
-   "calls": [
-    "EIT HEI-48939733"
-   ],
-   "title_es": "Sesión informativa de la convocatoria EIT HEI 2026: solicitud y planificación del presupuesto",
-   "summary_es": "Sesión informativa en línea de la convocatoria 2026 de la Iniciativa de Educación Superior del EIT, centrada en el proceso de solicitud y en cómo planificar el presupuesto del proyecto.",
-   "location_es": "En línea"
-  },
   {
    "slug": "horizon-europe-cluster-5-info-day",
    "title": "Horizon Europe Cluster 5 Info Day: Climate, Energy and Mobility",
@@ -4787,6 +4814,27 @@
    "title_es": "Evento presencial de brokerage del Clúster 5 de Horizonte Europa",
    "summary_es": "Sesión presencial de networking y brokerage tras la jornada informativa del Clúster 5, de 16:00 a 19:00 en el mismo lugar.",
    "location_es": "Charlemagne, Bruselas"
+  },
+  {
+   "slug": "eic-funding-opportunities-2027-info-day",
+   "title": "Online information day: EIC funding opportunities in 2027",
+   "start": "2026-11-19",
+   "end": "2026-11-19",
+   "type": "info-day",
+   "programme": "eic",
+   "mode": "online",
+   "location": "Online",
+   "organiser": "European Innovation Council and EISMEA",
+   "summary": "A full-day online session walking through the European Innovation Council's 2027 work programme, scheme by scheme.",
+   "registration_url": "https://ec.europa.eu/eusurvey/runner/90fde2eb-528b-b060-275a-080eb0352bfa",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/events/eic-funding-opportunities-2027-info-day/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/eic-funding-opportunities-2027-info-day/",
+   "theme": "eic",
+   "calls": [],
+   "title_es": "Jornada informativa en línea: oportunidades de financiación del EIC en 2027",
+   "summary_es": "Sesión en línea de un día completo que recorre el programa de trabajo 2027 del Consejo Europeo de Innovación, instrumento a instrumento.",
+   "location_es": "En línea"
   }
  ]
 }
