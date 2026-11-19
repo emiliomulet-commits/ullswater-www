@@ -319,3 +319,55 @@ PROJECT_WAYS = [
     ("Building the technology", "Federated data spaces, usage policies, edge AI and on-premise sovereign AI from Software in a Box."),
     ("Securing the funding", "Funding strategy for the international and national lines, and a public portal for every project."),
 ]
+
+# ---------- Flagship venture: ARGOS (home band, /projects/argos/, /projects/, menu, footer, llms.txt) ----------
+# ARGOS is a product of Software in a Box, the technology company of Ullswater Investments.
+# Facts come from the ARGOS partnership dossier (Nov 2026). ARGOS itself has no grant of its own:
+# its technology was built in the three NextGenerationEU-funded data-space demonstrators, and HOSKIT is a proposal.
+# Never use the EU emblem or "funded by the EU" for ARGOS itself.
+ARGOS = {
+    "site_en": "https://argos.softwareinabox.eu/en/",
+    "partners_en": "https://argos.softwareinabox.eu/en/#despachos",
+    "video": "https://argos.softwareinabox.eu/video/",
+    "apply": "mailto:emilio.mulet@softwareinabox.eu?subject=ARGOS%20-%20Partner%20law%20firm%20application",
+    "deadline": "15 January 2027",
+    "kicker": "Flagship venture · From EU research to the European market",
+    "title": "ARGOS: verified compliance, now going to market",
+    "status": "In market · partner selection open",
+    "lead": ("ARGOS is a sovereign AI agent that tests an organisation's systems against the GDPR, the EHDS, the AI Act and the rest of the EU data rulebook, "
+             "and seals the technical evidence. Its technology grew out of EU-funded data-space R&D carried out by our team. "
+             "Software in a Box, our technology company, is now taking it to the European market through a network of partner law firms."),
+    "facts": [("10", "partner law-firm seats with equity and vote"), ("7", "EU countries in the first network"), ("~20", "Business Partner firms"), ("8", "languages, from day one")],
+    "stages": [
+        ("done", "2024–2026", "EU-funded R&D", "Connectors, usage policies and verifiable credentials built in three NextGenerationEU data-space demonstrators."),
+        ("done", "2026", "Product", "ARGOS published in eight languages, with an assistant, 25 diagrams and a legal knowledge base."),
+        ("now", "Now", "Partner network", "Selection of ten partner law firms and about twenty Business Partners."),
+        ("next", "2027", "European roll-out", "Seven countries, a venture capital round for marketing and sales, and new EU R&D (ITEA)."),
+    ],
+    "challenge": ("European organisations have built their compliance on documents: records of processing, policies, impact assessments. "
+                  "But supervisory authorities fine what systems actually do, not what documents say. ARGOS closes that gap: it turns each legal obligation "
+                  "into an executable test on the real infrastructure and seals the result as evidence a third party can verify."),
+    "principles": [
+        ("It challenges, it does not just observe", "Synthetic test subjects, trial access and erasure requests, and checks that data was really deleted in every repository."),
+        ("The AI proposes, a rules engine decides", "A local language model plans campaigns and drafts reports; verdicts come only from a deterministic, auditable policy engine."),
+        ("Nothing leaves the perimeter", "Deployed on-premise or in the client's private cloud, with read-only connectors and no outbound telemetry."),
+    ],
+    "rules": ["GDPR and national data-protection laws", "European Health Data Space (EHDS)", "AI Act", "NIS2", "Data Act and Data Governance Act", "Cyber Resilience Act", "Spain's ENS and ISO 27001/27701"],
+    "research": [
+        ("Global Data Care, PROCUREDATA, EcoDataNet", "NextGenerationEU", "Federated data spaces in health, procurement and the circular economy: connectors, ODRL usage policies and Gaia-X verifiable credentials, the technical base of ARGOS", "2024–2026 · completed"),
+        ("HOSKIT (ITEA 26013)", "ITEA 4 · Eureka", "ARGOS as the data-compliance assessment tool; Software in a Box as Spanish national coordinator", "2027–2030 · proposal"),
+        ("SAMBA, ProAct-Edge, CogniGENE, EHDS-JUNGLE", "ITEA 4 · Eureka", "ARGOS and COGNITIV as compliance and sovereign-AI components", "2027–2030 · proposals"),
+    ],
+    "model": [
+        ("1", "Deployment", "A Software in a Box technician deploys ARGOS and runs the inventory and the tests at the client."),
+        ("2", "Legal audit", "The partner law firm interprets the evidence, signs the compliance audit and advises the client."),
+        ("3", "Remediation", "Software in a Box technicians implement the corrective measures; ARGOS verifies them again."),
+    ],
+    "seats": [("Spain", "Madrid, Barcelona"), ("France", "Paris and a second city"), ("Germany", "Two cities"), ("Netherlands", "Amsterdam"),
+              ("Belgium", "Brussels"), ("Denmark", "Copenhagen"), ("Italy", "Milan")],
+    "role": [
+        ("Venture building", "Ullswater builds ARGOS through Software in a Box, its technology company in Madrid and Brussels, and steers its strategy and growth."),
+        ("EU funding strategy", "The underlying technology was developed in EU-funded projects, and new R&D is planned in ITEA proposals for 2027–2030."),
+        ("Network and capital", "We structure the partner network of law firms and the venture capital round that will fund marketing and sales."),
+    ],
+}

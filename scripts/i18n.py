@@ -136,6 +136,9 @@ def to_es(html, path, es_paths, t):
                 p, _, frag = h.partition("#")
                 if p in es_paths:
                     tag["href"] = "/es" + p + ("#" + frag if frag else "")
+            # ARGOS product site: Spanish is its source language, at the root (English lives under /en/)
+            if h.startswith("https://argos.softwareinabox.eu/en/"):
+                tag["href"] = "https://argos.softwareinabox.eu/" + h[len("https://argos.softwareinabox.eu/en/"):]
             # news. and events. have Spanish versions under /es/ (calls. stays English only)
             m = re.match(r"(https://(?:news|events)\.ullswaterinvestments\.com)(/[^?#]*)?(.*)$", h)
             if m and not (m.group(2) or "/").startswith(("/es/", "/calls/", "/assets/")) and not re.search(r"\.(ics|json|txt)$", m.group(2) or ""):
