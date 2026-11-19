@@ -1,21 +1,14 @@
 {
  "stats": {
-  "updated": "2026-11-19T14:22:02+00:00",
-  "open": 214,
+  "updated": "2026-11-19T20:54:50+00:00",
+  "open": 213,
   "forthcoming": 243,
-  "total": 457,
-  "closingIn30Days": 44,
+  "total": 456,
+  "closingIn30Days": 43,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
  "soon": [
-  {
-   "id": "GroundWork-46597762",
-   "title": "GroundWork Open Call",
-   "deadline": "2026-11-19",
-   "programme": "HORIZON",
-   "budget": 891000
-  },
   {
    "id": "Govtech4all 2.0-46807003",
    "title": "Service request: 𝘏𝘰𝘸 𝘮𝘪𝘨𝘩𝘵 𝘸𝘦 𝘪𝘮𝘱𝘳𝘰𝘷𝘦 𝘢𝘤𝘤𝘦𝘴𝘴 𝘵𝘰 𝘤𝘳𝘪𝘵𝘪𝘤𝘢𝘭 𝘤𝘪𝘷𝘪𝘭 𝘱𝘳𝘰𝘵𝘦𝘤𝘵𝘪𝘰𝘯 𝘪𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘧𝘰𝘳 𝘳𝘦𝘴𝘪𝘥𝘦𝘯𝘵𝘴 - 𝘦𝘴𝘱𝘦𝘤𝘪𝘢𝘭𝘭𝘺 𝘵𝘩𝘰𝘴𝘦 𝘸𝘩𝘰 𝘥𝘰 𝘯𝘰𝘵 𝘶𝘴𝘦 𝘮𝘰𝘣𝘪𝘭𝘦 𝘢𝘱𝘱𝘴 - 𝘴𝘰 𝘵𝘩𝘢𝘵 𝘵𝘩𝘦𝘺 𝘤𝘢𝘯 𝘳𝘦𝘤𝘦𝘪𝘷𝘦 𝘤𝘭𝘦𝘢𝘳, 𝘵𝘪𝘮𝘦𝘭𝘺 𝘨𝘶𝘪𝘥𝘢𝘯𝘤𝘦 𝘣𝘺 𝘱𝘩𝘰𝘯𝘦 𝘥𝘶𝘳𝘪𝘯𝘨 𝘦𝘮𝘦𝘳𝘨𝘦𝘯𝘤𝘪𝘦𝘴?",
@@ -64,19 +57,16 @@
    "deadline": "2026-11-28",
    "programme": "HORIZON",
    "budget": 60000
+  },
+  {
+   "id": "LLM-BRIDGE-47038289",
+   "title": "LLM-BRIDGE – Venture Incubation Programme - Open Call for Incubators – 2nd Call",
+   "deadline": "2026-11-28",
+   "programme": "DIGITAL",
+   "budget": 60000
   }
  ],
  "calls": [
-  {
-   "id": "GroundWork-46597762",
-   "title": "GroundWork Open Call",
-   "status": "open",
-   "deadline": "2026-11-19",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 891000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46597762"
-  },
   {
    "id": "Govtech4all 2.0-46807003",
    "title": "Service request: 𝘏𝘰𝘸 𝘮𝘪𝘨𝘩𝘵 𝘸𝘦 𝘪𝘮𝘱𝘳𝘰𝘷𝘦 𝘢𝘤𝘤𝘦𝘴𝘴 𝘵𝘰 𝘤𝘳𝘪𝘵𝘪𝘤𝘢𝘭 𝘤𝘪𝘷𝘪𝘭 𝘱𝘳𝘰𝘵𝘦𝘤𝘵𝘪𝘰𝘯 𝘪𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘧𝘰𝘳 𝘳𝘦𝘴𝘪𝘥𝘦𝘯𝘵𝘴 - 𝘦𝘴𝘱𝘦𝘤𝘪𝘢𝘭𝘭𝘺 𝘵𝘩𝘰𝘴𝘦 𝘸𝘩𝘰 𝘥𝘰 𝘯𝘰𝘵 𝘶𝘴𝘦 𝘮𝘰𝘣𝘪𝘭𝘦 𝘢𝘱𝘱𝘴 - 𝘴𝘰 𝘵𝘩𝘢𝘵 𝘵𝘩𝘦𝘺 𝘤𝘢𝘯 𝘳𝘦𝘤𝘦𝘪𝘷𝘦 𝘤𝘭𝘦𝘢𝘳, 𝘵𝘪𝘮𝘦𝘭𝘺 𝘨𝘶𝘪𝘥𝘢𝘯𝘤𝘦 𝘣𝘺 𝘱𝘩𝘰𝘯𝘦 𝘥𝘶𝘳𝘪𝘯𝘨 𝘦𝘮𝘦𝘳𝘨𝘦𝘯𝘤𝘪𝘦𝘴?",
@@ -4644,8 +4634,8 @@
    "title": "AI and generative AI calls",
    "short": "AI & GenAI",
    "old": "/calls/calls-for-genai",
-   "count": 55,
-   "open": 33
+   "count": 54,
+   "open": 32
   },
   {
    "slug": "eic",
@@ -4660,16 +4650,16 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 48,
-   "open": 48
+   "count": 47,
+   "open": 47
   },
   {
    "slug": "cascade-funding",
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 61,
-   "open": 59
+   "count": 60,
+   "open": 58
   },
   {
    "slug": "health",
