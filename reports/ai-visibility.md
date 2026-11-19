@@ -9,23 +9,35 @@
 ## Websites the assistants cite most for these questions (competitors and sources to target)
 
 - zabala.eu: 3
-- horizonteeuropa.es: 3
+- efmc.eu: 3
+- cdti.es: 3
 - ec.europa.eu: 3
-- b2match.com: 3
-- en.wikipedia.org: 3
-- e-resulting.com: 2
+- grantsfinder.eu: 3
 - europamediatrainings.com: 2
-- finnova.eu: 2
-- martel-innovate.com: 2
-- madrimasd.org: 2
-- efmc.eu: 2
 - pnoinnovation.com: 2
-- cdti.es: 2
+- e-resulting.com: 2
+- madrimasd.org: 2
+- finnova.eu: 2
+- horizonteeuropa.es: 2
+- eventos.cdti.es: 2
+- accelopment.com: 2
+- elinvestigadoryelmar.wordpress.com: 2
 - api-eventos.cdti.es: 2
-- grantsfinder.eu: 2
 
 ## Errors
 
-- ChatGPT (OpenAI): HTTPError HTTP Error 429: Too Many Requests
-- Gemini (Google): HTTPError HTTP Error 429: Too Many Requests
-- Perplexity: HTTPError HTTP Error 403: Forbidden
+- ChatGPT (OpenAI): HTTP 429: {
+  "error": {
+    "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+    "type": "insufficient_quota",
+    "param": null,
+    "code": "credit_balance_exhausted"
+  }
+}
+- Gemini (Google): HTTP 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ",
+    
+- Perplexity: HTTP 403: {"error":{"message":"Sonar is now the Agent API. Use /v1/responses instead of /v1/sonar. Migrate here: https://docs.perplexity.ai/docs/agent-api/migrate-from-sonar/overview","type":"chat_completions_not_available","code":403}}
+
