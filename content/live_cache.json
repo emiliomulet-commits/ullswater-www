@@ -1,21 +1,14 @@
 {
  "stats": {
-  "updated": "2026-11-18T20:50:19+00:00",
-  "open": 212,
-  "forthcoming": 245,
+  "updated": "2026-11-19T12:13:45+00:00",
+  "open": 213,
+  "forthcoming": 244,
   "total": 457,
-  "closingIn30Days": 45,
+  "closingIn30Days": 44,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
  "soon": [
-  {
-   "id": "PPPA-2026-REGIONAL-SUBMARINE-ISM-CABLE-HUBS",
-   "title": "Integrated Surveillance mechanism: Regional Cable hubs",
-   "deadline": "2026-11-19",
-   "programme": "PPPA",
-   "budget": 3940000
-  },
   {
    "id": "GroundWork-46597762",
    "title": "GroundWork Open Call",
@@ -64,19 +57,16 @@
    "deadline": "2026-11-26",
    "programme": "HORIZON",
    "budget": 60000000
+  },
+  {
+   "id": "RISTANC-46945037",
+   "title": "Mission ocean in Slovenian seas — Call for proposals for the provision of financial support to third parties for the implementation of small-scale projects under the RISTANC project",
+   "deadline": "2026-11-28",
+   "programme": "HORIZON",
+   "budget": 60000
   }
  ],
  "calls": [
-  {
-   "id": "PPPA-2026-REGIONAL-SUBMARINE-ISM-CABLE-HUBS",
-   "title": "Integrated Surveillance mechanism: Regional Cable hubs",
-   "status": "open",
-   "deadline": "2026-11-19",
-   "programme": "PPPA",
-   "kind": "topic",
-   "budget": 3940000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/PPPA-2026-REGIONAL-SUBMARINE-ISM-CABLE-HUBS"
-  },
   {
    "id": "GroundWork-46597762",
    "title": "GroundWork Open Call",
@@ -1078,6 +1068,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47374969"
   },
   {
+   "id": "OHAMR-45700455",
+   "title": "Understand, Model and Stop AMR Transmission",
+   "status": "open",
+   "deadline": "2027-02-01",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 30900000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45700455"
+  },
+  {
    "id": "HORIZON-CL4-2027-01-MAT-PROD-17",
    "title": "Expert network on Critical raw materials (CSA)",
    "status": "open",
@@ -1536,6 +1536,16 @@
    "kind": "topic",
    "budget": 10000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-04-11"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-EMJM-DESIGN",
+   "title": "Erasmus Mundus Design Measures",
+   "status": "open",
+   "deadline": "2027-02-16",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 3000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-EMJM-DESIGN"
   },
   {
    "id": "HORIZON-HLTH-2027-01-DISEASE-05",
@@ -2226,16 +2236,6 @@
    "kind": "topic",
    "budget": 164621400,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-PEX-EMJM-MOB"
-  },
-  {
-   "id": "ERASMUS-EDU-2027-EMJM-DESIGN",
-   "title": "Erasmus Mundus Design Measures",
-   "status": "forthcoming",
-   "deadline": "2027-02-16",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 3000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-EMJM-DESIGN"
   },
   {
    "id": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
@@ -4660,16 +4660,16 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 49,
-   "open": 49
+   "count": 48,
+   "open": 48
   },
   {
    "slug": "cascade-funding",
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 60,
-   "open": 58
+   "count": 61,
+   "open": 59
   },
   {
    "slug": "health",
@@ -4748,7 +4748,7 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 61,
+   "count": 60,
    "open": 51
   },
   {
@@ -4762,6 +4762,16 @@
  ],
  "news": [
   {
+   "title": "EDF project D-STORM opens €90,000 cascade call for SMEs",
+   "url": "https://news.ullswaterinvestments.com/2026/11/edf-d-storm-cascade-funding-call-smes/",
+   "summary": "The European Defence Fund project D-STORM offers up to €10,000 to SMEs and start-ups with operational know-how on loitering munitions and combat drones, until 11 January 2027.",
+   "category": "EIC, Defence & Equity",
+   "date": "2026-11-18",
+   "title_es": "D-STORM (EDF) abre una convocatoria en cascada de 90.000 € para pymes",
+   "summary_es": "El proyecto D-STORM del Fondo Europeo de Defensa ofrece hasta 10.000 euros a pymes y startups con conocimiento operativo sobre municiones merodeadoras y drones de combate, hasta el 11 de enero de 2027.",
+   "category_es": "EIC, defensa y capital"
+  },
+  {
    "title": "Innovation Fund 2026: €5.2 billion in five calls opening 3 December",
    "url": "https://news.ullswaterinvestments.com/2026/11/innovation-fund-2026-calls-5-2-billion-info-days/",
    "summary": "The Commission will launch three grant calls and two auctions under the Innovation Fund on 3 December, with online info days on 9, 10 and 15 December.",
@@ -4772,6 +4782,16 @@
    "category_es": "Clima y energía"
   },
   {
+   "title": "Horizon Europe opens €297 million digital calls with 12 topics",
+   "url": "https://news.ullswaterinvestments.com/2026/11/horizon-europe-digital-calls-297-million-ai/",
+   "summary": "Two new Horizon Europe calls under the digital strand cover frontier AI, AI-driven robotics, energy-efficient AI data centres and virtual worlds, open until 18 March 2027.",
+   "category": "Digital & AI",
+   "date": "2026-11-17",
+   "title_es": "Horizonte Europa abre convocatorias digitales de 297 millones",
+   "summary_es": "Dos nuevas convocatorias de Horizonte Europa en el ámbito digital cubren IA de frontera, robótica impulsada por IA, centros de datos de IA eficientes y mundos virtuales, abiertas hasta el 18 de marzo de 2027.",
+   "category_es": "Digital e IA"
+  },
+  {
    "title": "EIC Fund survey: 64% say it was essential to close their round",
    "url": "https://news.ullswaterinvestments.com/2026/11/eic-fund-survey-64-percent-essential-investment-round/",
    "summary": "A survey of 182 companies backed by the EIC Fund finds strong support for its role in fundraising, while asking for faster processes and more follow-on capacity.",
@@ -4780,26 +4800,6 @@
    "title_es": "Encuesta EIC Fund: el 64% lo ve esencial para cerrar su ronda",
    "summary_es": "Una encuesta a 182 empresas respaldadas por el EIC Fund confirma su peso en la captación de inversión, aunque piden procesos más rápidos y más capacidad de seguimiento.",
    "category_es": "EIC, defensa y capital"
-  },
-  {
-   "title": "EIC Accelerator picks 35 deep tech firms for €84 million in grants",
-   "url": "https://news.ullswaterinvestments.com/2026/11/eic-accelerator-35-companies-84-million/",
-   "summary": "Out of 453 full applications, 35 start-ups and SMEs from 17 countries were selected; 32 of them will be assessed for EIC Fund equity of up to €10 million each.",
-   "category": "EIC, Defence & Equity",
-   "date": "2026-11-16",
-   "title_es": "El EIC Accelerator elige 35 empresas deep tech para 84 millones en subvenciones",
-   "summary_es": "De 453 solicitudes completas, se han seleccionado 35 startups y pymes de 17 países; 32 de ellas serán evaluadas para recibir capital del EIC Fund de hasta 10 millones de euros cada una.",
-   "category_es": "EIC, defensa y capital"
-  },
-  {
-   "title": "EHDS webinar on 25 November: benefits of health data secondary use",
-   "url": "https://news.ullswaterinvestments.com/2026/11/ehds-webinar-4-secondary-use-health-data/",
-   "summary": "The fourth webinar of the Commission's EHDS stakeholder support series discusses the benefits, challenges and incentives of reusing health data. Open to all.",
-   "category": "Health & Health Data",
-   "date": "2026-11-16",
-   "title_es": "Webinario del EHDS el 25 de noviembre: beneficios del uso secundario de datos sanitarios",
-   "summary_es": "El cuarto webinario de la serie de la Comisión de apoyo a las partes interesadas del EHDS debate los beneficios, retos e incentivos de reutilizar los datos sanitarios. Abierto a todos.",
-   "category_es": "Salud y datos sanitarios"
   }
  ],
  "events": [
