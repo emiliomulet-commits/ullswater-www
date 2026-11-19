@@ -28,10 +28,23 @@ DOMAIN = "ullswaterinvestments.com"
 TIMEOUT = 180
 
 
-def post(url, body, headers):
-    req = urllib.request.Request(url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json", **headers})
-    with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-        return json.loads(r.read().decode())
+def post(url, body, headers, tries=4):
+    """POST JSON. Retries rate limits (429) with backoff; on failure the error carries the API's own message
+    (e.g. insufficient_quota vs rate limit) so the report says what to fix."""
+    import time, urllib.error
+    hdrs = {"Content-Type": "application/json", "User-Agent": "UllswaterAIVisibility/1.0 (+https://www.ullswaterinvestments.com)", **headers}
+    for i in range(tries):
+        req = urllib.request.Request(url, data=json.dumps(body).encode(), headers=hdrs)
+        try:
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+                return json.loads(r.read().decode())
+        except urllib.error.HTTPError as e:
+            detail = e.read().decode(errors="replace")[:300]
+            quota = "quota" in detail.lower() or "billing" in detail.lower() or "credit" in detail.lower()
+            if e.code == 429 and not quota and i < tries - 1:
+                time.sleep(int(e.headers.get("Retry-After") or 0) or 20 * (i + 1))
+                continue
+            raise RuntimeError(f"HTTP {e.code}: {detail}") from None
 
 
 def urls_in(obj):
@@ -105,7 +118,7 @@ def main():
             try:
                 res = fn(q)
             except Exception as e:
-                errors.append(f"{name}: {type(e).__name__} {str(e)[:120]}")
+                errors.append(f"{name}: {str(e)[:300]}")
                 break  # one failure per assistant is enough (bad key or model name)
             if res is None:
                 break
