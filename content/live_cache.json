@@ -1,8 +1,8 @@
 {
  "stats": {
-  "updated": "2026-11-19T12:13:45+00:00",
-  "open": 213,
-  "forthcoming": 244,
+  "updated": "2026-11-19T14:22:02+00:00",
+  "open": 214,
+  "forthcoming": 243,
   "total": 457,
   "closingIn30Days": 44,
   "programmes": 23,
@@ -1538,6 +1538,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-04-11"
   },
   {
+   "id": "ERASMUS-EDU-2027-PEX-EMJM-MOB",
+   "title": "Erasmus Mundus Joint Masters",
+   "status": "open",
+   "deadline": "2027-02-16",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 164621400,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-PEX-EMJM-MOB"
+  },
+  {
    "id": "ERASMUS-EDU-2027-EMJM-DESIGN",
    "title": "Erasmus Mundus Design Measures",
    "status": "open",
@@ -2226,16 +2236,6 @@
    "kind": "cascade",
    "budget": 600000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46906387"
-  },
-  {
-   "id": "ERASMUS-EDU-2027-PEX-EMJM-MOB",
-   "title": "Erasmus Mundus Joint Masters",
-   "status": "forthcoming",
-   "deadline": "2027-02-16",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 164621400,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-PEX-EMJM-MOB"
   },
   {
    "id": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
@@ -4749,7 +4749,7 @@
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
    "count": 60,
-   "open": 51
+   "open": 52
   },
   {
    "slug": "international-cooperation",
