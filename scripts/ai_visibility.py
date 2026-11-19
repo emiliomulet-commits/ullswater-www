@@ -91,15 +91,15 @@ def ask_gemini(q):
 
 
 def ask_perplexity(q):
+    """Perplexity Agent API (Sonar chat completions was retired on 27 Sep 2026)."""
     key = os.environ.get("PERPLEXITY_API_KEY")
     if not key:
         return None
-    r = post("https://api.perplexity.ai/chat/completions",
-             {"model": os.environ.get("PERPLEXITY_MODEL") or "sonar", "messages": [{"role": "user", "content": q}]},
+    r = post("https://api.perplexity.ai/v1/agent",
+             {"model": os.environ.get("PERPLEXITY_MODEL") or "perplexity/sonar", "input": q, "tools": [{"type": "web_search"}]},
              {"Authorization": f"Bearer {key}"})
-    text = r["choices"][0]["message"]["content"]
-    srcs = r.get("citations") or [s.get("url", "") for s in r.get("search_results", [])]
-    return text, srcs
+    text = r.get("output_text") or " ".join(c.get("text", "") for o in r.get("output", []) if o.get("type") == "message" for c in o.get("content", []))
+    return text, urls_in(r.get("output", []))
 
 
 ASSISTANTS = [("ChatGPT (OpenAI)", ask_openai), ("Claude (Anthropic)", ask_anthropic), ("Gemini (Google)", ask_gemini), ("Perplexity", ask_perplexity)]
@@ -130,12 +130,17 @@ def main():
                          "cited": int(bool(cited)), "cited_urls": " ".join(sorted(set(cited)))[:500], "n_sources": len(set(urls))})
     csv_path = ROOT / "data" / "ai_visibility.csv"
     csv_path.parent.mkdir(exist_ok=True)
-    new = not csv_path.exists()
-    with open(csv_path, "a", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["date", "assistant", "question", "mentioned", "cited", "cited_urls", "n_sources"])
-        if new:
-            w.writeheader()
-        w.writerows(rows)
+    fields = ["date", "assistant", "question", "mentioned", "cited", "cited_urls", "n_sources"]
+    done = {r["assistant"] for r in rows}
+    old_rows = []
+    if csv_path.exists():
+        with open(csv_path, newline="", encoding="utf-8") as f:
+            # a rerun on the same day replaces that day's rows for the assistants that answered
+            old_rows = [r for r in csv.DictReader(f) if not (r["date"] == today and r["assistant"] in done)]
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fields)
+        w.writeheader()
+        w.writerows(old_rows + rows)
     lines = [f"# AI visibility — week of {today}", ""]
     if not rows:
         lines.append("No assistant could be queried. Add the API keys as GitHub secrets (OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY, PERPLEXITY_API_KEY).")
