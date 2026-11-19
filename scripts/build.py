@@ -247,7 +247,30 @@ header.site .wrap{max-width:1280px;gap:12px}header.site .brand{flex:0 1 auto;min
  .burger{display:block}nav.main{display:none;position:absolute;left:0;right:0;top:70px;background:var(--navy2);flex-direction:column;align-items:stretch;padding:10px 16px 18px;max-height:calc(100vh - 70px);overflow-y:auto}
  nav.main.open{display:flex}.dd .menu,.dd .menu.wide{position:static;grid-template-columns:1fr;min-width:0;box-shadow:none;border:0;background:transparent;display:block;padding:0 0 0 12px;min-width:0}.dd .menu a{color:#cfd8ee}.dd .menu .lbl{color:var(--gold)}.dd .menu.wide{display:none}.dd.open .menu.wide{display:grid}.dd .menu hr{border-color:#334}.dd>button{text-align:left}
  header .btn.hide-m{display:none}}
-@media (max-width:640px){body{font-size:16px}.pj-head h2{font-size:30px}.pj-stats li{padding:12px 14px}.pj-stats strong{font-size:26px}.pj-feat .main{padding:28px 22px}.pj-feat h3{font-size:27px}.pj-feat .side{padding:24px 22px;flex-direction:row;flex-wrap:wrap}.pj-feat .side li{flex:1 1 40%}section.pj{padding:52px 0 56px}.brand img{height:38px}.hero h1{font-size:36px}.hero.sm h1{font-size:31px}.hero .wrap{padding:56px 22px 52px}h2{font-size:28px}.g2,.g3,.g4{grid-template-columns:1fr}
+.annc{background:#0b1530;color:#dfe5f3;font-size:14px;line-height:1.4;border-bottom:1px solid rgba(201,166,70,.35)}
+.annc .wrap{display:flex;gap:6px 12px;align-items:center;justify-content:center;flex-wrap:wrap;padding:8px 22px;max-width:1280px;text-align:center}
+.annc .new{background:var(--gold);color:#0b1530;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
+.annc a{color:var(--gold);font-weight:700;text-decoration:none;white-space:nowrap}.annc a:hover{color:#fff;text-decoration:underline}
+section.ag{background:radial-gradient(900px 420px at 88% 0%,rgba(108,76,241,.22),transparent 60%),radial-gradient(700px 380px at 0% 100%,rgba(201,166,70,.12),transparent 60%),#0b1530;color:#fff;padding:86px 0 80px;scroll-margin-top:70px}
+.ag-top{display:grid;grid-template-columns:1.4fr .6fr;gap:48px;align-items:start}
+.ag .kicker{color:var(--gold)}.ag-logo{display:block;height:54px;width:auto;margin:6px 0 22px}
+.ag h2{color:#fff;font-size:42px;line-height:1.12;margin:0 0 16px;letter-spacing:-.01em}
+.ag .lead{color:#d3dbef;font-size:18.5px;margin:0;max-width:720px}
+.ag-st{display:inline-flex;align-items:center;gap:9px;background:rgba(201,166,70,.13);border:1px solid rgba(201,166,70,.5);color:#f1d98a;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 13px;border-radius:999px;margin:0 0 18px}
+.ag-st::before{content:"";width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.22)}
+.ag-facts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,.15);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.04)}
+.ag-facts li{padding:22px 20px;font-size:14px;color:#c3cce4;line-height:1.4;border-bottom:1px solid rgba(255,255,255,.12)}.ag-facts li:nth-child(odd){border-right:1px solid rgba(255,255,255,.12)}.ag-facts li:nth-last-child(-n+2){border-bottom:0}
+.ag-facts strong{display:block;font-size:36px;color:#fff;font-weight:800;line-height:1.1;margin-bottom:4px}
+.ag-track{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ag-track li{border-top:3px solid rgba(255,255,255,.22);padding:16px 2px 0}.ag-track li.done{border-color:var(--gold)}.ag-track li.now{border-color:#4ade80}
+.ag-track .w{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}.ag-track li.now .w{color:#86efac}.ag-track li.next .w{color:#aab4cf}
+.ag-track b{display:block;color:#fff;font-size:18px;margin:4px 0 6px}.ag-track .d{display:block;color:#b8c3e0;font-size:14.5px;line-height:1.5}
+.ag .actions{margin-top:28px}.ag-dl{margin:18px 0 0;color:#b8c3e0;font-size:14.5px}.ag-dl a{color:var(--gold);font-weight:700;text-decoration:none}.ag-dl a:hover{color:#fff}
+.ag.compact{padding:56px 0}.ag.compact h2{font-size:34px}
+.seats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.seats div{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px}.seats b{display:block;color:var(--navy);font-size:17px}.seats span{color:var(--muted);font-size:14.5px}
+.dd .menu a.star{font-weight:700;color:var(--navy);background:#fbf6e2}
+@media (max-width:960px){.ag-top{grid-template-columns:1fr;gap:30px}.ag-track{grid-template-columns:1fr 1fr}.seats{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){body{font-size:16px}section.ag{padding:56px 0}.ag h2,.ag.compact h2{font-size:30px}.ag-logo{height:44px}.ag-track{grid-template-columns:1fr}.ag-facts strong{font-size:28px}.seats{grid-template-columns:1fr}.pj-head h2{font-size:30px}.pj-stats li{padding:12px 14px}.pj-stats strong{font-size:26px}.pj-feat .main{padding:28px 22px}.pj-feat h3{font-size:27px}.pj-feat .side{padding:24px 22px;flex-direction:row;flex-wrap:wrap}.pj-feat .side li{flex:1 1 40%}section.pj{padding:52px 0 56px}.brand img{height:38px}.hero h1{font-size:36px}.hero.sm h1{font-size:31px}.hero .wrap{padding:56px 22px 52px}h2{font-size:28px}.g2,.g3,.g4{grid-template-columns:1fr}
  .flow{grid-template-columns:1fr}.flow div+div{margin-left:0;margin-top:30px}.flow div+div::before{content:"↓";left:50%;top:-27px;transform:translateX(-50%)}
  .phase{grid-template-columns:1fr;gap:6px}footer.site .cols{grid-template-columns:1fr}footer.site a{overflow-wrap:anywhere}.facts{grid-template-columns:1fr}.facts dt{border-bottom:0}.cta{padding:30px}.list li{flex-direction:column;gap:2px}.list .d{flex:none}}
 """
@@ -288,8 +311,8 @@ def breadcrumb_ld(path, title):
     name = re.split(r" [|·] Ullswater", title)[0].strip()
     items = [("Home", BASE + "/")]
     parts = [x for x in path.strip("/").split("/") if x]
-    if len(parts) > 1 and parts[0] in ("guides", "news"):
-        items.append(({"guides": "EU funding guides", "news": "News archive"}[parts[0]], f"{BASE}/{parts[0]}/" if parts[0] == "guides" else f"{BASE}/news/archive/"))
+    if len(parts) > 1 and parts[0] in ("guides", "news", "projects"):
+        items.append(({"guides": "EU funding guides", "news": "News archive", "projects": "Projects"}[parts[0]], f"{BASE}/news/archive/" if parts[0] == "news" else f"{BASE}/{parts[0]}/"))
     items.append((name, BASE + path))
     seen, out = set(), []
     for n, u in items:
@@ -310,7 +333,9 @@ def header(themes, current):
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>EU calls</button><div class="menu wide"><div>
 <div class="lbl">Live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a><a href="/guides/"><b>EU funding guides</b></a>
 </div><div><div class="lbl">By theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
-<a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a href="/projects/"{cur('projects')}>Projects</a>
+<a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a>
+<div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('projects')}>Projects</button><div class="menu">
+<a class="star" href="/projects/argos/">★ ARGOS · now in market</a><hr>{"".join(f'<a href="{project_url(p)}">{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<hr><a href="/projects/"><b>All projects →</b></a></div></div>
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('services')}>Services</button><div class="menu">
 <a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div></div><a href="/courses/"{cur('courses')}>Courses</a><a href="/about/"{cur('about')}>About</a>
 </nav><a class="btn hide-m" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a>
@@ -364,6 +389,64 @@ def projects_band():
 </div></section>"""
 
 
+def argos_band(compact=False):
+    A = C.ARGOS
+    facts = "".join(f"<li><strong>{escape(v)}</strong>{escape(k)}</li>" for v, k in A["facts"])
+    track = "" if compact else ('<ol class="ag-track" aria-label="From EU research to the market">' + "".join(
+        f'<li class="{st}"><span class="w">{escape(w)}</span><b>{escape(t)}</b><span class="d">{escape(d)}</span></li>' for st, w, t, d in A["stages"]) + "</ol>")
+    return f"""<section class="ag{' compact' if compact else ''}" id="argos" aria-labelledby="ag-h"><div class="wrap"><div class="ag-top"><div>
+<p class="kicker">{escape(A["kicker"])}</p><img class="ag-logo" src="/assets/img/argos-logo-white.svg" alt="ARGOS · Verified compliance agent" width="208" height="54">
+<div class="ag-st">{escape(A["status"])}</div><h2 id="ag-h">{escape(A["title"])}</h2><p class="lead">{escape(A["lead"])}</p>
+<div class="actions"><a class="btn" href="/projects/argos/">Discover the ARGOS story</a><a class="btn ghost" href="{A["site_en"]}" target="_blank" rel="noopener">Visit the ARGOS site ↗</a><a class="btn ghost" href="{A["partners_en"]}" target="_blank" rel="noopener">Apply as a partner law firm</a></div>
+<p class="ag-dl">Applications for partner seats close on {A["deadline"]}. <a href="{A["video"]}" target="_blank" rel="noopener">Watch the 3-minute video (in Spanish) ↗</a></p></div>
+<ul class="ag-facts">{facts}</ul></div>{track}</div></section>"""
+
+
+def argos_page(themes):
+    A = C.ARGOS
+    prin = "".join(f'<div class="card top"><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for t, d in A["principles"])
+    rules = "".join(f"<li>{escape(r)}</li>" for r in A["rules"])
+    track = "".join(f'<div><b>{escape(w)}</b><strong>{escape(t)}</strong><span>{escape(d)}</span></div>' for _, w, t, d in A["stages"])
+    rows = "".join(f"<tr><td><b>{escape(a)}</b></td><td>{escape(b)}</td><td>{escape(c)}</td><td>{escape(d)}</td></tr>" for a, b, c, d in A["research"])
+    model = "".join(f'<div><b>{n}</b><strong>{escape(t)}</strong><span>{escape(d)}</span></div>' for n, t, d in A["model"])
+    seats = "".join(f'<div><b>{escape(c)}</b><span>{escape(x)}</span></div>' for c, x in A["seats"])
+    role = "".join(f'<div class="card"><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for t, d in A["role"])
+    facts = "".join(f"<li><strong>{escape(v)}</strong>{escape(k)}</li>" for v, k in A["facts"])
+    body = hero("Flagship venture · Legaltech · In market", "ARGOS: from EU-funded research to a European compliance product",
+                escape(A["lead"]), '<div class="crumbs"><a href="/">Home</a> › <a href="/projects/">Projects</a> › ARGOS</div>',
+                actions=f'<a class="btn" href="{A["site_en"]}" target="_blank" rel="noopener">Visit the ARGOS site ↗</a><a class="btn ghost" href="#partners">Partner law firms ↓</a><a class="btn ghost" href="{A["video"]}" target="_blank" rel="noopener">Watch the video (ES) ↗</a>',
+                extra=f'<ul class="stats">{facts}</ul>') + f"""
+<section class="band"><div class="wrap split"><div class="prose"><p class="kicker" style="color:var(--gold2)">The problem</p><h2>Declared compliance does not protect you. Verified compliance does.</h2><p>{escape(A["challenge"])}</p></div>
+<div class="panel"><h3>What ARGOS verifies</h3><ul class="check">{rules}</ul><p style="margin:14px 0 0;color:var(--muted);font-size:15px">Deliverables: compliance report, prioritised remediation plan, differential record of processing, DPIA drafts and a W3C verifiable credential within the Gaia-X trust framework.</p></div></div></section>
+<section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">How it works</p><h2>Three principles, no small print</h2><div class="grid g3">{prin}</div></div></section>
+<section class="band"><div class="wrap"><p class="kicker" style="color:var(--gold2)">The path to market</p><h2>From EU research to the European market</h2><p class="sub">ARGOS shows the full journey we work for: from EU-funded R&amp;D to a product, and from a product to a pan-European distribution network.</p>
+<div class="flow f4">{track}</div></div></section>
+<section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Built on EU-funded research</p><h2>European technology, built in European projects</h2>
+<p class="sub">ARGOS is a product of Software in a Box. Its technical base comes from three federated data-space demonstrators funded by NextGenerationEU, and its next stage of R&amp;D is part of our ITEA proposals for 2027–2030.</p>
+<table class="gt"><thead><tr><th>Initiative</th><th>Programme</th><th>Contribution to ARGOS</th><th>Period · status</th></tr></thead><tbody>{rows}</tbody></table>
+<p class="pj-note">The NextGenerationEU funding financed the data-space demonstrators, not ARGOS as a product. ITEA proposals are pending evaluation; content does not necessarily reflect the views of the funding bodies.</p></div></section>
+<section class="band" id="partners" style="scroll-margin-top:70px"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Scaling through law firms</p><h2>A European network of partner law firms</h2>
+<p class="sub">Software in a Box does not give legal advice or sign compliance audits: that is the law firm's role. The client gets technology and legal judgement in one service, and each firm gets a product its clients need.</p>
+<div class="flow">{model}</div>
+<div class="split" style="margin-top:44px"><div class="prose"><h3>Ten partner seats, about twenty Business Partners</h3>
+<p>Ten partner law firms join the ARGOS company, each with a 5% stake and a vote, one or two per country. About twenty Business Partner firms join the network without equity. A venture capital fund will finance the marketing and sales campaigns in every country.</p>
+<p><b>Applications for partner seats close on {A["deadline"]}.</b> Only one seat per city.</p>
+<div class="actions"><a class="btn" href="{A["partners_en"]}" target="_blank" rel="noopener">Partner programme on the ARGOS site ↗</a><a class="btn line" href="{A["apply"]}">Apply by email</a></div></div>
+<div><h3>Partner seats by country</h3><div class="seats" style="grid-template-columns:1fr 1fr">{seats}</div></div></div></div></section>
+<section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Our role</p><h2>What Ullswater Investments does</h2><div class="grid g3">{role}</div></div></section>
+{cta("Is your firm the ARGOS partner for your city?", "Talk to us about the partner programme, the venture capital round or ARGOS for your organisation.", "Book a meeting")}"""
+    ld = {"@context": "https://schema.org", "@type": "SoftwareApplication", "@id": BASE + "/projects/argos/#argos", "name": "ARGOS",
+          "alternateName": "ARGOS · Verified Compliance Agent", "applicationCategory": "BusinessApplication", "applicationSubCategory": "Regulatory compliance (legaltech)",
+          "operatingSystem": "On-premise appliance or private cloud", "url": A["site_en"], "description": A["lead"], "inLanguage": ["es", "en", "fr", "de", "nl", "pt", "it", "da"],
+          "featureList": A["rules"], "image": BASE + "/assets/img/argos-logo-white.svg",
+          "creator": {"@type": "Organization", "name": "Software in a Box", "url": "https://www.softwareinabox.eu/", "parentOrganization": {"@id": BASE + "/#org"}},
+          "funder": {"@id": BASE + "/#org"}, "subjectOf": {"@type": "WebPage", "url": BASE + "/projects/argos/"},
+          "isBasedOn": [{"@type": "ResearchProject", "name": n, "funder": {"@type": "Organization", "name": "NextGenerationEU"}} for n in ("Global Data Care", "PROCUREDATA", "EcoDataNet")]}
+    return page("/projects/argos/", "ARGOS: from EU-funded research to the European market | Ullswater Investments",
+                "ARGOS, the verified compliance agent for the GDPR, the EHDS and the AI Act, built by Software in a Box on EU-funded R&D, now scaling across Europe through partner law firms.",
+                body, themes, "projects", ld)
+
+
 def projects_ld():
     return {"@context": "https://schema.org", "@type": "ItemList", "name": "European R&D projects with Ullswater Investments",
             "itemListElement": [{"@type": "ListItem", "position": i + 1, "item": {
@@ -390,7 +473,7 @@ def projects_page(themes):
     st = "".join(f"<li><strong>{a}</strong>{escape(b)}</li>" for a, b in C.PROJECTS_STATS)
     body = hero("European R&amp;D projects · ITEA · Eureka", "Our participation in European projects",
                 "From project leader to funding advisor: the European R&amp;D consortia that Ullswater Investments and its technology company, Software in a Box, are preparing today. Their consortia are still open to new partners, except DR-MBANK, which is already in execution.",
-                crumbs("Projects"), extra=f'<ul class="stats">{st}</ul>') + f"""
+                crumbs("Projects"), extra=f'<ul class="stats">{st}</ul>') + argos_band(compact=True) + f"""
 <section class="band alt" style="padding:52px 0"><div class="wrap"><h2 style="font-size:24px">How we take part</h2><div class="grid g3">{ways}</div></div></section>
 <section class="band"><div class="wrap"><div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
 <p id="pj-count" style="margin:0;font-size:24px;font-weight:700;color:var(--navy)" aria-live="polite">{n} projects</p><div class="chips" role="group" aria-label="Filter by our role">{chips}</div></div>
@@ -406,10 +489,14 @@ FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 <div><img class="flogo" src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26" loading="lazy"><p style="margin:0 0 10px">European funding advisors in Madrid and Brussels. Grants, loans and equity for innovation.</p>
 <p style="margin:0 0 8px"><b style="color:#fff">Madrid</b> · Calle Ramírez de Arellano 17, 28043 Madrid, Spain</p><p style="margin:0 0 8px"><b style="color:#fff">Brussels</b> · Square de Meeûs 37, 1000 Brussels, Belgium</p><p style="margin:0"><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
 <div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
-<div><h4>Projects</h4>{"".join(f'<a href="{project_url(p)}">{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
+<div><h4>Projects</h4><a href="/projects/argos/"><b>★ ARGOS</b></a>{"".join(f'<a href="{project_url(p)}">{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
 <div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a></div>
 <div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a><a href="{LINKEDIN}" target="_blank" rel="noopener me">LinkedIn ↗</a><a href="{YOUTUBE}" target="_blank" rel="noopener me">YouTube ↗</a></div>
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
+
+
+ANNC = ('<div class="annc"><div class="wrap"><span class="new">New</span><span>ARGOS goes to market: we are selecting partner law firms in seven EU countries.</span>'
+        '<a href="/projects/argos/">Find out more →</a></div></div>')
 
 
 def page(path, title, desc, body, themes, current="", jsonld=None, bilingual=True):
@@ -430,7 +517,7 @@ def page(path, title, desc, body, themes, current="", jsonld=None, bilingual=Tru
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="EU Funding News" href="{C.NEWS}/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v={VER}"><script type="application/ld+json">{json.dumps(lds if len(lds) > 1 else ORG, ensure_ascii=False)}</script></head><body>
-<a class="skip" href="#main">Skip to content</a>{banner}{header(themes, current).replace('<button class="burger"', switch + '<button class="burger"')}<main id="main">{body}</main>{FOOTER}<script src="/assets/site.js?v={VER}" defer></script></body></html>"""
+<a class="skip" href="#main">Skip to content</a>{banner}{'' if path == '/projects/argos/' else ANNC}{header(themes, current).replace('<button class="burger"', switch + '<button class="burger"')}<main id="main">{body}</main>{FOOTER}<script src="/assets/site.js?v={VER}" defer></script></body></html>"""
 
 
 def hero(kicker, h1, lead, crumbs="", small=True, actions="", extra=""):
@@ -471,7 +558,7 @@ def home(live, themes):
         stats = (f'<ul class="stats"><li><strong>{st["open"]}</strong>EU calls open now</li><li><strong>{st["forthcoming"]}</strong>forthcoming calls</li>'
                  f'<li><strong>{st["closingIn30Days"]}</strong>closing in 30 days</li><li><strong>{st["programmes"]}</strong>EU programmes tracked</li></ul>')
     h = hero("European funding advisors · Madrid · Brussels", "Unlock European funding for your innovation", escape(C.MISSION), small=False,
-             actions=f'<a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a><a class="btn ghost" href="{C.CALLS}/">Explore {st.get("total", "all")} EU calls →</a><a class="btn ghost" href="#projects">Our European projects ↓</a>',
+             actions=f'<a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a><a class="btn ghost" href="{C.CALLS}/">Explore {st.get("total", "all")} EU calls →</a><a class="btn ghost" href="#argos">Our flagship: ARGOS ↓</a>',
              extra=stats)
     svc = "".join(f'<a class="card top" href="/{s}/"><div class="num">0{i + 1}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Learn more →</span></a>'
                   for i, (s, t, d) in enumerate(C.SERVICES))
@@ -490,7 +577,7 @@ def home(live, themes):
 <div class="panel"><h3><a href="{C.NEWS}/">Latest news</a></h3><ul class="list">{news}</ul><a class="more" href="{C.NEWS}/">EU Funding News →</a></div>
 <div class="panel"><h3><a href="{C.EVENTS}/">Upcoming events</a></h3><ul class="list">{evs}</ul><a class="more" href="{C.EVENTS}/">All events →</a></div></div></div></section>"""
     vc = "".join(f'<div class="card"><div class="ic" aria-hidden="true">{i}</div><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for i, t, d in C.VC_DOMAINS)
-    body = h + projects_band() + f"""
+    body = h + argos_band() + projects_band() + f"""
 <section class="band"><div class="wrap split"><div><p class="kicker" style="color:var(--gold2)">Who we are</p><h2>Senior advisors for EU grants, loans and equity</h2>
 <p class="sub" style="margin-bottom:0">{escape(C.TEAM)}</p></div><blockquote class="quote">{escape(C.PARTNER_QUOTE)}<cite>Emilio Mulet, Managing Partner</cite></blockquote></div></section>
 <section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Our services</p><h2>From the right call to a funded project</h2><p class="sub">Three complementary services that take you from strategy to signed grant agreement or investment.</p><div class="grid g3">{svc}</div></div></section>
@@ -657,7 +744,7 @@ def es_breadcrumbs(h):
         return h
     from html import unescape
     es_title = re.split(r" [|·] Ullswater", unescape(tm.group(1)))[0].strip()
-    names = {"Home": "Inicio", "EU funding guides": "Guías de financiación UE", "News archive": "Archivo de noticias"}
+    names = {"Home": "Inicio", "EU funding guides": "Guías de financiación UE", "News archive": "Archivo de noticias", "Projects": "Proyectos"}
     for x in lds:
         if x.get("@type") == "BreadcrumbList":
             items = x["itemListElement"]
@@ -694,7 +781,7 @@ def build_es(pages, live=None):
 def write_llms_full(pages):
     """llms-full.txt: the readable English text of every page, so AI assistants can read the whole site in one request."""
     from bs4 import BeautifulSoup
-    order = ["/", "/eu-fund-matching/", "/investment-readiness/", "/strategic-positioning/", "/projects/", "/about/", "/courses/"]
+    order = ["/", "/eu-fund-matching/", "/investment-readiness/", "/strategic-positioning/", "/projects/argos/", "/projects/", "/about/", "/courses/"]
     paths = order + sorted(p for p in pages if p not in order and p not in ("/privacy/", "/legal/"))
     out = [f"# Ullswater Investments · EU Funding Advisors: full text of {BASE}\n",
            f"> Generated on {date.today().isoformat()}. Spanish versions of every page are under {BASE}/es/. Live EU calls: {C.CALLS}/ · News: {C.NEWS}/ · Events: {C.EVENTS}/\n"]
@@ -740,7 +827,7 @@ def main():
     (SITE / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#233567"/><text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" text-anchor="middle" fill="#c9a646">U</text></svg>', encoding="utf-8")
     pages = {"/": home(live, themes), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
              "/strategic-positioning/": strategic_positioning(themes), "/about/": about(themes), "/courses/": courses(themes),
-             "/privacy/": privacy(themes), "/legal/": legal(themes), "/projects/": projects_page(themes)}
+             "/privacy/": privacy(themes), "/legal/": legal(themes), "/projects/": projects_page(themes), "/projects/argos/": argos_page(themes)}
     pages.update(archive_pages(themes))
     if live.get("calls"):
         for path, (title, desc, body, ld) in guides.build(live["calls"], C.CALLS).items():
@@ -786,6 +873,10 @@ def main():
 - [Strategic Positioning]({BASE}/strategic-positioning/)
 - [Executive Programme in EU Funding for Defence and Dual-Use]({BASE}/courses/)
 - [About and company facts]({BASE}/about/)
+
+## Flagship venture: ARGOS
+- [ARGOS: from EU-funded research to the European market]({BASE}/projects/argos/): verified compliance agent (GDPR, EHDS, AI Act, NIS2, Data Act) built by Software in a Box, the technology company of Ullswater Investments, on the technology of three NextGenerationEU-funded data-space demonstrators; now scaling across seven EU countries through ten partner law firms and about twenty Business Partners (applications until {C.ARGOS["deadline"]})
+- [ARGOS product site]({C.ARGOS["site_en"]}) (eight languages; Spanish at https://argos.softwareinabox.eu/)
 
 ## European projects
 - [Our participation in European projects]({BASE}/projects/) · [JSON]({BASE}/data/projects.json)
