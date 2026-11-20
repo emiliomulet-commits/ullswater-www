@@ -1,10 +1,10 @@
 {
  "stats": {
-  "updated": "2026-11-19T20:54:50+00:00",
-  "open": 213,
-  "forthcoming": 243,
-  "total": 456,
-  "closingIn30Days": 43,
+  "updated": "2026-11-20T13:57:46+00:00",
+  "open": 220,
+  "forthcoming": 245,
+  "total": 465,
+  "closingIn30Days": 44,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
@@ -1808,6 +1808,76 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-WIDERA-2027-04-WIDENING-01"
   },
   {
+   "id": "HORIZON-CL5-2027-01-D1-12",
+   "title": "Better understanding and attribution of land and ocean carbon sources and sinks",
+   "status": "open",
+   "deadline": "2027-03-04",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 25000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-12"
+  },
+  {
+   "id": "HORIZON-CL5-2027-01-D1-13",
+   "title": "Next generation scenarios for informing climate and sustainability transitions",
+   "status": "open",
+   "deadline": "2027-03-04",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 24000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-13"
+  },
+  {
+   "id": "HORIZON-CL5-2027-01-D1-09",
+   "title": "Assessing the performance of policy instruments to inform climate change mitigation action",
+   "status": "open",
+   "deadline": "2027-03-04",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 9000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-09"
+  },
+  {
+   "id": "HORIZON-CL5-2027-01-D1-10",
+   "title": "Understanding and avoiding maladaptation to climate change",
+   "status": "open",
+   "deadline": "2027-03-04",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 18000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-10"
+  },
+  {
+   "id": "HORIZON-CL5-2027-01-D1-11",
+   "title": "Africa-EU CO-FUND action on climate",
+   "status": "open",
+   "deadline": "2027-03-04",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 15000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-11"
+  },
+  {
+   "id": "HORIZON-CL5-2027-01-D1-07",
+   "title": "Advancing understanding, modelling and prediction of extreme events in a changing climate",
+   "status": "open",
+   "deadline": "2027-03-04",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 18000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-07"
+  },
+  {
+   "id": "HORIZON-CL5-2027-01-D1-08",
+   "title": "Palaeoclimate science for a better understanding of Earth system dynamics",
+   "status": "open",
+   "deadline": "2027-03-04",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 14000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-08"
+  },
+  {
    "id": "HORIZON-EURATOM-2027-01-01",
    "title": "Key enabling technologies for fusion power plants (European Partnership on Fusion Energy)",
    "status": "open",
@@ -2228,6 +2298,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46906387"
   },
   {
+   "id": "ERASMUS-EDU-2027-PEX-TEACH-ACA",
+   "title": "Erasmus + Teacher Academies",
+   "status": "forthcoming",
+   "deadline": "2027-02-23",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 37500000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-PEX-TEACH-ACA"
+  },
+  {
    "id": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
    "title": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
    "status": "forthcoming",
@@ -2246,76 +2326,6 @@
    "kind": "topic",
    "budget": 30000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-05-01"
-  },
-  {
-   "id": "HORIZON-CL5-2027-01-D1-12",
-   "title": "Better understanding and attribution of land and ocean carbon sources and sinks",
-   "status": "forthcoming",
-   "deadline": "2027-03-04",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 25000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-12"
-  },
-  {
-   "id": "HORIZON-CL5-2027-01-D1-13",
-   "title": "Next generation scenarios for informing climate and sustainability transitions",
-   "status": "forthcoming",
-   "deadline": "2027-03-04",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 24000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-13"
-  },
-  {
-   "id": "HORIZON-CL5-2027-01-D1-09",
-   "title": "Assessing the performance of policy instruments to inform climate change mitigation action",
-   "status": "forthcoming",
-   "deadline": "2027-03-04",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 9000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-09"
-  },
-  {
-   "id": "HORIZON-CL5-2027-01-D1-10",
-   "title": "Understanding and avoiding maladaptation to climate change",
-   "status": "forthcoming",
-   "deadline": "2027-03-04",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 18000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-10"
-  },
-  {
-   "id": "HORIZON-CL5-2027-01-D1-11",
-   "title": "Africa-EU CO-FUND action on climate",
-   "status": "forthcoming",
-   "deadline": "2027-03-04",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 15000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-11"
-  },
-  {
-   "id": "HORIZON-CL5-2027-01-D1-07",
-   "title": "Advancing understanding, modelling and prediction of extreme events in a changing climate",
-   "status": "forthcoming",
-   "deadline": "2027-03-04",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 18000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-07"
-  },
-  {
-   "id": "HORIZON-CL5-2027-01-D1-08",
-   "title": "Palaeoclimate science for a better understanding of Earth system dynamics",
-   "status": "forthcoming",
-   "deadline": "2027-03-04",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 14000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-01-D1-08"
   },
   {
    "id": "InnovativeSMEs-44087099",
@@ -2898,6 +2908,66 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL6-2027-03-GOVERNANCE-03"
   },
   {
+   "id": "ERASMUS-EDU-2027-CB-VET-CA",
+   "title": "Capacity building in VET in Caribbean",
+   "status": "forthcoming",
+   "deadline": "2027-05-12",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 300000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CB-VET-CA"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CB-VET-LA",
+   "title": "Capacity building in VET in Latin America",
+   "status": "forthcoming",
+   "deadline": "2027-05-12",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 2000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CB-VET-LA"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CB-VET-NE",
+   "title": "Capacity building in VET in Neighborhood East",
+   "status": "forthcoming",
+   "deadline": "2027-05-12",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 3800000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CB-VET-NE"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CB-VET-SMC",
+   "title": "Capacity building in VET in South Mediterranean Countries",
+   "status": "forthcoming",
+   "deadline": "2027-05-12",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 7900000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CB-VET-SMC"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CB-VET-SSA",
+   "title": "Capacity building in VET in Sub-Saharan Africa",
+   "status": "forthcoming",
+   "deadline": "2027-05-12",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 8000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CB-VET-SSA"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CB-VET-WB",
+   "title": "Capacity building in VET in Western Balkans",
+   "status": "forthcoming",
+   "deadline": "2027-05-12",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 5750000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CB-VET-WB"
+  },
+  {
    "id": "HORIZON-EIC-2027-DEFENCE-01",
    "title": "EIC STEP Defence",
    "status": "forthcoming",
@@ -3406,6 +3476,26 @@
    "kind": "topic",
    "budget": 20000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-NATURE-2027-03-01"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-PEX-COVE-TOP1",
+   "title": "Centres of Vocational Excellence",
+   "status": "forthcoming",
+   "deadline": "2027-09-16",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 73000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-PEX-COVE-TOP1"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-PEX-COVE-TOP2",
+   "title": "Community of practice",
+   "status": "forthcoming",
+   "deadline": "2027-09-16",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 1500000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-PEX-COVE-TOP2"
   },
   {
    "id": "HORIZON-MISS-2027-06-SOIL-CANCER",
@@ -4699,7 +4789,7 @@
    "short": "Climate, Energy & Mobility",
    "old": "/calls/horizon-climate-energy",
    "count": 54,
-   "open": 5
+   "open": 12
   },
   {
    "slug": "food-environment",
@@ -4738,7 +4828,7 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 60,
+   "count": 69,
    "open": 52
   },
   {
@@ -4794,67 +4884,69 @@
  ],
  "events": [
   {
-   "slug": "horizon-europe-cluster-5-info-day",
-   "title": "Horizon Europe Cluster 5 Info Day: Climate, Energy and Mobility",
-   "start": "2026-11-19",
-   "end": "2026-11-19",
-   "type": "info-day",
-   "programme": "cluster-5",
-   "mode": "hybrid",
-   "location": "Charlemagne, Brussels, and online",
-   "organiser": "European Commission and CINEA",
-   "summary": "A hybrid day presenting the 2027 funding topics of Cluster 5, with policy context and advice on preparing a strong proposal.",
-   "registration_url": "https://research-innovation-community.ec.europa.eu/events/1BlOchF5f8ViHvC1DosGqo/overview",
-   "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/events/horizon-europe-cluster-5-info-day/",
-   "url_es": "https://events.ullswaterinvestments.com/es/events/horizon-europe-cluster-5-info-day/",
-   "theme": "climate-energy-mobility",
-   "calls": [],
-   "title_es": "Jornada informativa del Clúster 5 de Horizonte Europa: Clima, Energía y Movilidad",
-   "summary_es": "Jornada híbrida que presenta los temas de financiación de 2027 del Clúster 5, con contexto político y consejos para preparar una propuesta sólida.",
-   "location_es": "Charlemagne, Bruselas, y en línea"
-  },
-  {
-   "slug": "horizon-europe-cluster-5-brokerage",
-   "title": "Horizon Europe Cluster 5 onsite brokerage event",
-   "start": "2026-11-19",
-   "end": "2026-11-19",
-   "type": "brokerage",
-   "programme": "cluster-5",
-   "mode": "onsite",
-   "location": "Charlemagne, Brussels",
-   "organiser": "GREENET",
-   "summary": "An onsite networking and brokerage session held after the Cluster 5 Info Day, from 16:00 to 19:00 at the same venue.",
-   "registration_url": "https://greenet-brokerage-event-2026-calls.b2match.io/",
-   "status": "applications-closed",
-   "url": "https://events.ullswaterinvestments.com/events/horizon-europe-cluster-5-brokerage/",
-   "url_es": "https://events.ullswaterinvestments.com/es/events/horizon-europe-cluster-5-brokerage/",
-   "theme": "climate-energy-mobility",
-   "calls": [],
-   "title_es": "Evento presencial de brokerage del Clúster 5 de Horizonte Europa",
-   "summary_es": "Sesión presencial de networking y brokerage tras la jornada informativa del Clúster 5, de 16:00 a 19:00 en el mismo lugar.",
-   "location_es": "Charlemagne, Bruselas"
-  },
-  {
-   "slug": "eic-funding-opportunities-2027-info-day",
-   "title": "Online information day: EIC funding opportunities in 2027",
-   "start": "2026-11-19",
-   "end": "2026-11-19",
+   "slug": "eic-accelerator-challenges-2027-info-day",
+   "title": "Online Info Day: EIC Accelerator Challenges 2027",
+   "start": "2026-11-20",
+   "end": "2026-11-20",
    "type": "info-day",
    "programme": "eic",
    "mode": "online",
    "location": "Online",
    "organiser": "European Innovation Council and EISMEA",
-   "summary": "A full-day online session walking through the European Innovation Council's 2027 work programme, scheme by scheme.",
-   "registration_url": "https://ec.europa.eu/eusurvey/runner/90fde2eb-528b-b060-275a-080eb0352bfa",
+   "summary": "A morning online session presenting the four challenge areas of the EIC Accelerator in 2027.",
+   "registration_url": "https://ec.europa.eu/eusurvey/runner/e5e86ab9-2c60-691f-eb10-fbd9ae1e8bc3",
    "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/events/eic-funding-opportunities-2027-info-day/",
-   "url_es": "https://events.ullswaterinvestments.com/es/events/eic-funding-opportunities-2027-info-day/",
+   "url": "https://events.ullswaterinvestments.com/events/eic-accelerator-challenges-2027-info-day/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/eic-accelerator-challenges-2027-info-day/",
    "theme": "eic",
    "calls": [],
-   "title_es": "Jornada informativa en línea: oportunidades de financiación del EIC en 2027",
-   "summary_es": "Sesión en línea de un día completo que recorre el programa de trabajo 2027 del Consejo Europeo de Innovación, instrumento a instrumento.",
+   "title_es": "Jornada informativa en línea: EIC Accelerator Challenges 2027",
+   "summary_es": "Sesión en línea de mañana que presenta los cuatro ámbitos de reto del EIC Accelerator en 2027.",
    "location_es": "En línea"
+  },
+  {
+   "slug": "eit-hei-call-2026-eit-kic-discovery-day",
+   "title": "EIT HEI Call 2026 info session: EIT KIC Discovery Day",
+   "start": "2026-11-23",
+   "end": "2026-11-23",
+   "type": "info-day",
+   "programme": "horizon-europe",
+   "mode": "online",
+   "location": "Online",
+   "organiser": "EIT Higher Education Initiative",
+   "summary": "Online info session of the EIT Higher Education Initiative Call for Proposals 2026, focused on the EIT Knowledge and Innovation Communities and how applicants can build synergies with them.",
+   "registration_url": "https://eit-hei.eu/events/eit-kic-discvery-day-call-2026-info-sessions/",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/events/eit-hei-call-2026-eit-kic-discovery-day/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/eit-hei-call-2026-eit-kic-discovery-day/",
+   "theme": null,
+   "calls": [
+    "EIT HEI-48939733"
+   ],
+   "title_es": "Sesión informativa de la convocatoria EIT HEI 2026: EIT KIC Discovery Day",
+   "summary_es": "Sesión informativa en línea de la convocatoria 2026 de la Iniciativa de Educación Superior del EIT, centrada en las Comunidades de Conocimiento e Innovación (KIC) del EIT y en cómo crear sinergias con ellas.",
+   "location_es": "En línea"
+  },
+  {
+   "slug": "meet-the-eic-budapest",
+   "title": "Meet the EIC in Budapest",
+   "start": "2026-11-23",
+   "end": "2026-11-23",
+   "type": "info-day",
+   "programme": "eic",
+   "mode": "onsite",
+   "location": "Bosch Budapest Innovation Campus, Budapest",
+   "organiser": "European Innovation Council, Hungary's National Research, Development and Innovation Office (NKFIH) and DARE",
+   "summary": "An in-person day in Budapest explaining how the European Innovation Council funds deep tech researchers, startups and scaleups, from first application to investment.",
+   "registration_url": "https://ec.europa.eu/eusurvey/runner/EICBudapest2026",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/events/meet-the-eic-budapest/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/meet-the-eic-budapest/",
+   "theme": "eic",
+   "calls": [],
+   "title_es": "Meet the EIC en Budapest",
+   "summary_es": "Jornada presencial en Budapest que explica cómo financia el Consejo Europeo de Innovación a investigadores, startups y scaleups de deep tech, desde la primera solicitud hasta la inversión.",
+   "location_es": "Bosch Budapest Innovation Campus, Budapest"
   }
  ]
 }
