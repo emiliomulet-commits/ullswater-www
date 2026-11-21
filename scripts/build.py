@@ -21,6 +21,7 @@ from content import *  # noqa: E402,F401,F403
 import content as C  # noqa: E402
 import guides  # noqa: E402
 import i18n  # noqa: E402
+import ayudas  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -308,7 +309,7 @@ def header(themes, current):
 <a class="brand" href="/" aria-label="Ullswater Investments, home"><img src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26"></a>
 <nav class="main" aria-label="Main">
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>EU calls</button><div class="menu wide"><div>
-<div class="lbl">Live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a><a href="/guides/"><b>EU funding guides</b></a>
+<div class="lbl">Live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a><a href="/es/ayudas/"><b>Grants for companies in Spain (Spanish)</b></a><a href="/guides/"><b>EU funding guides</b></a>
 </div><div><div class="lbl">By theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
 <a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a href="/projects/"{cur('projects')}>Projects</a>
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('services')}>Services</button><div class="menu">
@@ -407,7 +408,7 @@ FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 <p style="margin:0 0 8px"><b style="color:#fff">Madrid</b> · Calle Ramírez de Arellano 17, 28043 Madrid, Spain</p><p style="margin:0 0 8px"><b style="color:#fff">Brussels</b> · Square de Meeûs 37, 1000 Brussels, Belgium</p><p style="margin:0"><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
 <div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
 <div><h4>Projects</h4>{"".join(f'<a href="{project_url(p)}">{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
-<div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a></div>
+<div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="/es/ayudas/">Grants in Spain (ES)</a></div>
 <div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a><a href="{LINKEDIN}" target="_blank" rel="noopener me">LinkedIn ↗</a><a href="{YOUTUBE}" target="_blank" rel="noopener me">YouTube ↗</a></div>
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
 
@@ -691,6 +692,25 @@ def build_es(pages, live=None):
     return len(out), len(t.missing)
 
 
+def build_ayudas():
+    """Spanish-only section /es/ayudas/ (grants for companies in Spain, from the BDNS). Reuses the Spanish header and footer."""
+    ref = (SITE / "es" / "about" / "index.html").read_text(encoding="utf-8")
+    head = "".join(t for t in re.findall(r"<link\b[^>]*>", ref) if re.search(r'rel="(?:icon|preconnect|stylesheet)"', t))
+    body = ref.split("<body>", 1)[1]
+    header_html = body.split('<main id="main">', 1)[0]
+    after = body.split("</main>", 1)[1]
+    footer_html, _, tail = after.partition("</footer>")
+    footer_html += "</footer>"
+    tail = tail.replace("</body></html>", "").replace("</body>", "").replace("</html>", "")
+    try:
+        cache = ayudas.refresh()
+    except Exception as e:  # noqa: BLE001
+        print("ayudas: refresh failed, using cache:", e)
+        cache = ayudas.load_cache()
+    return ayudas.build(SITE, BASE, {"head": head, "header": header_html, "footer": footer_html, "tail": tail},
+                        cache=cache, staging=STAGING, book=C.BOOK, email=C.EMAIL)
+
+
 def write_llms_full(pages):
     """llms-full.txt: the readable English text of every page, so AI assistants can read the whole site in one request."""
     from bs4 import BeautifulSoup
@@ -757,12 +777,14 @@ def main():
         hero("404", "Page not found", "The page you are looking for has moved or no longer exists.", actions=f'<a class="btn" href="/">Home</a><a class="btn ghost" href="{C.CALLS}/">Open EU calls</a>'), themes, bilingual=False), encoding="utf-8")
     es_count, missing = build_es(pages, live)
     today = date.today().isoformat()
+    ayudas_paths = build_ayudas()
 
     def alts(u):
         return (f'<xhtml:link rel="alternate" hreflang="en" href="{BASE}{u}"/><xhtml:link rel="alternate" hreflang="es" href="{BASE}/es{u}"/>'
                 f'<xhtml:link rel="alternate" hreflang="x-default" href="{BASE}{u}"/>')
     (SITE / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'
-        + "".join(f"<url><loc>{BASE}{p}{u}</loc><lastmod>{today}</lastmod>{alts(u)}</url>" for u in pages for p in ("", "/es")) + "</urlset>\n", encoding="utf-8")
+        + "".join(f"<url><loc>{BASE}{p}{u}</loc><lastmod>{today}</lastmod>{alts(u)}</url>" for u in pages for p in ("", "/es"))
+        + "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{today}</lastmod></url>" for u in ayudas_paths) + "</urlset>\n", encoding="utf-8")
     # Sitemap index for the whole Ullswater network (www, project landings, calls, news, events).
     # Cross-subdomain entries are valid because the domain property ullswaterinvestments.com is verified in Search Console.
     (SITE / "sitemap-projects.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
@@ -798,6 +820,9 @@ def main():
 
 ## Spanish version
 - Every page is also available in Spanish under {BASE}/es/ (e.g. [Proyectos europeos]({BASE}/es/projects/)), linked with hreflang.
+
+## Grants in Spain (Spanish only, updated daily)
+- [Ayudas y subvenciones para empresas en España]({BASE}/es/ayudas/): open State and regional calls for companies from the Base de Datos Nacional de Subvenciones, with one page per region and per call · [JSON]({BASE}/es/ayudas/ayudas.json)
 
 ## Live data
 - [Open EU funding calls, updated daily]({C.CALLS}/) · [JSON]({C.CALLS}/data/calls.json)

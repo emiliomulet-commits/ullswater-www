@@ -24,6 +24,17 @@ Local build: `pip install beautifulsoup4 && python3 scripts/build.py` → `site/
   when the `ANTHROPIC_API_KEY` secret is set, and saved back to the dictionary. Without the key they stay in English;
   the list is written to `content/i18n_es_missing.json` (not committed).
 
+## Ayudas en España (/es/ayudas/, Spanish only)
+- `scripts/ayudas.py` builds a Spanish-only section with the open State and regional grants for companies, from the public API of the
+  Base de Datos Nacional de Subvenciones (infosubvenciones.es): search page with a three-question assistant and a tile map of the regions,
+  one page per region (`/es/ayudas/<region>/`), `/es/ayudas/estatales/`, one page per call (`/es/ayudas/convocatoria/<código BDNS>/`,
+  schema.org MonetaryGrant; closed calls stay 90 days marked as closed) and `/es/ayudas/ayudas.json`.
+- Filters: State calls of the last 365 days and regional calls of the last 183 days for pymes and large companies; excludes nominative/instrumental
+  grants, prizes, cancelled calls and social, cultural and education aims. Near-identical lines are grouped.
+- `content/ayudas_cache.json` keeps the reduced records (committed by the workflow), so each build only downloads new calls and still works if the API is down.
+- With `ANTHROPIC_API_KEY`, each new call gets a clear title and a two-sentence summary (cached); otherwise the official title is shortened by rules.
+- It reuses the Spanish header and footer of `/es/about/`; the EN button points to calls.ullswaterinvestments.com/spain/. URLs go in `sitemap.xml` without hreflang.
+
 ## Agents (automatic)
 | Agent | Workflow | When | What it does |
 |---|---|---|---|
