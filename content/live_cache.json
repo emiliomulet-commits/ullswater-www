@@ -1,6 +1,6 @@
 {
  "stats": {
-  "updated": "2026-11-20T20:39:41+00:00",
+  "updated": "2026-11-21T13:25:39+00:00",
   "open": 220,
   "forthcoming": 245,
   "total": 465,
@@ -4884,27 +4884,6 @@
  ],
  "events": [
   {
-   "slug": "eic-accelerator-challenges-2027-info-day",
-   "title": "Online Info Day: EIC Accelerator Challenges 2027",
-   "start": "2026-11-20",
-   "end": "2026-11-20",
-   "type": "info-day",
-   "programme": "eic",
-   "mode": "online",
-   "location": "Online",
-   "organiser": "European Innovation Council and EISMEA",
-   "summary": "A morning online session presenting the four challenge areas of the EIC Accelerator in 2027.",
-   "registration_url": "https://ec.europa.eu/eusurvey/runner/e5e86ab9-2c60-691f-eb10-fbd9ae1e8bc3",
-   "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/events/eic-accelerator-challenges-2027-info-day/",
-   "url_es": "https://events.ullswaterinvestments.com/es/events/eic-accelerator-challenges-2027-info-day/",
-   "theme": "eic",
-   "calls": [],
-   "title_es": "Jornada informativa en línea: EIC Accelerator Challenges 2027",
-   "summary_es": "Sesión en línea de mañana que presenta los cuatro ámbitos de reto del EIC Accelerator en 2027.",
-   "location_es": "En línea"
-  },
-  {
    "slug": "eit-hei-call-2026-eit-kic-discovery-day",
    "title": "EIT HEI Call 2026 info session: EIT KIC Discovery Day",
    "start": "2026-11-23",
@@ -4947,6 +4926,27 @@
    "title_es": "Meet the EIC en Budapest",
    "summary_es": "Jornada presencial en Budapest que explica cómo financia el Consejo Europeo de Innovación a investigadores, startups y scaleups de deep tech, desde la primera solicitud hasta la inversión.",
    "location_es": "Bosch Budapest Innovation Campus, Budapest"
+  },
+  {
+   "slug": "horizon-europe-cluster-1-health-brokerage",
+   "title": "Horizon Europe Cluster 1 Health brokerage event",
+   "start": "2026-11-24",
+   "end": "2026-11-25",
+   "type": "brokerage",
+   "programme": "cluster-1",
+   "mode": "online",
+   "location": "Online",
+   "organiser": "Horizon Europe Cluster 1 National Contact Points (HNN 3.0)",
+   "summary": "A two-day online event to find international consortium partners for the 2027 Cluster 1 Health calls.",
+   "registration_url": "https://research-innovation-community.ec.europa.eu/events/4kcNbd29FiAhBZf1wLeUr7/overview",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/events/horizon-europe-cluster-1-health-brokerage/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/horizon-europe-cluster-1-health-brokerage/",
+   "theme": "health",
+   "calls": [],
+   "title_es": "Evento de brokerage del Clúster 1 Salud de Horizonte Europa",
+   "summary_es": "Evento en línea de dos días para encontrar socios internacionales de consorcio para las convocatorias de 2027 del Clúster 1 Salud.",
+   "location_es": "En línea"
   }
  ]
 }
