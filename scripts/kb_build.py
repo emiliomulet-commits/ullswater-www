@@ -1,0 +1,161 @@
+#!/usr/bin/env python3
+"""Knowledge base of the Ullswater network for the "Asistente de ayudas" chat (Worker ullswater-ai, tools search_site and get_page).
+
+Sources (all public):
+  - www:     site/llms-full.txt of this build (services, courses, about, projects, guides)
+  - news:    https://news.ullswaterinvestments.com/llms-full.txt
+  - events:  https://events.ullswaterinvestments.com/llms-full.txt and /webinars/ (library)
+  - project landings: the public home page of each live landing in content.PROJECTS (never /confidential/)
+EU calls are not included: the Worker reads them from calls.ullswaterinvestments.com with its own tools.
+
+Writes:
+  site/data/kb.json     {"updated", "model", "dim", "docs": [{u, t, s, d}], "chunks": [[doc index, text]]}
+  site/data/kb-vec.bin  int8 vectors (L2-normalised x127), one row of DIM bytes per chunk, BAAI/bge-small-en-v1.5
+Embeddings are skipped (kb.json only, keyword search in the Worker) when sentence-transformers is not installed.
+Unchanged chunks reuse .cache/kb/vectors.npz (keyed by text hash).
+"""
+import hashlib
+import json
+import re
+import sys
+import urllib.request
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+SITE = ROOT / "site"
+sys.path.insert(0, str(ROOT / "scripts"))
+import content as C  # noqa: E402
+
+MODEL = "BAAI/bge-small-en-v1.5"
+DIM = 384
+CHUNK, OVERLAP = 900, 150
+CACHE = ROOT / ".cache" / "kb" / "vectors.npz"
+UA = {"User-Agent": "ullswater-kb/1.0 (+https://www.ullswaterinvestments.com)"}
+
+
+def get(url, timeout=40):
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout) as r:
+            return r.read().decode("utf-8", "replace")
+    except Exception as e:  # a missing source must not break the www build
+        print(f"kb: could not fetch {url}: {e}")
+        return ""
+
+
+def parse_llms(text, site):
+    """Split an llms-full.txt into pages: a '#'/'##' heading followed by a 'URL:' line starts a page."""
+    docs, cur = [], None
+    lines = text.splitlines()
+    for i, line in enumerate(lines):
+        m = re.match(r"^#{1,2}\s+(.+?)\s*$", line)
+        nxt = next((x for x in lines[i + 1:i + 3] if x.strip()), "")
+        if m and nxt.startswith("URL: "):
+            cur = {"t": m.group(1).split(" | ")[0].strip(), "u": nxt[5:].strip(), "s": site, "d": "", "x": []}
+            docs.append(cur)
+            continue
+        if cur is None or line.startswith("URL: ") or line.strip() == "---":
+            continue
+        dm = re.match(r"^Date:\s*(\d{4}-\d{2}-\d{2})", line) or re.match(r"^- When:\s*(.+)$", line)
+        if dm and not cur["d"]:
+            cur["d"] = dm.group(1)[:40]
+        cur["x"].append(line)
+    out = []
+    for d in docs:
+        d["x"] = re.sub(r"\n{3,}", "\n\n", "\n".join(d["x"])).strip()
+        if len(d["x"]) > 80 and "/confidential" not in d["u"]:
+            out.append(d)
+    return out
+
+
+def html_text(html):
+    from bs4 import BeautifulSoup
+    soup = BeautifulSoup(html, "html.parser")
+    for t in soup(["script", "style", "noscript", "svg", "nav", "footer"]):
+        t.decompose()
+    title = (soup.title.string or "").strip() if soup.title else ""
+    main = soup.find("main") or soup.body or soup
+    text = "\n".join(x.strip() for x in main.get_text("\n").splitlines() if x.strip())
+    return title, text
+
+
+def chunks(text):
+    """Paragraph-aware chunks of about CHUNK characters with some overlap."""
+    paras = [p.strip() for p in re.split(r"\n(?=#|\- |\S)", text) if p.strip()]
+    out, buf = [], ""
+    for p in paras:
+        if buf and len(buf) + len(p) + 1 > CHUNK:
+            out.append(buf)
+            buf = buf[-OVERLAP:].split(" ", 1)[-1] + "\n" + p
+        else:
+            buf = (buf + "\n" + p) if buf else p
+        while len(buf) > CHUNK * 1.6:  # very long paragraph
+            cut = buf.rfind(". ", 0, CHUNK) + 1 or CHUNK
+            out.append(buf[:cut])
+            buf = buf[max(0, cut - OVERLAP):]
+    if buf.strip():
+        out.append(buf)
+    return [re.sub(r"[ \t]+", " ", c).strip() for c in out if len(c.strip()) > 40]
+
+
+def main():
+    docs = []
+    www = (SITE / "llms-full.txt").read_text(encoding="utf-8") if (SITE / "llms-full.txt").exists() else get(C.__dict__.get("BASE", "https://www.ullswaterinvestments.com") + "/llms-full.txt")
+    docs += parse_llms(www, "www")
+    docs += parse_llms(get(C.NEWS + "/llms-full.txt"), "news")
+    docs += parse_llms(get(C.EVENTS + "/llms-full.txt"), "events")
+    wb = get(C.EVENTS + "/webinars/")
+    if wb:
+        t, x = html_text(wb)
+        docs.append({"t": t or "EU funding webinars library", "u": C.EVENTS + "/webinars/", "s": "events", "d": "", "x": x})
+    for p in C.PROJECTS:
+        if not p.get("live"):
+            continue
+        url = f"https://{p['slug']}.ullswaterinvestments.com/"
+        h = get(url)
+        if h:
+            t, x = html_text(h)
+            docs.append({"t": f"{p['acronym']}: {p['title']}", "u": url, "s": "project", "d": "", "x": x})
+    seen, uniq = set(), []
+    for d in docs:  # the same URL can appear twice (e.g. www home); keep the first
+        if d["u"] not in seen:
+            seen.add(d["u"]); uniq.append(d)
+    docs = uniq
+
+    rows, texts = [], []
+    for i, d in enumerate(docs):
+        for c in chunks(d["x"]):
+            rows.append([i, c])
+            texts.append(f"{d['t']}. {c}")
+    kb = {"updated": datetime.now(timezone.utc).isoformat(timespec="seconds"), "model": MODEL, "dim": DIM,
+          "docs": [{"u": d["u"], "t": d["t"], "s": d["s"], "d": d["d"]} for d in docs], "chunks": rows}
+    (SITE / "data").mkdir(parents=True, exist_ok=True)
+    (SITE / "data" / "kb.json").write_text(json.dumps(kb, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
+    try:
+        import numpy as np
+        from sentence_transformers import SentenceTransformer  # noqa: F401
+    except ImportError:
+        print(f"kb: {len(docs)} pages, {len(rows)} chunks (no embeddings: sentence-transformers not installed)")
+        return
+    keys = [hashlib.sha1(t.encode("utf-8")).hexdigest()[:16] for t in texts]
+    cache = {}
+    if CACHE.exists():
+        z = np.load(CACHE)
+        cache = dict(zip(z["keys"].tolist(), z["vecs"]))
+    todo = [j for j, k in enumerate(keys) if k not in cache]
+    if todo:
+        from sentence_transformers import SentenceTransformer
+        model = SentenceTransformer(MODEL, device="cpu")
+        vecs = model.encode([texts[j] for j in todo], batch_size=64, normalize_embeddings=True, show_progress_bar=False)
+        for j, v in zip(todo, np.clip(np.round(vecs * 127), -127, 127).astype(np.int8)):
+            cache[keys[j]] = v
+    mat = np.stack([cache[k] for k in keys]).astype(np.int8) if keys else np.zeros((0, DIM), np.int8)
+    (SITE / "data" / "kb-vec.bin").write_bytes(mat.tobytes())
+    CACHE.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(CACHE, keys=np.array(keys), vecs=mat)
+    print(f"kb: {len(docs)} pages, {len(rows)} chunks, {len(todo)} newly embedded, kb-vec.bin {mat.nbytes // 1024} KB")
+
+
+if __name__ == "__main__":
+    main()
