@@ -199,7 +199,8 @@ SUM_PROMPT = """Eres editor de Ullswater Investments (asesores de financiación 
 tal como figuran en la Base de Datos Nacional de Subvenciones. Para cada una devuelve:
 - "titulo": un título claro en español de España, de 50 a 95 caracteres, que diga qué se financia (sin "Resolución de…", sin fechas de la orden, sin mayúsculas sostenidas). Conserva nombres propios de programas (p. ej. INNTERCONECTA-STEP, PREE, Cheque TIC).
 - "resumen": dos frases (máximo 300 caracteres) que digan qué financia y a quién va dirigida.
-Usa SOLO los datos recibidos: no inventes importes, porcentajes, plazos ni requisitos. Devuelve SOLO un objeto JSON {"<id>": {"titulo": "...", "resumen": "..."}}."""
+Usa SOLO los datos recibidos: no inventes importes, porcentajes, plazos ni requisitos. Dentro de los textos no uses comillas rectas ("): usa comillas angulares (« »).
+Devuelve SOLO un objeto JSON válido {"<id>": {"titulo": "...", "resumen": "..."}}."""
 
 
 def summarise(items, today, limit=300):
@@ -209,8 +210,9 @@ def summarise(items, today, limit=300):
     model = os.environ.get("ANTHROPIC_MODEL") or "claude-sonnet-5-5"
     todo = [x for x in items.values() if not x.get("resumen") and (x.get("fin") or "9999") >= today.isoformat()][:limit]
     added = 0
-    for i in range(0, len(todo), 20):
-        chunk = todo[i:i + 20]
+    queue = [todo[i:i + 20] for i in range(0, len(todo), 20)]
+    while queue:
+        chunk = queue.pop(0)
         payload = {x["id"]: {"titulo_oficial": x["descripcion"], "organismo": x["n3"] or x["n2"], "ambito": x["n2"], "finalidad": x["finalidad"],
                              "beneficiarios": x["beneficiarios"], "sectores": x["sectores"], "fondos": x["fondos"], "instrumento": x["instrumentos"]} for x in chunk}
         req = urllib.request.Request("https://api.anthropic.com/v1/messages", method="POST", headers={
@@ -222,7 +224,9 @@ def summarise(items, today, limit=300):
                 txt = "".join(b.get("text", "") for b in json.loads(r.read())["content"])
             out = json.loads(txt[txt.find("{"):txt.rfind("}") + 1])
         except Exception as e:  # noqa: BLE001
-            print("ayudas: summary batch failed:", e)
+            print(f"ayudas: summary batch of {len(chunk)} failed:", e)
+            if len(chunk) > 4:  # retry in halves; a single bad quote should not lose the whole batch
+                queue += [chunk[:len(chunk) // 2], chunk[len(chunk) // 2:]]
             continue
         for x in chunk:
             v = out.get(x["id"]) or {}
