@@ -414,8 +414,7 @@ FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 
 
 # "Asistente de ayudas" chat (Worker ullswater-ai, code in the ullswater-calls repo: worker/widget.src.js). Same script on every site of the network.
-CHAT_WIDGET = ''  # enabled once the new Worker (with /widget.js) is deployed:
-# CHAT_WIDGET = '<script src="https://ullswater-ai.emilio-mulet-b52.workers.dev/widget.js" defer data-site="www"></script>'
+CHAT_WIDGET = '<script src="https://ullswater-ai.emilio-mulet-b52.workers.dev/widget.js" defer data-site="www"></script>'
 
 
 def page(path, title, desc, body, themes, current="", jsonld=None, bilingual=True):
