@@ -1,7 +1,8 @@
 """Editorial content of www.ullswaterinvestments.com (migrated from Google Sites, revised in English).
 Edit the texts here; build.py turns them into pages."""
 
-BOOK = "https://calendar.google.com/calendar/embed?src=7a3bd11cf6e17f080e9d1a55ed62c5c1d079b85adca160751fc60cc917432da2@group.calendar.google.com"
+# Outlook Bookings (emilio.mulet@ullswaterinvestments.com): 1-hour Teams meeting, Mon-Fri 10:00-11:00, so one booking a day.
+BOOK = "https://outlook.office.com/bookwithme/user/e458fce3fc324c73bf552650547cf141@ullswaterinvestments.com/meetingtype/nBIRMB9DAUGZ7TZQg15B-A2?anonymous"
 EMAIL = "eufunding@ullswaterinvestments.com"
 CALLS = "https://calls.ullswaterinvestments.com"
 NEWS = "https://news.ullswaterinvestments.com"
