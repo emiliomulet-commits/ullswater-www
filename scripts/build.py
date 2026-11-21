@@ -413,6 +413,11 @@ FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
 
 
+# "Asistente de ayudas" chat (Worker ullswater-ai, code in the ullswater-calls repo: worker/widget.src.js). Same script on every site of the network.
+CHAT_WIDGET = ''  # enabled once the new Worker (with /widget.js) is deployed:
+# CHAT_WIDGET = '<script src="https://ullswater-ai.emilio-mulet-b52.workers.dev/widget.js" defer data-site="www"></script>'
+
+
 def page(path, title, desc, body, themes, current="", jsonld=None, bilingual=True):
     canon = BASE + path
     alt = (f'<link rel="alternate" hreflang="en" href="{BASE}{path}"><link rel="alternate" hreflang="es" href="{BASE}/es{path}"><link rel="alternate" hreflang="x-default" href="{BASE}{path}">'
@@ -431,7 +436,7 @@ def page(path, title, desc, body, themes, current="", jsonld=None, bilingual=Tru
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="EU Funding News" href="{C.NEWS}/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v={VER}"><script type="application/ld+json">{json.dumps(lds if len(lds) > 1 else ORG, ensure_ascii=False)}</script></head><body>
-<a class="skip" href="#main">Skip to content</a>{banner}{header(themes, current).replace('<button class="burger"', switch + '<button class="burger"')}<main id="main">{body}</main>{FOOTER}<script src="/assets/site.js?v={VER}" defer></script></body></html>"""
+<a class="skip" href="#main">Skip to content</a>{banner}{header(themes, current).replace('<button class="burger"', switch + '<button class="burger"')}<main id="main">{body}</main>{FOOTER}<script src="/assets/site.js?v={VER}" defer></script>{CHAT_WIDGET}</body></html>"""
 
 
 def hero(kicker, h1, lead, crumbs="", small=True, actions="", extra=""):
@@ -619,9 +624,9 @@ def privacy(themes):
 <li><b>Email alerts.</b> If you subscribe on calls.ullswaterinvestments.com we store your email and keywords to send the weekly digest. Subscriptions are confirmed by double opt-in and you can unsubscribe at any time from any email (legal basis: consent).</li>
 <li><b>Partner board and directory.</b> Requests and profiles you submit are reviewed by us before publication. Only the organisation details you agree to publish are shown; your email is never published and contact goes through us (legal basis: consent).</li>
 <li><b>Event summaries, webinars and LinkedIn forms.</b> If you request one of our summaries (for example, the Spanish-language summary of an EU info day), register for one of our webinars or fill in a Ullswater Investments form on LinkedIn, we store your name, email, organisation, job title and the interests you select in order to send you what you asked for and, only if you ticked it, to invite you to a session or contact you about your project (legal basis: consent). You can withdraw at any time by replying to any of our emails or writing to us.</li>
-<li><b>AI pre-check and assistant.</b> Text you type is sent to an AI model run on Cloudflare Workers AI to generate the answer. Do not include confidential or personal data. We use the text only to produce the response.</li>
+<li><b>AI assistant ("Asistente de ayudas") and AI pre-check.</b> The chat assistant on our websites is an AI system, as it states when you open it. Your questions and the conversation of the current browser tab are sent to Anthropic's Claude API, and, as a fallback, to models run on Cloudflare Workers AI, to generate the answer; the AI pre-check uses Cloudflare Workers AI. To improve the service we keep an anonymous log of each chat question (the text of the question, the page, language and country, the tools used and technical data such as response time) for 12 months, after which it is deleted automatically. We do not store your IP address: limits on the number of questions use a daily, irreversible code that is deleted after 2 days. The conversation itself is kept only in your browser tab. Please do not type personal or confidential data. Legal basis: our legitimate interest in answering your questions and improving the service.</li>
 </ul>
-<h2>Processors</h2><p>Google (Workspace: Forms, Sheets, Gmail), LinkedIn (lead forms and advertising), Cloudflare (DNS, security and AI inference) and GitHub (website hosting) process data on our behalf under their data processing terms.</p>
+<h2>Processors</h2><p>Google (Workspace: Forms, Sheets, Gmail), Microsoft (Outlook and Teams, for meeting bookings), LinkedIn (lead forms and advertising), Cloudflare (DNS, security, AI inference and the assistant's question log), Anthropic (Claude API, for the AI assistant) and GitHub (website hosting) process data on our behalf under their data processing terms. Some of them are based in the United States; those transfers are covered by the safeguards in their data processing terms, such as the European Commission's standard contractual clauses.</p>
 <h2>Retention</h2><p>We keep data for as long as needed for the purpose for which it was collected, or until you withdraw consent or ask us to delete it.</p>
 <h2>Your rights</h2><p>You can request access, rectification, erasure, restriction, portability or object to processing by writing to <a href="mailto:{C.EMAIL}">{C.EMAIL}</a>. You may also lodge a complaint with the Spanish Data Protection Agency (<a href="https://www.aepd.es/" rel="noopener">AEPD</a>).</p>
 <h2>Cookies</h2><p>This website does not use advertising or tracking cookies. Fonts are loaded from Google Fonts.</p>
