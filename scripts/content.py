@@ -255,12 +255,12 @@ MODULES = [
 OFFICES = [
     {"city": "Madrid", "role": "Headquarters", "street": "Calle Ramírez de Arellano 17", "postcode": "28043", "locality": "Madrid", "country": "Spain", "cc": "ES",
      "note": "Our headquarters, working with SMEs, technology centres and public bodies across Spain.",
-     "img": "/assets/img/office-madrid.jpg", "alt": "Madrid skyline, Cuatro Torres business area",
+     "img": "/assets/img/office-madrid.webp", "alt": "Madrid skyline, Cuatro Torres business area",
      "credit": "Photo: Madrid, Cuatro Torres Business Area · Wikimedia Commons (CC0)",
      "map": "https://www.google.com/maps/search/?api=1&query=Calle+Ram%C3%ADrez+de+Arellano+17%2C+28043+Madrid"},
     {"city": "Brussels", "role": "European Quarter office", "street": "Square de Meeûs 37", "postcode": "1000", "locality": "Brussels", "country": "Belgium", "cc": "BE",
      "note": "In the heart of the European Quarter, near Place du Luxembourg, a few minutes' walk from the European Parliament and Bruxelles-Luxembourg station.",
-     "img": "/assets/img/office-brussels.jpg", "alt": "Square de Meeûs park in Brussels with its gilded winged statue",
+     "img": "/assets/img/office-brussels.webp", "alt": "Square de Meeûs park in Brussels with its gilded winged statue",
      "credit": "Photo: Square de Meeûs, Brussels · Romaine, Wikimedia Commons (CC0)",
      "map": "https://www.google.com/maps/search/?api=1&query=Square+de+Mee%C3%BBs+37%2C+1000+Brussels"},
 ]
