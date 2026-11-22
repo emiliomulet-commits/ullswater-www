@@ -313,6 +313,14 @@ PROJECTS = [
      "pitch": "A modular, offline-first mobile bank branch with a multilingual voice and vision AI agent, for disaster-affected and underserved areas.",
      "contribution": "Funding strategy for the Eureka (Türkiye–Spain) international line and the Spanish national line, and project portal.",
      "facts": [("2", "countries: Türkiye, Spain"), ("2", "funding lines"), ("5", "core innovations")]},
+    # Own product of Software in a Box (not an ITEA/Eureka project): its site lives on softwareinabox.eu, so "url" overrides the subdomain.
+    {"slug": "argos", "acronym": "ARGOS", "title": "Verified Compliance Agent for EU data rules",
+     "programme": "Software in a Box · Own product", "challenge": "LegalTech · GDPR, EHDS & AI Act", "status": "proposal", "group": "lead", "live": True,
+     "url": "https://argos.softwareinabox.eu/",
+     "role": "Product owner, through Software in a Box",
+     "pitch": "A sovereign AI agent that actively tests a company's information systems against the GDPR, the European Health Data Space and the AI Act, and proves compliance with technical evidence instead of declarations.",
+     "contribution": "Software in a Box, Ullswater's technology company, develops ARGOS. Ullswater builds its partner network: law firms, DPOs and companies that want to pilot it can join as partners at no cost and apply together for European and Spanish public funding.",
+     "facts": [("3", "EU rules verified: GDPR, EHDS, AI Act"), ("On-premise", "no data leaves the client"), ("Health", "first pilot sector")]},
 ]
 PROJECT_GROUPS = [("all", "All projects"), ("lead", "Leading & coordinating"), ("partner", "Partner"), ("advisor", "Funding advisor")]
 PROJECT_WAYS = [

@@ -320,6 +320,8 @@ def header(themes, current):
 
 def project_url(p):
     """Public landing of a project (its own subdomain), or the /projects/ anchor while it is not deployed."""
+    if p.get("url"):  # project whose site lives outside ullswaterinvestments.com (e.g. ARGOS on softwareinabox.eu)
+        return p["url"]
     return f"https://{p['slug']}.ullswaterinvestments.com/" if p.get("live") else f"/projects/#{p['slug']}"
 
 
@@ -370,7 +372,7 @@ def projects_ld():
             "itemListElement": [{"@type": "ListItem", "position": i + 1, "item": {
                 "@type": "ResearchProject", "name": f"{p['acronym']} · {p['title']}", "alternateName": p["acronym"], "description": p["pitch"],
                 "url": project_url(p) if p.get("live") else f"{BASE}/projects/#{p['slug']}",
-                "funder": [{"@type": "Organization", "name": x.strip()} for x in p["programme"].split("·")[:2]],
+                **({} if p.get("url") else {"funder": [{"@type": "Organization", "name": x.strip()} for x in p["programme"].split("·")[:2]]}),
                 "member": {"@id": BASE + "/#org"}}} for i, p in enumerate(C.PROJECTS)]}
 
 
@@ -407,7 +409,7 @@ FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 <div><img class="flogo" src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26" loading="lazy"><p style="margin:0 0 10px">European funding advisors in Madrid and Brussels. Grants, loans and equity for innovation.</p>
 <p style="margin:0 0 8px"><b style="color:#fff">Madrid</b> · Calle Ramírez de Arellano 17, 28043 Madrid, Spain</p><p style="margin:0 0 8px"><b style="color:#fff">Brussels</b> · Square de Meeûs 37, 1000 Brussels, Belgium</p><p style="margin:0"><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
 <div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
-<div><h4>Projects</h4>{"".join(f'<a href="{project_url(p)}">{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
+<div><h4>Projects</h4>{"".join(f'<a href="{project_url(p)}"' + (' target="_blank" rel="noopener"' if p.get("url") else "") + f'>{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
 <div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="/es/ayudas/">Grants in Spain (ES)</a></div>
 <div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a><a href="{LINKEDIN}" target="_blank" rel="noopener me">LinkedIn ↗</a><a href="{YOUTUBE}" target="_blank" rel="noopener me">YouTube ↗</a></div>
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
@@ -792,7 +794,7 @@ def main():
     # Sitemap index for the whole Ullswater network (www, project landings, calls, news, events).
     # Cross-subdomain entries are valid because the domain property ullswaterinvestments.com is verified in Search Console.
     (SITE / "sitemap-projects.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-        + "".join(f"<url><loc>{project_url(p)}</loc><lastmod>{today}</lastmod></url>" for p in C.PROJECTS if p.get("live")) + "</urlset>\n", encoding="utf-8")
+        + "".join(f"<url><loc>{project_url(p)}</loc><lastmod>{today}</lastmod></url>" for p in C.PROJECTS if p.get("live") and not p.get("url")) + "</urlset>\n", encoding="utf-8")
     smaps = [f"{BASE}/sitemap.xml", f"{BASE}/sitemap-projects.xml", f"{C.CALLS}/sitemap.xml", f"{C.NEWS}/sitemap.xml", f"{C.NEWS}/news-sitemap.xml", f"{C.EVENTS}/sitemap.xml"]
     (SITE / "sitemap-index.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         + "".join(f"<sitemap><loc>{u}</loc><lastmod>{today}</lastmod></sitemap>" for u in smaps) + "</sitemapindex>\n", encoding="utf-8")

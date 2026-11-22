@@ -111,7 +111,7 @@ def main():
     for p in C.PROJECTS:
         if not p.get("live"):
             continue
-        url = f"https://{p['slug']}.ullswaterinvestments.com/"
+        url = p.get("url") or f"https://{p['slug']}.ullswaterinvestments.com/"
         h = get(url)
         if h:
             t, x = html_text(h)
