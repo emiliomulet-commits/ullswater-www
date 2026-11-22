@@ -241,6 +241,16 @@ section.pj{padding:84px 0 88px;border-top:4px solid var(--gold)}
 .pj-row .c b{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}.pj-row .c .r{font-size:17px;font-weight:700;color:var(--navy);line-height:1.35}.pj-row .c p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
 .pj-row .c .btn{align-self:flex-start;background:var(--navy);color:#fff;font-size:15px}.pj-row .c .btn:hover{background:var(--navy2);color:#fff}
 .pj-row[hidden]{display:none}
+.pj-row .v{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;padding:22px 28px;border-top:1px solid var(--line)}
+.pv{position:relative;flex:0 1 440px;aspect-ratio:16/9;border:0;padding:0;border-radius:8px;overflow:hidden;background:var(--navy2);cursor:pointer;display:block}
+.pv img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}.pv:hover img{transform:scale(1.03)}
+.pv .play{position:absolute;left:14px;bottom:14px;width:56px;height:56px;border-radius:50%;background:var(--gold);color:var(--navy2);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.pv .play svg{width:26px;height:26px;margin-left:3px}.pv:hover .play,.pv:focus-visible .play{background:#fff}
+.pv .dur{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.75);color:#fff;font-size:13px;font-weight:600;padding:2px 7px;border-radius:4px}
+.pv iframe,.pv video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.pj-row .v .vt{flex:1 1 260px}.pj-row .v .vt b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px}
+.pj-row .v .vt p{margin:0 0 6px;font-size:15px;color:var(--muted);line-height:1.5}.pj-row .v .vt a{font-size:14px}
+@media (max-width:640px){.pj-row .v{padding:18px}.pv{flex-basis:100%}}
 header.site .wrap{max-width:1280px;gap:12px}header.site .brand{flex:0 1 auto;min-width:190px}header.site .brand img{width:100%;height:auto;max-height:46px}nav.main,header.site .btn,.lang{flex-shrink:0}nav.main>a,nav.main .dd>button{white-space:nowrap;padding:8px 8px}
 @media (max-width:1200px){.burger{display:block}nav.main{display:none;position:absolute;left:0;right:0;top:70px;background:var(--navy2);flex-direction:column;align-items:stretch;padding:10px 16px 18px;max-height:calc(100vh - 70px);overflow-y:auto}nav.main.open{display:flex}.dd .menu,.dd .menu.wide{position:static;grid-template-columns:1fr;min-width:0;box-shadow:none;border:0;background:transparent;display:block;padding:0 0 0 12px}.dd .menu a{color:#cfd8ee}.dd .menu .lbl{color:var(--gold)}.dd .menu.wide{display:none}.dd.open .menu.wide{display:grid}.dd .menu hr{border-color:#334}.dd>button{text-align:left}header.site .brand{margin-right:auto}}
 .lang{display:flex;border:1px solid rgba(255,255,255,.35);border-radius:6px;overflow:hidden;font-size:13px;font-weight:700}.lang a{color:#e6ebf7;text-decoration:none;padding:6px 9px;letter-spacing:.04em}.lang a[aria-current]{background:var(--gold);color:var(--navy)}.lang a:not([aria-current]):hover{background:rgba(255,255,255,.12)}
@@ -257,6 +267,7 @@ JS = """(function(){var b=document.querySelector('.burger'),n=document.querySele
 document.querySelectorAll('.dd>button').forEach(function(x){x.addEventListener('click',function(){var d=x.parentNode,o=d.classList.toggle('open');x.setAttribute('aria-expanded',o)})});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')});if(document.activeElement)document.activeElement.blur()}});
 document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){var g=b.dataset.g,n=0;document.querySelectorAll('.chips button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.pj-row').forEach(function(r){var on=g==='all'||r.dataset.g===g;r.hidden=!on;if(on)n++});var c=document.getElementById('pj-count');var es=document.documentElement.lang==='es';if(c)c.textContent=n+(es?(n===1?' proyecto':' proyectos'):(n===1?' project':' projects'))})});
+document.querySelectorAll('.pv').forEach(function(v){v.addEventListener('click',function(){if(v.dataset.on)return;v.dataset.on=1;var t=v.getAttribute('aria-label')||'Video',f;if(v.dataset.yt){f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.yt+'?autoplay=1&rel=0&modestbranding=1';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin'}else{f=document.createElement('video');f.src=v.dataset.mp4;f.controls=true;f.autoplay=true;f.playsInline=true}f.title=t;v.innerHTML='';v.appendChild(f);v.style.cursor='default'})});
 document.addEventListener('click',function(e){document.querySelectorAll('.dd.open').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})});})();"""
 
 LINKEDIN = "https://www.linkedin.com/company/ullswater-investments"
@@ -376,6 +387,46 @@ def projects_ld():
                 "member": {"@id": BASE + "/#org"}}} for i, p in enumerate(C.PROJECTS)]}
 
 
+PLAY_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>'
+
+
+def video_iso(mmss):
+    m, s = mmss.split(":")
+    return f"PT{int(m)}M{int(s)}S"
+
+
+def project_video(p):
+    """Click-to-play explainer video: only our own thumbnail loads; YouTube (youtube-nocookie) loads on click."""
+    v = C.PROJECT_VIDEOS.get(p["slug"])
+    if not v:
+        return ""
+    src = f'data-yt="{v["yt"]}"' if v.get("yt") else f'data-mp4="{escape(v["mp4"])}"'
+    link = (f'<a href="https://www.youtube.com/watch?v={v["yt"]}" target="_blank" rel="noopener">Watch on YouTube ↗</a>' if v.get("yt") else "")
+    return (f'<div class="v"><button type="button" class="pv" {src} aria-label="Play the {escape(p["acronym"])} project video">'
+            f'<img src="/assets/img/projects/{p["slug"]}.jpg" alt="{escape(p["acronym"])} project video" width="960" height="540" loading="lazy">'
+            f'<span class="play">{PLAY_SVG}</span><span class="dur">{v["len"]}</span></button>'
+            f'<div class="vt"><b>Project video</b><p>The challenge, the approach, the pilots and the consortium of {escape(p["acronym"])}, explained in under {int(v["len"].split(":")[0]) + 1} minutes.</p>'
+            f'<p>English · {v["len"]} · narration produced with an AI-generated voice.</p>{link}</div></div>')
+
+
+def projects_videos_ld():
+    out = []
+    for p in C.PROJECTS:
+        v = C.PROJECT_VIDEOS.get(p["slug"])
+        if not v:
+            continue
+        d = {"@context": "https://schema.org", "@type": "VideoObject", "name": v["name"], "description": p["pitch"],
+             "thumbnailUrl": f"{BASE}/assets/img/projects/{p['slug']}.jpg", "uploadDate": v["date"], "duration": video_iso(v["len"]),
+             "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}, "about": {"@type": "ResearchProject", "name": p["acronym"], "url": project_url(p)}}
+        if v.get("yt"):
+            d["embedUrl"] = f"https://www.youtube.com/embed/{v['yt']}"
+            d["url"] = f"https://www.youtube.com/watch?v={v['yt']}"
+        else:
+            d["contentUrl"] = v["mp4"]
+        out.append(d)
+    return out
+
+
 def projects_page(themes):
     chips = "".join(f'<button type="button" data-g="{g}" aria-pressed="{str(g == "all").lower()}">{escape(t)}</button>' for g, t in C.PROJECT_GROUPS)
     ways = "".join(f'<div class="card"><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for t, d in C.PROJECT_WAYS)
@@ -388,7 +439,7 @@ def projects_page(themes):
                  f'<h2>{escape(p["acronym"])}</h2><div class="ch">{escape(p["challenge"])}</div></div>'
                  f'{status_tag(p, long=True)}</div>'
                  f'<div class="b"><div class="t">{escape(p["title"])}</div><p>{escape(p["pitch"])}</p><ul>{facts}</ul></div>'
-                 f'<div class="c"><div><b>Our role</b><div class="r">{escape(p["role"])}</div><p>{escape(p["contribution"])}</p></div>{btn}</div></article>')
+                 f'<div class="c"><div><b>Our role</b><div class="r">{escape(p["role"])}</div><p>{escape(p["contribution"])}</p></div>{btn}</div>{project_video(p)}</article>')
     n = len(C.PROJECTS)
     st = "".join(f"<li><strong>{a}</strong>{escape(b)}</li>" for a, b in C.PROJECTS_STATS)
     body = hero("European R&amp;D projects · ITEA · Eureka", "Our participation in European projects",
@@ -402,7 +453,7 @@ def projects_page(themes):
 {cta("Want to join one of these consortia?", "These projects are still in preparation and open to new partners (except DR-MBANK). Tell us what you bring and we will work with you to bring you in.", "Schedule a meeting")}"""
     return page("/projects/", "Our participation in European projects | Ullswater Investments",
                 "European R&D projects where Ullswater Investments takes part as project leader, national coordinator, partner or funding advisor: ITEA and Eureka.",
-                body, themes, "projects", projects_ld())
+                body, themes, "projects", [projects_ld()] + projects_videos_ld())
 
 
 FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">

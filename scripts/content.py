@@ -322,6 +322,23 @@ PROJECTS = [
      "contribution": "Software in a Box, Ullswater's technology company, develops ARGOS. Ullswater builds its partner network: law firms, DPOs and companies that want to pilot it can join as partners at no cost and apply together for European and Spanish public funding.",
      "facts": [("3", "EU rules verified: GDPR, EHDS, AI Act"), ("On-premise", "no data leaves the client"), ("Health", "first pilot sector")]},
 ]
+# Explainer video of each project, shown on /projects/ (click-to-play, youtube-nocookie) with VideoObject data.
+# YouTube (@ullswaterinvestments) is the single source: "yt" is the video id. "mp4" is only a stopgap for a video
+# not yet on the channel. Thumbnails live in content/img/projects/<slug>.jpg (960×540).
+PROJECT_VIDEOS = {
+    "proactedge": {"yt": "OiHE_3M01pY", "len": "7:22", "date": "2026-11-03",
+                   "name": "ProAct-Edge (ITEA 26018) | Edge AI that anticipates, explains and acts"},
+    "hoskit": {"yt": "baW2cyswRMg", "len": "5:55", "date": "2026-11-04",
+               "name": "HOSKIT · Digital sovereignty you can prove | ITEA 26013"},
+    "samba": {"yt": "c7sI_UY4tyc", "len": "7:44", "date": "2026-11-04",
+              "name": "SAMBA (ITEA 26039) | Supervised agentic AI for the factories that already exist"},
+    "cognigene": {"yt": "3i2mEFRHFvo", "len": "7:48", "date": "2026-11-03",
+                  "name": "CogniGENE (ITEA 26008) | Spot the change before it is too late"},
+    "ehdsjungle": {"yt": "_qTx0H-F3Z4", "len": "6:29", "date": "2026-11-04",
+                   "name": "EHDS-JUNGLE (ITEA 26041) | Clinical intelligence on the European Health Data Space"},
+    "drmbank": {"yt": "", "mp4": "https://drmbank.pages.dev/media/DR-MBANK_Video_EN_v1.0.mp4", "len": "5:39", "date": "2026-11-03",
+                "name": "DR-MBANK | The bank branch that never goes dark"},
+}
 PROJECT_GROUPS = [("all", "All projects"), ("lead", "Leading & coordinating"), ("partner", "Partner"), ("advisor", "Funding advisor")]
 PROJECT_WAYS = [
     ("Leading and coordinating", "Project leadership, national coordination and ownership of use cases and innovations."),
