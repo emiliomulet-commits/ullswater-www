@@ -37,7 +37,7 @@ MAX_INPUT = 170_000   # characters of official text sent to Claude (~45k tokens)
 MAX_STORE = 160_000   # characters of official text kept for the chat assistant
 TEMAS = ["Quién puede pedirla", "Qué se financia", "Gastos subvencionables", "Cuantía e intensidad",
          "Cómo y cuándo se solicita", "Cómo se evalúa", "Obligaciones y justificación", "Compatibilidad con otras ayudas"]
-VERSION = 1  # bump to regenerate every cached ficha after a prompt change
+VERSION = 2  # bump to regenerate every cached ficha after a prompt change
 
 
 # ---------------------------------------------------------------- documents
@@ -183,7 +183,14 @@ Reglas:
   estar en los documentos.
 - Temas de la ficha, en este orden y solo los que tengan contenido: {", ".join(TEMAS)}.
 
-Responde llamando una sola vez a la herramienta ficha_ayuda, sin texto antes ni después."""
+Devuelve SOLO un objeto JSON válido, sin texto antes ni después y sin bloque de código, con esta forma:
+{"titulo_bases": "título de las bases reguladoras corregido (espacios, mayúsculas), sin cambiar su contenido; vacío si no consta",
+ "en_breve": "2 o 3 frases: qué financia, para quién y lo esencial de la cuantía y el plazo",
+ "ficha": [{"tema": "<uno de los temas>", "puntos": [{"t": "una idea, máximo 2 frases", "ref": "documento y artículo/base/apartado"}]}],
+ "faq": [{"q": "pregunta", "a": "respuesta de 1 a 4 frases", "ref": "documento y artículo"}],   (de 4 a 6)
+ "sugeridas": ["pregunta corta para el chat"],   (de 4 a 6)
+ "avisos": ["limitaciones: documentos que faltan, texto ilegible, remisiones a textos no recibidos"]}
+Como máximo 5 puntos por tema. Dentro de los textos no uses comillas rectas ("): usa comillas angulares (« »)."""
 
 TOOL = {
     "name": "ficha_ayuda",
@@ -221,21 +228,18 @@ def ask_claude(x, docs, key, model):
         cut = ' truncado="si"' if len(t) < len(d["texto"]) else ""
         parts.append(f'<documento nombre="{d["nombre"]}"{cut}>\n{t}\n</documento>')
     user = "Datos de la BDNS:\n" + json.dumps(meta, ensure_ascii=False, indent=1) + "\n\n" + "\n\n".join(parts)
-    body = {"model": model, "max_tokens": 8000, "system": SYSTEM, "tools": [TOOL], "tool_choice": {"type": "auto"},
-            "messages": [{"role": "user", "content": user}]}
+    body = {"model": model, "max_tokens": 12000, "system": SYSTEM, "messages": [{"role": "user", "content": user}]}
     req = urllib.request.Request("https://api.anthropic.com/v1/messages", method="POST", data=json.dumps(body).encode(),
                                  headers={"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"})
     for i in range(3):
         try:
             with urllib.request.urlopen(req, timeout=300) as r:
                 res = json.loads(r.read())
-            for b in res.get("content", []):
-                if b.get("type") == "tool_use":
-                    return b["input"], res.get("usage", {})
             txt = "".join(b.get("text", "") for b in res.get("content", []))
-            if "{" in txt:  # the model answered with plain JSON instead of the tool
-                return json.loads(txt[txt.find("{"):txt.rfind("}") + 1]), res.get("usage", {})
-            raise ValueError("no tool_use in answer")
+            o = json.loads(txt[txt.find("{"):txt.rfind("}") + 1])
+            if valid(o):
+                return o, res.get("usage", {})
+            raise ValueError(f"wrong shape (stop_reason {res.get('stop_reason')})")
         except urllib.error.HTTPError as e:
             print(f"ayudas_ia: Claude failed for {x['id']} (try {i + 1}): HTTP {e.code}", e.read()[:600].decode("utf-8", "replace"))
             if e.code in (400, 401, 403, 404):
@@ -248,7 +252,16 @@ def ask_claude(x, docs, key, model):
 
 
 def valid(o):
-    return bool(o and o.get("en_breve") and o.get("faq") and len(o.get("sugeridas") or []) >= 3)
+    try:
+        ok = (isinstance(o.get("en_breve"), str) and o["en_breve"].strip()
+              and all(isinstance(t, dict) and isinstance(t.get("puntos"), list) and all(isinstance(p, dict) and p.get("t") for p in t["puntos"]) for t in o.get("ficha") or [])
+              and len(o.get("faq") or []) >= 3 and all(isinstance(f, dict) and f.get("q") and f.get("a") for f in o["faq"])
+              and len(o.get("sugeridas") or []) >= 3 and all(isinstance(q, str) for q in o["sugeridas"]))
+    except (AttributeError, TypeError):
+        ok = False
+    if not ok:
+        print("ayudas_ia: answer with the wrong shape:", json.dumps(o, ensure_ascii=False)[:300] if o else None)
+    return bool(ok)
 
 
 # ---------------------------------------------------------------- run
@@ -306,7 +319,7 @@ def update(cache=None, codes=None, today=None):
             print("ayudas_ia: no readable documents for", code)
             continue
         out, usage = ask_claude(x, docs, key, model)
-        if not valid(out):
+        if not out:
             continue
         rec = {"id": code, "version": VERSION, "generado": today, "modelo": model, "stamp": stamp,
                "fuentes": [{"nombre": doc["nombre"], "url": doc["url"], "caracteres": len(doc["texto"])} for doc in docs],
