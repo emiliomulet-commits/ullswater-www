@@ -242,12 +242,12 @@ def ask_claude(x, docs, key, model):
         cut = ' truncado="si"' if len(t) < len(d["texto"]) else ""
         parts.append(f'<documento nombre="{d["nombre"]}"{cut}>\n{t}\n</documento>')
     user = "Datos de la BDNS:\n" + json.dumps(meta, ensure_ascii=False, indent=1) + "\n\n" + "\n\n".join(parts)
-    body = {"model": model, "max_tokens": 12000, "system": SYSTEM, "messages": [{"role": "user", "content": user}]}
+    body = {"model": model, "max_tokens": 24000, "system": SYSTEM, "messages": [{"role": "user", "content": user}]}
     req = urllib.request.Request("https://api.anthropic.com/v1/messages", method="POST", data=json.dumps(body).encode(),
                                  headers={"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"})
     for i in range(3):
         try:
-            with urllib.request.urlopen(req, timeout=300) as r:
+            with urllib.request.urlopen(req, timeout=600) as r:
                 res = json.loads(r.read())
             txt = "".join(b.get("text", "") for b in res.get("content", []))
             raw = txt[txt.find("{"):txt.rfind("}") + 1]
