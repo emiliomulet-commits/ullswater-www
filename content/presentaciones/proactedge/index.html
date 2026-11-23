@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ProAct-Edge · La máquina que avisa · Presentación animada</title>
+<meta name="description" content="Presentación animada con locución de ProAct-Edge (ITEA 4 · 26018): IA en el edge que anticipa, explica y actúa dentro de la planta. Ullswater Investments.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#050E1A;color:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;overflow:hidden}
+#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#frame{position:relative;width:min(100vw,177.78vh);aspect-ratio:16/9;overflow:hidden;background:#0B1F3A}
+#frame>svg,#frame>.layer{position:absolute;inset:0;width:100%;height:100%}
+#clips{pointer-events:none}
+#clips video{position:absolute;object-fit:cover;opacity:0;background:#000}
+#clips .full{inset:0;width:100%;height:100%}
+#clips .win{border-radius:1.1%;box-shadow:0 1.2vw 2.4vw rgba(0,0,0,.45);outline:.18vw solid #C9A227}
+#veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,31,58,.25),rgba(11,31,58,.78));opacity:0;pointer-events:none;mix-blend-mode:multiply}
+#grain{position:absolute;inset:-50%;opacity:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");animation:gr 1s steps(4) infinite}
+@keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+#gl{position:absolute;pointer-events:none;opacity:0}
+#top{pointer-events:none}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#black{position:absolute;inset:0;background:#000;opacity:1;pointer-events:none}
+/* controles (como ARGOS) */
+.ui{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:12px;padding:10px 16px;background:linear-gradient(0deg,rgba(5,14,26,.92),rgba(5,14,26,0));transition:opacity .3s;z-index:5}
+body.idle .ui{opacity:0}
+.ui button{font:inherit;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:8px;height:36px;min-width:36px;padding:0 10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:13px}
+.ui button:hover,.ui button:focus-visible{border-color:#C9A227;outline:none}
+.ui svg{width:17px;height:17px}
+.scenes{display:flex;gap:5px;flex:1;min-width:0;overflow:hidden}
+.scenes button{flex:1;min-width:0;height:auto;padding:5px 7px;display:block;text-align:left;font-size:12px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative}
+.scenes button b{display:block;font-size:10.5px;color:#C9A227}
+.scenes button i{position:absolute;left:0;bottom:0;height:3px;background:#C9A227;width:0;border-radius:2px}
+.scenes button.on{border-color:#C9A227;background:rgba(201,162,39,.15)}
+.time{font-size:12.5px;color:#AFC0D2;min-width:84px;text-align:right;font-variant-numeric:tabular-nums}
+#start{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:4;background:rgba(5,14,26,.35)}
+#start button{font:600 18px 'Hanken Grotesk',sans-serif;color:#0B1F3A;background:#C9A227;border:0;border-radius:999px;padding:16px 30px;cursor:pointer;box-shadow:0 0 0 10px rgba(201,162,39,.25);display:flex;gap:10px;align-items:center}
+#start button:hover{background:#F3D36B}
+#start small{display:block;position:absolute;bottom:90px;left:0;right:0;text-align:center;color:#C9D6E8;font-size:13px}
+body.playing #start{display:none}
+@media(max-width:620px){.scenes{display:none}.ui{gap:6px;padding:6px 8px}}
+body.embed .ui{padding:6px 8px;gap:6px}body.embed .ui button{height:28px;min-width:28px;padding:0 6px}
+</style>
+</head>
+<body>
+<div id="wrap"><div id="frame">
+ <svg id="stage" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+   <linearGradient id="bgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1F3A"/><stop offset="1" stop-color="#1F3864"/></linearGradient>
+   <radialGradient id="glowG"><stop offset="0" stop-color="#C9A227" stop-opacity=".55"/><stop offset="1" stop-color="#C9A227" stop-opacity="0"/></radialGradient>
+   <radialGradient id="redG"><stop offset="0" stop-color="#E5484D" stop-opacity=".55"/><stop offset="1" stop-color="#E5484D" stop-opacity="0"/></radialGradient>
+   <radialGradient id="vig" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+   <filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter>
+   <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bgG)"/>
+  <g id="grid" opacity=".07" stroke="#fff"></g>
+  <g id="cam"></g>
+  <rect width="1600" height="900" fill="url(#vig)"/>
+ </svg>
+ <div id="clips" class="layer"><div id="veil"></div><div id="grain"></div></div>
+ <canvas id="gl"></canvas>
+ <svg id="top" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+ <div id="flash"></div>
+ <div id="black"></div>
+</div></div>
+<div id="start"><button type="button" id="startBtn"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>Ver con sonido · 3:49</button><small>ProAct-Edge · ITEA 4 · 26018 · Locución y música generadas con IA</small></div>
+<div class="ui">
+ <button id="play" type="button" aria-label="Reproducir (espacio)"><svg viewBox="0 0 24 24"><path id="pi" d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+ <button id="mute" type="button" aria-label="Silenciar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path id="mi" d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg></button>
+ <div class="scenes" id="scenes"></div>
+ <span class="time" id="time">0:00 / 3:49</span>
+ <button id="fs" type="button" aria-label="Pantalla completa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+</div>
+
+<script src="vendor/gsap.min.js"></script>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from './vendor/GLTFLoader.js';
+import {RoomEnvironment} from './vendor/RoomEnvironment.js';
+
+const OFF = 2.5, TOTAL = 229;
+const CUES = await fetch('media/cues.json').then(r => r.json());
+const EU = await fetch('media/europe.json').then(r => r.json());
+const T = k => CUES[k] + OFF;               // tiempo de vídeo de cada marca de la locución
+const q = new URLSearchParams(location.search);
+const RENDER = q.get('render') === '1';
+if(q.get('embed')) document.body.classList.add('embed');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------------- utilidades SVG */
+const NS = 'http://www.w3.org/2000/svg';
+const $ = s => document.querySelector(s);
+function el(tag, at = {}, parent){ const e = document.createElementNS(NS, tag); for(const k in at){ if(k === 'text') e.textContent = at[k]; else e.setAttribute(k, at[k]); } if(parent) parent.appendChild(e); return e; }
+const G = (parent, at = {}) => el('g', at, parent);
+const cam = $('#cam'), top = $('#top');
+for(let x = 0; x <= 1600; x += 80) el('path', {d:`M${x} 0V900`}, $('#grid'));
+for(let y = 0; y <= 900; y += 80) el('path', {d:`M0 ${y}H1600`}, $('#grid'));
+const GOLD = '#C9A227', GOLD2 = '#F3D36B', NAVY = '#0B1F3A', RED = '#E5484D', TEAL = '#1B998B', INK = '#C9D6E8';
+const MONT = 'Montserrat,sans-serif';
+function txt(parent, x, y, s, size, at = {}){ return el('text', Object.assign({x, y, 'font-size':size, fill:'#fff', text:s}, at), parent); }
+function typeTo(e, dur){ const full = e.getAttribute('data-full') || e.textContent; e.setAttribute('data-full', full); const o = {n:0}; e.textContent = ''; return gsap.to(o, {n:full.length, duration:dur, ease:'none', onUpdate:() => { e.textContent = full.slice(0, Math.round(o.n)); }}); }
+function draw(p, d, ease = 'power2.out'){ const L = p.getTotalLength(); gsap.set(p, {strokeDasharray:L, strokeDashoffset:L}); return gsap.to(p, {strokeDashoffset:0, duration:d, ease}); }
+function counter(e, from, to, d, fmt){ const o = {v:from}; return gsap.to(o, {v:to, duration:d, ease:'power2.out', onUpdate:() => { e.textContent = fmt(o.v); }}); }
+function img(parent, href, x, y, w, at = {}){ return el('image', Object.assign({href, x, y, width:w, height:w}, at), parent); }
+
+/* cámara virtual */
+const C = {x:800, y:450, s:1};
+const applyCam = () => cam.setAttribute('transform', `translate(${800 - C.x*C.s} ${450 - C.y*C.s}) scale(${C.s})`);
+const camTo = (x, y, s, d = 1.2, ease = 'power3.inOut') => gsap.to(C, {x, y, s, duration:d, ease, onUpdate:applyCam});
+applyCam();
+
+/* ---------------- línea de tiempo maestra (segundos = segundos de la banda sonora) */
+const tl = gsap.timeline({paused:true, defaults:{ease:'power3.out'}});
+const at = (t, tw) => tl.add(tw, t);
+const set = (t, target, vars) => tl.set(target, vars, t);
+const SCENES = [
+ ['s1', 'La señal ignorada', 0], ['s2', 'El coste', T('s2')], ['s3', 'Por qué no llega', T('s3')], ['s4', 'ProAct-Edge', T('s4')],
+ ['s5', 'Cómo funciona', T('s5')], ['s6', 'Cuatro innovaciones', T('s6')], ['s7', 'Objetivos', T('s7')], ['s8', 'Seis pilotos', T('s8')],
+ ['s9', 'El consorcio', T('s9')], ['s10', 'Únete', T('s10')]];
+SCENES.forEach(([k, , t]) => tl.addLabel(k, t));
+
+/* ---------------- la onda (motivo recurrente) */
+const W = {amp:0, chaos:0, x1:0, y:450, op:0, red:0, w:3};
+const wave = el('path', {fill:'none', stroke:GOLD, 'stroke-width':3, 'stroke-linecap':'round', filter:'url(#glow)', opacity:0}, top);
+function waveD(t){
+  let d = ''; const N = 160;
+  for(let i = 0; i <= N; i++){
+    const x = i / N * W.x1; const u = x / 1600;
+    const env = Math.sin(Math.PI * Math.min(1, u * 1.0 + .0)) ** .6;
+    const base = Math.sin(u * 18 + t * 2.2) * .6 + Math.sin(u * 7 - t * 1.3) * .4;
+    const ch = W.chaos * (Math.sin(u * 61 + t * 9) * .7 + Math.sin(u * 131 - t * 17) * .5) * (.4 + .6 * Math.abs(Math.sin(t * 6 + u * 9)));
+    d += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + (W.y + (base + ch) * W.amp * env).toFixed(1);
+  }
+  return d;
+}
+function paintWave(t){
+  if(W.op <= 0.001){ wave.setAttribute('opacity', 0); return; }
+  wave.setAttribute('d', waveD(t)); wave.setAttribute('opacity', W.op);
+  const c = gsap.utils.interpolate(GOLD, RED, W.red); wave.setAttribute('stroke', c); wave.setAttribute('stroke-width', W.w);
+}
+
+/* ---------------- vídeo de archivo */
+const CLIPS = [
+ {id:'c1', src:'media/c1.mp4', start:3.9, end:11.9, from:0, full:true},
+ {id:'ce', src:'media/ce.mp4', start:14.25, end:16.0, from:3.0, full:true},
+ {id:'c2', src:'media/c2.mp4', start:T('maqavisan') - .3, end:T('s5') - .2, from:.5, full:true},
+ {id:'c3', src:'media/c3.mp4', start:T('siente') + .2, end:T('siente') + 3.2, from:0, full:true},
+ {id:'c7', src:'media/c7.mp4', start:T('entiende') + .1, end:T('entiende') + 3.1, from:1, full:true},
+ {id:'c6', src:'media/c6.mp4', start:T('esp') + .3, end:T('nl') - .2, from:1, win:[70, 400, 380, 214]},
+ {id:'c5', src:'media/c5.mp4', start:T('nl') + .3, end:T('tr') - .2, from:2, win:[900, 160, 380, 214]},
+ {id:'c4', src:'media/c4.mp4', start:T('tr') + .1, end:T('pt') - .1, from:2, win:[1230, 640, 340, 191]},
+];
+const clipLayer = $('#clips');
+CLIPS.forEach(c => {
+  const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = RENDER ? `webm/${c.id}.webm` : c.src;
+  v.className = c.full ? 'full' : 'win';
+  if(c.win){ const [x, y, w, h] = c.win; Object.assign(v.style, {left:x/16 + '%', top:y/9 + '%', width:w/16 + '%', height:h/9 + '%'}); }
+  c.ok = true; v.onerror = () => { c.ok = false; };
+  clipLayer.insertBefore(v, $('#veil')); c.v = v;
+});
+function clipOn(c){ // opacidad del clip dentro de la línea de tiempo
+  tl.fromTo(c.v, {opacity:0}, {opacity:1, duration:.35, ease:'none', immediateRender:false}, c.start)
+    .to(c.v, {opacity:0, duration:.35, ease:'none'}, c.end - .35);
+  if(c.full){ tl.to('#veil', {opacity:1, duration:.35}, c.start).to('#veil', {opacity:0, duration:.35}, c.end - .35);
+              tl.to('#grain', {opacity:.07, duration:.35}, c.start).to('#grain', {opacity:0, duration:.35}, c.end - .35); }
+}
+CLIPS.forEach(clipOn);
+let playing = false;
+function syncClips(t){
+  for(const c of CLIPS){
+    const on = c.ok && t >= c.start - .4 && t < c.end;
+    const v = c.v;
+    if(!on){ if(!v.paused) v.pause(); continue; }
+    const want = c.from + Math.max(0, t - c.start);
+    if(Math.abs(v.currentTime - want) > .3 || (!playing && Math.abs(v.currentTime - want) > .04)){ try{ v.currentTime = want; }catch(e){} }
+    if(playing && v.paused && !RENDER) v.play().catch(() => {});
+    if(!playing && !v.paused) v.pause();
+  }
+}
+
+/* ---------------- engranaje 3D (Envato · three.js) */
+const GL = {x:800, y:400, s:1, o:0, size:520, cam:0};
+const glc = $('#gl');
+const renderer = new THREE.WebGLRenderer({canvas:glc, antialias:true, alpha:true, preserveDrawingBuffer:RENDER});
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.outputColorSpace = THREE.SRGBColorSpace;
+const scene3 = new THREE.Scene(); const pm = new THREE.PMREMGenerator(renderer);
+scene3.environment = pm.fromScene(new RoomEnvironment(), .04).texture;
+const cam3 = new THREE.PerspectiveCamera(28, 1, .1, 100);
+const key = new THREE.DirectionalLight(0xffe2a0, 2.4); key.position.set(3, 4, 5); scene3.add(key);
+const rim = new THREE.DirectionalLight(0x8fb4ff, 1.4); rim.position.set(-4, 2, -3); scene3.add(rim);
+let gear = null;
+fetch('media/gear.json').then(r => r.json()).then(j => { const bin = Uint8Array.from(atob(j.glb), c => c.charCodeAt(0)).buffer; new GLTFLoader().parse(bin, '', g => { gear = g.scene; const b = new THREE.Box3().setFromObject(gear); const c = b.getCenter(new THREE.Vector3()); const z = b.getSize(new THREE.Vector3()).length(); gear.position.sub(c); const piv = new THREE.Group(); piv.add(gear); scene3.add(piv); gear = piv; cam3.position.set(0, z * .08, z * 1.75); cam3.lookAt(0, 0, 0); }); });
+function layoutGL(){ const fw = $('#frame').clientWidth, u = fw / 1600, k = GL.cam ? C.s : 1, px = GL.size * GL.s * k * u;
+  const sx = GL.cam ? 800 - C.x * C.s + GL.x * C.s : GL.x, sy = GL.cam ? 450 - C.y * C.s + GL.y * C.s : GL.y; const dpr = Math.min(2, devicePixelRatio || 1);
+  if(glc.width !== Math.round(px * dpr)){ renderer.setPixelRatio(dpr); renderer.setSize(px, px, false); }
+  Object.assign(glc.style, {width:px + 'px', height:px + 'px', left:(sx * u - px / 2) + 'px', top:(sy * u - px / 2) + 'px', opacity:GL.o}); }
+function paintGL(t){ if(GL.o <= .001 || !gear){ glc.style.opacity = 0; return; } layoutGL(); gear.rotation.y = Math.sin(t * .55) * .28; gear.rotation.x = Math.sin(t * .37) * .08; gear.position.y = Math.sin(t * 1.1) * .02; renderer.render(scene3, cam3); }
+
+/* ============ ESCENA 1 · La señal ignorada (0 – s2) */
+const b = $('#black');
+at(0, gsap.to(b, {opacity:0, duration:1.4, ease:'power1.inOut'}));
+at(.3, gsap.to(W, {op:1, duration:.4}));
+at(.3, gsap.to(W, {x1:1600, amp:16, duration:2.6, ease:'power2.inOut'}));
+at(.4, camTo(800, 450, 1.06, 9, 'none'));
+const s1 = G(top, {});
+const L1 = [['Vibra distinto.', T('vibra') - .1], ['Suena distinto.', CUES.suena ? 6.22 + OFF : 8.7], ['Se calienta.', 7.64 + OFF]];
+L1.forEach(([s, t], i) => { const e = txt(s1, 120, 660 + i * 70, s, 54, {'font-family':MONT, 'font-weight':800, fill:i === 2 ? GOLD : '#fff', opacity:0}); at(t, gsap.fromTo(e, {opacity:0, y:18}, {opacity:1, y:0, duration:.45})); at(11.8, gsap.to(e, {opacity:0, duration:.4})); });
+at(3.9, gsap.to(W, {y:530, duration:1.2}));
+at(6.5, gsap.to(W, {amp:34, chaos:.35, duration:3}));
+const nadie = txt(s1, 800, 360, 'Nadie la escucha.', 64, {'font-family':MONT, 'font-weight':800, 'text-anchor':'middle', opacity:0});
+at(11.95, gsap.to(W, {y:450, amp:46, chaos:.7, duration:1.2}));
+at(12.2, gsap.fromTo(nadie, {opacity:0, y:10}, {opacity:1, y:0, duration:.5}));
+at(14.0, gsap.to(nadie, {opacity:0, duration:.3}));
+at(T('hasta') - .4, gsap.to(W, {red:1, amp:80, chaos:1.4, duration:.6}));
+const dim = el('rect', {width:1600, height:900, fill:'#02060C', opacity:0}, top);
+const hasta = txt(top, 800, 470, 'Hasta que la línea se para.', 74, {'font-family':MONT, 'font-weight':900, 'text-anchor':'middle', opacity:0});
+const parar = 13.24 + OFF + .25;
+at(parar - .02, gsap.to('#flash', {opacity:.85, duration:.05, ease:'none'}));
+at(parar + .05, gsap.to('#flash', {opacity:0, duration:.5, ease:'power2.out'}));
+at(parar, gsap.to(W, {op:0, duration:.08}));
+set(parar, dim, {opacity:.92});
+set(parar, hasta, {opacity:1});
+const redline = el('rect', {x:310, y:500, width:0, height:8, rx:4, fill:RED}, top);
+at(parar + .2, gsap.to(redline, {attr:{width:980}, duration:.5, ease:'power2.inOut'}));
+at(T('s2') - .5, gsap.to([hasta, redline], {opacity:0, duration:.5}));
+at(T('s2') - .5, gsap.to(dim, {opacity:0, duration:.8}));
+
+/* ============ ESCENA 2 · El coste */
+const s2 = G(cam, {opacity:0});
+at(T('s2') - .2, gsap.to(s2, {opacity:1, duration:.4}));
+at(T('s2'), camTo(800, 450, 1, .1));
+txt(s2, 800, 150, 'EL COSTE DE UNA PARADA', 26, {'text-anchor':'middle', fill:GOLD, 'font-weight':700, 'letter-spacing':6});
+const big = txt(s2, 800, 470, '0 %', 260, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900, fill:'#fff'});
+const bigSub = txt(s2, 800, 560, 'de los ingresos de las mayores empresas del mundo', 34, {'text-anchor':'middle', fill:INK, opacity:0});
+const gl2 = el('circle', {cx:800, cy:390, r:300, fill:'url(#glowG)', opacity:0}, s2); s2.insertBefore(gl2, s2.firstChild);
+at(T('once') - .4, counter(big, 0, 11, 1.1, v => Math.round(v) + ' %'));
+at(T('once') + .6, gsap.to(gl2, {opacity:1, duration:.3, yoyo:true, repeat:1}));
+at(T('once') + .3, gsap.to(bigSub, {opacity:1, duration:.6}));
+const fac = G(s2, {opacity:0});
+const facs = [0, 1, 2].map(i => { const g = G(fac, {}); img(g, 'media/factory.png', 900 + i * 210, 330, 200); const r = el('g', {opacity:0}, g); el('circle', {cx:1080 + i * 210 - 10, cy:350, r:26, fill:RED}, r); txt(r, 1070 + i * 210, 360, '!', 34, {'text-anchor':'middle', 'font-weight':800}); return {g, r}; });
+const facT = txt(s2, 1110, 600, '2 de cada 3 plantas', 44, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':800, opacity:0});
+const facT2 = txt(s2, 1110, 645, 'mantienen por calendario o tras la avería', 27, {'text-anchor':'middle', fill:INK, opacity:0});
+at(T('dos_de') - .2, gsap.to(big, {attr:{x:420, y:440, 'font-size':200}, duration:.9}));
+at(T('dos_de') - .2, gsap.to(bigSub, {attr:{x:420, y:520, 'font-size':24}, duration:.9}));
+at(T('dos_de') - .2, gsap.to(bigSub, {opacity:0, duration:.01}));
+at(T('dos_de') + .5, gsap.to(bigSub, {opacity:1, duration:.4}));
+at(T('dos_de') + .2, gsap.to(fac, {opacity:1, duration:.3}));
+facs.forEach((f, i) => at(T('dos_de') + .2 + i * .18, gsap.from(f.g, {y:60, opacity:0, duration:.5, ease:'back.out(2)'})));
+facs.slice(0, 2).forEach((f, i) => at(T('dos_de') + 1.6 + i * .25, gsap.to(f.r, {opacity:1, duration:.2})));
+at(T('dos_de') + 1.4, gsap.to([facT, facT2], {opacity:1, duration:.5, stagger:.2}));
+const loss = G(s2, {opacity:0});
+el('rect', {x:200, y:720, width:1200, height:96, rx:16, fill:'rgba(229,72,77,.12)', stroke:RED, 'stroke-opacity':.6}, loss);
+txt(loss, 240, 780, 'Cada minuto de parada:', 30, {'font-weight':700});
+const lossW = ['Producción', 'Entregas', 'Clientes'].map((s, i) => txt(loss, 640 + i * 250, 780, '− ' + s, 32, {'font-family':MONT, 'font-weight':800, fill:'#FF8A8E', opacity:0}));
+at(T('cada_min') - .2, gsap.to(loss, {opacity:1, duration:.4}));
+lossW.forEach((e, i) => at(T('cada_min') + 1.4 + i * .55, gsap.fromTo(e, {opacity:0, x:-12}, {opacity:1, x:0, duration:.35})));
+at(T('s3') - .4, gsap.to(s2, {opacity:0, duration:.4}));
+
+/* ============ ESCENA 3 · Por qué la IA no llega a la planta */
+const s3 = G(cam, {opacity:0});
+at(T('s3') - .1, gsap.to(s3, {opacity:1, duration:.3}));
+at(T('s3'), camTo(800, 450, 1, .01));
+const t3 = txt(s3, 800, 170, 'La tecnología existe, pero no encaja en la fábrica', 44, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':800});
+at(T('s3') + .1, typeTo(t3, 1.4));
+const CARDS = [['Avisa tarde', 'Umbrales sobre', 'una sola señal', 'umbrales', 'M4 18l6-7 4 4 6-9'], ['Máquinas mudas', 'Los equipos antiguos', 'no dan datos', 'maq_ant', 'M4 6h16v12H4zM8 10h2M14 10h2M8 14h8'],
+ ['La nube no encaja', 'Retrasos y secretos', 'fuera de la planta', 'nube', 'M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11-1A4 4 0 0 0 7 18z'], ['Cada planta, sola', 'Lo aprendido', 'no se comparte', 'sola', 'M12 3l8 5v8l-8 5-8-5V8z'], ['Alarmas opacas', 'Nadie las entiende,', 'nadie las atiende', 'alarma', 'M12 4v8M12 16h.01M4 20h16L12 4z']];
+const cardG = CARDS.map(([h, a, b2, k, icon], i) => {
+  const g = G(s3, {opacity:0, filter:'url(#sh)'}); const x = 70 + i * 296;
+  const bg = el('rect', {x, y:290, width:276, height:380, rx:18, fill:'#F4F6FA'}, g);
+  el('rect', {x, y:290, width:276, height:10, rx:5, fill:i === 4 ? RED : GOLD}, g);
+  const ic = G(g, {transform:`translate(${x + 138 - 36} 340) scale(3)`, fill:'none', stroke:i === 4 ? RED : '#1F3864', 'stroke-width':1.6, 'stroke-linecap':'round', 'stroke-linejoin':'round'}); el('path', {d:icon}, ic);
+  txt(g, x + 138, 500, h, 25, {'text-anchor':'middle', fill:NAVY, 'font-family':MONT, 'font-weight':800});
+  txt(g, x + 138, 552, a, 22, {'text-anchor':'middle', fill:'#4B5563'}); txt(g, x + 138, 582, b2, 22, {'text-anchor':'middle', fill:'#4B5563'});
+  txt(g, x + 26, 650, String(i + 1).padStart(2, '0'), 20, {fill:i === 4 ? RED : GOLD, 'font-weight':800});
+  at(T(k) - .15, gsap.fromTo(g, {opacity:0, y:-60, rotation:-4, svgOrigin:`${x + 138} 480`}, {opacity:1, y:0, rotation:0, duration:.55, ease:'back.out(2)'}));
+  return {g, bg};
+});
+at(T('s3') + 2, camTo(808, 470, 1.035, .01)); at(T('s3') + 2.1, camTo(792, 462, 1.05, 15, 'none'));
+at(T('alarma') + 1.6, gsap.to(cardG[4].bg, {fill:'#FBD5D6', duration:.18, yoyo:true, repeat:5}));
+at(T('s4') - .9, gsap.to(cardG.map(c => c.g), {y:120, opacity:0, duration:.5, stagger:.06, ease:'power2.in'}));
+at(T('s4') - .6, gsap.to(t3, {opacity:0, duration:.3}));
+
+/* ============ ESCENA 4 · La revelación */
+const s4 = G(top, {opacity:0});
+const halo = el('circle', {cx:800, cy:330, r:360, fill:'url(#glowG)', opacity:0}, $('#stage')); $('#stage').insertBefore(halo, cam);
+at(T('s4') - .3, camTo(800, 450, 1, .6));
+at(T('s4') - .5, gsap.to(W, {op:1, red:0, chaos:0, amp:14, y:700, x1:1600, duration:.01}));
+at(T('s4') - .5, gsap.fromTo(W, {amp:120, chaos:1.2}, {amp:14, chaos:0, duration:1.4, ease:'expo.out'}));
+at(T('s4'), gsap.to(halo, {opacity:1, duration:.8}));
+at(T('s4'), gsap.fromTo(GL, {o:0, s:.4, x:800, y:330, size:520, cam:0}, {o:1, s:1, duration:1.2, ease:'back.out(1.6)'}));
+const logo = G(s4, {}); const lg1 = txt(logo, 800, 650, '', 104, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900});
+const lgA = el('tspan', {text:'ProAct'}, lg1); const lgB = el('tspan', {text:'-Edge', fill:GOLD}, lg1);
+const tag = txt(s4, 800, 730, 'Anticipa  ·  Explica  ·  Actúa', 38, {'text-anchor':'middle', fill:INK, 'letter-spacing':4, opacity:0});
+const plat = txt(s4, 800, 800, 'Plataforma europea de IA que funciona dentro de la propia planta', 27, {'text-anchor':'middle', fill:GOLD2, opacity:0});
+at(T('s4') + .1, gsap.to(s4, {opacity:1, duration:.2}));
+at(T('s4') + .3, gsap.fromTo(logo, {opacity:0, scale:1.25, svgOrigin:'800 620'}, {opacity:1, scale:1, duration:.8, ease:'expo.out'}));
+at(T('s4') + 1.6, gsap.to(tag, {opacity:1, duration:.6}));
+at(T('s4') + 2.6, gsap.to(W, {y:765, duration:.8}));
+at(T('s4') + 3.4, gsap.to(plat, {opacity:1, duration:.6}));
+at(T('maqavisan') - .5, gsap.to([s4], {opacity:0, duration:.3}));
+at(T('maqavisan') - .5, gsap.to(GL, {o:0, duration:.3}));
+at(T('maqavisan') - .5, gsap.to([halo], {opacity:0, duration:.3}));
+at(T('maqavisan') - .5, gsap.to(W, {op:0, duration:.3}));
+const lt4 = G(top, {opacity:0});
+el('rect', {x:90, y:700, width:8, height:120, fill:GOLD}, lt4);
+txt(lt4, 120, 750, 'Máquinas que avisan semanas antes de fallar,', 46, {'font-family':MONT, 'font-weight':800});
+txt(lt4, 120, 806, 'y que explican por qué.', 46, {'font-family':MONT, 'font-weight':800, fill:GOLD});
+at(T('maqavisan') + .1, gsap.fromTo(lt4, {opacity:0, x:-30}, {opacity:1, x:0, duration:.6}));
+at(T('s5') - .5, gsap.to(lt4, {opacity:0, duration:.3}));
+
+/* ============ ESCENA 5 · Sentir, entender, explicar, actuar */
+const s5 = G(cam, {opacity:0});
+const ST = [250, 620, 990, 1360], SY = 430;
+const plant = el('rect', {x:70, y:200, width:1460, height:520, rx:30, fill:'none', stroke:GOLD, 'stroke-width':3, 'stroke-dasharray':'14 12', opacity:0}, s5);
+const link = el('path', {d:`M${ST[0]} ${SY}H${ST[3]}`, stroke:GOLD, 'stroke-width':4, opacity:.9}, s5);
+const head5 = txt(s5, 800, 150, 'CÓMO FUNCIONA', 26, {'text-anchor':'middle', fill:GOLD, 'font-weight':700, 'letter-spacing':6});
+const STN = [['SIENTE', 'Vibración · sonido', 'corriente · temperatura', 'siente'], ['ENTIENDE', 'Detecta el cambio y estima', 'la vida útil restante', 'entiende'], ['EXPLICA', 'Cada alerta en lenguaje', 'claro, con su evidencia', 'explica'], ['ACTÚA', 'Propone la orden de trabajo', 'con aprobación humana', 'actua']];
+const stG = STN.map(([h, a, b2, k], i) => {
+  const g = G(s5, {opacity:0}); const x = ST[i];
+  el('circle', {cx:x, cy:SY, r:120, fill:'#13294D', stroke:GOLD, 'stroke-width':3}, g);
+  txt(g, x, SY + 185, h, 34, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900, fill:GOLD});
+  txt(g, x, SY + 222, a, 21, {'text-anchor':'middle', fill:INK}); txt(g, x, SY + 248, b2, 21, {'text-anchor':'middle', fill:INK});
+  return g;
+});
+// 1 · siente: máquina + ondas
+img(stG[0], 'media/machinery.png', ST[0] - 80, SY - 85, 160);
+const rings = [0, 1, 2].map(i => el('circle', {cx:ST[0], cy:SY, r:120, fill:'none', stroke:GOLD2, 'stroke-width':2, opacity:0}, stG[0]));
+// 2 · entiende: curva de vida útil
+const rul = G(stG[1], {}); el('path', {d:`M${ST[1] - 80} ${SY - 50}H${ST[1] + 80}V${SY + 60}`, fill:'none', stroke:'#3A5A8C', 'stroke-width':2}, rul);
+const rulP = el('path', {d:`M${ST[1] - 80} ${SY - 40}C${ST[1] - 20} ${SY - 38},${ST[1] + 20} ${SY - 10},${ST[1] + 75} ${SY + 50}`, fill:'none', stroke:GOLD2, 'stroke-width':4}, rul);
+const rulD = el('circle', {cx:ST[1] + 75, cy:SY + 50, r:8, fill:RED, opacity:0}, rul);
+// 3 · explica: bocadillo
+const bub = G(stG[2], {}); el('path', {d:`M${ST[2] - 95} ${SY - 70}h190a14 14 0 0 1 14 14v92a14 14 0 0 1-14 14H${ST[2] - 20}l-22 26-4-26h-64a14 14 0 0 1-14-14v-92a14 14 0 0 1 14-14z`, fill:'#F4F6FA'}, bub);
+const bt = ['Rodamiento 3: desgaste', 'Fallo estimado: ~6 sem.', 'Confianza: 94 %'].map((s, i) => txt(bub, ST[2] - 82, SY - 34 + i * 30, s, 17, {fill:i === 2 ? TEAL : NAVY, 'font-weight':i ? 500 : 700, opacity:0}));
+txt(stG[2], ST[2], SY - 92, 'Ejemplo ilustrativo', 14, {'text-anchor':'middle', fill:'#7F93B2', 'font-style':'italic'});
+// 4 · actúa: orden de trabajo + aprobar
+const wo = G(stG[3], {}); el('rect', {x:ST[3] - 92, y:SY - 72, width:184, height:144, rx:12, fill:'#F4F6FA'}, wo);
+txt(wo, ST[3] - 78, SY - 40, 'Orden de trabajo', 18, {fill:NAVY, 'font-weight':800}); txt(wo, ST[3] - 78, SY - 14, 'Sustituir rodamiento', 15, {fill:'#4B5563'}); txt(wo, ST[3] - 78, SY + 8, 'Parada planificada', 15, {fill:'#4B5563'});
+const ap = el('rect', {x:ST[3] - 78, y:SY + 24, width:156, height:36, rx:8, fill:GOLD}, wo); const apT = txt(wo, ST[3], SY + 48, 'Aprobar', 18, {'text-anchor':'middle', fill:NAVY, 'font-weight':800});
+const shield = G(s5, {opacity:0});
+el('path', {d:'M800 205l70 26v52c0 46-32 80-70 96-38-16-70-50-70-96v-52z', fill:NAVY, stroke:GOLD, 'stroke-width':4}, shield);
+el('path', {d:'M770 290l22 22 42-46', fill:'none', stroke:GOLD2, 'stroke-width':7, 'stroke-linecap':'round'}, shield);
+const shT = txt(s5, 800, 785, 'Los datos nunca salen de la planta', 40, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':800, opacity:0});
+at(T('s5') - .2, gsap.to(s5, {opacity:1, duration:.4}));
+at(T('s5'), camTo(800, 450, 1, .01));
+at(T('s5'), draw(link, 1.4));
+stG.forEach((g, i) => at(T('s5') + .3 + i * .2, gsap.fromTo(g, {opacity:0, scale:.7, svgOrigin:`${ST[i]} ${SY}`}, {opacity:.35, scale:1, duration:.5, ease:'back.out(2)'})));
+STN.forEach(([, , , k], i) => {
+  const t0 = i === 0 ? T(k) + 3.2 : i === 1 ? T(k) + 3.1 : T(k);
+  at(t0 - .3, camTo(ST[i], SY + 60, 1.55, .9));
+  at(t0 - .1, gsap.to(g => stG[i], {}));
+  at(t0 - .1, gsap.to(stG[i], {opacity:1, duration:.4}));
+});
+rings.forEach((r, i) => at(T('siente') + 3.4 + i * .35, gsap.fromTo(r, {attr:{r:120}, opacity:.9}, {attr:{r:210}, opacity:0, duration:1.6, repeat:2, ease:'power1.out'})));
+at(T('entiende') + 3.3, draw(rulP, 1.6));
+at(T('entiende') + 4.9, gsap.to(rulD, {opacity:1, duration:.2, yoyo:true, repeat:5}));
+at(T('entiende') + 3.1, gsap.fromTo(GL, {o:0, x:ST[1], y:SY - 175, s:.34, size:520, cam:1}, {o:1, duration:.5}));
+at(T('explica') - .4, gsap.to(GL, {o:0, duration:.3}));
+set(T('explica') + .1, GL, {cam:0});
+bt.forEach((e, i) => at(T('explica') + .5 + i * .6, gsap.to(e, {opacity:1, duration:.3})));
+at(T('actua') + 1.4, gsap.to(ap, {attr:{fill:TEAL}, duration:.15}));
+at(T('actua') + 1.4, gsap.fromTo(ap, {scale:.94, svgOrigin:`${ST[3]} ${SY + 42}`}, {scale:1, duration:.3, ease:'back.out(3)'}));
+at(T('actua') + 1.45, gsap.to(apT, {fill:'#fff', duration:.1}));
+set(T('actua') + 1.45, apT, {textContent:'✓ Aprobada'});
+at(T('datos') - .4, camTo(800, 470, 1, 1.2));
+at(T('datos') - .2, gsap.to(stG, {opacity:1, duration:.3}));
+at(T('datos'), draw(plant, 1.2));
+at(T('datos'), gsap.to(plant, {opacity:1, duration:.2}));
+at(T('datos') + .2, gsap.to(head5, {opacity:0, duration:.3}));
+at(T('datos') + .6, gsap.fromTo(shield, {opacity:0, scale:.4, svgOrigin:'800 290'}, {opacity:1, scale:1, duration:.6, ease:'back.out(2.4)'}));
+at(T('datos') + .9, gsap.to(shT, {opacity:1, duration:.5}));
+at(T('s6') - .4, gsap.to(s5, {opacity:0, duration:.4}));
+
+/* ============ ESCENA 6 · Cuatro innovaciones */
+const s6 = G(cam, {opacity:0});
+const t6 = txt(s6, 800, 160, 'Cuatro innovaciones', 52, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900});
+const HX = [320, 640, 960, 1280], HY = 400;
+const hexP = (x, y, r) => Array.from({length:6}, (_, k) => { const a = Math.PI / 6 + k * Math.PI / 3; return `${(x + r * Math.cos(a)).toFixed(1)},${(y + r * Math.sin(a)).toFixed(1)}`; }).join(' ');
+const conn = el('path', {d:`M${HX[0]} ${HY}H${HX[3]}`, stroke:GOLD, 'stroke-width':3, 'stroke-dasharray':'8 8', opacity:0}, s6);
+const INN = [['TI1', 'Sensado multimodal', 'Da voz a las', 'máquinas antiguas', 'sens'], ['TI2', 'IA ligera en el edge', 'Responde en < 3 s', 'sin nube', 'ligeros'], ['TI3', 'Aprendizaje federado', 'Las plantas aprenden', 'sin compartir datos', 'federado'], ['TI4', 'Alertas explicables', 'Acción supervisada', 'y registro de todo', 'alertas']];
+const hx = INN.map(([c, h, a, b2, k], i) => {
+  const g = G(s6, {opacity:.18}); const x = HX[i];
+  const poly = el('polygon', {points:hexP(x, HY, 120), fill:'#13294D', stroke:GOLD, 'stroke-width':4}, g);
+  txt(g, x, HY + 16, c, 52, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900, fill:GOLD});
+  txt(g, x, HY + 175, h, 27, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':800});
+  txt(g, x, HY + 212, a, 21, {'text-anchor':'middle', fill:INK}); txt(g, x, HY + 240, b2, 21, {'text-anchor':'middle', fill:INK});
+  at(T(k) - .1, gsap.to(g, {opacity:1, duration:.4}));
+  at(T(k) - .1, gsap.fromTo(poly, {attr:{fill:'#13294D'}}, {attr:{fill:'#2A4A80'}, duration:.25, yoyo:true, repeat:1}));
+  at(T(k) - .1, gsap.fromTo(g, {scale:.85, svgOrigin:`${x} ${HY}`}, {scale:1, duration:.6, ease:'back.out(2.5)'}));
+  return g;
+});
+at(T('s6') - .2, gsap.to(s6, {opacity:1, duration:.4}));
+at(T('s6'), camTo(800, 450, 1, .01));
+at(T('s6'), typeTo(t6, .8));
+at(T('alertas') + 2, gsap.to(conn, {opacity:1, duration:.4}));
+at(T('alertas') + 2, gsap.fromTo(conn, {strokeDashoffset:0}, {strokeDashoffset:-160, duration:4, ease:'none'}));
+const seals = G(s6, {});
+['AI Act', 'Cyber Resilience Act', 'IEC 62443'].forEach((s, i) => { const g = G(seals, {opacity:0}); const w = [170, 330, 200][i], x = [470, 660, 1010][i];
+  el('rect', {x, y:745, width:w, height:56, rx:28, fill:'none', stroke:GOLD2, 'stroke-width':2.5}, g); txt(g, x + w / 2, 782, s, 24, {'text-anchor':'middle', fill:GOLD2, 'font-weight':700});
+  at(T('cumpl') + .8 + i * .45, gsap.fromTo(g, {opacity:0, y:20}, {opacity:1, y:0, duration:.4, ease:'back.out(2)'})); });
+txt(seals, 800, 720, 'Cumplimiento integrado desde el diseño', 22, {'text-anchor':'middle', fill:INK, opacity:0, id:'cdd'});
+at(T('cumpl'), gsap.to('#cdd', {opacity:1, duration:.4}));
+at(T('s7') - .4, gsap.to(s6, {opacity:0, duration:.4}));
+
+/* ============ ESCENA 7 · Objetivos medibles (vallas) */
+const s7 = G(top, {opacity:0});
+txt(s7, 800, 150, 'OBJETIVOS MEDIBLES', 26, {'text-anchor':'middle', fill:GOLD, 'font-weight':700, 'letter-spacing':6});
+const BIG = [['30–90 días', 'de aviso antes del fallo', 'avisar'], ['−45 %', 'de paradas no planificadas', '45'], ['< 3 %', 'de falsas alarmas', '3pc'], ['< 2 h', 'para conectar una celda nueva', 'celda']];
+const acierto = G(s7, {opacity:0}); el('rect', {x:640, y:650, width:320, height:64, rx:32, fill:TEAL}, acierto); txt(acierto, 800, 693, '≥ 92 % de acierto', 30, {'text-anchor':'middle', 'font-weight':800});
+const bigs = BIG.map(([n, s, k], i) => { const g = G(s7, {opacity:0}); txt(g, 800, 470, n, i ? 230 : 190, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900, fill:i === 0 ? '#fff' : GOLD}); txt(g, 800, 560, s, 40, {'text-anchor':'middle', fill:INK}); return [g, k]; });
+at(T('s7') - .2, gsap.to(s7, {opacity:1, duration:.4}));
+bigs.forEach(([g, k], i) => {
+  at(T(k) - .1, gsap.fromTo(g, {opacity:0, x:140, scale:.92, svgOrigin:'800 450'}, {opacity:1, x:0, scale:1, duration:.55, ease:'expo.out'}));
+  const nxt = bigs[i + 1]; if(nxt) at(T(nxt[1]) - .2, gsap.to(g, {opacity:0, x:-160, duration:.35, ease:'power2.in'}));
+});
+at(T('avisar') + 2.9, gsap.fromTo(acierto, {opacity:0, y:20}, {opacity:1, y:0, duration:.4, ease:'back.out(2)'}));
+at(T('45') - .2, gsap.to(acierto, {opacity:0, duration:.3}));
+at(T('s8') - .4, gsap.to(s7, {opacity:0, duration:.4}));
+
+/* ============ ESCENA 8 · Seis pilotos en Europa */
+const s8 = G(cam, {opacity:0});
+const map = G(s8, {});
+EU.paths.forEach(p => el('path', {d:p.d, fill:p.c ? '#24477C' : '#16305A', stroke:'#2E5590', 'stroke-width':1.2, 'data-c':p.c}, map));
+const t8 = txt(top, 800, 105, 'Seis plantas reales · cuatro países', 46, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900, opacity:0});
+const P = EU.pts;
+const PIL = [['ES', 'esp', [['factory', 'Fabricación de ascensores'], ['battery', 'Generación eléctrica']], [-347, 50]], ['NL', 'nl', [['productline', 'Electrónica high-mix'], ['robot', 'Impresión 3D']], [-60, -235]],
+  ['TR', 'tr', [['machinery', 'Mecanizado aeroespacial']], [-60, -265]], ['PT', 'pt', [['forklift', 'Intralogística de automoción']], [-395, -215]]];
+const pinG = PIL.map(([c, k, items, off]) => {
+  const [x, y] = P[c]; const g = G(s8, {opacity:0});
+  el('circle', {cx:x, cy:y, r:16, fill:GOLD, filter:'url(#glow)'}, g);
+  const pr = el('circle', {cx:x, cy:y, r:16, fill:'none', stroke:GOLD2, 'stroke-width':3}, g);
+  items.forEach(([ic, lab], j) => { const ix = x + off[0] + j * 170, iy = y + off[1];
+    const cg = G(g, {}); el('rect', {x:ix - 8, y:iy - 8, width:160, height:190, rx:14, fill:'rgba(11,31,58,.92)', stroke:GOLD, 'stroke-width':2}, cg);
+    img(cg, `media/${ic}.png`, ix + 12, iy, 120); const words = lab.split(' '); const l1 = words.slice(0, 2).join(' '), l2 = words.slice(2).join(' ');
+    txt(cg, ix + 72, iy + 140, l1, 17, {'text-anchor':'middle', 'font-weight':700}); txt(cg, ix + 72, iy + 162, l2, 17, {'text-anchor':'middle', 'font-weight':700});
+  });
+  at(T(k) - .2, gsap.fromTo(g, {opacity:0}, {opacity:1, duration:.4}));
+  at(T(k) - .2, gsap.fromTo(pr, {attr:{r:16}, opacity:1}, {attr:{r:60}, opacity:0, duration:1.4, repeat:1}));
+  return g;
+});
+const route = el('path', {d:`M${P.ES[0]} ${P.ES[1]}Q560 480 ${P.NL[0]} ${P.NL[1]}Q980 430 ${P.TR[0]} ${P.TR[1]}Q800 760 ${P.PT[0]} ${P.PT[1]}`, fill:'none', stroke:GOLD2, 'stroke-width':4, 'stroke-dasharray':'2 14', 'stroke-linecap':'round', filter:'url(#glow)'}, s8);
+at(T('s8') - .2, gsap.to(s8, {opacity:1, duration:.6}));
+at(T('s8') - .2, camTo(800, 470, 1.2, .01));
+at(T('s8'), camTo(800, 470, 1, 4, 'power2.out'));
+at(T('s8') + .2, gsap.to(t8, {opacity:1, duration:.5}));
+at(T('esp') - .2, draw(route, T('pt') - T('esp') + .6, 'none'));
+at(T('s9') - .5, gsap.to(t8, {opacity:0, duration:.4}));
+at(T('s9') - .4, gsap.to(pinG.concat([route]), {opacity:0, duration:.4}));
+
+/* ============ ESCENA 9 · El consorcio */
+const s9 = G(s8, {opacity:0});
+const DIST = [['ES', 3], ['NL', 7], ['TR', 5], ['PT', 3], ['BE', 1], ['FI', 1], ['AT', 1], ['UK', 1]];
+const nodes = []; let seed = 3; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+DIST.forEach(([c, n]) => { const [x, y] = P[c]; for(let i = 0; i < n; i++){ const a = rnd() * 6.28, r = n > 1 ? 22 + rnd() * 34 : 0; nodes.push([x + Math.cos(a) * r, y + Math.sin(a) * r, c, i]); } });
+const edges = G(s9, {}); const nodeG = G(s9, {});
+for(let i = 0; i < nodes.length; i++) for(let j = i + 1; j < nodes.length; j++){ const d = Math.hypot(nodes[i][0] - nodes[j][0], nodes[i][1] - nodes[j][1]); if(d < 330 && rnd() < .45) el('line', {x1:nodes[i][0], y1:nodes[i][1], x2:nodes[j][0], y2:nodes[j][1], stroke:GOLD, 'stroke-opacity':.28, 'stroke-width':1.5}, edges); }
+const nd = nodes.map(([x, y], i) => el('circle', {cx:x, cy:y, r:9, fill:GOLD2, opacity:0}, nodeG));
+const cnt9 = txt(top, 800, 120, '0 socios · 8 países', 54, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900, opacity:0});
+at(T('s9') - .2, gsap.to(s9, {opacity:1, duration:.3}));
+at(T('s9') - .1, camTo(800, 470, 1, .6));
+nd.forEach((n, i) => at(T('22') - .6 + i * .05, gsap.fromTo(n, {opacity:0, attr:{r:2}}, {opacity:1, attr:{r:9}, duration:.3, ease:'back.out(3)'})));
+at(T('22') - .6, gsap.fromTo(edges, {opacity:0}, {opacity:1, duration:1.4}));
+at(T('22') - .7, gsap.to(cnt9, {opacity:1, duration:.3}));
+at(T('22') - .6, counter(cnt9, 0, 22, 1.2, v => Math.round(v) + ' socios · 8 países'));
+const cats = G(top, {}); [['Grandes industrias', 170.8], ['Pymes tecnológicas', 172.1], ['Centros de investigación', 173.36]].forEach(([s, t], i) => {
+  const g = G(cats, {opacity:0}); const w = 330, x = 255 + i * 370; el('rect', {x, y:170, width:w, height:56, rx:28, fill:'rgba(201,162,39,.16)', stroke:GOLD}, g); txt(g, x + w / 2, 207, s, 24, {'text-anchor':'middle', 'font-weight':700});
+  at(t + OFF - .1, gsap.fromTo(g, {opacity:0, y:-12}, {opacity:1, y:0, duration:.35})); at(T('acd') - .4, gsap.to(g, {opacity:0, duration:.3})); });
+function partnerCard(c, title, lines, t, end, dx = 40, dy = -170){
+  const [x, y] = P[c]; const g = G(s9, {opacity:0}); const w = 470, h = 60 + lines.length * 32;
+  el('line', {x1:x, y1:y, x2:x + dx, y2:y + dy + h / 2, stroke:GOLD, 'stroke-width':2}, g);
+  el('rect', {x:x + dx, y:y + dy, width:w, height:h, rx:14, fill:'rgba(11,31,58,.95)', stroke:GOLD, 'stroke-width':2.5}, g);
+  txt(g, x + dx + 22, y + dy + 42, title, 27, {'font-family':MONT, 'font-weight':900, fill:GOLD});
+  lines.forEach((l, i) => txt(g, x + dx + 22, y + dy + 78 + i * 30, l, 20, {fill:'#fff'}));
+  const ring = el('circle', {cx:x, cy:y, r:14, fill:'none', stroke:GOLD2, 'stroke-width':4}, g);
+  at(t, gsap.fromTo(g, {opacity:0}, {opacity:1, duration:.4})); at(t, gsap.fromTo(ring, {attr:{r:10}}, {attr:{r:26}, duration:.8, yoyo:true, repeat:3}));
+  if(end) at(end, gsap.to(g, {opacity:.0, duration:.4}));
+}
+at(T('acd') - .3, camTo(1000, 560, 1.3, 1.1));
+partnerCard('TR', 'ACD · Türkiye', ['Líder del proyecto'], T('acd') + .2, 178.32 + OFF + .9, -460, -200);
+at(178.32 + OFF + 1.0, camTo(600, 560, 1.25, 1.2));
+partnerCard('ES', 'Ullswater Investments', ['Co-líder (proxy project leader)', 'Piloto UC-ES1 · fabricación de ascensores'], 178.32 + OFF + 1.4, null, 40, -300);
+partnerCard('ES2', 'CIC', ['Plataforma de datos industriales'], 186.6 + OFF, null, 110, 40);
+partnerCard('ES', 'HI Iberia', ['Coordinador nacional en España'], 189.3 + OFF, null, -440, 110);
+at(T('s10') - .5, gsap.to([s8, cnt9], {opacity:0, duration:.5}));
+
+/* ============ ESCENA 10 · Hoja de ruta y llamada */
+const s10 = G(top, {opacity:0});
+txt(s10, 800, 150, 'HOJA DE RUTA', 26, {'text-anchor':'middle', fill:GOLD, 'font-weight':700, 'letter-spacing':6});
+const road = el('path', {d:'M200 440H1400', stroke:GOLD, 'stroke-width':5}, s10);
+const MS = [['Nov 2026', 'Project Outline', 'ITEA 2026', 200, 'T0'], ['Oct 2027', 'Arranque del', 'proyecto', 600, 'arranca'], ['2029–2030', 'Pilotos en', 'seis plantas', 1000, 'A2'], ['Sep 2030', 'TRL 6–7: probado', 'en planta', 1400, 'A3']];
+MS.forEach(([d, a, b2, x, k], i) => { const g = G(s10, {opacity:0}); el('circle', {cx:x, cy:440, r:18, fill:NAVY, stroke:GOLD, 'stroke-width':5}, g);
+  txt(g, x, 395, d, 30, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900, fill:i === 3 ? GOLD : '#fff'}); txt(g, x, 500, a, 22, {'text-anchor':'middle', fill:INK}); txt(g, x, 528, b2, 22, {'text-anchor':'middle', fill:INK});
+  const t = k === 'T0' ? T('s10') + .6 : k === 'arranca' ? T('arranca') : k === 'A2' ? T('arranca') + 2.6 : T('arranca') + 4.3;
+  at(t, gsap.fromTo(g, {opacity:0, y:16}, {opacity:1, y:0, duration:.45, ease:'back.out(2)'})); });
+at(T('s10') - .2, gsap.to(s10, {opacity:1, duration:.4}));
+at(T('s10') + .2, draw(road, 6, 'none'));
+const open = G(top, {opacity:0});
+txt(open, 800, 690, 'El consorcio sigue abierto', 54, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900, fill:GOLD});
+const chips = ['Planta piloto', 'Adopción temprana', 'Socio tecnológico'].map((s, i) => { const g = G(open, {opacity:0}); const x = 290 + i * 360; el('rect', {x, y:730, width:300, height:62, rx:31, fill:'rgba(255,255,255,.06)', stroke:'#fff', 'stroke-opacity':.5}, g); txt(g, x + 150, 770, s, 25, {'text-anchor':'middle', 'font-weight':700}); return g; });
+at(T('abierto') - .1, gsap.to(open, {opacity:1, duration:.4}));
+chips.forEach((g, i) => at(T('hablemos') + .3 + i * .45, gsap.fromTo(g, {opacity:0, y:14}, {opacity:1, y:0, duration:.35})));
+// cierre
+const endG = G(top, {opacity:0});
+at(T('lema') - 1.0, gsap.to([s10, open], {opacity:0, duration:.5}));
+at(T('lema') - .8, gsap.to(halo, {opacity:1, duration:.8}));
+at(T('lema') - .8, gsap.fromTo(GL, {o:0, x:800, y:285, s:.6, size:520, cam:0}, {o:1, s:.78, duration:1, ease:'back.out(1.6)'}));
+const eLogo = txt(endG, 800, 560, '', 96, {'text-anchor':'middle', 'font-family':MONT, 'font-weight':900}); el('tspan', {text:'ProAct'}, eLogo); el('tspan', {text:'-Edge', fill:GOLD}, eLogo);
+const eTag = txt(endG, 800, 625, 'Inteligencia artificial que anticipa, explica y actúa', 34, {'text-anchor':'middle', fill:'#fff'});
+txt(endG, 800, 700, 'ITEA 4 · Proyecto 26018 · 22 socios · 8 países', 24, {'text-anchor':'middle', fill:INK});
+const cta = G(endG, {}); el('rect', {x:610, y:730, width:380, height:62, rx:31, fill:GOLD}, cta); txt(cta, 800, 770, 'Únete al consorcio', 26, {'text-anchor':'middle', fill:NAVY, 'font-weight':800});
+txt(endG, 800, 838, 'Ullswater Investments · proactedge.ullswaterinvestments.com', 22, {'text-anchor':'middle', fill:GOLD2, 'font-weight':600});
+txt(endG, 800, 880, 'Locución y música generadas con IA · Proyecto en preparación: las cifras son objetivos del proyecto', 16, {'text-anchor':'middle', fill:'#8FA3C0'});
+at(T('lema') - .4, gsap.to(endG, {opacity:1, duration:.6}));
+at(T('lema') - .4, gsap.fromTo(eLogo, {scale:1.2, svgOrigin:'800 530'}, {scale:1, duration:.9, ease:'expo.out'}));
+at(T('lema') + 1.4, gsap.to(W, {op:1, red:0, chaos:0, amp:4, y:662, x1:0, duration:.01}));
+at(T('lema') + 1.4, gsap.to(W, {x1:1600, duration:1.6, ease:'power2.inOut'}));
+at(TOTAL - 2.2, gsap.to('#black', {opacity:1, duration:2}));
+tl.to({}, {duration:.01}, TOTAL);
+
+/* ---------------- reloj: la banda sonora manda */
+const audio = new Audio('media/banda.mp3'); audio.preload = 'auto';
+let clock = 0, last = performance.now(), useAudio = false;
+function now(){ return useAudio ? audio.currentTime : clock; }
+function frame(){
+  const n = performance.now(); if(playing && !useAudio) clock = Math.min(TOTAL, clock + (n - last) / 1000); last = n;
+  const t = now(); tl.seek(t, false); paintWave(t); paintGL(t); syncClips(t); paintUI(t);
+  if(playing && t >= TOTAL - .02){ pause(); if(window.parent !== window) try{ parent.postMessage({proactedge:'fin'}, '*'); }catch(e){} }
+}
+if(!RENDER) gsap.ticker.add(frame);
+function play(withSound){ if(withSound !== undefined) useAudio = withSound; if(now() >= TOTAL - .05) seek(0);
+  playing = true; document.body.classList.add('playing');
+  if(useAudio){ audio.currentTime = clock; audio.play().catch(() => { useAudio = false; }); } }
+function pause(){ playing = false; if(useAudio){ clock = audio.currentTime; audio.pause(); } }
+function seek(t){ clock = Math.max(0, Math.min(TOTAL, t)); if(useAudio) audio.currentTime = clock; }
+$('#startBtn').onclick = e => { e.stopPropagation(); useAudio = true; play(true); };
+$('#play').onclick = () => playing ? pause() : play(useAudio || true);
+$('#mute').onclick = () => { audio.muted = !audio.muted; $('#mi').setAttribute('d', audio.muted ? 'M4 9v6h4l5 4V5L8 9zM17 9l5 6M22 9l-5 6' : 'M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11'); };
+$('#fs').onclick = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {});
+const sc = $('#scenes');
+SCENES.forEach(([k, n, t], i) => { const bt = document.createElement('button'); bt.type = 'button'; bt.innerHTML = `<b>${i + 1}</b><span>${n}</span><i></i>`; bt.title = `${i + 1} · ${n}`; bt.onclick = () => { seek(t); if(!playing) play(true); }; sc.appendChild(bt); });
+const sb = [...sc.children], fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+function paintUI(t){
+  sb.forEach((bt, i) => { const a = SCENES[i][2], z = i + 1 < SCENES.length ? SCENES[i + 1][2] : TOTAL; bt.classList.toggle('on', t >= a && t < z); bt.querySelector('i').style.width = (t >= z ? 100 : t <= a ? 0 : (t - a) / (z - a) * 100) + '%'; });
+  $('#time').textContent = fmt(t) + ' / ' + fmt(TOTAL);
+  $('#pi').setAttribute('d', playing ? 'M7 5h4v14H7zM13 5h4v14h-4z' : 'M8 5v14l11-7z');
+}
+document.addEventListener('keydown', e => {
+  if(e.key === ' '){ e.preventDefault(); playing ? pause() : play(true); }
+  else if(e.key === 'ArrowRight'){ const t = now(); const nx = SCENES.find(s => s[2] > t + .5); if(nx) seek(nx[2]); }
+  else if(e.key === 'ArrowLeft'){ const t = now(); const pv = [...SCENES].reverse().find(s => s[2] < t - 1.5); seek(pv ? pv[2] : 0); }
+  else if(e.key === 'f' || e.key === 'F') $('#fs').onclick();
+  else if(e.key === 'Escape' && window.parent !== window && !document.fullscreenElement) try{ parent.postMessage({proactedge:'cerrar'}, '*'); }catch(e){}
+});
+let idleT; document.addEventListener('mousemove', () => { document.body.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(() => { if(playing) document.body.classList.add('idle'); }, 2500); });
+$('#wrap').addEventListener('click', () => { if(document.body.classList.contains('playing')) playing ? pause() : play(); });
+if(q.get('auto') === '1' && !RENDER){ useAudio = true; play(true); }
+if(reduced && !RENDER){ seek(T('lema') + 2); }
+
+/* ---------------- render fotograma a fotograma (exportación a mp4) */
+window.PE = {TOTAL, tl, async renderAt(t){
+  playing = false; clock = t; tl.seek(t, false); paintWave(t);
+  const waits = [];
+  for(const c of CLIPS){ const on = c.ok && t >= c.start - .05 && t < c.end; if(on){ const want = c.from + Math.max(0, t - c.start); if(Math.abs(c.v.currentTime - want) > .001){ waits.push(new Promise(r => { const f = () => { c.v.removeEventListener('seeked', f); r(); }; c.v.addEventListener('seeked', f); c.v.currentTime = want; setTimeout(r, 1500); })); } } }
+  await Promise.all(waits); paintGL(t); return true; }, ready:() => !!gear};
+</script>
+</body>
+</html>
