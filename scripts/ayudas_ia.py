@@ -181,7 +181,9 @@ Reglas:
 - Las preguntas frecuentes son las que haría una empresa que se plantea pedir la ayuda. Respuestas de 1 a 4 frases.
 - Las preguntas sugeridas para el chat son concretas de esta ayuda (no genéricas), de 4 a 9 palabras, y su respuesta debe
   estar en los documentos.
-- Temas de la ficha, en este orden y solo los que tengan contenido: {", ".join(TEMAS)}."""
+- Temas de la ficha, en este orden y solo los que tengan contenido: {", ".join(TEMAS)}.
+
+Responde llamando una sola vez a la herramienta ficha_ayuda, sin texto antes ni después."""
 
 TOOL = {
     "name": "ficha_ayuda",
@@ -219,7 +221,7 @@ def ask_claude(x, docs, key, model):
         cut = ' truncado="si"' if len(t) < len(d["texto"]) else ""
         parts.append(f'<documento nombre="{d["nombre"]}"{cut}>\n{t}\n</documento>')
     user = "Datos de la BDNS:\n" + json.dumps(meta, ensure_ascii=False, indent=1) + "\n\n" + "\n\n".join(parts)
-    body = {"model": model, "max_tokens": 8000, "system": SYSTEM, "tools": [TOOL], "tool_choice": {"type": "tool", "name": TOOL["name"]},
+    body = {"model": model, "max_tokens": 8000, "system": SYSTEM, "tools": [TOOL], "tool_choice": {"type": "auto"},
             "messages": [{"role": "user", "content": user}]}
     req = urllib.request.Request("https://api.anthropic.com/v1/messages", method="POST", data=json.dumps(body).encode(),
                                  headers={"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"})
@@ -230,6 +232,9 @@ def ask_claude(x, docs, key, model):
             for b in res.get("content", []):
                 if b.get("type") == "tool_use":
                     return b["input"], res.get("usage", {})
+            txt = "".join(b.get("text", "") for b in res.get("content", []))
+            if "{" in txt:  # the model answered with plain JSON instead of the tool
+                return json.loads(txt[txt.find("{"):txt.rfind("}") + 1]), res.get("usage", {})
             raise ValueError("no tool_use in answer")
         except urllib.error.HTTPError as e:
             print(f"ayudas_ia: Claude failed for {x['id']} (try {i + 1}): HTTP {e.code}", e.read()[:600].decode("utf-8", "replace"))
