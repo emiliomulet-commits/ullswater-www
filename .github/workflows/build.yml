@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: pip install beautifulsoup4 pypdf
+        run: pip install beautifulsoup4 pypdf json-repair
       - name: Build site (English + Spanish; new Spanish texts are translated with Claude when the key is set)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

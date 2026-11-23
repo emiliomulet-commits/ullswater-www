@@ -250,7 +250,12 @@ def ask_claude(x, docs, key, model):
             with urllib.request.urlopen(req, timeout=300) as r:
                 res = json.loads(r.read())
             txt = "".join(b.get("text", "") for b in res.get("content", []))
-            o = json.loads(txt[txt.find("{"):txt.rfind("}") + 1])
+            raw = txt[txt.find("{"):txt.rfind("}") + 1]
+            try:
+                o = json.loads(raw)
+            except ValueError:  # stray straight quotes inside a text: repair instead of paying for another answer
+                from json_repair import repair_json
+                o = json.loads(repair_json(raw))
             if valid(o):
                 return o, res.get("usage", {})
             raise ValueError(f"wrong shape (stop_reason {res.get('stop_reason')})")
