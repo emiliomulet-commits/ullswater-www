@@ -468,6 +468,20 @@ def grant_ld(v, base):
     return ld
 
 
+def summary(cache=None, today=None):
+    """Figures for the promotion band on the home page: open calls, State/regional split, calls per region, closing in 7 days."""
+    today = (today or date.today()).isoformat()
+    cache = cache or load_cache()
+    open_v = group([v for v in (view(x, today) for x in cache["items"].values()) if v["estado"] != "cerrada"])
+    lim = (date.fromisoformat(today) + timedelta(days=7)).isoformat()
+    regs = {}
+    for v in open_v:
+        regs[v["region"]] = regs.get(v["region"], 0) + 1
+    return {"updated": cache.get("updated") or today, "open": len(open_v), "state": regs.get(STATE, 0),
+            "regional": len(open_v) - regs.get(STATE, 0), "regions": sorted((r, n) for r, n in regs.items() if r != STATE),
+            "closing7": sum(1 for v in open_v if v["fin"] and today <= v["fin"][:10] <= lim)}
+
+
 def build(site_dir, base, chrome, today=None, cache=None, staging=False, book="", email=""):
     """Write every /es/ayudas/ page. chrome = {"head": css/font links, "header": html, "footer": html, "tail": scripts}. Returns the list of paths."""
     today = (today or date.today()).isoformat()

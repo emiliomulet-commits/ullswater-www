@@ -141,6 +141,17 @@ header .btn{padding:9px 15px;font-size:15px}
 .hero h1{font-size:50px;line-height:1.1;margin:0 0 18px;max-width:860px;letter-spacing:-.01em}.hero.sm h1{font-size:40px}
 .hero .lead{font-size:20px;color:#d5dcef;max-width:760px;margin:0}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.ay-promo{background:linear-gradient(180deg,#fbf6e6 0%,#fff 100%);border-top:4px solid var(--gold);border-bottom:1px solid var(--line)}
+.ayp{display:grid;grid-template-columns:1.35fr 1fr;gap:44px;align-items:center}.ayp h2{margin-top:0}.ayp .sub{margin-bottom:0}.ayp .actions{margin-top:24px}
+.ayp-new{display:inline-block;background:var(--navy);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;padding:3px 8px;margin-right:8px;vertical-align:1px}
+.ayp-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0;padding:0;list-style:none}
+.ayp-stats li{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:14px;line-height:1.35;color:var(--muted)}
+.ayp-stats strong{display:block;font-size:34px;color:var(--navy);font-weight:800;line-height:1.1}.ayp-stats li.hl{border-color:var(--gold);background:#fffaf0}.ayp-stats li.hl strong{color:var(--gold2)}
+.ayp-regions{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.ayp-regions a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;text-decoration:none;color:var(--navy)}.ayp-regions a:hover{border-color:var(--gold)}
+.ayp-regions a span{color:var(--gold2);font-weight:700;margin-left:4px}.ayp-src{font-size:13px;color:var(--muted);margin:12px 0 0}
+nav.main a.nav-hl{color:var(--gold)}
+@media (max-width:860px){.ayp{grid-template-columns:1fr;gap:26px}.ayp-stats strong{font-size:28px}}
 .stats{display:flex;flex-wrap:wrap;gap:14px;margin:38px 0 0;padding:0;list-style:none}
 .stats li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:12px 18px;font-size:14px;color:#cbd3ea}
 .stats strong{display:block;font-size:26px;color:#fff;line-height:1.15}
@@ -322,9 +333,9 @@ def header(themes, current):
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>EU calls</button><div class="menu wide"><div>
 <div class="lbl">Live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a><a href="/es/ayudas/"><b>Grants for companies in Spain (Spanish)</b></a><a href="/guides/"><b>EU funding guides</b></a>
 </div><div><div class="lbl">By theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
-<a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a href="/projects/"{cur('projects')}>Projects</a>
+<a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a class="nav-hl" href="/es/ayudas/">Grants in Spain</a><a href="/projects/"{cur('projects')}>Projects</a>
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('services')}>Services</button><div class="menu">
-<a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div></div><a href="/courses/"{cur('courses')}>Courses</a><a href="/about/"{cur('about')}>About</a>
+<a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/"{cur('courses')}>Executive courses</a></div></div><a href="/about/"{cur('about')}>About</a>
 </nav><a class="btn hide-m" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a>
 <button class="burger" type="button" aria-label="Menu" aria-expanded="false">☰</button></div></header>"""
 
@@ -522,7 +533,22 @@ def tools_band():
 <p class="sub">Our public tools are built on live data from the European Commission's Funding &amp; Tenders Portal, CORDIS and the Spanish BDNS.</p><div class="grid g3">{cards}</div></div></section>"""
 
 
-def home(live, themes):
+def ayudas_band(ay):
+    """Promotion of /es/ayudas/ (grants for companies in Spain) right under the home hero."""
+    if not ay or not ay.get("open"):
+        return ""
+    pills = "".join(f'<a href="/es/ayudas/{ayudas.slug(r)}/">{escape(r)}<span>{n}</span></a>' for r, n in ay["regions"])
+    return f"""<section class="band ay-promo" id="grants-spain"><div class="wrap"><div class="ayp"><div>
+<p class="kicker" style="color:var(--gold2)"><span class="ayp-new">New</span>Grants for companies in Spain</p>
+<h2>Every open State and regional grant for companies in Spain, in one place</h2>
+<p class="sub">Every morning we check the Base de Datos Nacional de Subvenciones (BDNS) and publish the grants open to SMEs and large companies, with deadline, budget, beneficiaries and a direct link to apply. Free and in Spanish.</p>
+<div class="actions"><a class="btn" href="/es/ayudas/">See the {ay["open"]} open grants →</a><a class="btn line" href="/es/ayudas/estatales/">State grants</a></div></div>
+<ul class="ayp-stats"><li><strong>{ay["open"]}</strong>grants open today</li><li><strong>{ay["state"]}</strong>State calls</li><li><strong>{ay["regional"]}</strong>regional calls</li><li class="hl"><strong>{ay["closing7"]}</strong>closing in the next 7 days</li></ul></div>
+<nav class="ayp-regions" aria-label="Grants by region">{pills}</nav>
+<p class="ayp-src">Source: BDNS (IGAE, Ministry of Finance) · updated {date.fromisoformat(ay["updated"][:10]):%d/%m/%Y}</p></div></section>"""
+
+
+def home(live, themes, ay=None):
     st = live.get("stats", {})
     stats = ""
     if st:
@@ -548,7 +574,7 @@ def home(live, themes):
 <div class="panel"><h3><a href="{C.NEWS}/">Latest news</a></h3><ul class="list">{news}</ul><a class="more" href="{C.NEWS}/">EU Funding News →</a></div>
 <div class="panel"><h3><a href="{C.EVENTS}/">Upcoming events</a></h3><ul class="list">{evs}</ul><a class="more" href="{C.EVENTS}/">All events →</a></div></div></div></section>"""
     vc = "".join(f'<div class="card"><div class="ic" aria-hidden="true">{i}</div><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for i, t, d in C.VC_DOMAINS)
-    body = h + projects_band() + f"""
+    body = h + ayudas_band(ay) + projects_band() + f"""
 <section class="band"><div class="wrap split"><div><p class="kicker" style="color:var(--gold2)">Who we are</p><h2>Senior advisors for EU grants, loans and equity</h2>
 <p class="sub" style="margin-bottom:0">{escape(C.TEAM)}</p></div><blockquote class="quote">{escape(C.PARTNER_QUOTE)}<cite>Emilio Mulet, Managing Partner</cite></blockquote></div></section>
 <section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Our services</p><h2>From the right call to a funded project</h2><p class="sub">Three complementary services that take you from strategy to signed grant agreement or investment.</p><div class="grid g3">{svc}</div></div></section>
@@ -749,7 +775,7 @@ def build_es(pages, live=None):
     return len(out), len(t.missing)
 
 
-def build_ayudas():
+def build_ayudas(cache=None):
     """Spanish-only section /es/ayudas/ (grants for companies in Spain, from the BDNS). Reuses the Spanish header and footer."""
     ref = (SITE / "es" / "about" / "index.html").read_text(encoding="utf-8")
     head = "".join(t for t in re.findall(r"<link\b[^>]*>", ref) if re.search(r'rel="(?:icon|preconnect|stylesheet)"', t))
@@ -759,11 +785,12 @@ def build_ayudas():
     footer_html, _, tail = after.partition("</footer>")
     footer_html += "</footer>"
     tail = tail.replace("</body></html>", "").replace("</body>", "").replace("</html>", "")
-    try:
-        cache = ayudas.refresh()
-    except Exception as e:  # noqa: BLE001
-        print("ayudas: refresh failed, using cache:", e)
-        cache = ayudas.load_cache()
+    if cache is None:
+        try:
+            cache = ayudas.refresh()
+        except Exception as e:  # noqa: BLE001
+            print("ayudas: refresh failed, using cache:", e)
+            cache = ayudas.load_cache()
     return ayudas.build(SITE, BASE, {"head": head, "header": header_html, "footer": footer_html, "tail": tail},
                         cache=cache, staging=STAGING, book=C.BOOK, email=C.EMAIL)
 
@@ -816,7 +843,12 @@ def main():
     shutil.copytree(ROOT / "content" / "img", SITE / "assets" / "img")
     shutil.copytree(ROOT / "content" / "fonts", SITE / "assets" / "fonts")
     (SITE / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#233567"/><text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" text-anchor="middle" fill="#c9a646">U</text></svg>', encoding="utf-8")
-    pages = {"/": home(live, themes), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
+    try:
+        ay_cache = ayudas.refresh()
+    except Exception as e:  # noqa: BLE001
+        print("ayudas: refresh failed, using cache:", e)
+        ay_cache = ayudas.load_cache()
+    pages = {"/": home(live, themes, ayudas.summary(ay_cache)), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
              "/strategic-positioning/": strategic_positioning(themes), "/about/": about(themes), "/courses/": courses(themes),
              "/privacy/": privacy(themes), "/legal/": legal(themes), "/projects/": projects_page(themes)}
     pages.update(archive_pages(themes))
@@ -835,7 +867,7 @@ def main():
         hero("404", "Page not found", "The page you are looking for has moved or no longer exists.", actions=f'<a class="btn" href="/">Home</a><a class="btn ghost" href="{C.CALLS}/">Open EU calls</a>'), themes, bilingual=False), encoding="utf-8")
     es_count, missing = build_es(pages, live)
     today = date.today().isoformat()
-    ayudas_paths = build_ayudas()
+    ayudas_paths = build_ayudas(ay_cache)
 
     def alts(u):
         return (f'<xhtml:link rel="alternate" hreflang="en" href="{BASE}{u}"/><xhtml:link rel="alternate" hreflang="es" href="{BASE}/es{u}"/>'
