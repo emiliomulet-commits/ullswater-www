@@ -183,7 +183,7 @@ Reglas:
   estar en los documentos.
 - Temas de la ficha, en este orden y solo los que tengan contenido: {", ".join(TEMAS)}.
 
-Devuelve SOLO un objeto JSON válido, sin texto antes ni después y sin bloque de código, con esta forma:
+""" + """Devuelve SOLO un objeto JSON válido, sin texto antes ni después y sin bloque de código, con esta forma:
 {"titulo_bases": "título de las bases reguladoras corregido (espacios, mayúsculas), sin cambiar su contenido; vacío si no consta",
  "en_breve": "2 o 3 frases: qué financia, para quién y lo esencial de la cuantía y el plazo",
  "ficha": [{"tema": "<uno de los temas>", "puntos": [{"t": "una idea, máximo 2 frases", "ref": "documento y artículo/base/apartado"}]}],
