@@ -350,7 +350,7 @@ PROJECT_VIDEOS = {
               "es": "https://argos.softwareinabox.eu/presentaciones/d01/?modo=video&auto=1", "len_es": "0:34",
               "name": "ARGOS | What problem does it solve? Declared compliance vs. effective compliance"},
     "dataspaces": {"src": "https://argos.softwareinabox.eu/presentaciones/d24/en/?modo=video&auto=1", "len": "0:28", "date": "2026-11-20",
-                   "es": "https://argos.softwareinabox.eu/normativa/data-act-dga/presentacion/?embed=1&auto=1", "len_es": "3:42",
+                   "es": "https://dataspaces.ullswaterinvestments.com/media/espacios-datos-v01-es.mp4", "len_es": "1:25",
                    "name": "European Data Spaces | Federated data spaces and verifiable credentials"},
 }
 # Spanish animated presentations (ARGOS style, HTML + audio) of the projects, shown instead of the English video on /es/.

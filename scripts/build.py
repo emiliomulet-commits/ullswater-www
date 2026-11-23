@@ -421,7 +421,10 @@ def video_button(p, cls="pv"):
     else:
         src = f'data-mp4="{escape(v["mp4"])}"'
     es, es_len = es_presentation(p["slug"])
-    es_attr = (f' data-es-drop="data-yt data-mp4" data-es-data-src="{escape(es)}"' if es else "")
+    if es and es.split("?")[0].endswith(".mp4"):
+        es_attr = f' data-es-drop="data-yt data-src" data-es-data-mp4="{escape(es)}"'
+    else:
+        es_attr = (f' data-es-drop="data-yt data-mp4" data-es-data-src="{escape(es)}"' if es else "")
     thumb = f'/assets/img/projects/{p["slug"]}.jpg'
     es_thumb = f'/assets/img/projects/{p["slug"]}-es.jpg'
     es_img = f' data-es-src="{es_thumb}"' if es and (ROOT / "content" / "img" / "projects" / f'{p["slug"]}-es.jpg').exists() else ""
@@ -438,7 +441,7 @@ def project_video(p):
     link = (f'<a href="https://www.youtube.com/watch?v={v["yt"]}" target="_blank" rel="noopener">Watch on YouTube ↗</a>' if v.get("yt") else "")
     mins = int(v["len"].split(":")[0]) + 1
     es, es_len = es_presentation(p["slug"])
-    es_line = f' data-es-text="Español · {es_len} · presentación animada con locución generada con IA."' if es else ""
+    es_line = (f' data-es-text="Español · {es_len} · ' + ("vídeo con locución generada con IA." if es.split("?")[0].endswith(".mp4") else "presentación animada con locución generada con IA.") + '"') if es else ""
     return (f'<div class="v">{video_button(p)}'
             f'<div class="vt"><b>Project video</b><p>' + (f'The challenge, the approach, the pilots and the consortium of {escape(p["acronym"])}, explained in under {mins} minutes.' if mins > 1
                                                     else f'{escape(p["acronym"])} in under a minute: an animated presentation with narration.') + '</p>'
