@@ -26,6 +26,7 @@ import ayudas  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 CACHE = ROOT / "content" / "live_cache.json"
+DATASPACES = "https://dataspaces.ullswaterinvestments.com/"
 BASE = "https://www.ullswaterinvestments.com"
 STAGING = os.environ.get("STAGING") == "1" or (ROOT / "STAGING").exists()
 VER = datetime.now(timezone.utc).strftime("%Y%m%d%H%M")
@@ -338,7 +339,7 @@ def header(themes, current):
 </div><div><div class="lbl">By theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
 <a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a class="nav-hl" href="/es/ayudas/">Grants in Spain</a><a href="/projects/"{cur('projects')}>Projects</a>
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('services')}>Services</button><div class="menu">
-<a href="/data-spaces/"><b>Data Spaces: EU data rules &amp; AI agents</b></a><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/"{cur('courses')}>Executive courses</a></div></div><a href="/about/"{cur('about')}>About</a>
+<a href="{DATASPACES}"><b>Data Spaces: EU data rules &amp; AI agents</b></a><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/"{cur('courses')}>Executive courses</a></div></div><a href="/about/"{cur('about')}>About</a>
 </nav><a class="btn hide-m" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a>
 <button class="burger" type="button" aria-label="Menu" aria-expanded="false">☰</button></div></header>"""
 
@@ -895,10 +896,11 @@ def main():
     shutil.copytree(ROOT / "content" / "fonts", SITE / "assets" / "fonts")
     if (ROOT / "content" / "presentaciones").exists():  # Spanish animated presentations of the projects (/presentaciones/<slug>/)
         shutil.copytree(ROOT / "content" / "presentaciones", SITE / "presentaciones")
-    if (ROOT / "content" / "data-spaces").exists():  # Data Spaces page (EN/ES in one file, 10-video series) — source: Data Spaces project
-        shutil.copytree(ROOT / "content" / "data-spaces", SITE / "data-spaces")
-        ds_index = SITE / "data-spaces" / "index.html"
-        ds_index.write_text(ds_index.read_text(encoding="utf-8").replace('<link rel="stylesheet"', ULANG + '<link rel="stylesheet"', 1), encoding="utf-8")
+    # Data Spaces: since 23 Nov 2026 the page lives on dataspaces.ullswaterinvestments.com (ullswater-landings, branch landing-dataspaces).
+    # content/data-spaces stays here only as the editorial source of that page; /data-spaces/ and /es/data-spaces/ are redirect stubs.
+    for ds_path in ("data-spaces", "es/data-spaces"):
+        (SITE / ds_path).mkdir(parents=True, exist_ok=True)
+        (SITE / ds_path / "index.html").write_text(redirect_stub(DATASPACES), encoding="utf-8")
     (SITE / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#233567"/><text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" text-anchor="middle" fill="#c9a646">U</text></svg>', encoding="utf-8")
     try:
         ay_cache = ayudas.refresh()
@@ -928,15 +930,6 @@ def main():
     (SITE / "404.html").write_text(page("/404.html", "Page not found | Ullswater Investments", "Page not found.",
         hero("404", "Page not found", "The page you are looking for has moved or no longer exists.", actions=f'<a class="btn" href="/">Home</a><a class="btn ghost" href="{C.CALLS}/">Open EU calls</a>'), themes, bilingual=False), encoding="utf-8")
     es_count, missing = build_es(pages, live)
-    if (SITE / "data-spaces").exists():  # Spanish twin: same files, Spanish by default, own canonical
-        shutil.copytree(SITE / "data-spaces", SITE / "es" / "data-spaces", dirs_exist_ok=True)
-        ds = (SITE / "es" / "data-spaces" / "index.html").read_text(encoding="utf-8")
-        ds = (ds.replace('<html lang=en data-lang=en>', '<html lang=es data-lang=es>').replace('<html lang="en" data-lang="en">', '<html lang="es" data-lang="es">')
-                .replace(f'<link rel="canonical" href="{BASE}/data-spaces/">', f'<link rel="canonical" href="{BASE}/es/data-spaces/">')
-                .replace(f'<meta property="og:url" content="{BASE}/data-spaces/">', f'<meta property="og:url" content="{BASE}/es/data-spaces/">')
-                .replace('<meta property="og:locale" content="en_GB">', '<meta property="og:locale" content="es_ES">')
-                .replace('<title>Data Spaces: EU data rules, penalties and AI agents · Ullswater Investments</title>', '<title>Espacios de datos: normas europeas, sanciones y agentes de IA · Ullswater Investments</title>'))
-        (SITE / "es" / "data-spaces" / "index.html").write_text(ds, encoding="utf-8")
     today = date.today().isoformat()
     ayudas_paths = build_ayudas(ay_cache)
 
@@ -945,7 +938,6 @@ def main():
                 f'<xhtml:link rel="alternate" hreflang="x-default" href="{BASE}{u}"/>')
     (SITE / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'
         + "".join(f"<url><loc>{BASE}{p}{u}</loc><lastmod>{today}</lastmod>{alts(u)}</url>" for u in pages for p in ("", "/es"))
-        + "".join(f"<url><loc>{BASE}{p}/data-spaces/</loc><lastmod>{today}</lastmod>{alts('/data-spaces/')}</url>" for p in ("", "/es") if (SITE / "data-spaces").exists())
         + "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{today}</lastmod></url>" for u in ayudas_paths) + "</urlset>\n", encoding="utf-8")
     # Sitemap index for the whole Ullswater network (www, project landings, calls, news, events).
     # Cross-subdomain entries are valid because the domain property ullswaterinvestments.com is verified in Search Console.
