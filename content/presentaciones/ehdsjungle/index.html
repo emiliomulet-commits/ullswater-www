@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EHDS-JUNGLE · Inteligencia clínica sobre el EHDS · Presentación animada</title>
+<meta name="description" content="Presentación animada con locución. Ullswater Investments.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#050E1A;color:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;overflow:hidden}
+#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#frame{position:relative;width:min(100vw,177.78vh);aspect-ratio:16/9;overflow:hidden;background:#0B1F3A}
+#frame>svg,#frame>.layer{position:absolute;inset:0;width:100%;height:100%}
+#clips{pointer-events:none}
+#clips video{position:absolute;object-fit:cover;opacity:0;background:#000}
+#clips .full{inset:0;width:100%;height:100%}
+#clips .win{border-radius:1.1%;box-shadow:0 1.2vw 2.4vw rgba(0,0,0,.45);outline:.18vw solid #C9A227}
+#veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,31,58,.25),rgba(11,31,58,.78));opacity:0;pointer-events:none;mix-blend-mode:multiply}
+#grain{position:absolute;inset:-50%;opacity:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");animation:gr 1s steps(4) infinite}
+@keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+#gl{position:absolute;pointer-events:none;opacity:0}
+#top{pointer-events:none}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#black{position:absolute;inset:0;background:#000;opacity:1;pointer-events:none}
+/* controles (como ARGOS) */
+.ui{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:12px;padding:10px 16px;background:linear-gradient(0deg,rgba(5,14,26,.92),rgba(5,14,26,0));transition:opacity .3s;z-index:5}
+body.idle .ui{opacity:0}
+.ui button{font:inherit;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:8px;height:36px;min-width:36px;padding:0 10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:13px}
+.ui button:hover,.ui button:focus-visible{border-color:#C9A227;outline:none}
+.ui svg{width:17px;height:17px}
+.scenes{display:flex;gap:5px;flex:1;min-width:0;overflow:hidden}
+.scenes button{flex:1;min-width:0;height:auto;padding:5px 7px;display:block;text-align:left;font-size:12px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative}
+.scenes button b{display:block;font-size:10.5px;color:#C9A227}
+.scenes button i{position:absolute;left:0;bottom:0;height:3px;background:#C9A227;width:0;border-radius:2px}
+.scenes button.on{border-color:#C9A227;background:rgba(201,162,39,.15)}
+.time{font-size:12.5px;color:#AFC0D2;min-width:84px;text-align:right;font-variant-numeric:tabular-nums}
+#start{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:4;background:rgba(5,14,26,.35)}
+#start button{font:600 18px 'Hanken Grotesk',sans-serif;color:#0B1F3A;background:#C9A227;border:0;border-radius:999px;padding:16px 30px;cursor:pointer;box-shadow:0 0 0 10px rgba(201,162,39,.25);display:flex;gap:10px;align-items:center}
+#start button:hover{background:#F3D36B}
+#start small{display:block;position:absolute;bottom:90px;left:0;right:0;text-align:center;color:#C9D6E8;font-size:13px}
+body.playing #start{display:none}
+@media(max-width:620px){.scenes{display:none}.ui{gap:6px;padding:6px 8px}}
+body.embed .ui{padding:6px 8px;gap:6px}body.embed .ui button{height:28px;min-width:28px;padding:0 6px}
+</style>
+</head>
+<body>
+<div id="wrap"><div id="frame">
+ <svg id="stage" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+   <linearGradient id="bgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1F3A"/><stop offset="1" stop-color="#1F3864"/></linearGradient>
+   <radialGradient id="glowG"><stop offset="0" stop-color="#C9A227" stop-opacity=".55"/><stop offset="1" stop-color="#C9A227" stop-opacity="0"/></radialGradient>
+   <radialGradient id="redG"><stop offset="0" stop-color="#E5484D" stop-opacity=".55"/><stop offset="1" stop-color="#E5484D" stop-opacity="0"/></radialGradient>
+   <radialGradient id="vig" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+   <filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter>
+   <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+   <filter id="tsh" x="-10%" y="-30%" width="120%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity=".7"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bgG)"/>
+  <g id="grid" opacity=".07" stroke="#fff"></g>
+  <g id="cam"></g>
+  <rect width="1600" height="900" fill="url(#vig)"/>
+ </svg>
+ <div id="clips" class="layer"><div id="veil"></div><div id="grain"></div></div>
+ <canvas id="gl"></canvas>
+ <svg id="top" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+ <div id="flash"></div>
+ <div id="black"></div>
+</div></div>
+<div id="start"><button type="button" id="startBtn"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><span id="startL">Ver con sonido</span></button><small id="startS"></small></div>
+<div class="ui">
+ <button id="play" type="button" aria-label="Reproducir (espacio)"><svg viewBox="0 0 24 24"><path id="pi" d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+ <button id="mute" type="button" aria-label="Silenciar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path id="mi" d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg></button>
+ <div class="scenes" id="scenes"></div>
+ <span class="time" id="time">0:00</span>
+ <button id="fs" type="button" aria-label="Pantalla completa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+</div>
+
+<script src="vendor/gsap.min.js"></script>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
+<script type="module">
+const CFG = await fetch('media/cfg.json').then(r => r.json());
+const CUES = await fetch('media/cues.json').then(r => r.json());
+const EU = await fetch('media/europe.json').then(r => r.json());
+const OFF = 2.5, TOTAL = Math.round((CUES._end + OFF + 6.5) * 100) / 100;
+const has = k => CUES[k] !== undefined;
+const T = k => { if(!has(k)) console.warn('cue?', k); return (CUES[k] ?? 0) + OFF; };
+const q = new URLSearchParams(location.search);
+const RENDER = q.get('render') === '1';
+if(q.get('embed')) document.body.classList.add('embed');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+document.title = CFG.title;
+document.getElementById('startL').textContent = 'Ver con sonido · ' + fmt(TOTAL);
+document.getElementById('startS').textContent = CFG.name + ' · ' + CFG.meta + ' · Locución y música generadas con IA';
+
+/* ---------------- utilidades SVG */
+const NS = 'http://www.w3.org/2000/svg';
+const $ = s => document.querySelector(s);
+function el(tag, at = {}, parent){ const e = document.createElementNS(NS, tag); for(const k in at){ if(k === 'text') e.textContent = at[k]; else e.setAttribute(k, at[k]); } if(parent) parent.appendChild(e); return e; }
+const G = (parent, at = {}) => el('g', at, parent);
+const cam = $('#cam'), top = $('#top');
+for(let x = 0; x <= 1600; x += 80) el('path', {d:`M${x} 0V900`}, $('#grid'));
+for(let y = 0; y <= 900; y += 80) el('path', {d:`M0 ${y}H1600`}, $('#grid'));
+const GOLD = '#C9A227', GOLD2 = '#F3D36B', NAVY = '#0B1F3A', RED = '#E5484D', TEAL = '#1B998B', INK = '#C9D6E8';
+const MONT = 'Montserrat,sans-serif';
+const MID = {'text-anchor':'middle'};
+function txt(parent, x, y, s, size, at = {}){ return el('text', Object.assign({x, y, 'font-size':size, fill:'#fff', text:s}, at), parent); }
+function H(parent, x, y, s, size, at = {}){ return txt(parent, x, y, s, size, Object.assign({'font-family':MONT, 'font-weight':900}, at)); }
+function typeTo(e, dur){ const full = e.getAttribute('data-full') || e.textContent; e.setAttribute('data-full', full); const o = {n:0}; e.textContent = ''; return gsap.to(o, {n:full.length, duration:dur, ease:'none', onUpdate:() => { e.textContent = full.slice(0, Math.round(o.n)); }}); }
+function draw(p, d, ease = 'power2.out'){ const L = p.getTotalLength(); gsap.set(p, {strokeDasharray:L, strokeDashoffset:L}); return gsap.to(p, {strokeDashoffset:0, duration:d, ease}); }
+function counter(e, from, to, d, f){ const o = {v:from}; return gsap.to(o, {v:to, duration:d, ease:'power2.out', onUpdate:() => { e.textContent = f(o.v); }}); }
+function wrap(s, n){ const w = s.split(' '); const out = []; let cur = ''; for(const x of w){ if((cur + ' ' + x).trim().length > n && cur){ out.push(cur); cur = x; } else cur = (cur + ' ' + x).trim(); } if(cur) out.push(cur); return out; }
+function icon(parent, name, cx, cy, sc, at = {}){ const g = G(parent, Object.assign({transform:`translate(${cx - 12 * sc} ${cy - 12 * sc}) scale(${sc})`, fill:'none', stroke:GOLD2, 'stroke-width':1.6, 'stroke-linecap':'round', 'stroke-linejoin':'round'}, at)); el('path', {d:CFG.icons[name] || CFG.icons.check}, g); return g; }
+function logo(parent, x, y, size){ const t = H(parent, x, y, '', size, MID); el('tspan', {text:CFG.logoA}, t); el('tspan', {text:CFG.logoB, fill:GOLD}, t); return t; }
+function pill(parent, x, y, w, h, s, size, at = {}){ const g = G(parent, {}); el('rect', Object.assign({x:x - w / 2, y, width:w, height:h, rx:h / 2, fill:'rgba(201,162,39,.14)', stroke:GOLD, 'stroke-width':2}, at.rect || {}), g); txt(g, x, y + h / 2 + size * .36, s, size, Object.assign({'text-anchor':'middle', 'font-weight':700}, at.text || {})); return g; }
+const pillW = (s, size) => Math.max(140, s.length * size * .56 + 56);
+
+/* cámara virtual */
+const C = {x:800, y:450, s:1};
+const applyCam = () => cam.setAttribute('transform', `translate(${800 - C.x*C.s} ${450 - C.y*C.s}) scale(${C.s})`);
+const camTo = (x, y, s, d = 1.2, ease = 'power3.inOut') => gsap.to(C, {x, y, s, duration:d, ease, onUpdate:applyCam});
+applyCam();
+
+/* ---------------- línea de tiempo maestra (segundos = segundos de la banda sonora) */
+const tl = gsap.timeline({paused:true, defaults:{ease:'power3.out'}});
+const at = (t, tw) => tl.add(tw, t);
+const set = (t, target, vars) => tl.set(target, vars, t);
+const SCENES = CFG.scenes.map((n, i) => ['s' + (i + 1), n, i ? T('s' + (i + 1)) : 0]);
+SCENES.forEach(([k, , t]) => tl.addLabel(k, t));
+
+/* ---------------- la onda (motivo recurrente) */
+const W = {amp:0, chaos:0, x1:0, y:450, op:0, red:0, w:3};
+const wave = el('path', {fill:'none', stroke:GOLD, 'stroke-width':3, 'stroke-linecap':'round', filter:'url(#glow)', opacity:0}, top);
+function waveD(t){
+  let d = ''; const N = 160;
+  for(let i = 0; i <= N; i++){
+    const x = i / N * W.x1; const u = x / 1600;
+    const env = Math.sin(Math.PI * Math.min(1, u)) ** .6;
+    const base = Math.sin(u * 18 + t * 2.2) * .6 + Math.sin(u * 7 - t * 1.3) * .4;
+    const ch = W.chaos * (Math.sin(u * 61 + t * 9) * .7 + Math.sin(u * 131 - t * 17) * .5) * (.4 + .6 * Math.abs(Math.sin(t * 6 + u * 9)));
+    d += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + (W.y + (base + ch) * W.amp * env).toFixed(1);
+  }
+  return d;
+}
+function paintWave(t){
+  if(W.op <= 0.001){ wave.setAttribute('opacity', 0); return; }
+  wave.setAttribute('d', waveD(t)); wave.setAttribute('opacity', W.op);
+  wave.setAttribute('stroke', gsap.utils.interpolate(GOLD, RED, W.red)); wave.setAttribute('stroke-width', W.w);
+}
+
+/* ---------------- vídeo de archivo (Envato) */
+const CLIPS = CFG.clips.map(c => { const start = T(c.a) + (c.o || 0); let end = T(c.b) + (c.bo || 0); end = Math.min(end, start + 7.9 - (c.frm || 0)); return {id:c.id, src:`media/${c.id}.mp4`, start, end, from:c.frm || 0, full:!c.win, win:c.win}; });
+const clipLayer = $('#clips');
+CLIPS.forEach(c => {
+  const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = RENDER ? `webm/${c.id}.webm` : c.src;
+  v.className = c.full ? 'full' : 'win';
+  if(c.win){ const [x, y, w, h] = c.win; Object.assign(v.style, {left:x/16 + '%', top:y/9 + '%', width:w/16 + '%', height:h/9 + '%'}); }
+  c.ok = true; v.onerror = () => { c.ok = false; };
+  clipLayer.insertBefore(v, $('#veil')); c.v = v;
+  tl.fromTo(v, {opacity:0}, {opacity:1, duration:.35, ease:'none', immediateRender:false}, c.start).to(v, {opacity:0, duration:.35, ease:'none'}, c.end - .35);
+  if(c.full){ tl.to('#veil', {opacity:1, duration:.35}, c.start).to('#veil', {opacity:0, duration:.35}, c.end - .35);
+              tl.to('#grain', {opacity:.07, duration:.35}, c.start).to('#grain', {opacity:0, duration:.35}, c.end - .35); }
+});
+let playing = false;
+function syncClips(t){
+  for(const c of CLIPS){
+    const on = c.ok && t >= c.start - .4 && t < c.end; const v = c.v;
+    if(!on){ if(!v.paused) v.pause(); continue; }
+    const want = c.from + Math.max(0, t - c.start);
+    if(Math.abs(v.currentTime - want) > .3 || (!playing && Math.abs(v.currentTime - want) > .04)){ try{ v.currentTime = want; }catch(e){} }
+    if(playing && v.paused && !RENDER) v.play().catch(() => {});
+    if(!playing && !v.paused) v.pause();
+  }
+}
+
+/* ---------------- emblema (anillos + icono) y engranaje 3D opcional */
+const EMB = [];
+function emblem(parent, cx, cy, sc){
+  const g = G(parent, {transform:`translate(${cx} ${cy}) scale(${sc})`});
+  el('circle', {r:190, fill:'url(#glowG)', opacity:.7}, g);
+  const r1 = el('circle', {r:160, fill:'none', stroke:GOLD, 'stroke-width':3, 'stroke-dasharray':'4 14', 'stroke-linecap':'round'}, g);
+  const r2 = G(g, {}); el('circle', {r:128, fill:'none', stroke:GOLD2, 'stroke-width':1.5, opacity:.7}, r2);
+  for(let i = 0; i < 12; i++){ const a = i * Math.PI / 6; el('line', {x1:Math.cos(a) * 120, y1:Math.sin(a) * 120, x2:Math.cos(a) * 136, y2:Math.sin(a) * 136, stroke:GOLD2, 'stroke-width':3}, r2); }
+  el('circle', {r:98, fill:NAVY, stroke:GOLD, 'stroke-width':4}, g);
+  icon(g, CFG.emblem in CFG.icons ? CFG.emblem : 'shield', 0, 0, 4.6, {'stroke-width':1.5});
+  EMB.push([r1, r2]); return g;
+}
+function paintEmb(t){ EMB.forEach(([a, b]) => { a.setAttribute('transform', `rotate(${(t * 14) % 360})`); b.setAttribute('transform', `rotate(${(-t * 8) % 360})`); }); }
+const GL = {x:800, y:400, s:1, o:0, size:520, cam:0};
+let gear = null, renderer, scene3, cam3;
+const glc = $('#gl');
+if(CFG.emblem === 'gear'){
+  const THREE = await import('three');
+  const {GLTFLoader} = await import('./vendor/GLTFLoader.js');
+  const {RoomEnvironment} = await import('./vendor/RoomEnvironment.js');
+  renderer = new THREE.WebGLRenderer({canvas:glc, antialias:true, alpha:true, preserveDrawingBuffer:RENDER});
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.outputColorSpace = THREE.SRGBColorSpace;
+  scene3 = new THREE.Scene(); const pm = new THREE.PMREMGenerator(renderer);
+  scene3.environment = pm.fromScene(new RoomEnvironment(), .04).texture;
+  cam3 = new THREE.PerspectiveCamera(28, 1, .1, 100);
+  const key = new THREE.DirectionalLight(0xffe2a0, 2.4); key.position.set(3, 4, 5); scene3.add(key);
+  const rim = new THREE.DirectionalLight(0x8fb4ff, 1.4); rim.position.set(-4, 2, -3); scene3.add(rim);
+  fetch('media/gear.json').then(r => r.json()).then(j => { const bin = Uint8Array.from(atob(j.glb), c => c.charCodeAt(0)).buffer; new GLTFLoader().parse(bin, '', g => { gear = g.scene; const b = new THREE.Box3().setFromObject(gear); const c = b.getCenter(new THREE.Vector3()); const z = b.getSize(new THREE.Vector3()).length(); gear.position.sub(c); const piv = new THREE.Group(); piv.add(gear); scene3.add(piv); gear = piv; cam3.position.set(0, z * .08, z * 1.75); cam3.lookAt(0, 0, 0); }); });
+}
+function layoutGL(){ const fw = $('#frame').clientWidth, u = fw / 1600, k = GL.cam ? C.s : 1, px = GL.size * GL.s * k * u;
+  const sx = GL.cam ? 800 - C.x * C.s + GL.x * C.s : GL.x, sy = GL.cam ? 450 - C.y * C.s + GL.y * C.s : GL.y; const dpr = Math.min(2, devicePixelRatio || 1);
+  if(glc.width !== Math.round(px * dpr)){ renderer.setPixelRatio(dpr); renderer.setSize(px, px, false); }
+  Object.assign(glc.style, {width:px + 'px', height:px + 'px', left:(sx * u - px / 2) + 'px', top:(sy * u - px / 2) + 'px', opacity:GL.o}); }
+function paintGL(t){ if(!renderer || GL.o <= .001 || !gear){ glc.style.opacity = 0; return; } layoutGL(); gear.rotation.y = Math.sin(t * .55) * .28; gear.rotation.x = Math.sin(t * .37) * .08; gear.position.y = Math.sin(t * 1.1) * .02; renderer.render(scene3, cam3); }
+const halo = el('circle', {cx:800, cy:330, r:360, fill:'url(#glowG)', opacity:0}, $('#stage')); $('#stage').insertBefore(halo, cam);
+
+/* ============ ESCENA 1 · El gancho */
+const HK = CFG.hook, soft = !!HK.soft;
+at(0, gsap.to('#black', {opacity:0, duration:1.4, ease:'power1.inOut'}));
+at(.3, gsap.to(W, {op:1, duration:.4}));
+at(.3, gsap.to(W, {x1:1600, amp:16, duration:2.6, ease:'power2.inOut'}));
+at(.4, camTo(800, 450, 1.06, 9, 'none'));
+const s1 = G(top, {filter:'url(#tsh)'});
+const firstLine = HK.lines[0][0];
+if(HK.intro){
+  const ig = G(s1, {opacity:0}); HK.intro.forEach((s, i) => H(ig, 800, 420 + i * 96 - (HK.intro.length - 1) * 40, s, HK.clock ? 150 : 88, Object.assign({}, MID, i ? {fill:GOLD2} : {})));
+  at(T(HK.introKey) + .5, gsap.fromTo(ig, {opacity:0, scale:1.08, svgOrigin:'800 420'}, {opacity:1, scale:1, duration:.9}));
+  if(HK.clock) at(T(HK.introKey) + .5, gsap.fromTo(ig, {opacity:1}, {opacity:.55, duration:.5, repeat:5, yoyo:true, ease:'steps(1)'}));
+  const nx = HK.lines.find(l => l[0] !== HK.introKey); at(T(nx[0]) - .5, gsap.to(ig, {opacity:0, duration:.4}));
+}
+const LY = 700 - (HK.lines.length - 1) * 66;
+HK.lines.forEach(([k, s], i) => { const e = H(s1, 120, LY + i * 70, s, 52, {'font-weight':800, fill:i === HK.lines.length - 1 ? GOLD2 : '#fff', opacity:0});
+  at(T(k) - .1, gsap.fromTo(e, {opacity:0, y:18}, {opacity:1, y:0, duration:.45})); at(T('punch') - .5, gsap.to(e, {opacity:0, duration:.4})); });
+HK.lines.forEach(([k], i) => at(T(k), gsap.to(W, {y:560, amp:16 + i * 10, chaos:soft ? .1 : .25 + i * .2, duration:1.4})));
+const dim = el('rect', {width:1600, height:900, fill:'#02060C', opacity:0}, top);
+const pg = G(top, {opacity:0}); HK.punch.forEach((s, i) => H(pg, 800, 440 + i * 84 - (HK.punch.length - 1) * 30, s, 70, Object.assign({}, MID, i === HK.punch.length - 1 ? {fill:soft ? GOLD2 : '#fff'} : {})));
+const pl = el('rect', {x:310, y:440 + HK.punch.length * 84 - 50, width:0, height:8, rx:4, fill:soft ? GOLD : RED}, top);
+const P0 = T('punch');
+at(P0 - .4, gsap.to(W, soft ? {amp:40, chaos:.3, duration:.8} : {red:1, amp:80, chaos:1.4, duration:.6}));
+if(!soft){ at(P0 - .02, gsap.to('#flash', {opacity:.85, duration:.05, ease:'none'})); at(P0 + .05, gsap.to('#flash', {opacity:0, duration:.5})); at(P0, gsap.to(W, {op:0, duration:.08})); set(P0, dim, {opacity:.92}); set(P0, pg, {opacity:1}); }
+else { at(P0 - .2, gsap.to(W, {op:0, duration:.8})); at(P0 - .3, gsap.to(dim, {opacity:.9, duration:.8})); at(P0, gsap.fromTo(pg, {opacity:0, y:14}, {opacity:1, y:0, duration:1})); }
+at(P0 + .2, gsap.to(pl, {attr:{width:980}, duration:.6, ease:'power2.inOut'}));
+at(T('s2') - .5, gsap.to([pg, pl], {opacity:0, duration:.5}));
+at(T('s2') - .5, gsap.to(dim, {opacity:0, duration:.8}));
+
+/* ============ ESCENA 2 · La cifra */
+const S2 = CFG.s2;
+const s2 = G(cam, {opacity:0});
+at(T('s2') - .2, gsap.to(s2, {opacity:1, duration:.4}));
+at(T('s2'), camTo(800, 450, 1, .1));
+at(T('s2') + .1, camTo(800, 450, 1.04, T('band') - T('s2'), 'none'));
+txt(s2, 800, 150, S2.kicker, 26, Object.assign({fill:GOLD, 'font-weight':700, 'letter-spacing':6}, MID));
+const gl2 = el('circle', {cx:800, cy:390, r:300, fill:'url(#glowG)', opacity:0}, s2);
+let big;
+if(S2.big){ const B = S2.big, f = v => B.pre + (B.dec ? v.toFixed(B.dec).replace('.', ',') : Math.round(v)) + B.suf;
+  big = H(s2, 800, 470, f(0), (B.pre + B.suf).length > 4 ? 180 : (B.pre + B.suf).length > 3 ? 210 : 250, MID);
+  at(T('n1') - .3, counter(big, 0, B.to, 1.3, f)); }
+else { big = H(s2, 800, 460, S2.bigText, 130, MID); at(T('n1') - .2, gsap.fromTo(big, {opacity:0, scale:1.15, svgOrigin:'800 430'}, {opacity:1, scale:1, duration:.8, ease:'expo.out'})); }
+at(T('n1') + .9, gsap.to(gl2, {opacity:1, duration:.3, yoyo:true, repeat:1}));
+const subG = G(s2, {opacity:0}); const subL = wrap(S2.sub, 52); subL.forEach((s, i) => txt(subG, 800, 550 + i * 44, s, 34, Object.assign({fill:INK}, MID)));
+at(T('n1') + .5, gsap.to(subG, {opacity:1, duration:.6}));
+if(S2.chips){ const cg = G(s2, {}); const ws = S2.chips.map(s => pillW(s, 22)); const tot = ws.reduce((a, b) => a + b, 0) + (ws.length - 1) * 16; let x = 800 - tot / 2;
+  S2.chips.forEach((s, i) => { const g = pill(cg, x + ws[i] / 2, 660, ws[i], 50, s, 22); x += ws[i] + 16; at(T('n1') + 1.6 + i * .45, gsap.fromTo(g, {opacity:0, y:16}, {opacity:1, y:0, duration:.35, ease:'back.out(2)'})); });
+  at(T('r1') - .3, gsap.to(cg, {opacity:0, duration:.3})); }
+// r1: el número se va a la izquierda y aparece el panel
+at(T('r1') - .2, gsap.to(big, {attr:{x:420, y:420}, duration:.9}));
+at(T('r1') - .2, gsap.to(big, {scale:.62, svgOrigin:'420 380', duration:.9}));
+at(T('r1') - .2, gsap.to(subG, {opacity:0, duration:.2}));
+const sub2 = G(s2, {opacity:0}); wrap(S2.sub, 30).slice(0, 4).forEach((s, i) => txt(sub2, 420, 490 + i * 32, s, 24, Object.assign({fill:INK}, MID)));
+at(T('r1') + .6, gsap.to(sub2, {opacity:1, duration:.5}));
+const R1 = S2.r1, rp = G(s2, {opacity:0});
+el('line', {x1:760, y1:250, x2:760, y2:640, stroke:GOLD, 'stroke-opacity':.4, 'stroke-width':2}, rp);
+wrap(R1.title, 28).forEach((s, i) => H(rp, 1180, 290 + i * 46, s, 36, Object.assign({'font-weight':800}, MID)));
+const nI = R1.items.length, per = nI > 3 ? 3 : nI, rows = Math.ceil(nI / per);
+const tiles = R1.items.map(([ic, lab], i) => { const r = Math.floor(i / per), c = i % per, nr = r === rows - 1 ? nI - r * per : per; const x = 1180 + (c - (nr - 1) / 2) * 200, y = (rows > 1 ? 400 : 430) + r * 150;
+  const g = G(rp, {opacity:0}); el('rect', {x:x - 85, y:y - 55, width:170, height:130, rx:16, fill:'rgba(255,255,255,.05)', stroke:GOLD, 'stroke-opacity':.6}, g); icon(g, ic, x, y - 8, 2.2); txt(g, x, y + 58, lab, 20, Object.assign({'font-weight':700}, MID)); return g; });
+at(T('r1') - .1, gsap.to(rp, {opacity:1, duration:.4}));
+tiles.forEach((g, i) => at(T('r1') + .5 + i * .45, gsap.fromTo(g, {opacity:0, y:20}, {opacity:1, y:0, duration:.4, ease:'back.out(2)'})));
+if(R1.note){ const n = txt(rp, 1180, 680, R1.note, 24, Object.assign({fill:GOLD2, 'font-style':'italic'}, MID)); at(T('r1') + 3, gsap.fromTo(n, {opacity:0}, {opacity:1, duration:.5})); }
+// disgregación: las fichas se separan
+tiles.forEach((g, i) => at(T('band') - .8, gsap.to(g, {x:(i % 2 ? 1 : -1) * 18, y:(i % 3 - 1) * 14, rotation:(i % 2 ? 4 : -4), svgOrigin:'1180 450', duration:.8})));
+const BD = S2.band, band = G(s2, {opacity:0});
+el('rect', {x:160, y:720, width:1280, height:100, rx:18, fill:'rgba(229,72,77,.13)', stroke:RED, 'stroke-opacity':.7}, band);
+const bt = txt(band, 200, 782, BD.title, 30, {'font-weight':800});
+const bw = BD.words.map((s, i) => txt(band, 200 + BD.title.length * 17 + 40 + i * (BD.words.length > 1 ? 420 : 0), 782, (BD.words.length > 1 ? '' : '') + s, 30, {'font-family':MONT, 'font-weight':800, fill:'#FF8A8E', opacity:0}));
+at(T('band') - .2, gsap.to(band, {opacity:1, duration:.4}));
+bw.forEach((e, i) => at(T('band') + 1 + i * 1.2, gsap.fromTo(e, {opacity:0, x:-12}, {opacity:1, x:0, duration:.35})));
+at(T('s3') - .4, gsap.to(s2, {opacity:0, duration:.4}));
+
+/* ============ ESCENA 3 · Las barreras */
+const s3 = G(cam, {opacity:0});
+at(T('s3') - .1, gsap.to(s3, {opacity:1, duration:.3}));
+at(T('s3'), camTo(800, 450, 1, .01));
+const t3 = H(s3, 800, 170, CFG.s3.title, CFG.s3.title.length > 48 ? 36 : 44, Object.assign({'font-weight':800}, MID));
+at(T('s3') + .1, typeTo(t3, 1.4));
+const cardG = CFG.s3.cards.map(([h, a, b2, ic], i) => {
+  const n = CFG.s3.cards.length, last = i === n - 1;
+  const g = G(s3, {opacity:0, filter:'url(#sh)'}); const x = 800 - (n * 296 - 20) / 2 + i * 296;
+  const bg = el('rect', {x, y:290, width:276, height:380, rx:18, fill:'#F4F6FA'}, g);
+  el('rect', {x, y:290, width:276, height:10, rx:5, fill:last ? RED : GOLD}, g);
+  icon(g, ic, x + 138, 385, 3, {stroke:last ? RED : '#1F3864'});
+  wrap(h, 18).forEach((s, j, A) => txt(g, x + 138, 500 + j * 30 - (A.length - 1) * 15, s, 25, Object.assign({fill:NAVY, 'font-family':MONT, 'font-weight':800}, MID)));
+  txt(g, x + 138, 560, a, 21, Object.assign({fill:'#4B5563'}, MID)); txt(g, x + 138, 590, b2, 21, Object.assign({fill:'#4B5563'}, MID));
+  txt(g, x + 26, 650, String(i + 1).padStart(2, '0'), 20, {fill:last ? RED : GOLD, 'font-weight':800});
+  at(T('c' + (i + 1)) - .15, gsap.fromTo(g, {opacity:0, y:-60, rotation:-4, svgOrigin:`${x + 138} 480`}, {opacity:1, y:0, rotation:0, duration:.55, ease:'back.out(2)'}));
+  return {g, bg};
+});
+at(T('c1'), camTo(808, 470, 1.035, .01)); at(T('c1') + .1, camTo(792, 462, 1.05, T('s4') - T('c1'), 'none'));
+at(T('c5') + 1.2, gsap.to(cardG[cardG.length - 1].bg, {fill:'#FBD5D6', duration:.18, yoyo:true, repeat:5}));
+at(T('s4') - .9, gsap.to(cardG.map(c => c.g), {y:120, opacity:0, duration:.5, stagger:.06, ease:'power2.in'}));
+at(T('s4') - .6, gsap.to(t3, {opacity:0, duration:.3}));
+
+/* ============ ESCENA 4 · La revelación */
+const s4 = G(top, {opacity:0});
+at(T('s4') - .3, camTo(800, 450, 1, .6));
+at(T('s4') - .5, gsap.to(W, {op:1, red:0, chaos:0, amp:14, y:700, x1:1600, duration:.01}));
+at(T('s4') - .5, gsap.fromTo(W, {amp:120, chaos:1.2}, {amp:14, chaos:0, duration:1.4, ease:'expo.out'}));
+at(T('s4'), gsap.to(halo, {opacity:1, duration:.8}));
+let emb4 = null;
+if(CFG.emblem === 'gear') at(T('s4'), gsap.fromTo(GL, {o:0, s:.4, x:800, y:330, size:520, cam:0}, {o:1, s:1, duration:1.2, ease:'back.out(1.6)'}));
+else { emb4 = emblem(G(top, {}), 800, 320, 1); const eg = emb4; gsap.set(eg, {opacity:0}); at(T('s4'), gsap.fromTo(eg, {opacity:0, scale:.4, svgOrigin:'800 320'}, {opacity:1, scale:1, duration:1.2, ease:'back.out(1.6)'})); }
+const lg4 = logo(s4, 800, 650, 104);
+const tag4 = txt(s4, 800, 730, CFG.s4.tag, CFG.s4.tag.length > 50 ? 30 : 36, Object.assign({fill:INK, 'letter-spacing':2, opacity:0}, MID));
+const plat4 = G(s4, {opacity:0}); wrap(CFG.s4.plat, 70).forEach((s, i) => txt(plat4, 800, 795 + i * 32, s, 25, Object.assign({fill:GOLD2}, MID)));
+at(T('s4') + .1, gsap.to(s4, {opacity:1, duration:.2}));
+at(T('s4') + .3, gsap.fromTo(lg4, {opacity:0, scale:1.25, svgOrigin:'800 620'}, {opacity:1, scale:1, duration:.8, ease:'expo.out'}));
+at(T('s4') + 1.6, gsap.to(tag4, {opacity:1, duration:.6}));
+at(T('s4') + 2.6, gsap.to(W, {y:765, duration:.8}));
+at(T('s4') + 3.4, gsap.to(plat4, {opacity:1, duration:.6}));
+const mqCovered = CLIPS.some(c => c.full && c.start <= T('mq') + .5 && c.end > T('mq') + 1.5);
+const mqOut = mqCovered ? T('mq') - .5 : T('s5') - .5;
+at(T('mq') - .5, gsap.to(s4, {opacity:0, duration:.3}));
+at(mqOut, gsap.to(halo, {opacity:0, duration:.3}));
+at(mqOut, gsap.to(GL, {o:0, duration:.3}));
+if(emb4){ at(mqOut, gsap.to(emb4, {opacity:0, duration:.3})); }
+at(T('mq') - .5, gsap.to(W, {op:0, duration:.3}));
+const lt4 = G(top, {opacity:0, filter:'url(#tsh)'});
+el('rect', {x:90, y:700, width:8, height:120, fill:GOLD}, lt4);
+H(lt4, 120, 750, CFG.s4.mq[0], 46, {'font-weight':800}); H(lt4, 120, 806, CFG.s4.mq[1], 46, {'font-weight':800, fill:GOLD});
+at(T('mq') + .1, gsap.fromTo(lt4, {opacity:0, x:-30}, {opacity:1, x:0, duration:.6}));
+at(T('s5') - .5, gsap.to(lt4, {opacity:0, duration:.3}));
+
+/* ============ ESCENA 5 · Cómo funciona */
+const S5 = CFG.s5, nS = S5.st.length, SY = 430, R5 = nS > 4 ? 104 : 120;
+const ST = Array.from({length:nS}, (_, i) => 800 + (i - (nS - 1) / 2) * (nS > 4 ? 300 : 370));
+const s5 = G(cam, {opacity:0});
+const plant = el('rect', {x:70, y:200, width:1460, height:520, rx:30, fill:'none', stroke:GOLD, 'stroke-width':3, 'stroke-dasharray':'14 12', opacity:0}, s5);
+const link = el('path', {d:`M${ST[0]} ${SY}H${ST[nS - 1]}`, stroke:GOLD, 'stroke-width':4, opacity:.9}, s5);
+const head5 = txt(s5, 800, 150, S5.head, 26, Object.assign({fill:GOLD, 'font-weight':700, 'letter-spacing':6}, MID));
+const stG = S5.st.map(([h, a, b2, ic], i) => {
+  const g = G(s5, {opacity:0}); const x = ST[i];
+  el('circle', {cx:x, cy:SY, r:R5, fill:'#13294D', stroke:GOLD, 'stroke-width':3}, g);
+  icon(g, ic, x, SY, R5 / 26);
+  H(g, x, SY + R5 + 62, h, nS > 4 ? 28 : 34, Object.assign({fill:GOLD}, MID));
+  txt(g, x, SY + R5 + 98, a, 20, Object.assign({fill:INK}, MID)); txt(g, x, SY + R5 + 124, b2, 20, Object.assign({fill:INK}, MID));
+  const ring = el('circle', {cx:x, cy:SY, r:R5, fill:'none', stroke:GOLD2, 'stroke-width':3, opacity:0}, g);
+  return {g, ring};
+});
+at(T('s5') - .2, gsap.to(s5, {opacity:1, duration:.4}));
+at(T('s5'), camTo(800, 450, 1, .01));
+at(T('s5'), draw(link, 1.4));
+stG.forEach(({g}, i) => at(T('s5') + .3 + i * .15, gsap.fromTo(g, {opacity:0, scale:.7, svgOrigin:`${ST[i]} ${SY}`}, {opacity:.35, scale:1, duration:.5, ease:'back.out(2)'})));
+stG.forEach(({g, ring}, i) => { const k = 'st' + (i + 1);
+  at(T(k) - .35, camTo(ST[i], SY + 70, 1.45, .9));
+  at(T(k) - .1, gsap.to(g, {opacity:1, duration:.4}));
+  at(T(k) + .2, gsap.fromTo(ring, {attr:{r:R5}, opacity:.9}, {attr:{r:R5 + 90}, opacity:0, duration:1.4, repeat:1, ease:'power1.out'}));
+});
+const lastSt = 'st' + nS;
+if(S5.cycle){ const back = el('path', {d:`M${ST[nS - 1]} ${SY + R5}C${ST[nS - 1]} ${SY + 300},${ST[0]} ${SY + 300},${ST[0]} ${SY + R5}`, fill:'none', stroke:GOLD2, 'stroke-width':4, 'stroke-dasharray':'3 12', 'stroke-linecap':'round', opacity:0}, s5);
+  at(T(lastSt) + 2.6, camTo(800, 470, 1, 1.2)); at(T(lastSt) + 2.8, gsap.to(stG.map(s => s.g), {opacity:1, duration:.3})); at(T(lastSt) + 3, gsap.to(back, {opacity:1, duration:.1})); at(T(lastSt) + 3, draw(back, 1.4)); }
+if(S5.outro){ const og = G(top, {opacity:0}); H(og, 800, 840, S5.outro[2], 34, Object.assign({fill:GOLD2, 'font-weight':800}, MID)); at(T(S5.outro[0]) + S5.outro[1], gsap.to(og, {opacity:1, duration:.5})); at(T('s6') - .4, gsap.to(og, {opacity:0, duration:.3})); }
+if(S5.shield){ const shield = G(s5, {opacity:0});
+  el('path', {d:'M800 205l70 26v52c0 46-32 80-70 96-38-16-70-50-70-96v-52z', fill:NAVY, stroke:GOLD, 'stroke-width':4}, shield);
+  el('path', {d:'M770 290l22 22 42-46', fill:'none', stroke:GOLD2, 'stroke-width':7, 'stroke-linecap':'round'}, shield);
+  const shT = H(s5, 800, 785, S5.shield, 38, Object.assign({'font-weight':800, opacity:0}, MID));
+  at(T('shield') - .4, camTo(800, 470, 1, 1.2)); at(T('shield') - .2, gsap.to(stG.map(s => s.g), {opacity:1, duration:.3}));
+  at(T('shield'), gsap.to(plant, {opacity:1, duration:.2})); at(T('shield'), draw(plant, 1.2)); at(T('shield') + .2, gsap.to(head5, {opacity:0, duration:.3}));
+  at(T('shield') + .5, gsap.fromTo(shield, {opacity:0, scale:.4, svgOrigin:'800 290'}, {opacity:1, scale:1, duration:.6, ease:'back.out(2.4)'}));
+  at(T('shield') + .8, gsap.to(shT, {opacity:1, duration:.5})); }
+at(T('s6') - .4, gsap.to(s5, {opacity:0, duration:.4}));
+
+/* ============ ESCENA 6 · Innovaciones */
+const S6 = CFG.s6, nH = S6.inn.length, HY = 400, HR = nH > 4 ? 100 : nH > 3 ? 115 : 125;
+const HX = Array.from({length:nH}, (_, i) => 800 + (i - (nH - 1) / 2) * (nH > 4 ? 285 : nH > 3 ? 320 : 380));
+const s6 = G(cam, {opacity:0});
+const t6 = H(s6, 800, 160, S6.title, S6.title.length > 36 ? 42 : 52, MID);
+const hexP = (x, y, r) => Array.from({length:6}, (_, k) => { const a = Math.PI / 6 + k * Math.PI / 3; return `${(x + r * Math.cos(a)).toFixed(1)},${(y + r * Math.sin(a)).toFixed(1)}`; }).join(' ');
+const conn = el('path', {d:`M${HX[0]} ${HY}H${HX[nH - 1]}`, stroke:GOLD, 'stroke-width':3, 'stroke-dasharray':'8 8', opacity:0}, s6);
+S6.inn.forEach(([c, h, a, b2], i) => {
+  const g = G(s6, {opacity:.18}); const x = HX[i], k = 't' + (i + 1);
+  const poly = el('polygon', {points:hexP(x, HY, HR), fill:'#13294D', stroke:GOLD, 'stroke-width':4}, g);
+  H(g, x, HY + 16, c, nH > 4 ? 44 : 52, Object.assign({fill:GOLD}, MID));
+  const hs = nH > 4 ? 23 : 26; wrap(h, nH > 3 ? 16 : 22).forEach((s, j) => H(g, x, HY + HR + 55 + j * 30, s, hs, Object.assign({'font-weight':800}, MID)));
+  const off = wrap(h, nH > 3 ? 16 : 22).length - 1;
+  txt(g, x, HY + HR + 92 + off * 30, a, nH > 4 ? 18 : 20, Object.assign({fill:INK}, MID)); txt(g, x, HY + HR + 118 + off * 30, b2, nH > 4 ? 18 : 20, Object.assign({fill:INK}, MID));
+  if(S6.hl === i){ const p = pill(g, x, HY - HR - 70, 250, 44, 'Lidera Ullswater', 20, {rect:{fill:GOLD}, text:{fill:NAVY}}); }
+  at(T(k) - .1, gsap.to(g, {opacity:1, duration:.4}));
+  at(T(k) - .1, gsap.fromTo(poly, {attr:{fill:'#13294D'}}, {attr:{fill:'#2A4A80'}, duration:.25, yoyo:true, repeat:1}));
+  at(T(k) - .1, gsap.fromTo(g, {scale:.85, svgOrigin:`${x} ${HY}`}, {scale:1, duration:.6, ease:'back.out(2.5)'}));
+});
+at(T('s6') - .2, gsap.to(s6, {opacity:1, duration:.4}));
+at(T('s6'), camTo(800, 450, 1, .01));
+at(T('s6'), typeTo(t6, .8));
+const lastT = 't' + nH;
+at(T(lastT) + 1.8, gsap.to(conn, {opacity:1, duration:.4}));
+at(T(lastT) + 1.8, gsap.fromTo(conn, {strokeDashoffset:0}, {strokeDashoffset:-160, duration:4, ease:'none'}));
+if(S6.seals && has('sl')){ const sg = G(s6, {});
+  const lab = txt(sg, 800, S6.seals.items.length ? 740 : 790, S6.seals.label, S6.seals.items.length ? 24 : 34, Object.assign({fill:S6.seals.items.length ? INK : GOLD2, 'font-weight':S6.seals.items.length ? 500 : 800, opacity:0}, MID));
+  at(T('sl'), gsap.to(lab, {opacity:1, duration:.4}));
+  const ws = S6.seals.items.map(s => pillW(s, 22)); const tot = ws.reduce((a, b) => a + b, 0) + (ws.length - 1) * 18; let x = 800 - tot / 2;
+  S6.seals.items.forEach((s, i) => { const g = pill(sg, x + ws[i] / 2, 765, ws[i], 54, s, 22, {rect:{fill:'none', stroke:GOLD2}, text:{fill:GOLD2}}); x += ws[i] + 18; gsap.set(g, {opacity:0}); at(T('sl') + .6 + i * .35, gsap.fromTo(g, {opacity:0, y:20}, {opacity:1, y:0, duration:.4, ease:'back.out(2)'})); }); }
+at(T('s7') - .4, gsap.to(s6, {opacity:0, duration:.4}));
+
+/* ============ ESCENA 7 · Vallas */
+const S7 = CFG.s7, s7 = G(top, {opacity:0, filter:'url(#tsh)'});
+txt(s7, 800, 150, S7.head, 26, Object.assign({fill:GOLD, 'font-weight':700, 'letter-spacing':6}, MID));
+const bigs = S7.bigs.map(([n, a, b2], i) => { const g = G(s7, {opacity:0}); const fs = S7.words ? 150 : n.length <= 4 ? 230 : n.length <= 6 ? 200 : 165;
+  H(g, 800, 470, n, fs, Object.assign({fill:i % 2 ? GOLD : '#fff'}, MID)); txt(g, 800, 560, a, 40, Object.assign({fill:INK}, MID)); if(b2) txt(g, 800, 610, b2, 40, Object.assign({fill:INK}, MID)); return [g, 'b' + (i + 1)]; });
+at(T('s7') - .2, gsap.to(s7, {opacity:1, duration:.4}));
+bigs.forEach(([g, k], i) => {
+  at(T(k) - .1, gsap.fromTo(g, {opacity:0, x:140, scale:.92, svgOrigin:'800 450'}, {opacity:1, x:0, scale:1, duration:.55, ease:'expo.out'}));
+  const nx = bigs[i + 1]; if(nx) at(T(nx[1]) - .2, gsap.to(g, {opacity:0, x:-160, duration:.35, ease:'power2.in'}));
+});
+if(S7.pill){ const [k, o, s] = S7.pill; const g = pill(s7, 800, 680, pillW(s, 26), 64, s, 26, {rect:{fill:TEAL, stroke:TEAL}}); gsap.set(g, {opacity:0}); at(T(k) + o, gsap.fromTo(g, {opacity:0, y:20}, {opacity:1, y:0, duration:.4, ease:'back.out(2)'})); }
+at(T('s8') - .4, gsap.to(s7, {opacity:0, duration:.4}));
+
+/* ============ ESCENA 8 · El mapa */
+const S8 = CFG.s8, P = Object.assign({}, EU.pts, {KR:[1480, 700]});
+const base = c => c.replace(/\d+$/, '');
+const inv = new Set(S8.pins.flatMap(p => [base(p[0])].concat(p[5] || [])).concat(CFG.s9.dist.map(d => d[0])));
+const s8 = G(cam, {opacity:0});
+const map = G(s8, {});
+EU.paths.forEach(p => el('path', {d:p.d, fill:inv.has(p.c) ? '#24477C' : '#16305A', stroke:'#2E5590', 'stroke-width':1.2}, map));
+const krB = G(s8, {opacity:0});
+const krUsed = S8.pins.some(p => p[0] === 'KR') || CFG.s9.dist.some(d => d[0] === 'KR');
+if(krUsed){ el('path', {d:'M1330 700H1440', stroke:GOLD, 'stroke-width':3, 'stroke-dasharray':'4 10', 'stroke-linecap':'round'}, krB); el('circle', {cx:1480, cy:700, r:48, fill:'rgba(11,31,58,.9)', stroke:GOLD, 'stroke-width':3}, krB); txt(krB, 1480, 709, 'KR', 26, Object.assign({'font-weight':800, fill:GOLD2}, MID)); txt(krB, 1480, 780, 'Corea del Sur', 20, Object.assign({'font-weight':700}, MID)); }
+const t8 = H(top, 800, 105, S8.title, S8.title.length > 40 ? 40 : 46, Object.assign({opacity:0, filter:'url(#tsh)'}, MID));
+const clampX = (x, w) => Math.max(20, Math.min(1580 - w, x)), clampY = (y, h) => Math.max(140, Math.min(880 - h, y));
+const pinG = S8.pins.map(([c, name, sec, dx, dy, extra], i) => {
+  const k = 'p' + (i + 1); const [x, y] = P[c]; const g = G(s8, {opacity:0});
+  if(c === 'KR'){ at(T(k) - .2, gsap.to(krB, {opacity:1, duration:.4})); }
+  else { el('circle', {cx:x, cy:y, r:15, fill:GOLD, filter:'url(#glow)'}, g); (extra || []).forEach(e => el('circle', {cx:P[e][0], cy:P[e][1], r:13, fill:GOLD, filter:'url(#glow)'}, g)); }
+  const pr = el('circle', {cx:x, cy:y, r:16, fill:'none', stroke:GOLD2, 'stroke-width':3}, g);
+  const lines = wrap(sec, 26), w = Math.max(name.length * 13 + 40, Math.max(...lines.map(l => l.length)) * 9.6 + 40, 220), h = 52 + lines.length * 24;
+  const cx = c === 'KR' ? 1290 : clampX(x + dx, w), cy = c === 'KR' ? 560 : clampY(y + dy, h);
+  const cg = G(g, {}); el('rect', {x:cx, y:cy, width:w, height:h, rx:12, fill:'rgba(11,31,58,.93)', stroke:GOLD, 'stroke-width':2}, cg);
+  H(cg, cx + 18, cy + 34, name, 22, {fill:GOLD2, 'font-weight':800}); lines.forEach((l, j) => txt(cg, cx + 18, cy + 62 + j * 24, l, 18, {}));
+  at(T(k) - .2, gsap.fromTo(g, {opacity:0}, {opacity:1, duration:.4}));
+  at(T(k) - .2, gsap.fromTo(pr, {attr:{r:16}, opacity:1}, {attr:{r:60}, opacity:0, duration:1.4, repeat:1}));
+  return g;
+});
+const rp8 = S8.pins.filter(p => p[0] !== 'KR').map(p => P[p[0]]);
+let rd = `M${rp8[0][0]} ${rp8[0][1]}`; for(let i = 1; i < rp8.length; i++){ const [a, b] = rp8[i - 1], [c, d] = rp8[i]; rd += `Q${(a + c) / 2} ${Math.min(b, d) - 90} ${c} ${d}`; }
+const route = el('path', {d:rd, fill:'none', stroke:GOLD2, 'stroke-width':4, 'stroke-dasharray':'2 14', 'stroke-linecap':'round', filter:'url(#glow)'}, s8);
+const pk = S8.pins.map((p, i) => 'p' + (i + 1)).filter((k, i) => S8.pins[i][0] !== 'KR');
+if(rp8.length > 1){ at(T(pk[0]) - .2, draw(route, Math.max(1, T(pk[pk.length - 1]) - T(pk[0]) + .6), 'none')); } else gsap.set(route, {opacity:0});
+if(S8.link){ const [a, b, s] = S8.link; const [x1, y1] = P[a], [x2, y2] = P[b]; const lg = G(s8, {opacity:0});
+  el('path', {d:`M${x1} ${y1}Q${(x1 + x2) / 2 - 160} ${(y1 + y2) / 2 - 120} ${x2} ${y2}`, fill:'none', stroke:TEAL, 'stroke-width':4, 'stroke-dasharray':'10 8'}, lg); pill(lg, 560, 470, pillW(s, 20), 46, s, 20, {rect:{fill:'rgba(27,153,139,.25)', stroke:TEAL}});
+  at(T('p2') + 3, gsap.to(lg, {opacity:1, duration:.5})); at(T('s9') - .4, gsap.to(lg, {opacity:0, duration:.3})); }
+if(S8.caption){ const cg = G(top, {opacity:0, filter:'url(#tsh)'}); wrap(S8.caption, 70).forEach((s, i) => txt(cg, 800, 850 + i * 34, s, 26, Object.assign({fill:GOLD2, 'font-weight':700}, MID)));
+  at(T('p' + S8.pins.length) + 2.2, gsap.to(cg, {opacity:1, duration:.5})); at(T('s9') - .4, gsap.to(cg, {opacity:0, duration:.3})); }
+at(T('s8') - .2, gsap.to(s8, {opacity:1, duration:.6}));
+at(T('s8') - .2, camTo(800, 470, 1.2, .01));
+at(T('s8'), camTo(800, 470, 1, 4, 'power2.out'));
+at(T('s8') + .2, gsap.to(t8, {opacity:1, duration:.5}));
+at(T('s9') - .5, gsap.to(t8, {opacity:0, duration:.4}));
+at(T('s9') - .4, gsap.to(pinG.concat([route]), {opacity:0, duration:.4}));
+
+/* ============ ESCENA 9 · El consorcio */
+const S9 = CFG.s9, s9 = G(s8, {opacity:0});
+const nodes = []; let seed = 3; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+S9.dist.forEach(([c, n]) => { const [x, y] = P[c]; for(let i = 0; i < n; i++){ const a = rnd() * 6.28, r = n > 1 ? 22 + rnd() * 34 : 0; nodes.push([x + Math.cos(a) * r, y + Math.sin(a) * r]); } });
+const edges = G(s9, {}); const nodeG = G(s9, {});
+for(let i = 0; i < nodes.length; i++) for(let j = i + 1; j < nodes.length; j++){ const d = Math.hypot(nodes[i][0] - nodes[j][0], nodes[i][1] - nodes[j][1]); if(d < 360 && rnd() < .45) el('line', {x1:nodes[i][0], y1:nodes[i][1], x2:nodes[j][0], y2:nodes[j][1], stroke:GOLD, 'stroke-opacity':.28, 'stroke-width':1.5}, edges); }
+const nd = nodes.map(([x, y]) => el('circle', {cx:x, cy:y, r:9, fill:GOLD2, opacity:0}, nodeG));
+const cnt9 = H(top, 800, 120, S9.countText || ('0' + S9.count[1]), 50, Object.assign({opacity:0, filter:'url(#tsh)'}, MID));
+at(T('s9') - .2, gsap.to(s9, {opacity:1, duration:.3}));
+if(krUsed) at(T('s9') - .2, gsap.to(krB, {opacity:1, duration:.3}));
+at(T('s9') - .1, camTo(800, 470, 1, .6));
+nd.forEach((n, i) => at(T('n') - .6 + i * .05, gsap.fromTo(n, {opacity:0, attr:{r:2}}, {opacity:1, attr:{r:9}, duration:.3, ease:'back.out(3)'})));
+at(T('n') - .6, gsap.fromTo(edges, {opacity:0}, {opacity:1, duration:1.4}));
+at(T('n') - .7, gsap.to(cnt9, {opacity:1, duration:.3}));
+if(S9.count) at(T('n') - .6, counter(cnt9, 0, S9.count[0], 1.2, v => Math.round(v) + S9.count[1]));
+const cats = G(top, {});
+if(S9.cats.length){ const ws = S9.cats.map(s => pillW(s, 22)); const tot = ws.reduce((a, b) => a + b, 0) + (ws.length - 1) * 16; let x = 800 - tot / 2;
+  S9.cats.forEach((s, i) => { const g = pill(cats, x + ws[i] / 2, 165, ws[i], 52, s, 22); x += ws[i] + 16; gsap.set(g, {opacity:0}); at(T('n') + 1.4 + i * .5, gsap.fromTo(g, {opacity:0, y:-12}, {opacity:1, y:0, duration:.35})); });
+  at(T('lead') - .3, gsap.to(cats, {opacity:0, duration:.3})); }
+S9.cards.forEach(([c, title, lines, k, dx, dy, endK]) => {
+  const [x, y] = P[c]; const g = G(s9, {opacity:0}); const w = Math.max(title.length * 15 + 50, Math.max(...lines.map(l => l.length)) * 10.4 + 50, 300), h = 60 + lines.length * 32;
+  const cx = clampX(x + dx, w), cy = clampY(y + dy, h);
+  el('line', {x1:x, y1:y, x2:cx + (cx > x ? 0 : w), y2:cy + h / 2, stroke:GOLD, 'stroke-width':2}, g);
+  el('rect', {x:cx, y:cy, width:w, height:h, rx:14, fill:'rgba(11,31,58,.95)', stroke:GOLD, 'stroke-width':2.5}, g);
+  H(g, cx + 22, cy + 42, title, 27, {fill:GOLD});
+  lines.forEach((l, i) => txt(g, cx + 22, cy + 78 + i * 30, l, 20, {}));
+  const ring = el('circle', {cx:x, cy:y, r:14, fill:'none', stroke:GOLD2, 'stroke-width':4}, g);
+  at(T(k) + .1, gsap.fromTo(g, {opacity:0}, {opacity:1, duration:.4})); at(T(k) + .1, gsap.fromTo(ring, {attr:{r:10}}, {attr:{r:26}, duration:.8, yoyo:true, repeat:3}));
+  if(endK) at(T(endK) - .1, gsap.to(g, {opacity:0, duration:.4}));
+});
+at(T('s10') - .5, gsap.to([s8, cnt9, krB], {opacity:0, duration:.5}));
+
+/* ============ ESCENA 10 · Hoja de ruta, llamada y cierre */
+const S10 = CFG.s10, s10 = G(top, {opacity:0});
+txt(s10, 800, 150, S10.head, 26, Object.assign({fill:GOLD, 'font-weight':700, 'letter-spacing':6}, MID));
+const road = el('path', {d:'M200 440H1400', stroke:GOLD, 'stroke-width':5}, s10);
+const nM = S10.ms.length;
+S10.ms.forEach(([d, a, b2, k, o], i) => { const x = nM > 1 ? 200 + i * 1200 / (nM - 1) : 800; const g = G(s10, {opacity:0});
+  el('circle', {cx:x, cy:440, r:18, fill:NAVY, stroke:GOLD, 'stroke-width':5}, g);
+  H(g, x, 395, d, nM > 4 ? 40 : 30, Object.assign({fill:i === nM - 1 ? GOLD : '#fff'}, MID)); txt(g, x, 500, a, 22, Object.assign({fill:INK}, MID)); if(b2) txt(g, x, 528, b2, 22, Object.assign({fill:INK}, MID));
+  at(T(k) + o, gsap.fromTo(g, {opacity:0, y:16}, {opacity:1, y:0, duration:.45, ease:'back.out(2)'})); });
+at(T('s10') - .2, gsap.to(s10, {opacity:1, duration:.4}));
+at(T('s10') + .2, draw(road, Math.max(3, T('open') - T('s10') - .5), 'none'));
+const open = G(top, {opacity:0});
+H(open, 800, 650, S10.open, 50, Object.assign({fill:GOLD}, MID));
+if(S10.openSub) txt(open, 800, 695, S10.openSub, 28, Object.assign({fill:INK}, MID));
+const chipK = S10.chipsKey || 'cta';
+const cws = S10.chips.map(s => pillW(s, 24)); const ctot = cws.reduce((a, b) => a + b, 0) + (cws.length - 1) * 22; let cx0 = 800 - ctot / 2;
+const chips = S10.chips.map((s, i) => { const g = pill(open, cx0 + cws[i] / 2, 730, cws[i], 60, s, 24, {rect:{fill:'rgba(255,255,255,.06)', stroke:'#fff', 'stroke-opacity':.5}}); cx0 += cws[i] + 22; gsap.set(g, {opacity:0}); return g; });
+at(T('open') - .1, gsap.to(open, {opacity:1, duration:.4}));
+chips.forEach((g, i) => at(T(chipK) + .3 + i * .45, gsap.fromTo(g, {opacity:0, y:14}, {opacity:1, y:0, duration:.35})));
+if(S10.extra){ const e = txt(open, 800, 840, S10.extra[1], 28, Object.assign({fill:GOLD2, 'font-weight':700, opacity:0}, MID)); at(T(S10.extra[0]), gsap.to(e, {opacity:1, duration:.4})); }
+const endG = G(top, {opacity:0});
+at(T('lema') - 1.0, gsap.to([s10, open], {opacity:0, duration:.5}));
+at(T('lema') - .8, gsap.to(halo, {opacity:1, duration:.8}));
+if(CFG.emblem === 'gear') at(T('lema') - .8, gsap.fromTo(GL, {o:0, x:800, y:285, s:.6, size:520, cam:0}, {o:1, s:.78, duration:1, ease:'back.out(1.6)'}));
+else { const eE = emblem(G(top, {}), 800, 270, .72); gsap.set(eE, {opacity:0}); at(T('lema') - .8, gsap.fromTo(eE, {opacity:0, scale:.5, svgOrigin:'800 270'}, {opacity:1, scale:1, duration:1, ease:'back.out(1.6)'})); }
+const eLogo = logo(endG, 800, 560, 96);
+txt(endG, 800, 625, S10.tagEnd, 34, Object.assign({fill:'#fff'}, MID));
+txt(endG, 800, 700, CFG.meta, 24, Object.assign({fill:INK}, MID));
+pill(endG, 800, 730, pillW(S10.cta, 26), 62, S10.cta, 26, {rect:{fill:GOLD, stroke:GOLD}, text:{fill:NAVY, 'font-weight':800}});
+txt(endG, 800, 838, 'Ullswater Investments · ' + CFG.url, 22, Object.assign({fill:GOLD2, 'font-weight':600}, MID));
+txt(endG, 800, 880, CFG.disclaimer, 16, Object.assign({fill:'#8FA3C0'}, MID));
+at(T('lema') - .4, gsap.to(endG, {opacity:1, duration:.6}));
+at(T('lema') - .4, gsap.fromTo(eLogo, {scale:1.2, svgOrigin:'800 530'}, {scale:1, duration:.9, ease:'expo.out'}));
+at(T('lema') + 1.4, gsap.to(W, {op:1, red:0, chaos:0, amp:4, y:662, x1:0, duration:.01}));
+at(T('lema') + 1.4, gsap.to(W, {x1:1600, duration:1.6, ease:'power2.inOut'}));
+at(TOTAL - 2.2, gsap.to('#black', {opacity:1, duration:2}));
+tl.to({}, {duration:.01}, TOTAL);
+
+/* ---------------- reloj: la banda sonora manda */
+const audio = new Audio('media/banda.mp3'); audio.preload = 'auto';
+let clock = 0, last = performance.now(), useAudio = false;
+function now(){ return useAudio ? audio.currentTime : clock; }
+function frame(){
+  const n = performance.now(); if(playing && !useAudio) clock = Math.min(TOTAL, clock + (n - last) / 1000); last = n;
+  const t = now(); tl.seek(t, false); paintWave(t); paintEmb(t); paintGL(t); syncClips(t); paintUI(t);
+  if(playing && t >= TOTAL - .02){ pause(); if(window.parent !== window) try{ parent.postMessage({ullpres:'fin'}, '*'); }catch(e){} }
+}
+if(!RENDER) gsap.ticker.add(frame);
+function play(withSound){ if(withSound !== undefined) useAudio = withSound; if(now() >= TOTAL - .05) seek(0);
+  playing = true; document.body.classList.add('playing');
+  if(useAudio){ audio.currentTime = clock; audio.play().catch(() => { useAudio = false; }); } }
+function pause(){ playing = false; if(useAudio){ clock = audio.currentTime; audio.pause(); } }
+function seek(t){ clock = Math.max(0, Math.min(TOTAL, t)); if(useAudio) audio.currentTime = clock; }
+$('#startBtn').onclick = e => { e.stopPropagation(); useAudio = true; play(true); };
+$('#play').onclick = () => playing ? pause() : play(useAudio || true);
+$('#mute').onclick = () => { audio.muted = !audio.muted; $('#mi').setAttribute('d', audio.muted ? 'M4 9v6h4l5 4V5L8 9zM17 9l5 6M22 9l-5 6' : 'M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11'); };
+$('#fs').onclick = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {});
+const sc = $('#scenes');
+SCENES.forEach(([k, n, t], i) => { const bt = document.createElement('button'); bt.type = 'button'; bt.innerHTML = `<b>${i + 1}</b><span>${n}</span><i></i>`; bt.title = `${i + 1} · ${n}`; bt.onclick = () => { seek(t); if(!playing) play(true); }; sc.appendChild(bt); });
+const sb = [...sc.children];
+function paintUI(t){
+  sb.forEach((bt, i) => { const a = SCENES[i][2], z = i + 1 < SCENES.length ? SCENES[i + 1][2] : TOTAL; bt.classList.toggle('on', t >= a && t < z); bt.querySelector('i').style.width = (t >= z ? 100 : t <= a ? 0 : (t - a) / (z - a) * 100) + '%'; });
+  $('#time').textContent = fmt(t) + ' / ' + fmt(TOTAL);
+  $('#pi').setAttribute('d', playing ? 'M7 5h4v14H7zM13 5h4v14h-4z' : 'M8 5v14l11-7z');
+}
+document.addEventListener('keydown', e => {
+  if(e.key === ' '){ e.preventDefault(); playing ? pause() : play(true); }
+  else if(e.key === 'ArrowRight'){ const t = now(); const nx = SCENES.find(s => s[2] > t + .5); if(nx) seek(nx[2]); }
+  else if(e.key === 'ArrowLeft'){ const t = now(); const pv = [...SCENES].reverse().find(s => s[2] < t - 1.5); seek(pv ? pv[2] : 0); }
+  else if(e.key === 'f' || e.key === 'F') $('#fs').onclick();
+  else if(e.key === 'Escape' && window.parent !== window && !document.fullscreenElement) try{ parent.postMessage({ullpres:'cerrar'}, '*'); }catch(e){}
+});
+let idleT; document.addEventListener('mousemove', () => { document.body.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(() => { if(playing) document.body.classList.add('idle'); }, 2500); });
+$('#wrap').addEventListener('click', () => { if(document.body.classList.contains('playing')) playing ? pause() : play(); });
+if(q.get('auto') === '1' && !RENDER){ useAudio = true; play(true); }
+if(reduced && !RENDER){ seek(T('lema') + 2); }
+
+/* ---------------- render fotograma a fotograma (exportación a mp4) */
+window.PE = {TOTAL, tl, async renderAt(t){
+  playing = false; clock = t; tl.seek(t, false); paintWave(t); paintEmb(t);
+  const waits = [];
+  for(const c of CLIPS){ const on = c.ok && t >= c.start - .05 && t < c.end; if(on){ const want = c.from + Math.max(0, t - c.start); if(Math.abs(c.v.currentTime - want) > .001){ waits.push(new Promise(r => { const f = () => { c.v.removeEventListener('seeked', f); r(); }; c.v.addEventListener('seeked', f); c.v.currentTime = want; setTimeout(r, 1500); })); } } }
+  await Promise.all(waits); paintGL(t); return true; }, ready:() => CFG.emblem !== 'gear' || !!gear};
+</script>
+</body>
+</html>

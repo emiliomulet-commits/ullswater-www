@@ -140,6 +140,21 @@ def to_es(html, path, es_paths, t):
             m = re.match(r"(https://(?:news|events)\.ullswaterinvestments\.com)(/[^?#]*)?(.*)$", h)
             if m and not (m.group(2) or "/").startswith(("/es/", "/calls/", "/assets/")) and not re.search(r"\.(ics|json|txt)$", m.group(2) or ""):
                 tag["href"] = m.group(1) + "/es" + (m.group(2) or "/") + m.group(3)
+    # Language-specific media: data-es-<attr>="…" replaces <attr> in the Spanish twin (e.g. the Spanish animated
+    # presentation instead of the English YouTube video); data-es-text replaces the element's text.
+    for tag in body.find_all(True):
+        for k in sorted([k for k in tag.attrs if k.startswith("data-es-")], key=lambda k: k != "data-es-drop"):
+            v = tag[k]
+            del tag[k]
+            name = k[len("data-es-"):]
+            if name == "text":
+                tag.string = v
+            elif name == "drop":
+                for x in v.split():
+                    if tag.has_attr(x):
+                        del tag[x]
+            else:
+                tag[name] = v
     for a in body.select("a[data-lang]"):
         if a["data-lang"] == "es":
             a["aria-current"] = "true"

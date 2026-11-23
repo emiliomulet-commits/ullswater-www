@@ -225,7 +225,10 @@ section.pj{padding:84px 0 88px;border-top:4px solid var(--gold)}
 .pj-feat h3{color:#fff;font-size:34px;line-height:1.15;margin:0;font-weight:800}.pj-feat h3 span{display:block;font-size:21px;font-weight:400;color:#c8d1e8;margin-top:6px;line-height:1.35}
 .pj-feat p{margin:0;color:#dfe5f3;font-size:17px;max-width:640px}
 .pj-feat .what{border-top:1px solid rgba(255,255,255,.18);padding-top:16px}.pj-feat .what b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.pj-feat .side{flex:0 1 340px;background:var(--navy);padding:44px 40px;display:flex;flex-direction:column;justify-content:center;gap:20px;margin:0;list-style:none}
+.pj-feat .side{flex:0 1 420px;background:var(--navy);padding:44px 40px;display:flex;flex-direction:column;justify-content:center;gap:20px;margin:0;list-style:none}
+.pj-feat .side ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+.pv.pv-feat{flex:none;width:100%;box-shadow:0 10px 30px rgba(0,0,0,.35)}.pv.pv-feat .play{left:50%;top:50%}
+.pj .grid>*{min-width:0}.pv.pv-card{flex:none;width:auto;align-self:stretch;margin:-24px -24px 4px;border-radius:7px 7px 0 0}.pv.pv-card .play{left:50%;top:50%;width:48px;height:48px;margin:-24px 0 0 -24px}
 .pj-feat .side strong{display:block;font-size:30px;line-height:1.15;color:#fff;font-weight:800}.pj-feat .side li{color:#c8d1e8;font-size:14px}
 .pj-card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--navy);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:border-color .15s,box-shadow .15s}
 .pj-card:hover{border-color:var(--gold);box-shadow:0 10px 28px rgba(35,53,103,.1)}
@@ -278,7 +281,7 @@ JS = """(function(){var b=document.querySelector('.burger'),n=document.querySele
 document.querySelectorAll('.dd>button').forEach(function(x){x.addEventListener('click',function(){var d=x.parentNode,o=d.classList.toggle('open');x.setAttribute('aria-expanded',o)})});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')});if(document.activeElement)document.activeElement.blur()}});
 document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){var g=b.dataset.g,n=0;document.querySelectorAll('.chips button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.pj-row').forEach(function(r){var on=g==='all'||r.dataset.g===g;r.hidden=!on;if(on)n++});var c=document.getElementById('pj-count');var es=document.documentElement.lang==='es';if(c)c.textContent=n+(es?(n===1?' proyecto':' proyectos'):(n===1?' project':' projects'))})});
-document.querySelectorAll('.pv').forEach(function(v){v.addEventListener('click',function(){if(v.dataset.on)return;v.dataset.on=1;var t=v.getAttribute('aria-label')||'Video',f;if(v.dataset.yt){f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.yt+'?autoplay=1&rel=0&modestbranding=1';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin'}else{f=document.createElement('video');f.src=v.dataset.mp4;f.controls=true;f.autoplay=true;f.playsInline=true}f.title=t;v.innerHTML='';v.appendChild(f);v.style.cursor='default'})});
+document.querySelectorAll('.pv').forEach(function(v){v.addEventListener('click',function(){if(v.dataset.on)return;v.dataset.on=1;var t=v.getAttribute('aria-label')||'Video',f;if(v.dataset.src){f=document.createElement('iframe');f.src=v.dataset.src;f.allow='autoplay; fullscreen';f.allowFullscreen=true}else if(v.dataset.yt){f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.yt+'?autoplay=1&rel=0&modestbranding=1';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin'}else{f=document.createElement('video');f.src=v.dataset.mp4;f.controls=true;f.autoplay=true;f.playsInline=true}f.title=t;v.innerHTML='';v.appendChild(f);v.style.cursor='default'})});
 document.addEventListener('click',function(e){document.querySelectorAll('.dd.open').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})});})();"""
 
 LINKEDIN = "https://www.linkedin.com/company/ullswater-investments"
@@ -355,6 +358,8 @@ def project_link(p, label="Project site ↗"):
 def status_tag(p, long=False):
     if p["status"] == "funded":
         return '<span class="st funded">Funded · in execution</span>'
+    if p["status"] == "ongoing":
+        return '<span class="st open">Ongoing · open to new partners</span>'
     return f'<span class="st open">{"In preparation · open to new partners" if long else "Open to new partners"}</span>'
 
 
@@ -369,7 +374,7 @@ def projects_band():
         if p is f:
             continue
         meta = " · ".join(f"{v} {k}" for v, k in p["facts"][:2])
-        cards += (f'<article class="pj-card"><div class="top"><span class="prog">{escape(p["programme"])}</span>{status_tag(p)}</div>'
+        cards += (f'<article class="pj-card">{video_button(p, "pv pv-card")}<div class="top"><span class="prog">{escape(p["programme"])}</span>{status_tag(p)}</div>'
                   f'<h3>{escape(p["acronym"])}</h3><div class="t">{escape(p["title"])}</div><p>{escape(p["pitch"])}</p>'
                   f'<div class="pj-role"><b>Our role</b><span>{escape(p["role"])}</span></div>'
                   f'<div class="ft"><span>{escape(meta)}</span>{project_link(p)}</div></article>')
@@ -383,7 +388,7 @@ def projects_band():
 <h3>{escape(f["acronym"])}<span>{escape(f["title"])}</span></h3><p>{escape(f["pitch"])}</p>
 <div class="what"><b>What Ullswater does</b>{escape(f["contribution"])}</div>
 <div class="actions" style="margin-top:6px">{feat_btn}<a class="btn ghost" href="/projects/">All our projects</a></div></div>
-<ul class="side">{side}</ul></article>
+<div class="side">{video_button(f, "pv pv-feat")}<ul>{side}</ul></div></article>
 <div class="grid g3">{cards}</div>
 <p class="pj-note">Programmes: ITEA 4 (Eureka Cluster on software innovation) and Eureka bilateral calls. {escape(C.PROJECTS_OPEN_NOTE)}</p>
 </div></section>"""
@@ -406,18 +411,52 @@ def video_iso(mmss):
     return f"PT{int(m)}M{int(s)}S"
 
 
-def project_video(p):
-    """Click-to-play explainer video: only our own thumbnail loads; YouTube (youtube-nocookie) loads on click."""
+def es_presentation(slug):
+    """Spanish animated presentation of a project, if its files are in content/presentaciones/<slug>/."""
+    if slug in C.PROJECT_VIDEOS_ES and (ROOT / "content" / "presentaciones" / slug / "index.html").exists():
+        return f"/presentaciones/{slug}/?embed=1&auto=1", C.PROJECT_VIDEOS_ES[slug]
+    v = C.PROJECT_VIDEOS.get(slug) or {}
+    return (v["es"], v["len_es"]) if v.get("es") else (None, None)
+
+
+def video_button(p, cls="pv"):
+    """Click-to-play thumbnail: only our own image loads; YouTube (youtube-nocookie), the mp4 or the animated
+    presentation (iframe) loads on click. The Spanish twin swaps in the Spanish presentation (data-es-*, see i18n.py)."""
     v = C.PROJECT_VIDEOS.get(p["slug"])
     if not v:
         return ""
-    src = f'data-yt="{v["yt"]}"' if v.get("yt") else f'data-mp4="{escape(v["mp4"])}"'
+    if v.get("yt"):
+        src = f'data-yt="{v["yt"]}"'
+    elif v.get("src"):
+        src = f'data-src="{escape(v["src"])}"'
+    else:
+        src = f'data-mp4="{escape(v["mp4"])}"'
+    es, es_len = es_presentation(p["slug"])
+    if es and es.split("?")[0].endswith(".mp4"):
+        es_attr = f' data-es-drop="data-yt data-src" data-es-data-mp4="{escape(es)}"'
+    else:
+        es_attr = (f' data-es-drop="data-yt data-mp4" data-es-data-src="{escape(es)}"' if es else "")
+    thumb = f'/assets/img/projects/{p["slug"]}.jpg'
+    es_thumb = f'/assets/img/projects/{p["slug"]}-es.jpg'
+    es_img = f' data-es-src="{es_thumb}"' if es and (ROOT / "content" / "img" / "projects" / f'{p["slug"]}-es.jpg').exists() else ""
+    es_dur = f' data-es-text="{es_len}"' if es else ""
+    return (f'<button type="button" class="{cls}" {src}{es_attr} aria-label="Play the {escape(p["acronym"])} project video">'
+            f'<img src="{thumb}"{es_img} alt="{escape(p["acronym"])} project video" width="960" height="540" loading="lazy">'
+            f'<span class="play">{PLAY_SVG}</span><span class="dur"{es_dur}>{v["len"]}</span></button>')
+
+
+def project_video(p):
+    v = C.PROJECT_VIDEOS.get(p["slug"])
+    if not v:
+        return ""
     link = (f'<a href="https://www.youtube.com/watch?v={v["yt"]}" target="_blank" rel="noopener">Watch on YouTube ↗</a>' if v.get("yt") else "")
-    return (f'<div class="v"><button type="button" class="pv" {src} aria-label="Play the {escape(p["acronym"])} project video">'
-            f'<img src="/assets/img/projects/{p["slug"]}.jpg" alt="{escape(p["acronym"])} project video" width="960" height="540" loading="lazy">'
-            f'<span class="play">{PLAY_SVG}</span><span class="dur">{v["len"]}</span></button>'
-            f'<div class="vt"><b>Project video</b><p>The challenge, the approach, the pilots and the consortium of {escape(p["acronym"])}, explained in under {int(v["len"].split(":")[0]) + 1} minutes.</p>'
-            f'<p>English · {v["len"]} · narration produced with an AI-generated voice.</p>{link}</div></div>')
+    mins = int(v["len"].split(":")[0]) + 1
+    es, es_len = es_presentation(p["slug"])
+    es_line = (f' data-es-text="Español · {es_len} · ' + ("vídeo con locución generada con IA." if es.split("?")[0].endswith(".mp4") else "presentación animada con locución generada con IA.") + '"') if es else ""
+    return (f'<div class="v">{video_button(p)}'
+            f'<div class="vt"><b>Project video</b><p>' + (f'The challenge, the approach, the pilots and the consortium of {escape(p["acronym"])}, explained in under {mins} minutes.' if mins > 1
+                                                    else f'{escape(p["acronym"])} in under a minute: an animated presentation with narration.') + '</p>'
+            f'<p{es_line}>English · {v["len"]} · narration produced with an AI-generated voice.</p>{link}</div></div>')
 
 
 def projects_videos_ld():
@@ -429,7 +468,9 @@ def projects_videos_ld():
         d = {"@context": "https://schema.org", "@type": "VideoObject", "name": v["name"], "description": p["pitch"],
              "thumbnailUrl": f"{BASE}/assets/img/projects/{p['slug']}.jpg", "uploadDate": v["date"], "duration": video_iso(v["len"]),
              "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}, "about": {"@type": "ResearchProject", "name": p["acronym"], "url": project_url(p)}}
-        if v.get("yt"):
+        if v.get("src"):
+            d["embedUrl"] = v["src"]
+        elif v.get("yt"):
             d["embedUrl"] = f"https://www.youtube.com/embed/{v['yt']}"
             d["url"] = f"https://www.youtube.com/watch?v={v['yt']}"
         else:
@@ -842,6 +883,8 @@ def main():
     shutil.copy(ROOT / "content" / "og.png", SITE / "assets" / "og.png")
     shutil.copytree(ROOT / "content" / "img", SITE / "assets" / "img")
     shutil.copytree(ROOT / "content" / "fonts", SITE / "assets" / "fonts")
+    if (ROOT / "content" / "presentaciones").exists():  # Spanish animated presentations of the projects (/presentaciones/<slug>/)
+        shutil.copytree(ROOT / "content" / "presentaciones", SITE / "presentaciones")
     (SITE / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#233567"/><text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" text-anchor="middle" fill="#c9a646">U</text></svg>', encoding="utf-8")
     try:
         ay_cache = ayudas.refresh()
