@@ -1,0 +1,55 @@
+name: Ayudas IA (fichas ampliadas)
+# Generates the AI fichas (FAQ, suggested questions, official text for the chat) of the open Spanish grants that do not have one yet,
+# closing soonest first, and commits them to main. The www build publishes them on its next run.
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/ayudas-ia.yml"]
+  workflow_dispatch:
+    inputs:
+      max:
+        description: "Fichas to generate in this run"
+        default: "40"
+  schedule:
+    - cron: "11 5 * * *"   # daily, before the www build (06:43 UTC): new grants of the day
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: ayudas-ia
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install beautifulsoup4 pypdf json-repair
+      - name: Generate the missing fichas (batches of 20, each committed)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+          AYUDAS_IA_ALL: "1"
+          TOTAL: ${{ github.event.inputs.max || (github.event_name == 'push' && '200') || '25' }}
+        run: |
+          git config user.name "ullswater-bot"
+          git config user.email "actions@users.noreply.github.com"
+          left=$TOTAL
+          while [ "$left" -gt 0 ]; do
+            n=$(( left < 20 ? left : 20 ))
+            AYUDAS_IA_MAX=$n python scripts/ayudas_ia.py | tee /tmp/run.log
+            git add content/ayudas_ia
+            if git diff --cached --quiet; then break; fi
+            git commit -q -m "AI fichas of Spanish grants [skip ci]"
+            for i in 1 2 3; do git pull --rebase -q origin main && git push -q && break; sleep 10; done
+            grep -q "^ayudas_ia: 0 fichas generated" /tmp/run.log && break
+            left=$(( left - n ))
+          done
+      - name: Publish them (www build)
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run build.yml --ref main || echo "::warning::could not start the www build; it will publish them on its next scheduled run"
