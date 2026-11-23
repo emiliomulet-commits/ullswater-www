@@ -197,9 +197,9 @@ TOOL = {
                     "t": {"type": "string", "description": "Una idea por punto, máximo 2 frases."},
                     "ref": {"type": "string", "description": "Documento y artículo/base/apartado."}}, "required": ["t", "ref"]}}},
                 "required": ["tema", "puntos"]}},
-            "faq": {"type": "array", "minItems": 4, "maxItems": 6, "items": {"type": "object", "properties": {
+            "faq": {"type": "array", "description": "4 a 6 preguntas.", "items": {"type": "object", "properties": {
                 "q": {"type": "string"}, "a": {"type": "string"}, "ref": {"type": "string"}}, "required": ["q", "a", "ref"]}},
-            "sugeridas": {"type": "array", "minItems": 4, "maxItems": 6, "items": {"type": "string"}},
+            "sugeridas": {"type": "array", "description": "4 a 6 preguntas.", "items": {"type": "string"}},
             "avisos": {"type": "array", "items": {"type": "string"}, "description": "Limitaciones: documentos que faltan, texto ilegible, remisiones a otros textos no recibidos."},
         },
         "required": ["en_breve", "ficha", "faq", "sugeridas"],
@@ -231,6 +231,11 @@ def ask_claude(x, docs, key, model):
                 if b.get("type") == "tool_use":
                     return b["input"], res.get("usage", {})
             raise ValueError("no tool_use in answer")
+        except urllib.error.HTTPError as e:
+            print(f"ayudas_ia: Claude failed for {x['id']} (try {i + 1}): HTTP {e.code}", e.read()[:600].decode("utf-8", "replace"))
+            if e.code in (400, 401, 403, 404):
+                break
+            time.sleep(15 * (i + 1))
         except Exception as e:  # noqa: BLE001
             print(f"ayudas_ia: Claude failed for {x['id']} (try {i + 1}):", e)
             time.sleep(10 * (i + 1))
