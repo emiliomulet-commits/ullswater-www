@@ -4852,6 +4852,16 @@
    "category_es": "España"
   },
   {
+   "title": "Spain selects bodies for five EU4Health joint actions: 5-day window",
+   "url": "https://news.ullswaterinvestments.com/2026/11/spain-eu4health-2026-joint-actions-selection/",
+   "summary": "The Spanish Ministry of Health opens a competitive procedure to nominate the Spanish entities that will join five EU4Health joint actions under the 2026 Work Plan.",
+   "category": "Health & Health Data",
+   "date": "2026-11-21",
+   "title_es": "Sanidad selecciona entidades para cinco acciones conjuntas EU4Health",
+   "summary_es": "El Ministerio de Sanidad abre un procedimiento de concurrencia competitiva para nombrar a las entidades españolas que participarán en cinco acciones conjuntas EU4Health del Plan de Trabajo 2026.",
+   "category_es": "Salud y datos sanitarios"
+  },
+  {
    "title": "STEP report: almost €24 billion mobilised and 614 Seals awarded",
    "url": "https://news.ullswaterinvestments.com/2026/11/step-report-24-billion-614-projects/",
    "summary": "The second annual STEP report shows €23.9 billion of EU funds mobilised by end-2025, €5.3 billion in direct calls last year and defence added as a fourth sector.",
@@ -4870,16 +4880,6 @@
    "title_es": "El BEI aprueba 14.000 M€ y destina un tercio a la autonomía energética",
    "summary_es": "Los Consejos del BEI y del FEI respaldan 14.000 millones de euros de nueva financiación: 4.200 millones para infraestructura de energía limpia y 3.800 millones para competitividad empresarial.",
    "category_es": "Clima y energía"
-  },
-  {
-   "title": "EDF project D-STORM opens €90,000 cascade call for SMEs",
-   "url": "https://news.ullswaterinvestments.com/2026/11/edf-d-storm-cascade-funding-call-smes/",
-   "summary": "The European Defence Fund project D-STORM offers up to €10,000 to SMEs and start-ups with operational know-how on loitering munitions and combat drones, until 11 January 2027.",
-   "category": "EIC, Defence & Equity",
-   "date": "2026-11-18",
-   "title_es": "D-STORM (EDF) abre una convocatoria en cascada de 90.000 € para pymes",
-   "summary_es": "El proyecto D-STORM del Fondo Europeo de Defensa ofrece hasta 10.000 euros a pymes y startups con conocimiento operativo sobre municiones merodeadoras y drones de combate, hasta el 11 de enero de 2027.",
-   "category_es": "EIC, defensa y capital"
   }
  ],
  "events": [
@@ -4918,7 +4918,7 @@
    "organiser": "European Innovation Council, Hungary's National Research, Development and Innovation Office (NKFIH) and DARE",
    "summary": "An in-person day in Budapest explaining how the European Innovation Council funds deep tech researchers, startups and scaleups, from first application to investment.",
    "registration_url": "https://ec.europa.eu/eusurvey/runner/EICBudapest2026",
-   "status": "scheduled",
+   "status": "applications-closed",
    "url": "https://events.ullswaterinvestments.com/events/meet-the-eic-budapest/",
    "url_es": "https://events.ullswaterinvestments.com/es/events/meet-the-eic-budapest/",
    "theme": "eic",
