@@ -848,6 +848,11 @@ def main():
     except Exception as e:  # noqa: BLE001
         print("ayudas: refresh failed, using cache:", e)
         ay_cache = ayudas.load_cache()
+    try:  # AI fichas (FAQ, suggested questions, official text for the chat) for the grants listed in content/ayudas_ia/pilot.txt
+        import ayudas_ia
+        ayudas_ia.update(ay_cache)
+    except Exception as e:  # noqa: BLE001
+        print("ayudas_ia: failed, using cached fichas:", e)
     pages = {"/": home(live, themes, ayudas.summary(ay_cache)), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
              "/strategic-positioning/": strategic_positioning(themes), "/about/": about(themes), "/courses/": courses(themes),
              "/privacy/": privacy(themes), "/legal/": legal(themes), "/projects/": projects_page(themes)}

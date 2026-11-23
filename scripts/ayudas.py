@@ -419,6 +419,16 @@ CSS = """.ay-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 
 .ay-side{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:10px;position:sticky;top:86px}
 .ay-side .big{font-size:28px;font-weight:800;color:var(--navy);line-height:1.1}.ay-closed{background:#fdecea;color:#8a1c13;border-radius:8px;padding:10px 12px;font-weight:600}
 .ay-regs{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.ay-regs a{font-size:14px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;text-decoration:none;color:var(--navy)}
+.aia{border:1px solid var(--line);border-radius:14px;padding:20px;margin:6px 0 22px;background:#fff}
+.aia-h{display:flex;gap:12px;align-items:center}.aia-i{width:40px;height:40px;border-radius:50%;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:20px;flex:none}
+.aia-h h2{margin:0!important;font-size:20px!important}.aia-h p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.aia-q{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 12px}.aia-q button{font:inherit;font-size:14.5px;line-height:1.3;text-align:left;background:#f4f6fb;color:var(--navy);border:1px solid #d7dbe6;border-radius:999px;padding:8px 14px;min-height:40px;cursor:pointer}
+.aia-q button:hover{border-color:var(--navy);background:#eef1fa}.aia-f{display:flex;gap:8px}.aia-f input{flex:1;min-width:0;font:inherit;font-size:16px;min-height:44px;border:1px solid var(--line);border-radius:9px;padding:8px 12px}
+.aia-f button{font:inherit;font-weight:700;background:var(--gold);color:var(--navy);border:0;border-radius:9px;padding:0 18px;min-height:44px;cursor:pointer}
+.aia-n{font-size:12.5px;color:var(--muted);margin:10px 0 0}.aia-br{background:var(--bg);border-left:4px solid var(--gold);padding:12px 16px;margin:0 0 6px;font-size:16px}
+.ay-doc details{border-bottom:1px solid var(--line);padding:4px 0}.ay-doc summary{cursor:pointer;font-weight:700;color:var(--navy);padding:10px 0;font-size:16.5px;list-style-position:outside}
+.ay-doc summary::marker{color:var(--gold)}.ay-doc details ul{margin:0 0 12px;padding-left:20px}.ay-doc details li{margin:6px 0}.ay-ref{display:block;font-size:12.5px;color:var(--muted)}
+.ay-faq p{margin:0 0 8px}.ay-faq .more{font:inherit;font-size:14px;background:none;border:0;color:var(--navy);text-decoration:underline;cursor:pointer;padding:0;margin:0 0 12px}
 @media(max-width:900px){.ay-grid,.ay-doc{grid-template-columns:minmax(0,1fr)}.ay-side{position:static}.ay-hero h1{font-size:34px}}
 @media(max-width:600px){.ay-t .lg{display:none}.ay-t .ab{display:block}.ay-t span{font-size:17px}.ay-map{gap:4px;grid-auto-rows:56px}.ay-fx{grid-template-columns:repeat(2,minmax(0,1fr))}.ay-kv th{width:44%}}
 @media(prefers-reduced-motion:reduce){.ay-t{transition:none}.ay-t:hover{transform:none}}"""
@@ -466,6 +476,63 @@ def grant_ld(v, base):
     if v["fin"]:
         ld["endDate"] = v["fin"]
     return ld
+
+
+GLUE = {"parael": "para el", "parala": "para la", "paralos": "para los", "paralas": "para las", "debenregir": "deben regir",
+        "deberánregir": "deberán regir", "dela": "de la", "delas": "de las", "delos": "de los", "enel": "en el", "enla": "en la",
+        "enlos": "en los", "enlas": "en las", "conel": "con el", "conla": "con la", "porel": "por el", "porla": "por la",
+        "quese": "que se", "yla": "y la", "yel": "y el", "sobrela": "sobre la"}
+
+
+def unglue(s):
+    """Words the BDNS sometimes delivers stuck together («debenregir», «parael»)."""
+    return re.sub(r"\b(" + "|".join(GLUE) + r")\b", lambda m: GLUE[m.group(1)], s or "")
+
+
+def ia_parts(v, ia):
+    """AI block (suggested questions), detail sections, FAQ and chat context of one grant page, from content/ayudas_ia/<id>.json."""
+    sug = [q for q in ia.get("sugeridas") or [] if q.strip()][:6]
+    chips = "".join(f'<button type="button" data-uaa-q="{escape(q)}">{escape(q)}</button>' for q in sug)
+    top = (f'<section class="aia" aria-labelledby="aia-t"><div class="aia-h"><div class="aia-i" aria-hidden="true">✦</div><div>'
+           f'<h2 id="aia-t">Pregunta a la IA sobre esta ayuda</h2><p>Responde con la convocatoria y las bases oficiales, citando el artículo.</p></div></div>'
+           f'<div class="aia-q">{chips}</div>'
+           f'<form class="aia-f" id="aia-f"><label for="aia-in" style="position:absolute;left:-9999px">Tu pregunta sobre esta ayuda</label>'
+           f'<input id="aia-in" maxlength="600" autocomplete="off" placeholder="Escribe tu pregunta sobre esta ayuda"><button type="submit">Preguntar</button></form>'
+           f'<p class="aia-n">Asistente de IA. Información general, no es asesoramiento: comprueba siempre la convocatoria oficial. '
+           f'¿Prefieres hablar con una persona? Usa «¿Te ayudamos a prepararla?».</p></section>')
+    det = ""
+    if ia.get("en_breve"):
+        det += f'<h2>La ayuda en breve</h2><p class="aia-br">{escape(ia["en_breve"])}</p>'
+    temas = [t for t in ia.get("ficha") or [] if t.get("puntos")]
+    if temas:
+        det += "<h2>La ayuda en detalle</h2>" + "".join(
+            f'<details{" open" if i < 2 else ""}><summary>{escape(t["tema"])}</summary><ul>'
+            + "".join(f'<li>{escape(p["t"])}<span class="ay-ref">{escape(p.get("ref") or "")}</span></li>' for p in t["puntos"])
+            + "</ul></details>" for i, t in enumerate(temas))
+    faq = [f for f in ia.get("faq") or [] if f.get("q") and f.get("a")]
+    if faq:
+        det += '<h2>Preguntas frecuentes</h2><div class="ay-faq">' + "".join(
+            f'<details{" open" if i == 0 else ""}><summary>{escape(f["q"])}</summary><p>{escape(f["a"])}<span class="ay-ref">{escape(f.get("ref") or "")}</span></p>'
+            f'<button type="button" class="more" data-uaa-q="{escape(f["q"])} Dame más detalle.">Ampliar con el asistente →</button></details>' for i, f in enumerate(faq)) + "</div>"
+    if det:
+        fu = " · ".join(escape(f["nombre"]) for f in ia.get("fuentes") or [])
+        det += (f'<p class="ay-src">Resumen preparado con IA a partir de los documentos oficiales publicados ({fu}) el {fdate(ia.get("generado"))}. '
+                f'Puede contener errores u omisiones: la referencia es siempre la convocatoria oficial.</p>')
+    ld = {"@type": "FAQPage", "@id": "#faq", "mainEntity": [{"@type": "Question", "name": f["q"], "acceptedAnswer": {"@type": "Answer", "text": f["a"]}} for f in faq]} if faq else None
+    ctx = {"tipo": "ayuda", "id": v["id"], "titulo": v["titulo"], "sugeridas": sug}
+    js = ('<script type="application/json" id="uaa-ctx">' + json.dumps(ctx, ensure_ascii=False).replace("</", "<\\/") + "</script>"
+          "<script>(function(){function go(q){q=(q||'').trim();if(!q)return;if(window.UAA&&window.UAA.ask)window.UAA.ask(q);else(window.UAA_Q=window.UAA_Q||[]).push(q)}"
+          "document.querySelectorAll('[data-uaa-q]').forEach(function(b){b.addEventListener('click',function(){go(b.getAttribute('data-uaa-q'))})});"
+          "var f=document.getElementById('aia-f'),i=document.getElementById('aia-in');if(f)f.addEventListener('submit',function(e){e.preventDefault();if(!i.value.trim()){i.focus();return}go(i.value);i.value=''})})()</script>")
+    return top, det, ld, js
+
+
+def ia_public(v, ia, base):
+    """/es/ayudas/convocatoria/<id>/ia.json: what the chat assistant reads about this grant."""
+    return {"id": v["id"], "titulo": v["titulo"], "titulo_oficial": v["original"], "url": base + v["url"], "bdns": v["bdns"], "organismo": v["organismo"],
+            "region": v["region"], "plazo": {"inicio": v["inicio"], "fin": v["fin"], "estado": v["estado"]}, "presupuesto": v["presupuesto"],
+            "en_breve": ia.get("en_breve"), "ficha": ia.get("ficha"), "faq": ia.get("faq"), "avisos": ia.get("avisos"),
+            "fuentes": ia.get("fuentes"), "generado": ia.get("generado"), "secciones": ia.get("secciones")}
 
 
 def summary(cache=None, today=None):
@@ -585,7 +652,11 @@ def build(site_dir, base, chrome, today=None, cache=None, staging=False, book=""
             body, [bc([("Inicio", "/es/"), ("Ayudas en España", "/es/ayudas/"), (h1, p)]), item_list_ld(own + state, base, h1)])
 
     # ---- one page per call (open and recently closed)
+    import ayudas_ia
+    n_ia = 0
     for v in group(allv):
+        ia = ayudas_ia.load(v["id"]) or {}
+        ia_top, ia_det, ia_ld, ia_js = ia_parts(v, ia) if ia.get("faq") else ("", "", None, "")
         closed = v["estado"] == "cerrada"
         rlink = "/es/ayudas/estatales/" if v["region"] == STATE else f"/es/ayudas/{slug(v['region'])}/"
         if v["fin"]:
@@ -617,22 +688,26 @@ def build(site_dir, base, chrome, today=None, cache=None, staging=False, book=""
                 f'<h1 style="font-size:34px">{escape(v["titulo"])}</h1><p class="lead">{escape(v["resumen"] or v["organismo"] + " · " + ("Toda España" if v["region"] == STATE else v["region"]))}</p></div></section>'
                 f'<div class="wrap body"><div class="ay-doc"><div>'
                 + ('<p class="ay-closed">El plazo de esta convocatoria ha terminado. Mira las <a href="' + rlink + '">ayudas abiertas</a> o pídenos aviso de la próxima.</p>' if closed else "")
-                + f'<div class="ay-tags" style="margin-bottom:12px">{tags}</div><table class="ay-kv"><tbody>{"".join(f"<tr><th scope=row>{k}</th><td>{val}</td></tr>" for k, val in rows)}</tbody></table>'
-                f'<h2>Título oficial</h2><p>{escape(v["original"])}</p>'
-                + (f'<h2>Bases reguladoras</h2><p>{escape(x["basesTxt"])}</p>' if x.get("basesTxt") else "")
-                + f'<div class="ay-links" style="margin-top:18px">{"".join(links)}</div>{src_note}</div>'
+                + f'<div class="ay-tags" style="margin-bottom:12px">{tags}</div>{ia_top}<table class="ay-kv"><tbody>{"".join(f"<tr><th scope=row>{k}</th><td>{val}</td></tr>" for k, val in rows)}</tbody></table>'
+                + ia_det + f'<h2>Título oficial</h2><p>{escape(unglue(v["original"]))}</p>'
+                + (f'<h2>Bases reguladoras</h2><p>{escape(ia.get("titulo_bases") or unglue(x["basesTxt"]))}</p>' if x.get("basesTxt") else "")
+                + f'<div class="ay-links" style="margin-top:18px">{"".join(links)}</div>{src_note}{ia_js}</div>'
                 f'<aside class="ay-side"><div class="ay-m">{"Plazo" if not closed else "Estado"}</div><div class="big">{escape(fdate(v["fin"]) if v["fin"] else "Abierta")}</div>'
                 f'<div class="ay-m">{escape(plazo)}</div><div class="ay-m">Presupuesto</div><div class="big" style="font-size:22px">{eur(v["presupuesto"])}</div>'
                 f'<a class="ay-b p" href="{book}" target="_blank" rel="noopener">¿Te ayudamos a prepararla?</a><a class="ay-b" href="mailto:{email}?subject=BDNS%20{v["id"]}">{email}</a>'
                 f'<a class="ay-b" href="{rlink}">Más ayudas en {escape(TILE_LABEL.get(v["region"], v["region"]) if v["region"] != STATE else "toda España")}</a></aside></div></div>')
         desc = (v["resumen"] or v["original"])[:150] + f" Plazo: {plazo.lower()}. Presupuesto: {eur(v['presupuesto'])}."
         doc(v["url"], f"{v['titulo'][:80]} | Ayudas en España · Ullswater", desc, body,
-            [bc([("Inicio", "/es/"), ("Ayudas en España", "/es/ayudas/"), (v["region"] if v["region"] != STATE else "Estatales", rlink), (v["titulo"][:80], v["url"])]), grant_ld(v, base)])
+            [bc([("Inicio", "/es/"), ("Ayudas en España", "/es/ayudas/"), (v["region"] if v["region"] != STATE else "Estatales", rlink), (v["titulo"][:80], v["url"])]), grant_ld(v, base)]
+            + ([{**ia_ld, "@id": base + v["url"] + "#faq"}] if ia_ld else []))
+        if ia.get("faq"):
+            (site_dir / v["url"].strip("/") / "ia.json").write_text(json.dumps(ia_public(v, ia, base), ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+            n_ia += 1
 
     (site_dir / "es" / "ayudas" / "ayudas.json").write_text(json.dumps(
         {"updated": updated, "source": "Base de Datos Nacional de Subvenciones (SNPSAP, IGAE - Ministerio de Hacienda)", "license_note": "Datos públicos de la BDNS; consulte el aviso legal de infosubvenciones.es",
-         "count": len(open_v), "calls": [{**v, "url": base + v["url"]} for v in open_v]}, ensure_ascii=False, indent=0), encoding="utf-8")
-    print(f"ayudas: {len(paths)} pages ({len(open_v)} open calls)")
+         "count": len(open_v), "calls": [{**v, "url": base + v["url"], **({"ia": base + v["url"] + "ia.json"} if ayudas_ia.load(v["id"]) else {})} for v in open_v]}, ensure_ascii=False, indent=0), encoding="utf-8")
+    print(f"ayudas: {len(paths)} pages ({len(open_v)} open calls, {n_ia} with AI ficha)")
     return paths
 
 
