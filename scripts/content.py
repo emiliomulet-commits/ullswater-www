@@ -267,7 +267,7 @@ OFFICES = [
 
 # ---------- European projects (home section + /projects/ + /data/projects.json) ----------
 # One entry per project. Facts come from each project's landing page; keep them in step.
-# group: lead | partner | advisor   status: proposal | funded   live: True once the subdomain is deployed
+# group: lead | partner | advisor   status: proposal | funded | ongoing   live: True once the subdomain is deployed
 PROJECTS_INTRO = ("We do not only advise on European funding. We sit inside the consortia: leading projects, coordinating national teams "
                   "and building the technology with industry, hospitals and research centres. These projects are still being prepared "
                   "and their consortia remain open: we can work hand in hand with you to bring new partners into any of them. "
@@ -283,6 +283,13 @@ PROJECTS = [
      "pitch": "Edge AI that warns weeks before a machine fails, explains every alert in plain language and keeps all industrial data inside the plant.",
      "contribution": "Proxy project leader of the whole consortium, with ACD (Türkiye). We lead the elevator-manufacturing pilot in Spain (UC-ES1), edge AI and MES/AGV integration.",
      "facts": [("22", "partners"), ("8", "countries"), ("6", "industrial pilots"), ("2027–30", "planned period")]},
+    # Broad own line of Ullswater and Software in a Box (not an ITEA/Eureka call): federated data spaces in several sectors.
+    {"slug": "dataspaces", "acronym": "European Data Spaces", "title": "Sovereign, federated data spaces for every sector",
+     "programme": "Ullswater · Own line", "challenge": "Data spaces · Gaia-X · Data Act & DGA", "status": "ongoing", "group": "lead", "live": True,
+     "role": "Promoter and technology lead",
+     "pitch": "Data spaces where companies, hospitals and public bodies share data without giving it away: each participant keeps control and sets its own usage rules, in line with Gaia-X, the Data Act, the DGA and the European Health Data Space.",
+     "contribution": "Through Software in a Box, our team designed and built three federated data space demonstrators funded by the Spanish Secretary of State for Digitalisation and AI (SEDIA, 2024–2026): Global Data Care (health), PROCUREDATA (public procurement) and EcoDataNet (circular economy). We now take them to new sectors and partners with our own connectors (Eclipse EDC and Pontus-X compute-to-data).",
+     "facts": [("3", "sector demonstrators"), ("2024–26", "funded and delivered"), ("Gaia-X", "IDSA · Pontus-X connectors")]},
     {"slug": "hoskit", "acronym": "HOSKIT", "title": "Holistic Sovereignty Kit for Digital Systems",
      "programme": "ITEA 4 · Call 2026 · 26013", "challenge": "Safety & Security · Digital sovereignty", "status": "proposal", "group": "lead", "live": True,
      "role": "Spanish national coordinator",
@@ -338,7 +345,17 @@ PROJECT_VIDEOS = {
                    "name": "EHDS-JUNGLE (ITEA 26041) | Clinical intelligence on the European Health Data Space"},
     "drmbank": {"yt": "", "mp4": "https://drmbank.pages.dev/media/DR-MBANK_Video_EN_v1.0.mp4", "len": "5:39", "date": "2026-11-03",
                 "name": "DR-MBANK | The bank branch that never goes dark"},
+    # Animated presentations of the ARGOS site (click-to-play iframe, "src"); no YouTube video yet.
+    "argos": {"src": "https://argos.softwareinabox.eu/presentaciones/d01/en/?modo=video&auto=1", "len": "0:32", "date": "2026-11-20",
+              "es": "https://argos.softwareinabox.eu/presentaciones/d01/?modo=video&auto=1", "len_es": "0:34",
+              "name": "ARGOS | What problem does it solve? Declared compliance vs. effective compliance"},
+    "dataspaces": {"src": "https://argos.softwareinabox.eu/presentaciones/d24/en/?modo=video&auto=1", "len": "0:28", "date": "2026-11-20",
+                   "es": "https://argos.softwareinabox.eu/normativa/data-act-dga/presentacion/?embed=1&auto=1", "len_es": "3:42",
+                   "name": "European Data Spaces | Federated data spaces and verifiable credentials"},
 }
+# Spanish animated presentations (ARGOS style, HTML + audio) of the projects, shown instead of the English video on /es/.
+# Served from /presentaciones/<slug>/ (files in content/presentaciones/<slug>/); only used when that folder exists.
+PROJECT_VIDEOS_ES = {"proactedge": "3:49", "hoskit": "3:58", "samba": "3:42", "cognigene": "3:27", "ehdsjungle": "3:34", "drmbank": "3:25"}
 PROJECT_GROUPS = [("all", "All projects"), ("lead", "Leading & coordinating"), ("partner", "Partner"), ("advisor", "Funding advisor")]
 PROJECT_WAYS = [
     ("Leading and coordinating", "Project leadership, national coordination and ownership of use cases and innovations."),
