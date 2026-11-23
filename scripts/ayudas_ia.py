@@ -34,11 +34,11 @@ import ayudas  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 DIR = ROOT / "content" / "ayudas_ia"
 DOC_URL = ayudas.API + "/convocatorias/documentos?idDocumento="
-MAX_INPUT = 170_000   # characters of official text sent to Claude (~45k tokens)
-MAX_STORE = 160_000   # characters of official text kept for the chat assistant
+MAX_INPUT = 250_000   # characters of official text sent to Claude (~70k tokens)
+MAX_STORE = 250_000   # characters of official text kept for the chat assistant
 TEMAS = ["Quién puede pedirla", "Qué se financia", "Gastos subvencionables", "Cuantía e intensidad",
          "Cómo y cuándo se solicita", "Cómo se evalúa", "Obligaciones y justificación", "Compatibilidad con otras ayudas"]
-VERSION = 2  # bump to regenerate every cached ficha after a prompt change
+VERSION = 3  # bump to regenerate every cached ficha after a prompt change
 
 
 # ---------------------------------------------------------------- documents
