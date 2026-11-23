@@ -518,6 +518,16 @@ FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
 
 
+# Default language (shared by www, news, events and the project landings): visitor's EN/ES choice first,
+# then country (Spain + Spanish-speaking Latin America -> Spanish, rest -> English). Source: scripts/ulang.js.
+def _ulang():
+    js = (ROOT / "scripts" / "ulang.js").read_text(encoding="utf-8")
+    js = re.sub(r"/\*.*?\*/", "", js, flags=re.S)
+    js = "\n".join(l.strip() for l in js.splitlines() if l.strip())
+    return "<style>html.ulang-wait body{visibility:hidden}</style><script>" + js + "</script>"
+ULANG = _ulang()
+
+
 # "Asistente de ayudas" chat (Worker ullswater-ai, code in the ullswater-calls repo: worker/widget.src.js). Same script on every site of the network.
 CHAT_WIDGET = '<script src="https://ullswater-ai.emilio-mulet-b52.workers.dev/widget.js" defer data-site="www"></script>'
 
@@ -535,7 +545,7 @@ def page(path, title, desc, body, themes, current="", jsonld=None, bilingual=Tru
     robots = '<meta name="robots" content="noindex,nofollow">' if STAGING else '<meta name="robots" content="index,follow,max-image-preview:large">'
     banner = '<div class="staging">Review copy of the new www.ullswaterinvestments.com, not yet live.</div>' if STAGING else ""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{escape(title)}</title><meta name="description" content="{escape(desc)}">{'' if path == '/404.html' else f'<link rel="canonical" href="{canon}">'}{alt}{robots}
+<title>{escape(title)}</title><meta name="description" content="{escape(desc)}">{'' if path == '/404.html' else f'<link rel="canonical" href="{canon}">'}{alt}{ULANG}{robots}
 <meta property="og:type" content="website"><meta property="og:site_name" content="Ullswater Investments · EU Funding Advisors"><meta property="og:title" content="{escape(title)}"><meta property="og:description" content="{escape(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="en_GB"><meta property="og:image" content="{BASE}/assets/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ullswater Investments · EU Funding Advisors"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{BASE}/assets/og.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="EU Funding News" href="{C.NEWS}/feed.xml">
 <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -819,7 +829,7 @@ def build_es(pages, live=None):
 def build_ayudas(cache=None):
     """Spanish-only section /es/ayudas/ (grants for companies in Spain, from the BDNS). Reuses the Spanish header and footer."""
     ref = (SITE / "es" / "about" / "index.html").read_text(encoding="utf-8")
-    head = "".join(t for t in re.findall(r"<link\b[^>]*>", ref) if re.search(r'rel="(?:icon|preconnect|stylesheet)"', t))
+    head = ULANG + "".join(t for t in re.findall(r"<link\b[^>]*>", ref) if re.search(r'rel="(?:icon|preconnect|stylesheet)"', t))
     body = ref.split("<body>", 1)[1]
     header_html = body.split('<main id="main">', 1)[0]
     after = body.split("</main>", 1)[1]
@@ -887,6 +897,8 @@ def main():
         shutil.copytree(ROOT / "content" / "presentaciones", SITE / "presentaciones")
     if (ROOT / "content" / "data-spaces").exists():  # Data Spaces page (EN/ES in one file, 10-video series) — source: Data Spaces project
         shutil.copytree(ROOT / "content" / "data-spaces", SITE / "data-spaces")
+        ds_index = SITE / "data-spaces" / "index.html"
+        ds_index.write_text(ds_index.read_text(encoding="utf-8").replace('<link rel="stylesheet"', ULANG + '<link rel="stylesheet"', 1), encoding="utf-8")
     (SITE / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#233567"/><text x="32" y="45" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" text-anchor="middle" fill="#c9a646">U</text></svg>', encoding="utf-8")
     try:
         ay_cache = ayudas.refresh()

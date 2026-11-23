@@ -24,6 +24,15 @@ Local build: `pip install beautifulsoup4 && python3 scripts/build.py` → `site/
   when the `ANTHROPIC_API_KEY` secret is set, and saved back to the dictionary. Without the key they stay in English;
   the list is written to `content/i18n_es_missing.json` (not committed).
 
+## Default language (all Ullswater sites)
+- `scripts/ulang.js` is inlined in the `<head>` of every page of www, news, events and the project landings (same file, copied there).
+- Order: `?lang=en|es` → the visitor's own EN/ES click (cookie `ulang` on `.ullswaterinvestments.com`, shared by all subdomains, 1 year)
+  → country from Cloudflare `/cdn-cgi/trace` (cookie `ucc`, 7 days): Spain, Spanish-speaking Latin America, Puerto Rico and
+  Equatorial Guinea → Spanish; everywhere else → English → browser language if the country is unknown.
+- Pages with an `/es/` twin jump to the `hreflang` twin; one-page EN/ES sites (`<html data-lang>`) switch in place.
+  Pages without a twin (e.g. `/es/ayudas/`, calls) are left as they are. Crawlers and AI bots are never redirected.
+- To change the country list, edit the `ES` line in `scripts/ulang.js` and copy the file to the other repos.
+
 ## Ayudas en España (/es/ayudas/, Spanish only)
 - `scripts/ayudas.py` builds a Spanish-only section with the open State and regional grants for companies, from the public API of the
   Base de Datos Nacional de Subvenciones (infosubvenciones.es): search page with a three-question assistant and a tile map of the regions,
