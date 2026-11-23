@@ -23,6 +23,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -41,8 +42,8 @@ VERSION = 2  # bump to regenerate every cached ficha after a prompt change
 
 
 # ---------------------------------------------------------------- documents
-def fetch(url, timeout=60):
-    req = urllib.request.Request(url, headers=ayudas.UA)
+def fetch(url, timeout=60, body=None):
+    req = urllib.request.Request(url, data=body, headers=ayudas.UA)
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
             return r.read(), (r.headers.get("Content-Type") or "").lower()
@@ -89,7 +90,20 @@ def clean(t):
     return t.strip()
 
 
+DOGC_API = "https://portaldogc.gencat.cat/eadop-rest/api/dogc/documentDOGC"
+
+
+def dogc_text(document_id):
+    """Spanish text of a DOGC document (dogc.gencat.cat pages are built with JavaScript from this public API)."""
+    data, _ = fetch(DOGC_API, body=urllib.parse.urlencode({"documentId": document_id, "language": "es_ES"}).encode())
+    d = json.loads(data)
+    return html_text(("<h1>" + (d.get("titleDocument") or "") + "</h1>" + (d.get("textDocument") or "")).encode("utf-8"))
+
+
 def doc_text(url):
+    m = re.search(r"dogc\.gencat\.cat/.*[?&]documentId=(\d+)", url)
+    if m:
+        return dogc_text(m.group(1))
     data, ct = fetch(url)
     if data[:4] == b"%PDF" or "pdf" in ct:
         return pdf_text(data)
@@ -105,7 +119,7 @@ def bases_url(u):
     m = re.search(r"boe\.es/.*?(?:id=|/)(BOE-[A-Z]-\d{4}-\d+)", u)
     if m:
         return "https://www.boe.es/diario_boe/txt.php?id=" + m.group(1)
-    if re.search(r"\.pdf($|\?)|descargarArchivo|/pdf/|VEROBJ|bon\.navarra\.es/es/anuncio", u, re.I):
+    if re.search(r"\.pdf($|\?)|descargarArchivo|/pdf/|VEROBJ|bon\.navarra\.es/es/anuncio|dogc\.gencat\.cat/.*documentId=\d", u, re.I):
         return u
     return None
 
