@@ -1,10 +1,10 @@
 {
  "stats": {
-  "updated": "2026-11-23T12:59:34+00:00",
-  "open": 220,
+  "updated": "2026-11-23T15:54:09+00:00",
+  "open": 221,
   "forthcoming": 245,
-  "total": 465,
-  "closingIn30Days": 44,
+  "total": 466,
+  "closingIn30Days": 43,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
@@ -15,13 +15,6 @@
    "deadline": "2026-11-23",
    "programme": "DIGITAL",
    "budget": 70000
-  },
-  {
-   "id": "CoPower-47589185",
-   "title": "Comprehensive and inclusive support for women and girls' victims of GBV",
-   "deadline": "2026-11-23",
-   "programme": "CERV",
-   "budget": 900000
   },
   {
    "id": "HORIZON-MSCA-2026-DN-01-01",
@@ -64,6 +57,13 @@
    "deadline": "2026-11-28",
    "programme": "DIGITAL",
    "budget": 60000
+  },
+  {
+   "id": "HORIZON-CL5-2026-11-D3-04",
+   "title": "De-risking renewable fuel technologies through transnational pre-commercial procurement of renewable fuel industrial value chains",
+   "deadline": "2026-12-01",
+   "programme": "HORIZON",
+   "budget": 40000000
   }
  ],
  "calls": [
@@ -76,16 +76,6 @@
    "kind": "cascade",
    "budget": 70000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46807003"
-  },
-  {
-   "id": "CoPower-47589185",
-   "title": "Comprehensive and inclusive support for women and girls' victims of GBV",
-   "status": "open",
-   "deadline": "2026-11-23",
-   "programme": "CERV",
-   "kind": "cascade",
-   "budget": 900000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47589185"
   },
   {
    "id": "HORIZON-MSCA-2026-DN-01-01",
@@ -978,6 +968,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45658229"
   },
   {
+   "id": "LDT4SSC-47038104",
+   "title": "Fourth Call for Pilots Work Strand 1 - Connecting Existing Local Digital Twins",
+   "status": "open",
+   "deadline": "2027-01-25",
+   "programme": "DIGITAL",
+   "kind": "cascade",
+   "budget": 1200000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47038104"
+  },
+  {
    "id": "ERASMUS-EDU-2022-ECHE-CERT-FP",
    "title": "Erasmus Charter for Higher Education",
    "status": "open",
@@ -1776,6 +1776,16 @@
    "kind": "topic",
    "budget": 825000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EUBA-EFSA-2027-ENREL-01"
+  },
+  {
+   "id": "CoPower-47589185",
+   "title": "Comprehensive and inclusive support for women and girls' victims of GBV",
+   "status": "open",
+   "deadline": "2027-03-01",
+   "programme": "CERV",
+   "kind": "cascade",
+   "budget": 900000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/47589185"
   },
   {
    "id": "CREA-MEDIA-2027-AUDFILMEDU",
@@ -4740,16 +4750,16 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 47,
-   "open": 47
+   "count": 46,
+   "open": 46
   },
   {
    "slug": "cascade-funding",
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 60,
-   "open": 58
+   "count": 61,
+   "open": 59
   },
   {
    "slug": "health",
@@ -4820,8 +4830,8 @@
    "title": "Digital Europe and European Defence Fund calls",
    "short": "Digital Europe & Defence",
    "old": "/calls/digital-europe-defence",
-   "count": 30,
-   "open": 30
+   "count": 31,
+   "open": 31
   },
   {
    "slug": "other-eu-programmes",
