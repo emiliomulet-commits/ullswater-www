@@ -1,31 +1,34 @@
-# AI visibility — week of 2026-11-19
+# AI visibility — week of 2026-11-23
 
 - **Claude (Anthropic)**: mentions Ullswater in 1/10 answers, cites the website in 1/10
-- **Perplexity**: mentions Ullswater in 1/10 answers, cites the website in 2/10
+- **Perplexity**: mentions Ullswater in 4/10 answers, cites the website in 5/10
 
 ## Questions where Ullswater appears
 
-- Claude (Anthropic): “What is Ullswater Investments?” → https://calls.ullswaterinvestments.com/ https://www.ullswaterinvestments.com/ https://www.ullswaterinvestments.com/guides/horizon-europe-cluster-5-climate-energy-mobility/
-- Perplexity: “Who advises on European Defence Fund and dual-use EU funding in Spain?” → https://www.ullswaterinvestments.com/es/courses/
-- Perplexity: “What is Ullswater Investments?” → https://calls.ullswaterinvestments.com/ https://news.ullswaterinvestments.com/2026/11/india-horizon-europe-association-concluded/ https://news.ullswaterinvestments.com/author/emilio-mulet/ https://www.ullswaterinvestments.com/ https://www.ullswaterinvestments.com/about/ https://www.ullswaterinvestments.com/courses/ https://www.ullswaterinvestments.com/es/ https://www.ullswaterinvestments.com/es/about/ https://www.ullswaterinvestments.com/es/courses/ https://www.ullswaterinvestments.com/es/eu-fun
+- Claude (Anthropic): “What is Ullswater Investments?” → https://calls.ullswaterinvestments.com/ https://www.ullswaterinvestments.com/guides/horizon-europe-cluster-5-climate-energy-mobility/ https://www.ullswaterinvestments.com/strategic-positioning/
+- Perplexity: “Which consultancies help companies apply for EU funding (Horizon Europe, EIC) from Madrid, Spain?” → https://www.ullswaterinvestments.com/ https://www.ullswaterinvestments.com/about/
+- Perplexity: “Recommend EU funding advisors in Spain for Horizon Europe proposals.” → https://www.ullswaterinvestments.com/es/
+- Perplexity: “Which consultants in Spain specialise in EU funding for data spaces and health data?” → https://www.ullswaterinvestments.com/about/
+- Perplexity: “Consultora de fondos europeos en Madrid para proyectos Horizonte Europa” → https://www.ullswaterinvestments.com/
+- Perplexity: “What is Ullswater Investments?” → https://news.ullswaterinvestments.com/2026/11/edip-ukraine-support-call-58-proposals/ https://news.ullswaterinvestments.com/2026/11/eic-accelerator-35-companies-84-million/ https://news.ullswaterinvestments.com/2026/11/eic-fund-survey-64-percent-essential-investment-round/ https://news.ullswaterinvestments.com/2026/11/global-climate-health-research-funders-alliance/ https://news.ullswaterinvestments.com/2026/11/horizon-europe-digital-calls-297-million-ai/ https://news.ullswaterinvestments.com/20
 
 ## Websites the assistants cite most for these questions (competitors and sources to target)
 
-- ec.europa.eu: 8
-- evolutioneurope.eu: 7
-- cdti.es: 5
-- finnova.eu: 5
-- b2match.com: 5
-- euro-funding.com: 5
+- ec.europa.eu: 9
+- linkedin.com: 6
+- evolutioneurope.eu: 5
+- een.ec.europa.eu: 5
 - zabala.eu: 4
-- horizonteeuropa.es: 4
-- linkedin.com: 4
+- cdti.es: 4
+- webgate.ec.europa.eu: 4
+- en.wikipedia.org: 4
+- hadea.ec.europa.eu: 4
+- b2match.com: 4
 - madrimasd.org: 3
-- en.wikipedia.org: 3
-- efmc.eu: 3
-- innovarum.es: 3
-- hadea.ec.europa.eu: 3
-- cordis.europa.eu: 3
+- accelopment.com: 3
+- finnova.eu: 3
+- eic.ec.europa.eu: 3
+- euacc.ai: 3
 
 ## Errors
 

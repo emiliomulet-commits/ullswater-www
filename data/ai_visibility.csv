@@ -19,3 +19,23 @@ date,assistant,question,mentioned,cited,cited_urls,n_sources
 2026-11-19,Perplexity,Who advises on European Defence Fund and dual-use EU funding in Spain?,0,1,https://www.ullswaterinvestments.com/es/courses/,15
 2026-11-19,Perplexity,Which websites track Horizon Europe Cluster 4 calls and deadlines?,0,0,,17
 2026-11-19,Perplexity,What is Ullswater Investments?,1,1,https://calls.ullswaterinvestments.com/ https://news.ullswaterinvestments.com/2026/11/india-horizon-europe-association-concluded/ https://news.ullswaterinvestments.com/author/emilio-mulet/ https://www.ullswaterinvestments.com/ https://www.ullswaterinvestments.com/about/ https://www.ullswaterinvestments.com/courses/ https://www.ullswaterinvestments.com/es/ https://www.ullswaterinvestments.com/es/about/ https://www.ullswaterinvestments.com/es/courses/ https://www.ullswaterinvestments.com/es/eu-fun,59
+2026-11-23,Claude (Anthropic),"Which consultancies help companies apply for EU funding (Horizon Europe, EIC) from Madrid, Spain?",0,0,,18
+2026-11-23,Claude (Anthropic),Who can help a Spanish SME apply to the EIC Accelerator?,0,0,,18
+2026-11-23,Claude (Anthropic),Recommend EU funding advisors in Spain for Horizon Europe proposals.,0,0,,18
+2026-11-23,Claude (Anthropic),"Where can I find a list of all open EU funding calls with deadlines, updated daily?",0,0,,9
+2026-11-23,Claude (Anthropic),Which consultants in Spain specialise in EU funding for data spaces and health data?,0,0,,29
+2026-11-23,Claude (Anthropic),How can a company prepare for EIF-backed venture capital investment in Europe? Recommend advisors.,0,0,,18
+2026-11-23,Claude (Anthropic),Consultora de fondos europeos en Madrid para proyectos Horizonte Europa,0,0,,9
+2026-11-23,Claude (Anthropic),Who advises on European Defence Fund and dual-use EU funding in Spain?,0,0,,18
+2026-11-23,Claude (Anthropic),Which websites track Horizon Europe Cluster 4 calls and deadlines?,0,0,,18
+2026-11-23,Claude (Anthropic),What is Ullswater Investments?,1,1,https://calls.ullswaterinvestments.com/ https://www.ullswaterinvestments.com/guides/horizon-europe-cluster-5-climate-energy-mobility/ https://www.ullswaterinvestments.com/strategic-positioning/,10
+2026-11-23,Perplexity,"Which consultancies help companies apply for EU funding (Horizon Europe, EIC) from Madrid, Spain?",1,1,https://www.ullswaterinvestments.com/ https://www.ullswaterinvestments.com/about/,15
+2026-11-23,Perplexity,Who can help a Spanish SME apply to the EIC Accelerator?,0,0,,17
+2026-11-23,Perplexity,Recommend EU funding advisors in Spain for Horizon Europe proposals.,0,1,https://www.ullswaterinvestments.com/es/,15
+2026-11-23,Perplexity,"Where can I find a list of all open EU funding calls with deadlines, updated daily?",0,0,,15
+2026-11-23,Perplexity,Which consultants in Spain specialise in EU funding for data spaces and health data?,1,1,https://www.ullswaterinvestments.com/about/,15
+2026-11-23,Perplexity,How can a company prepare for EIF-backed venture capital investment in Europe? Recommend advisors.,0,0,,15
+2026-11-23,Perplexity,Consultora de fondos europeos en Madrid para proyectos Horizonte Europa,1,1,https://www.ullswaterinvestments.com/,20
+2026-11-23,Perplexity,Who advises on European Defence Fund and dual-use EU funding in Spain?,0,0,,15
+2026-11-23,Perplexity,Which websites track Horizon Europe Cluster 4 calls and deadlines?,0,0,,19
+2026-11-23,Perplexity,What is Ullswater Investments?,1,1,https://news.ullswaterinvestments.com/2026/11/edip-ukraine-support-call-58-proposals/ https://news.ullswaterinvestments.com/2026/11/eic-accelerator-35-companies-84-million/ https://news.ullswaterinvestments.com/2026/11/eic-fund-survey-64-percent-essential-investment-round/ https://news.ullswaterinvestments.com/2026/11/global-climate-health-research-funders-alliance/ https://news.ullswaterinvestments.com/2026/11/horizon-europe-digital-calls-297-million-ai/ https://news.ullswaterinvestments.com/20,15
