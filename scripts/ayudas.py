@@ -430,7 +430,7 @@ CSS = """.ay-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 
 .ay-doc summary::marker{color:var(--gold)}.ay-doc details ul{margin:0 0 12px;padding-left:20px}.ay-doc details li{margin:6px 0}.ay-ref{display:block;font-size:12.5px;color:var(--muted)}
 .ay-faq p{margin:0 0 8px}.ay-faq .more{font:inherit;font-size:14px;background:none;border:0;color:var(--navy);text-decoration:underline;cursor:pointer;padding:0;margin:0 0 12px}
 @media(max-width:900px){.ay-grid,.ay-doc{grid-template-columns:minmax(0,1fr)}.ay-side{position:static}.ay-hero h1{font-size:34px}}
-@media(max-width:600px){.ay-t .lg{display:none}.ay-t .ab{display:block}.ay-t span{font-size:17px}.ay-map{gap:4px;grid-auto-rows:56px}.ay-fx{grid-template-columns:repeat(2,minmax(0,1fr))}.ay-kv th{width:44%}}
+@media(max-width:600px){.aia-q button:nth-child(n+5){display:none}.aia{padding:16px}.ay-t .lg{display:none}.ay-t .ab{display:block}.ay-t span{font-size:17px}.ay-map{gap:4px;grid-auto-rows:56px}.ay-fx{grid-template-columns:repeat(2,minmax(0,1fr))}.ay-kv th{width:44%}}
 @media(prefers-reduced-motion:reduce){.ay-t{transition:none}.ay-t:hover{transform:none}}"""
 
 
@@ -494,7 +494,7 @@ def ia_parts(v, ia):
     sug = [q for q in ia.get("sugeridas") or [] if q.strip()][:6]
     chips = "".join(f'<button type="button" data-uaa-q="{escape(q)}">{escape(q)}</button>' for q in sug)
     top = (f'<section class="aia" aria-labelledby="aia-t"><div class="aia-h"><div class="aia-i" aria-hidden="true">✦</div><div>'
-           f'<h2 id="aia-t">Pregunta a la IA sobre esta ayuda</h2><p>Responde con la convocatoria y las bases oficiales, citando el artículo.</p></div></div>'
+           f'<h2 id="aia-t">Pregunta a la IA sobre esta ayuda</h2><p>Responde con los documentos oficiales de la convocatoria, citando el artículo.</p></div></div>'
            f'<div class="aia-q">{chips}</div>'
            f'<form class="aia-f" id="aia-f"><label for="aia-in" style="position:absolute;left:-9999px">Tu pregunta sobre esta ayuda</label>'
            f'<input id="aia-in" maxlength="600" autocomplete="off" placeholder="Escribe tu pregunta sobre esta ayuda"><button type="submit">Preguntar</button></form>'
