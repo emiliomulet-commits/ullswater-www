@@ -395,3 +395,30 @@ TOPICS = [
     ("us", "Executive courses", "Cursos para directivos", "What does the executive course on EU funding cover?", "¿Qué incluye el curso para directivos sobre financiación europea?", "/courses/", None, False),
 ]
 assert len(TOPICS) == 20 and sum(t[7] for t in TOPICS) == 14
+
+
+# ---------------------------------------------------------------------------
+# Compliance benchmark (Nov 2026): announcement box under the home hero + a highlighted chip (different colour) in the
+# hero, which asks the Funding Assistant to explain the benchmark in detail. BENCHMARK_KB is the curated text the
+# assistant reads (added to the knowledge base by kb_build.py), so its answer is complete and links to the benchmark site.
+BENCHMARK_URL = "https://benchmark.ullswaterinvestments.com/"
+BENCHMARK_EMAIL = "benchmark@ullswaterinvestments.com"
+BENCHMARK_CHIP = ("Compliance benchmark 2027", "Benchmark de compliance 2027",
+                  "Explain in detail the regulatory compliance benchmark that Ullswater Investments is building: what it is, "
+                  "who can take part and how, which regulations it covers, the calendar, what participants get, and give me "
+                  "the link to the benchmark website.",
+                  "Explícame en detalle el benchmark de cumplimiento normativo que está preparando Ullswater Investments: qué es, "
+                  "quién puede participar y cómo, qué normas cubre, el calendario, qué obtienen los participantes, y dame el "
+                  "enlace a la web del benchmark.")
+BENCHMARK_KB = f"""Regulatory Compliance Solutions Benchmark · Spain 2027 (Benchmark de Soluciones de Cumplimiento Normativo · España 2027)
+Website: {BENCHMARK_URL} (access by invitation: sign in with a work email and receive an access link, no passwords). Contact: {BENCHMARK_EMAIL}.
+What it is: Ullswater Investments is building the map of regulatory compliance solutions in Spain, a comparative catalogue of law firms, consultancies, auditors and technology companies that help organisations comply with the GDPR, the AI Act, NIS2, the ENS (Esquema Nacional de Seguridad) and the EU data rules (Data Act, Data Governance Act, European Health Data Space). It is an annual benchmark: the first edition is Spain 2027, followed by 2028, 2029 and so on.
+It is not a ranking: no scores, no badges and no seals. Every participant describes its own solution with the same common profile (ficha), and includes what it wants to show about its service. Participants are not scored or ordered.
+Free and voluntary: there is no fee to appear, and no prices or turnover are requested.
+Scope: 19 regulations grouped in 6 categories: data protection, artificial intelligence, cybersecurity, data spaces, corporate compliance and sector-specific compliance.
+Who can take part: law firms, consultancies, auditors and technology companies offering compliance services or solutions with activity in Spain, and also associations, universities, professional associations (colegios profesionales) and public bodies that provide compliance services or solutions, on the same terms. One profile per organisation, written in Spanish.
+How to take part: by invitation or by asking at {BENCHMARK_EMAIL}; enter the benchmark website with your work email and fill in the profile. No profile is published without the express validation of its owner, who can withdraw it up to 7 days before publication. Answers to the market-vision block are only used as aggregated, anonymous figures in the market report (no figure is published with fewer than 5 answers).
+Calendar: profiles until 31 January 2027; publication in February 2027, with a public market report sent to 50 media outlets in Spain and Europe (the media list is on the benchmark website). Late profiles are assessed case by case.
+What participants get: visibility in front of companies, public bodies and the press looking for compliance solutions; their solution presented in the same format as the rest of the market; and the public market report on the state of compliance technology in Spain.
+Organiser: Ullswater Investments S.L. (Madrid and Brussels), European funding advisors, organises the benchmark and also takes part with its own solutions (data spaces and the ARGOS compliance agent of Software in a Box), on the same terms as everyone else and identified as the organiser.
+En español: Ullswater Investments prepara el Benchmark de Soluciones de Cumplimiento Normativo · España 2027, un catálogo comparativo, gratuito y voluntario (sin ranking, sin sellos, sin precios) de despachos, consultoras, auditores, empresas tecnológicas, asociaciones, universidades, colegios profesionales y entidades públicas que ayudan a cumplir el RGPD, el Reglamento de IA, NIS2, el ENS y la normativa europea de datos: 19 normas en 6 categorías. Una ficha por organización, en español. Fichas hasta el 31 de enero de 2027; publicación en febrero de 2027 y envío del informe a 50 medios. Acceso por invitación en {BENCHMARK_URL} con el email de trabajo; contacto {BENCHMARK_EMAIL}."""

@@ -301,6 +301,16 @@ header.site .wrap{max-width:1280px;gap:12px}header.site .brand{flex:0 1 auto;min
 @media (max-width:640px){.hero.ai .wrap{padding:52px 18px 44px}.hero.ai .lead{font-size:17px}.ask{height:64px;padding:0 8px 0 18px;margin-top:30px}.ask input{font-size:16px}.ask button{width:46px;height:46px}
  .tchips{gap:8px}.tchip{font-size:14px;min-height:40px;padding:8px 14px}.tgrid{grid-template-columns:1fr}.tall{padding:20px 16px}}
 @media (max-width:640px){html.uaa-hero #uaa-b{display:none!important}}
+.tchip.bm{border-color:#2dd4bf;background:rgba(20,184,166,.22);color:#fff;font-weight:700;gap:8px}
+.tchip.bm::before{content:"";width:8px;height:8px;border-radius:50%;background:#2dd4bf;box-shadow:0 0 0 4px rgba(45,212,191,.25)}
+.tchip.bm:hover,.tchip.bm:focus-visible{background:rgba(20,184,166,.4);border-color:#5eead4}
+.bm-promo{background:linear-gradient(180deg,#e9fbf8 0%,#fff 100%);border-top:4px solid #14b8a6;border-bottom:1px solid var(--line);padding-top:44px;padding-bottom:44px}
+.bmp{display:grid;grid-template-columns:1.4fr 1fr;gap:44px;align-items:center}.bmp h2{margin-top:0}.bmp .sub{margin-bottom:0}.bmp .actions{margin-top:24px}
+.bmp .kicker{color:#0f766e}.bm-new{display:inline-block;background:#0f766e;color:#fff;border-radius:999px;padding:2px 10px;margin-right:10px;font-size:11px;letter-spacing:.08em}
+.bmp .btn.bm{background:#0f766e;border-color:#0f766e;color:#fff}.bmp .btn.bm:hover{background:var(--navy);border-color:var(--navy)}
+.bmp-facts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bmp-facts li{background:#fff;border:1px solid #b6ece4;border-radius:12px;padding:14px 16px;font-size:14px;color:var(--muted);line-height:1.4}.bmp-facts strong{display:block;font-size:24px;color:#0f766e;line-height:1.2}
+@media (max-width:860px){.bmp{grid-template-columns:1fr;gap:26px}}
 """
 
 JS = """(function(){var b=document.querySelector('.burger'),n=document.querySelector('nav.main');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
@@ -311,7 +321,7 @@ document.querySelectorAll('.pv').forEach(function(v){v.addEventListener('click',
 document.addEventListener('click',function(e){document.querySelectorAll('.dd.open').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})});})();
 (function(){var es=document.documentElement.lang==='es';function go(q,o){if(window.UAA&&window.UAA.ask){window.UAA.ask(q,o);return true}window.UAA_Q=window.UAA_Q||[];if(window.UAA_Q.push){window.UAA_Q.push([q,o]);return true}return false}
 var f=document.getElementById('ai-ask');if(f)f.addEventListener('submit',function(e){var i=document.getElementById('ai-q'),q=(i.value||'').trim();e.preventDefault();if(!q){i.focus();return}if(go(q,{wide:1}))i.value='';else f.submit()});
-document.querySelectorAll('.tchip[data-q]').forEach(function(a){a.addEventListener('click',function(e){if(e.ctrlKey||e.metaKey||e.shiftKey||e.button)return;if(go(a.getAttribute('data-q'),{topic:1,wide:1}))e.preventDefault()})});
+document.querySelectorAll('a[data-q]').forEach(function(a){a.addEventListener('click',function(e){if(e.ctrlKey||e.metaKey||e.shiftKey||e.button)return;if(go(a.getAttribute('data-q'),{topic:1,wide:1}))e.preventDefault()})});
 var m=document.querySelector('.tchip.more'),t=document.getElementById('tall');if(m&&t){var lbl=m.textContent;m.addEventListener('click',function(){var o=t.hidden;t.hidden=!o;m.setAttribute('aria-expanded',o);m.textContent=o?(es?'Ocultar temas':'Hide topics'):lbl})}
 var h=document.querySelector('.hero.ai');if(h&&window.IntersectionObserver)new IntersectionObserver(function(x){document.documentElement.classList.toggle('uaa-hero',x[0].isIntersecting)}).observe(h)})();"""
 
@@ -642,10 +652,27 @@ def topic_chip(t):
             f'{" target=\"_blank\" rel=\"noopener\"" if ext else ""}>{en}</a>')
 
 
+def benchmark_chip():
+    en, es, qen, qes = C.BENCHMARK_CHIP
+    return (f'<a class="tchip bm" href="{C.BENCHMARK_URL}" data-q="{escape(qen)}" data-es-data-q="{escape(qes)}" '
+            f'target="_blank" rel="noopener">{en}</a>')
+
+
+def benchmark_band():
+    """Announcement of the compliance benchmark (benchmark.ullswaterinvestments.com) right under the home hero."""
+    en, es, qen, qes = C.BENCHMARK_CHIP
+    return f"""<section class="band bm-promo" id="compliance-benchmark"><div class="wrap"><div class="bmp"><div>
+<p class="kicker"><span class="bm-new">New</span>Compliance benchmark · Spain 2027</p>
+<h2>We are building the map of regulatory compliance solutions in Spain</h2>
+<p class="sub">Ullswater Investments is preparing a benchmark of the organisations and solutions that help companies comply with the GDPR, the AI Act, NIS2, the ENS and the EU data rules. It is free and voluntary, with no ranking and no seals: every law firm, consultancy, auditor or technology company presents its solution with the same profile. The results will be published in February 2027 and sent to 50 media outlets.</p>
+<div class="actions"><a class="btn bm" href="{C.BENCHMARK_URL}" target="_blank" rel="noopener">Go to the benchmark website ↗</a><a class="btn line" href="{C.BENCHMARK_URL}" data-q="{escape(qen)}" data-es-data-q="{escape(qes)}" target="_blank" rel="noopener">Ask our AI assistant</a></div></div>
+<ul class="bmp-facts"><li><strong>19</strong>regulations in 6 categories</li><li><strong>Free</strong>no fee and no prices requested</li><li><strong>31 Jan 2027</strong>deadline to send your profile</li><li><strong>50</strong>media outlets will receive the report</li></ul></div></div></section>"""
+
+
 def ai_hero(st):
     """Home hero as an AI entry point (ARGOS style, Ullswater colours): a large question box for the Funding Assistant
     and the 20 key topics of the site as chips. Chips are plain links for crawlers and visitors without JavaScript."""
-    top = "".join(topic_chip(t) for t in C.TOPICS if t[7])
+    top = benchmark_chip() + "".join(topic_chip(t) for t in C.TOPICS if t[7])
     groups = ""
     for gid, gen, ges in C.TOPIC_GROUPS:
         chips = "".join(topic_chip(t) for t in C.TOPICS if t[0] == gid)
@@ -692,7 +719,7 @@ def home(live, themes, ay=None):
 <div class="panel"><h3><a href="{C.NEWS}/">Latest news</a></h3><ul class="list">{news}</ul><a class="more" href="{C.NEWS}/">EU Funding News →</a></div>
 <div class="panel"><h3><a href="{C.EVENTS}/">Upcoming events</a></h3><ul class="list">{evs}</ul><a class="more" href="{C.EVENTS}/">All events →</a></div></div></div></section>"""
     vc = "".join(f'<div class="card"><div class="ic" aria-hidden="true">{i}</div><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for i, t, d in C.VC_DOMAINS)
-    body = h + ayudas_band(ay) + projects_band() + f"""
+    body = h + benchmark_band() + ayudas_band(ay) + projects_band() + f"""
 <section class="band"><div class="wrap split"><div><p class="kicker" style="color:var(--gold2)">Who we are</p><h2>Senior advisors for EU grants, loans and equity</h2>
 <p class="sub" style="margin-bottom:0">{escape(C.TEAM)}</p></div><blockquote class="quote">{escape(C.PARTNER_QUOTE)}<cite>Emilio Mulet, Managing Partner</cite></blockquote></div></section>
 <section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Our services</p><h2>From the right call to a funded project</h2><p class="sub">Three complementary services that take you from strategy to signed grant agreement or investment.</p><div class="grid g3">{svc}</div></div></section>

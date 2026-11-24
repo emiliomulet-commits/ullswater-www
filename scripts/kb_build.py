@@ -116,6 +116,9 @@ def main():
         if h:
             t, x = html_text(h)
             docs.append({"t": f"{p['acronym']}: {p['title']}", "u": url, "s": "project", "d": "", "x": x})
+    # Curated description of the compliance benchmark (its own site is invitation-only, so it cannot be crawled).
+    docs.insert(0, {"t": "Regulatory Compliance Solutions Benchmark · Spain 2027 (Ullswater Investments)", "u": C.BENCHMARK_URL,
+                    "s": "www", "d": "", "x": C.BENCHMARK_KB})
     seen, uniq = set(), []
     for d in docs:  # the same URL can appear twice (e.g. www home); keep the first
         if d["u"] not in seen:
