@@ -408,17 +408,6 @@ BENCHMARK_CHIP = ("Compliance benchmark 2027", "Benchmark de compliance 2027",
                   "how and by when, and where is its website?",
                   "¿Qué es el benchmark de cumplimiento normativo que prepara Ullswater Investments, quién puede participar, "
                   "cómo y en qué plazos, y dónde está su web?")
-BENCHMARK_KB is the curated text the
-# assistant reads (added to the knowledge base by kb_build.py), so its answer is complete and links to the benchmark site.
-BENCHMARK_URL = "https://benchmark.ullswaterinvestments.com/"
-BENCHMARK_EMAIL = "benchmark@ullswaterinvestments.com"
-BENCHMARK_CHIP = ("Compliance benchmark 2027", "Benchmark de compliance 2027",
-                  "Explain in detail the regulatory compliance benchmark that Ullswater Investments is building: what it is, "
-                  "who can take part and how, which regulations it covers, the calendar, what participants get, and give me "
-                  "the link to the benchmark website.",
-                  "Explícame en detalle el benchmark de cumplimiento normativo que está preparando Ullswater Investments: qué es, "
-                  "quién puede participar y cómo, qué normas cubre, el calendario, qué obtienen los participantes, y dame el "
-                  "enlace a la web del benchmark.")
 BENCHMARK_KB = f"""Regulatory Compliance Solutions Benchmark · Spain 2027 (Benchmark de Soluciones de Cumplimiento Normativo · España 2027)
 Website: {BENCHMARK_URL} (access by invitation: sign in with a work email and receive an access link, no passwords). Contact: {BENCHMARK_EMAIL}.
 What it is: Ullswater Investments is building the map of regulatory compliance solutions in Spain, a comparative catalogue of law firms, consultancies, auditors and technology companies that help organisations comply with the GDPR, the AI Act, NIS2, the ENS (Esquema Nacional de Seguridad) and the EU data rules (Data Act, Data Governance Act, European Health Data Space). It is an annual benchmark: the first edition is Spain 2027, followed by 2028, 2029 and so on.
