@@ -276,6 +276,30 @@ header.site .wrap{max-width:1280px;gap:12px}header.site .brand{flex:0 1 auto;min
 @media (max-width:640px){body{font-size:16px}.pj-head h2{font-size:30px}.pj-stats li{padding:12px 14px}.pj-stats strong{font-size:26px}.pj-feat .main{padding:28px 22px}.pj-feat h3{font-size:27px}.pj-feat .side{padding:24px 22px;flex-direction:row;flex-wrap:wrap}.pj-feat .side li{flex:1 1 40%}section.pj{padding:52px 0 56px}.brand img{height:38px}.hero h1{font-size:36px}.hero.sm h1{font-size:31px}.hero .wrap{padding:56px 22px 52px}h2{font-size:28px}.g2,.g3,.g4{grid-template-columns:1fr}
  .flow{grid-template-columns:1fr}.flow div+div{margin-left:0;margin-top:30px}.flow div+div::before{content:"↓";left:50%;top:-27px;transform:translateX(-50%)}
  .phase{grid-template-columns:1fr;gap:6px}footer.site .cols{grid-template-columns:1fr}footer.site a{overflow-wrap:anywhere}.facts{grid-template-columns:1fr}.facts dt{border-bottom:0}.cta{padding:30px}.list li{flex-direction:column;gap:2px}.list .d{flex:none}}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hero.ai{text-align:center;background:radial-gradient(720px 520px at 4% 38%,rgba(201,166,70,.16),transparent 65%),radial-gradient(900px 520px at 100% 0%,rgba(91,124,214,.28),transparent 60%),linear-gradient(170deg,#101c40 0%,var(--navy2) 52%,var(--navy) 100%)}
+.hero.ai::after{display:none}.hero.ai .wrap{padding:76px 22px 64px}
+.hero.ai .pre{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:0 0 20px;line-height:1.6}.hero.ai .pre span{color:#fff;opacity:.85}
+.hero.ai h1{font-size:clamp(36px,5vw,64px);line-height:1.08;letter-spacing:-.02em;font-weight:700;margin:0 auto;max-width:1000px}
+.hero.ai .lead{max-width:780px;margin:22px auto 0;color:#d5dcef;font-size:20px;line-height:1.5}
+.ask{max-width:1000px;margin:40px auto 0;display:flex;align-items:center;gap:14px;background:#fff;border-radius:46px;height:80px;padding:0 14px 0 28px;box-shadow:0 18px 50px rgba(0,0,0,.28)}
+.ask .ic{display:flex;color:var(--gold2)}.ask .ic svg{width:24px;height:24px}
+.ask input{flex:1;border:0;outline:0;font:inherit;font-size:20px;color:var(--ink);background:transparent;min-width:0}.ask input::placeholder{color:#6b7280}
+.ask button{flex:none;width:52px;height:52px;border-radius:50%;border:0;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.ask button:hover{background:var(--navy);color:#fff}.ask button svg{width:22px;height:22px}.ask:focus-within{box-shadow:0 0 0 3px var(--gold),0 18px 50px rgba(0,0,0,.28)}
+.tchips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:1080px;margin:28px auto 0}
+.tchip{display:inline-flex;align-items:center;min-height:46px;padding:10px 20px;border-radius:8px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.05);color:#fff;text-decoration:none;font:inherit;font-size:16px;font-weight:500;line-height:1.3;cursor:pointer;transition:background .2s,border-color .2s}
+.tchip:hover,.tchip:focus-visible{background:rgba(255,255,255,.14);border-color:var(--gold);color:#fff}
+.tchip.more{border-color:var(--gold);color:var(--gold);font-weight:700}.tchip.more:hover{color:#fff}
+.tall{max-width:1080px;margin:24px auto 0;text-align:left;background:rgba(8,16,40,.45);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:26px 26px 22px}
+.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.tgroup h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:0 0 12px;font-weight:700}
+.tlist{display:flex;flex-direction:column;gap:8px}.tlist .tchip{min-height:0;padding:9px 14px;font-size:15px;width:100%}
+.ai-note{margin:22px auto 0;font-size:13px;color:#aeb9d8}.ai-note a{color:var(--gold)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1000px;margin:34px auto 0;padding:0;list-style:none}
+.kpis li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px 16px;font-size:14px;color:#cbd3ea}.kpis strong{display:block;font-size:28px;color:#fff;line-height:1.15}
+@media (max-width:960px){.tgrid{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.hero.ai .wrap{padding:52px 18px 44px}.hero.ai .lead{font-size:17px}.ask{height:64px;padding:0 8px 0 18px;margin-top:30px}.ask input{font-size:16px}.ask button{width:46px;height:46px}
+ .tchips{gap:8px}.tchip{font-size:14px;min-height:40px;padding:8px 14px}.tgrid{grid-template-columns:1fr}.tall{padding:20px 16px}}
 """
 
 JS = """(function(){var b=document.querySelector('.burger'),n=document.querySelector('nav.main');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
@@ -283,7 +307,11 @@ document.querySelectorAll('.dd>button').forEach(function(x){x.addEventListener('
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')});if(document.activeElement)document.activeElement.blur()}});
 document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){var g=b.dataset.g,n=0;document.querySelectorAll('.chips button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.pj-row').forEach(function(r){var on=g==='all'||r.dataset.g===g;r.hidden=!on;if(on)n++});var c=document.getElementById('pj-count');var es=document.documentElement.lang==='es';if(c)c.textContent=n+(es?(n===1?' proyecto':' proyectos'):(n===1?' project':' projects'))})});
 document.querySelectorAll('.pv').forEach(function(v){v.addEventListener('click',function(){if(v.dataset.on)return;v.dataset.on=1;var t=v.getAttribute('aria-label')||'Video',f;if(v.dataset.src){f=document.createElement('iframe');f.src=v.dataset.src;f.allow='autoplay; fullscreen';f.allowFullscreen=true}else if(v.dataset.yt){f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.yt+'?autoplay=1&rel=0&modestbranding=1';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin'}else{f=document.createElement('video');f.src=v.dataset.mp4;f.controls=true;f.autoplay=true;f.playsInline=true}f.title=t;v.innerHTML='';v.appendChild(f);v.style.cursor='default'})});
-document.addEventListener('click',function(e){document.querySelectorAll('.dd.open').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})});})();"""
+document.addEventListener('click',function(e){document.querySelectorAll('.dd.open').forEach(function(d){if(!d.contains(e.target))d.classList.remove('open')})});})();
+(function(){var es=document.documentElement.lang==='es';function go(q,o){if(window.UAA&&window.UAA.ask){window.UAA.ask(q,o);return true}window.UAA_Q=window.UAA_Q||[];if(window.UAA_Q.push){window.UAA_Q.push([q,o]);return true}return false}
+var f=document.getElementById('ai-ask');if(f)f.addEventListener('submit',function(e){var i=document.getElementById('ai-q'),q=(i.value||'').trim();e.preventDefault();if(!q){i.focus();return}if(go(q,{wide:1}))i.value='';else f.submit()});
+document.querySelectorAll('.tchip[data-q]').forEach(function(a){a.addEventListener('click',function(e){if(e.ctrlKey||e.metaKey||e.shiftKey||e.button)return;if(go(a.getAttribute('data-q'),{topic:1,wide:1}))e.preventDefault()})});
+var m=document.querySelector('.tchip.more'),t=document.getElementById('tall');if(m&&t){var lbl=m.textContent;m.addEventListener('click',function(){var o=t.hidden;t.hidden=!o;m.setAttribute('aria-expanded',o);m.textContent=o?(es?'Ocultar temas':'Hide topics'):lbl})}})();"""
 
 LINKEDIN = "https://www.linkedin.com/company/ullswater-investments"
 YOUTUBE = "https://www.youtube.com/@ullswaterinvestments"
@@ -600,15 +628,51 @@ def ayudas_band(ay):
 <p class="ayp-src">Source: BDNS (IGAE, Ministry of Finance) · updated {date.fromisoformat(ay["updated"][:10]):%d/%m/%Y}</p></div></section>"""
 
 
+SEND_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>'
+SPARK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/></svg>'
+
+
+def topic_chip(t):
+    g, en, es, qen, qes, url, url_es, top = t
+    ext = url.startswith("http") and "www.ullswaterinvestments.com" not in url
+    es_href = f' data-es-href="{url_es}"' if url_es else ""
+    return (f'<a class="tchip" href="{url}"{es_href} data-q="{escape(qen)}" data-es-data-q="{escape(qes)}"'
+            f'{" target=\"_blank\" rel=\"noopener\"" if ext else ""}>{en}</a>')
+
+
+def ai_hero(st):
+    """Home hero as an AI entry point (ARGOS style, Ullswater colours): a large question box for the Funding Assistant
+    and the 20 key topics of the site as chips. Chips are plain links for crawlers and visitors without JavaScript."""
+    top = "".join(topic_chip(t) for t in C.TOPICS if t[7])
+    groups = ""
+    for gid, gen, ges in C.TOPIC_GROUPS:
+        chips = "".join(topic_chip(t) for t in C.TOPICS if t[0] == gid)
+        groups += f'<div class="tgroup"><h2>{gen}</h2><div class="tlist">{chips}</div></div>'
+    kpis = ""
+    if st:
+        kpis = (f'<ul class="kpis"><li><strong>{st["open"]}</strong>EU calls open now</li><li><strong>{st["forthcoming"]}</strong>forthcoming calls</li>'
+                f'<li><strong>{st["closingIn30Days"]}</strong>closing in 30 days</li><li><strong>{st["programmes"]}</strong>EU programmes tracked</li></ul>')
+    return f"""<section class="hero ai" id="top" aria-labelledby="hero-title"><div class="wrap">
+<p class="pre">European funding advisors · Madrid · Brussels · <span>Funding Assistant · AI</span></p>
+<h1 id="hero-title">Unlock European funding<br>for your innovation.</h1>
+<p class="lead">Ask our AI Funding Assistant about EU calls, grants in Spain, our European projects or our services, or start from one of the 20 key topics.</p>
+<form class="ask" id="ai-ask" role="search" action="{C.CALLS}/" method="get">
+<span class="ic" aria-hidden="true">{SPARK_SVG}</span>
+<label for="ai-q" class="vh">Your question</label><input id="ai-q" name="q" type="text" autocomplete="off" maxlength="1000" placeholder="Ask about EU funding, grants or our services…">
+<button type="submit" aria-label="Send">{SEND_SVG}</button></form>
+<nav class="tchips" aria-label="Key topics">{top}<button type="button" class="tchip more" aria-expanded="false" aria-controls="tall">See all 20 topics</button></nav>
+<div class="tall" id="tall" hidden><div class="tgrid">{groups}</div></div>
+<p class="ai-note">AI answers can be wrong: always check the official source. Prefer a person? <a href="{C.BOOK}" target="_blank" rel="noopener">Talk to an expert ↗</a></p>
+{kpis}</div></section>"""
+
+
 def home(live, themes, ay=None):
     st = live.get("stats", {})
     stats = ""
     if st:
         stats = (f'<ul class="stats"><li><strong>{st["open"]}</strong>EU calls open now</li><li><strong>{st["forthcoming"]}</strong>forthcoming calls</li>'
                  f'<li><strong>{st["closingIn30Days"]}</strong>closing in 30 days</li><li><strong>{st["programmes"]}</strong>EU programmes tracked</li></ul>')
-    h = hero("European funding advisors · Madrid · Brussels", "Unlock European funding for your innovation", escape(C.MISSION), small=False,
-             actions=f'<a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a><a class="btn ghost" href="{C.CALLS}/">Explore {st.get("total", "all")} EU calls →</a><a class="btn ghost" href="#projects">Our European projects ↓</a>',
-             extra=stats)
+    h = ai_hero(st)
     svc = "".join(f'<a class="card top" href="/{s}/"><div class="num">0{i + 1}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Learn more →</span></a>'
                   for i, (s, t, d) in enumerate(C.SERVICES))
     explore = "".join(f'<a class="card" href="{u}" target="_blank" rel="noopener"><div class="ic" aria-hidden="true">{ic}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Explore ↗</span></a>'
