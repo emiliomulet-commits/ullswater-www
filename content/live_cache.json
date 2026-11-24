@@ -1,35 +1,14 @@
 {
  "stats": {
-  "updated": "2026-11-23T15:54:09+00:00",
-  "open": 221,
-  "forthcoming": 245,
-  "total": 466,
-  "closingIn30Days": 43,
+  "updated": "2026-11-24T00:15:48+00:00",
+  "open": 220,
+  "forthcoming": 247,
+  "total": 467,
+  "closingIn30Days": 40,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
  "soon": [
-  {
-   "id": "Govtech4all 2.0-46807003",
-   "title": "Service request: 𝘏𝘰𝘸 𝘮𝘪𝘨𝘩𝘵 𝘸𝘦 𝘪𝘮𝘱𝘳𝘰𝘷𝘦 𝘢𝘤𝘤𝘦𝘴𝘴 𝘵𝘰 𝘤𝘳𝘪𝘵𝘪𝘤𝘢𝘭 𝘤𝘪𝘷𝘪𝘭 𝘱𝘳𝘰𝘵𝘦𝘤𝘵𝘪𝘰𝘯 𝘪𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘧𝘰𝘳 𝘳𝘦𝘴𝘪𝘥𝘦𝘯𝘵𝘴 - 𝘦𝘴𝘱𝘦𝘤𝘪𝘢𝘭𝘭𝘺 𝘵𝘩𝘰𝘴𝘦 𝘸𝘩𝘰 𝘥𝘰 𝘯𝘰𝘵 𝘶𝘴𝘦 𝘮𝘰𝘣𝘪𝘭𝘦 𝘢𝘱𝘱𝘴 - 𝘴𝘰 𝘵𝘩𝘢𝘵 𝘵𝘩𝘦𝘺 𝘤𝘢𝘯 𝘳𝘦𝘤𝘦𝘪𝘷𝘦 𝘤𝘭𝘦𝘢𝘳, 𝘵𝘪𝘮𝘦𝘭𝘺 𝘨𝘶𝘪𝘥𝘢𝘯𝘤𝘦 𝘣𝘺 𝘱𝘩𝘰𝘯𝘦 𝘥𝘶𝘳𝘪𝘯𝘨 𝘦𝘮𝘦𝘳𝘨𝘦𝘯𝘤𝘪𝘦𝘴?",
-   "deadline": "2026-11-23",
-   "programme": "DIGITAL",
-   "budget": 70000
-  },
-  {
-   "id": "HORIZON-MSCA-2026-DN-01-01",
-   "title": "MSCA Doctoral Networks 2026",
-   "deadline": "2026-11-24",
-   "programme": "HORIZON",
-   "budget": 1884101538
-  },
-  {
-   "id": "HORIZON-RAISE-2026-01-03",
-   "title": "RAISE Doctoral Networks for AI in Science (RAISE pilot)",
-   "deadline": "2026-11-24",
-   "programme": "HORIZON",
-   "budget": 90000000
-  },
   {
    "id": "CEF-DIG-2026-CABLE-REPAIR-CAPACITIES-WORKS",
    "title": "Submarine Cable Repair Capacities - Works",
@@ -64,39 +43,30 @@
    "deadline": "2026-12-01",
    "programme": "HORIZON",
    "budget": 40000000
+  },
+  {
+   "id": "HORIZON-CL5-2026-11-D3-05",
+   "title": "Demonstration of solid biofuel supply and conversion to high efficiency CHP from fully sustainable regional value chains",
+   "deadline": "2026-12-01",
+   "programme": "HORIZON",
+   "budget": 13500000
+  },
+  {
+   "id": "HORIZON-CL5-2026-11-D3-06",
+   "title": "Resource assessment for deep sedimentary and basement reservoirs",
+   "deadline": "2026-12-01",
+   "programme": "HORIZON",
+   "budget": 18000000
+  },
+  {
+   "id": "HORIZON-CL5-2026-11-D3-14",
+   "title": "Improved system design for innovative PV applications (EUPI-PV Partnership)",
+   "deadline": "2026-12-01",
+   "programme": "HORIZON",
+   "budget": 30000000
   }
  ],
  "calls": [
-  {
-   "id": "Govtech4all 2.0-46807003",
-   "title": "Service request: 𝘏𝘰𝘸 𝘮𝘪𝘨𝘩𝘵 𝘸𝘦 𝘪𝘮𝘱𝘳𝘰𝘷𝘦 𝘢𝘤𝘤𝘦𝘴𝘴 𝘵𝘰 𝘤𝘳𝘪𝘵𝘪𝘤𝘢𝘭 𝘤𝘪𝘷𝘪𝘭 𝘱𝘳𝘰𝘵𝘦𝘤𝘵𝘪𝘰𝘯 𝘪𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘧𝘰𝘳 𝘳𝘦𝘴𝘪𝘥𝘦𝘯𝘵𝘴 - 𝘦𝘴𝘱𝘦𝘤𝘪𝘢𝘭𝘭𝘺 𝘵𝘩𝘰𝘴𝘦 𝘸𝘩𝘰 𝘥𝘰 𝘯𝘰𝘵 𝘶𝘴𝘦 𝘮𝘰𝘣𝘪𝘭𝘦 𝘢𝘱𝘱𝘴 - 𝘴𝘰 𝘵𝘩𝘢𝘵 𝘵𝘩𝘦𝘺 𝘤𝘢𝘯 𝘳𝘦𝘤𝘦𝘪𝘷𝘦 𝘤𝘭𝘦𝘢𝘳, 𝘵𝘪𝘮𝘦𝘭𝘺 𝘨𝘶𝘪𝘥𝘢𝘯𝘤𝘦 𝘣𝘺 𝘱𝘩𝘰𝘯𝘦 𝘥𝘶𝘳𝘪𝘯𝘨 𝘦𝘮𝘦𝘳𝘨𝘦𝘯𝘤𝘪𝘦𝘴?",
-   "status": "open",
-   "deadline": "2026-11-23",
-   "programme": "DIGITAL",
-   "kind": "cascade",
-   "budget": 70000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46807003"
-  },
-  {
-   "id": "HORIZON-MSCA-2026-DN-01-01",
-   "title": "MSCA Doctoral Networks 2026",
-   "status": "open",
-   "deadline": "2026-11-24",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 1884101538,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2026-DN-01-01"
-  },
-  {
-   "id": "HORIZON-RAISE-2026-01-03",
-   "title": "RAISE Doctoral Networks for AI in Science (RAISE pilot)",
-   "status": "open",
-   "deadline": "2026-11-24",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 90000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-RAISE-2026-01-03"
-  },
   {
    "id": "CEF-DIG-2026-CABLE-REPAIR-CAPACITIES-WORKS",
    "title": "Submarine Cable Repair Capacities - Works",
@@ -878,16 +848,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48106227"
   },
   {
-   "id": "NASCHA-46827222",
-   "title": "First Open Call",
-   "status": "open",
-   "deadline": "2027-01-18",
-   "programme": "I3",
-   "kind": "cascade",
-   "budget": 600000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
-  },
-  {
    "id": "EU4H-2027-SANTE-OG",
    "title": "Call for proposals for operating grants in 2027 to non-governmental organisations: financial contribution to the functioning of health non-governmental organisations implementing one or more specific objectives of Regulation (EU) 2021/522  (OA-g-26-91 )",
    "status": "open",
@@ -896,6 +856,26 @@
    "kind": "topic",
    "budget": 1800000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-OG"
+  },
+  {
+   "id": "ERASMUS-SPORT-2027-SNCESE",
+   "title": "Not-for-profit European sport events",
+   "status": "open",
+   "deadline": "2027-01-19",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 12000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-SPORT-2027-SNCESE"
+  },
+  {
+   "id": "ERASMUS-SPORT-2027-LSSNCESE",
+   "title": "Large scale not-for-profit European sport event",
+   "status": "open",
+   "deadline": "2027-01-19",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 3000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-SPORT-2027-LSSNCESE"
   },
   {
    "id": "PhotonQBoost-45705096",
@@ -1046,6 +1026,16 @@
    "kind": "topic",
    "budget": 32500000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-02-05"
+  },
+  {
+   "id": "FARM360TECH-46827222",
+   "title": "FARM360TECH Open Call for Innovative Agritech SMEs",
+   "status": "open",
+   "deadline": "2027-01-29",
+   "programme": "I3",
+   "kind": "cascade",
+   "budget": null,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
   },
   {
    "id": "EDITO 2-47374969",
@@ -2276,26 +2266,6 @@
    "kind": "topic",
    "budget": null,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HUMA-2028-2034-PARTNERSHIP-CERT"
-  },
-  {
-   "id": "ERASMUS-SPORT-2027-SNCESE",
-   "title": "Not-for-profit European sport events",
-   "status": "forthcoming",
-   "deadline": "2027-01-19",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 12000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-SPORT-2027-SNCESE"
-  },
-  {
-   "id": "ERASMUS-SPORT-2027-LSSNCESE",
-   "title": "Large scale not-for-profit European sport event",
-   "status": "forthcoming",
-   "deadline": "2027-01-19",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 3000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-SPORT-2027-LSSNCESE"
   },
   {
    "id": "COLOURS-46906387",
@@ -4328,6 +4298,46 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MISS-2027-04-CIT-05"
   },
   {
+   "id": "ERASMUS-EDU-2027-VIRT-EXCH-NE",
+   "title": "Erasmus+ Virtual Exchanges in Neighborhood East",
+   "status": "forthcoming",
+   "deadline": "2027-10-12",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 1300000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-VIRT-EXCH-NE"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-VIRT-EXCH-SMC",
+   "title": "Erasmus+ Virtual Exchanges in South Mediterranean Countries",
+   "status": "forthcoming",
+   "deadline": "2027-10-12",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 1319000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-VIRT-EXCH-SMC"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-VIRT-EXCH-SSA",
+   "title": "Erasmus+ Virtual Exchanges in Sub-Saharan Africa",
+   "status": "forthcoming",
+   "deadline": "2027-10-12",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 4581000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-VIRT-EXCH-SSA"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-VIRT-EXCH-WB",
+   "title": "Erasmus+ Virtual Exchanges in Western Balkans",
+   "status": "forthcoming",
+   "deadline": "2027-10-12",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 900000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-VIRT-EXCH-WB"
+  },
+  {
    "id": "HORIZON-CL3-2027-01-FCT-01",
    "title": "Online harms detection and investigation tools using a short development cycle model",
    "status": "forthcoming",
@@ -4734,8 +4744,8 @@
    "title": "AI and generative AI calls",
    "short": "AI & GenAI",
    "old": "/calls/calls-for-genai",
-   "count": 54,
-   "open": 32
+   "count": 53,
+   "open": 31
   },
   {
    "slug": "eic",
@@ -4750,16 +4760,16 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 46,
-   "open": 46
+   "count": 43,
+   "open": 43
   },
   {
    "slug": "cascade-funding",
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 61,
-   "open": 59
+   "count": 60,
+   "open": 58
   },
   {
    "slug": "health",
@@ -4822,24 +4832,24 @@
    "title": "Excellent science and widening participation calls",
    "short": "Science & Widening",
    "old": "/calls/horizon-science-widening",
-   "count": 38,
-   "open": 10
+   "count": 36,
+   "open": 8
   },
   {
    "slug": "digital-europe-defence",
    "title": "Digital Europe and European Defence Fund calls",
    "short": "Digital Europe & Defence",
    "old": "/calls/digital-europe-defence",
-   "count": 31,
-   "open": 31
+   "count": 30,
+   "open": 30
   },
   {
    "slug": "other-eu-programmes",
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 69,
-   "open": 52
+   "count": 73,
+   "open": 54
   },
   {
    "slug": "international-cooperation",
@@ -4894,50 +4904,6 @@
  ],
  "events": [
   {
-   "slug": "eit-hei-call-2026-eit-kic-discovery-day",
-   "title": "EIT HEI Call 2026 info session: EIT KIC Discovery Day",
-   "start": "2026-11-23",
-   "end": "2026-11-23",
-   "type": "info-day",
-   "programme": "horizon-europe",
-   "mode": "online",
-   "location": "Online",
-   "organiser": "EIT Higher Education Initiative",
-   "summary": "Online info session of the EIT Higher Education Initiative Call for Proposals 2026, focused on the EIT Knowledge and Innovation Communities and how applicants can build synergies with them.",
-   "registration_url": "https://eit-hei.eu/events/eit-kic-discvery-day-call-2026-info-sessions/",
-   "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/events/eit-hei-call-2026-eit-kic-discovery-day/",
-   "url_es": "https://events.ullswaterinvestments.com/es/events/eit-hei-call-2026-eit-kic-discovery-day/",
-   "theme": null,
-   "calls": [
-    "EIT HEI-48939733"
-   ],
-   "title_es": "Sesión informativa de la convocatoria EIT HEI 2026: EIT KIC Discovery Day",
-   "summary_es": "Sesión informativa en línea de la convocatoria 2026 de la Iniciativa de Educación Superior del EIT, centrada en las Comunidades de Conocimiento e Innovación (KIC) del EIT y en cómo crear sinergias con ellas.",
-   "location_es": "En línea"
-  },
-  {
-   "slug": "meet-the-eic-budapest",
-   "title": "Meet the EIC in Budapest",
-   "start": "2026-11-23",
-   "end": "2026-11-23",
-   "type": "info-day",
-   "programme": "eic",
-   "mode": "onsite",
-   "location": "Bosch Budapest Innovation Campus, Budapest",
-   "organiser": "European Innovation Council, Hungary's National Research, Development and Innovation Office (NKFIH) and DARE",
-   "summary": "An in-person day in Budapest explaining how the European Innovation Council funds deep tech researchers, startups and scaleups, from first application to investment.",
-   "registration_url": "https://ec.europa.eu/eusurvey/runner/EICBudapest2026",
-   "status": "applications-closed",
-   "url": "https://events.ullswaterinvestments.com/events/meet-the-eic-budapest/",
-   "url_es": "https://events.ullswaterinvestments.com/es/events/meet-the-eic-budapest/",
-   "theme": "eic",
-   "calls": [],
-   "title_es": "Meet the EIC en Budapest",
-   "summary_es": "Jornada presencial en Budapest que explica cómo financia el Consejo Europeo de Innovación a investigadores, startups y scaleups de deep tech, desde la primera solicitud hasta la inversión.",
-   "location_es": "Bosch Budapest Innovation Campus, Budapest"
-  },
-  {
    "slug": "horizon-europe-cluster-1-health-brokerage",
    "title": "Horizon Europe Cluster 1 Health brokerage event",
    "start": "2026-11-24",
@@ -4956,6 +4922,48 @@
    "calls": [],
    "title_es": "Evento de brokerage del Clúster 1 Salud de Horizonte Europa",
    "summary_es": "Evento en línea de dos días para encontrar socios internacionales de consorcio para las convocatorias de 2027 del Clúster 1 Salud.",
+   "location_es": "En línea"
+  },
+  {
+   "slug": "bridges-health-thessaloniki",
+   "title": "Bridges Health: training and matchmaking for Horizon Europe consortia",
+   "start": "2026-11-25",
+   "end": "2026-11-26",
+   "type": "training",
+   "programme": "cluster-1",
+   "mode": "onsite",
+   "location": "Thessaloniki, Greece",
+   "organiser": "ISERD, EIT Hub Israel and the EU Delegation to Israel",
+   "summary": "A two-day in-person programme of masterclasses, moderated matchmaking and proposal drafting for Horizon Europe Health and Cancer Mission consortia.",
+   "registration_url": "https://www.go-eit.eu/eit-israel-hub/bridges-health/",
+   "status": "applications-closed",
+   "url": "https://events.ullswaterinvestments.com/events/bridges-health-thessaloniki/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/bridges-health-thessaloniki/",
+   "theme": "health",
+   "calls": [],
+   "title_es": "Bridges Health: formación y matchmaking para consorcios de Horizonte Europa",
+   "summary_es": "Programa presencial de dos días con clases magistrales, matchmaking moderado y redacción de propuestas para consorcios de Horizonte Europa Salud y de la Misión Cáncer.",
+   "location_es": "Salónica, Grecia"
+  },
+  {
+   "slug": "ehds-webinar-4-secondary-use-benefits-incentives",
+   "title": "EHDS support to stakeholders. Webinar 4: Stakeholder workshop on Benefits, challenges and incentives of EHDS secondary use",
+   "start": "2026-11-25",
+   "end": "2026-11-25",
+   "type": "webinar",
+   "programme": "other",
+   "mode": "online",
+   "location": "Online",
+   "organiser": "European Commission (EHDS support to stakeholders), delivered by IDOM and IACS",
+   "summary": "An online workshop, part of the Commission's EHDS stakeholder support series, on how the secondary use of health data under the European Health Data Space creates value, and on its benefits, challenges and incentives for each stakeholder group.",
+   "registration_url": "https://events.teams.microsoft.com/event/a9526537-8a2b-448d-9045-59470ebf0b13@b853f977-4183-428f-855c-ffe7328b6f13",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/events/ehds-webinar-4-secondary-use-benefits-incentives/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/ehds-webinar-4-secondary-use-benefits-incentives/",
+   "theme": "other-eu-programmes",
+   "calls": [],
+   "title_es": "Apoyo del EHDS a las partes interesadas. Webinario 4: taller sobre beneficios, retos e incentivos del uso secundario de datos en el EHDS",
+   "summary_es": "Taller en línea, dentro de la serie de apoyo de la Comisión a las partes interesadas del EHDS, sobre cómo el uso secundario de los datos sanitarios en el Espacio Europeo de Datos Sanitarios crea valor, y sobre sus beneficios, retos e incentivos para cada grupo de interés.",
    "location_es": "En línea"
   }
  ]
