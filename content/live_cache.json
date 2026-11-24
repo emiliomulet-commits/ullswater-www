@@ -1,9 +1,9 @@
 {
  "stats": {
-  "updated": "2026-11-24T00:15:48+00:00",
-  "open": 220,
-  "forthcoming": 247,
-  "total": 467,
+  "updated": "2026-11-24T14:45:30+00:00",
+  "open": 222,
+  "forthcoming": 248,
+  "total": 470,
   "closingIn30Days": 40,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
@@ -848,6 +848,26 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48106227"
   },
   {
+   "id": "NASCHA-46827222",
+   "title": "First Open Call",
+   "status": "open",
+   "deadline": "2027-01-18",
+   "programme": "I3",
+   "kind": "cascade",
+   "budget": 600000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
+  },
+  {
+   "id": "EIT INNOBC-48939740",
+   "title": "FACTORYX",
+   "status": "open",
+   "deadline": "2027-01-18",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 1800000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48939740"
+  },
+  {
    "id": "EU4H-2027-SANTE-OG",
    "title": "Call for proposals for operating grants in 2027 to non-governmental organisations: financial contribution to the functioning of health non-governmental organisations implementing one or more specific objectives of Regulation (EU) 2021/522  (OA-g-26-91 )",
    "status": "open",
@@ -1028,14 +1048,14 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-02-05"
   },
   {
-   "id": "FARM360TECH-46827222",
-   "title": "FARM360TECH Open Call for Innovative Agritech SMEs",
+   "id": "SECURE-46695847",
+   "title": "SECURE-CALL #2 - SECURE Second Open Call For Proposals",
    "status": "open",
    "deadline": "2027-01-29",
-   "programme": "I3",
+   "programme": "DIGITAL",
    "kind": "cascade",
-   "budget": null,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
+   "budget": 11500000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46695847"
   },
   {
    "id": "EDITO 2-47374969",
@@ -2266,6 +2286,16 @@
    "kind": "topic",
    "budget": null,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HUMA-2028-2034-PARTNERSHIP-CERT"
+  },
+  {
+   "id": "FFplus-46236562",
+   "title": "Third call for business experiments addressing the uptake of HPC by SMEs",
+   "status": "forthcoming",
+   "deadline": "2027-01-20",
+   "programme": "DIGITAL",
+   "kind": "cascade",
+   "budget": 4000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46236562"
   },
   {
    "id": "COLOURS-46906387",
@@ -4744,8 +4774,8 @@
    "title": "AI and generative AI calls",
    "short": "AI & GenAI",
    "old": "/calls/calls-for-genai",
-   "count": 53,
-   "open": 31
+   "count": 54,
+   "open": 32
   },
   {
    "slug": "eic",
@@ -4768,8 +4798,8 @@
    "title": "Cascade funding (FSTP) open calls",
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
-   "count": 60,
-   "open": 58
+   "count": 63,
+   "open": 60
   },
   {
    "slug": "health",
@@ -4840,8 +4870,8 @@
    "title": "Digital Europe and European Defence Fund calls",
    "short": "Digital Europe & Defence",
    "old": "/calls/digital-europe-defence",
-   "count": 30,
-   "open": 30
+   "count": 32,
+   "open": 31
   },
   {
    "slug": "other-eu-programmes",
