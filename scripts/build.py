@@ -300,6 +300,7 @@ header.site .wrap{max-width:1280px;gap:12px}header.site .brand{flex:0 1 auto;min
 @media (max-width:960px){.tgrid{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.hero.ai .wrap{padding:52px 18px 44px}.hero.ai .lead{font-size:17px}.ask{height:64px;padding:0 8px 0 18px;margin-top:30px}.ask input{font-size:16px}.ask button{width:46px;height:46px}
  .tchips{gap:8px}.tchip{font-size:14px;min-height:40px;padding:8px 14px}.tgrid{grid-template-columns:1fr}.tall{padding:20px 16px}}
+@media (max-width:640px){html.uaa-hero #uaa-b{display:none!important}}
 """
 
 JS = """(function(){var b=document.querySelector('.burger'),n=document.querySelector('nav.main');if(b)b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
@@ -311,7 +312,8 @@ document.addEventListener('click',function(e){document.querySelectorAll('.dd.ope
 (function(){var es=document.documentElement.lang==='es';function go(q,o){if(window.UAA&&window.UAA.ask){window.UAA.ask(q,o);return true}window.UAA_Q=window.UAA_Q||[];if(window.UAA_Q.push){window.UAA_Q.push([q,o]);return true}return false}
 var f=document.getElementById('ai-ask');if(f)f.addEventListener('submit',function(e){var i=document.getElementById('ai-q'),q=(i.value||'').trim();e.preventDefault();if(!q){i.focus();return}if(go(q,{wide:1}))i.value='';else f.submit()});
 document.querySelectorAll('.tchip[data-q]').forEach(function(a){a.addEventListener('click',function(e){if(e.ctrlKey||e.metaKey||e.shiftKey||e.button)return;if(go(a.getAttribute('data-q'),{topic:1,wide:1}))e.preventDefault()})});
-var m=document.querySelector('.tchip.more'),t=document.getElementById('tall');if(m&&t){var lbl=m.textContent;m.addEventListener('click',function(){var o=t.hidden;t.hidden=!o;m.setAttribute('aria-expanded',o);m.textContent=o?(es?'Ocultar temas':'Hide topics'):lbl})}})();"""
+var m=document.querySelector('.tchip.more'),t=document.getElementById('tall');if(m&&t){var lbl=m.textContent;m.addEventListener('click',function(){var o=t.hidden;t.hidden=!o;m.setAttribute('aria-expanded',o);m.textContent=o?(es?'Ocultar temas':'Hide topics'):lbl})}
+var h=document.querySelector('.hero.ai');if(h&&window.IntersectionObserver)new IntersectionObserver(function(x){document.documentElement.classList.toggle('uaa-hero',x[0].isIntersecting)}).observe(h)})();"""
 
 LINKEDIN = "https://www.linkedin.com/company/ullswater-investments"
 YOUTUBE = "https://www.youtube.com/@ullswaterinvestments"
