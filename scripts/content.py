@@ -404,6 +404,15 @@ assert len(TOPICS) == 20 and sum(t[7] for t in TOPICS) == 14
 BENCHMARK_URL = "https://benchmark.ullswaterinvestments.com/"
 BENCHMARK_EMAIL = "benchmark@ullswaterinvestments.com"
 BENCHMARK_CHIP = ("Compliance benchmark 2027", "Benchmark de compliance 2027",
+                  "What is the regulatory compliance benchmark that Ullswater Investments is preparing, who can take part, "
+                  "how and by when, and where is its website?",
+                  "¿Qué es el benchmark de cumplimiento normativo que prepara Ullswater Investments, quién puede participar, "
+                  "cómo y en qué plazos, y dónde está su web?")
+BENCHMARK_KB is the curated text the
+# assistant reads (added to the knowledge base by kb_build.py), so its answer is complete and links to the benchmark site.
+BENCHMARK_URL = "https://benchmark.ullswaterinvestments.com/"
+BENCHMARK_EMAIL = "benchmark@ullswaterinvestments.com"
+BENCHMARK_CHIP = ("Compliance benchmark 2027", "Benchmark de compliance 2027",
                   "Explain in detail the regulatory compliance benchmark that Ullswater Investments is building: what it is, "
                   "who can take part and how, which regulations it covers, the calendar, what participants get, and give me "
                   "the link to the benchmark website.",
