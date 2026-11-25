@@ -234,7 +234,7 @@ section.pj{padding:84px 0 88px;border-top:4px solid var(--gold)}
 .pj-card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--navy);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:border-color .15s,box-shadow .15s}
 .pj-card:hover{border-color:var(--gold);box-shadow:0 10px 28px rgba(35,53,103,.1)}
 .pj-card .top{display:flex;justify-content:space-between;align-items:center;gap:8px}.pj-card .prog{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}
-.pj-card h3{font-size:24px;margin:0;font-weight:800}.pj-card .t{font-weight:600;font-size:15px;line-height:1.45;color:var(--ink);margin-top:-6px}
+.pj-card h3{font-size:24px;margin:0;font-weight:800}a.pj-tl{color:inherit;text-decoration:none;display:inline}a.pj-tl:hover,a.pj-tl:focus-visible{text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--gold)}.pj-card .t{font-weight:600;font-size:15px;line-height:1.45;color:var(--ink);margin-top:-6px}
 .pj-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
 .pj-role{background:var(--bg);border-radius:8px;padding:11px 14px;margin-top:auto}.pj-role b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}.pj-role span{color:var(--navy);font-weight:700;font-size:15px}
 .pj-card .ft{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;color:var(--muted)}.pj-card .ft a{font-weight:700;text-decoration:none;font-size:15px}
@@ -396,6 +396,11 @@ def project_link(p, label="Project site ↗"):
             else '<span class="soon">Project site coming soon</span>')
 
 
+def title_link(p):
+    """Project name always links straight to the project's own site (new tab)."""
+    return f'<a class="pj-tl" href="{project_url(p)}" target="_blank" rel="noopener">{escape(p["acronym"])}</a>'
+
+
 def status_tag(p, long=False):
     if p["status"] == "funded":
         return '<span class="st funded">Funded · in execution</span>'
@@ -416,7 +421,7 @@ def projects_band():
             continue
         meta = " · ".join(f"{v} {k}" for v, k in p["facts"][:2])
         cards += (f'<article class="pj-card">{video_button(p, "pv pv-card")}<div class="top"><span class="prog">{escape(p["programme"])}</span>{status_tag(p)}</div>'
-                  f'<h3>{escape(p["acronym"])}</h3><div class="t">{escape(p["title"])}</div><p>{escape(p["pitch"])}</p>'
+                  f'<h3>{title_link(p)}</h3><div class="t">{escape(p["title"])}</div><p>{escape(p["pitch"])}</p>'
                   f'<div class="pj-role"><b>Our role</b><span>{escape(p["role"])}</span></div>'
                   f'<div class="ft"><span>{escape(meta)}</span>{project_link(p)}</div></article>')
     cards += (f'<a class="pj-join" href="mailto:{C.EMAIL}?subject=Joining%20one%20of%20your%20European%20consortia"><div><div class="k">Consortia still open</div><h3>Join one of these projects as a partner</h3>'
@@ -426,7 +431,7 @@ def projects_band():
 <div class="pj-head"><div><p class="kicker" style="color:var(--gold2)">European R&amp;D projects · ITEA · Eureka</p><h2 id="pj-h">Our participation in European projects</h2>
 <p class="sub">{escape(C.PROJECTS_INTRO)}</p></div><ul class="pj-stats">{stats}</ul></div>
 <article class="pj-feat"><div class="main"><span class="role">{escape(f["role"])}</span> {status_tag(f)}<span class="prog">{escape(f["programme"])}</span>
-<h3>{escape(f["acronym"])}<span>{escape(f["title"])}</span></h3><p>{escape(f["pitch"])}</p>
+<h3>{title_link(f)}<span>{escape(f["title"])}</span></h3><p>{escape(f["pitch"])}</p>
 <div class="what"><b>What Ullswater does</b>{escape(f["contribution"])}</div>
 <div class="actions" style="margin-top:6px">{feat_btn}<a class="btn ghost" href="/projects/">All our projects</a></div></div>
 <div class="side">{video_button(f, "pv pv-feat")}<ul>{side}</ul></div></article>
@@ -529,7 +534,7 @@ def projects_page(themes):
         btn = (f'<a class="btn" href="{project_url(p)}" target="_blank" rel="noopener">Visit project site ↗</a>' if p.get("live")
                else '<span class="soon">Project site coming soon</span>')
         rows += (f'<article class="pj-row" id="{p["slug"]}" data-g="{p["group"]}"><div class="a"><div><div class="prog">{escape(p["programme"])}</div>'
-                 f'<h2>{escape(p["acronym"])}</h2><div class="ch">{escape(p["challenge"])}</div></div>'
+                 f'<h2>{title_link(p)}</h2><div class="ch">{escape(p["challenge"])}</div></div>'
                  f'{status_tag(p, long=True)}</div>'
                  f'<div class="b"><div class="t">{escape(p["title"])}</div><p>{escape(p["pitch"])}</p><ul>{facts}</ul></div>'
                  f'<div class="c"><div><b>Our role</b><div class="r">{escape(p["role"])}</div><p>{escape(p["contribution"])}</p></div>{btn}</div>{project_video(p)}</article>')
