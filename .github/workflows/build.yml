@@ -66,7 +66,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
+      - name: Wait for the artifact to be visible to the Pages API
+        run: sleep 30
       - id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Retry deploy once if GitHub could not find the artifact yet
+        id: deployment_retry
+        if: ${{ failure() && steps.deployment.outcome == 'failure' }}
         uses: actions/deploy-pages@v4
       - name: Notify IndexNow (Bing and others)
         if: ${{ success() }}
