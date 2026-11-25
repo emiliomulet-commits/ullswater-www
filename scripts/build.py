@@ -296,7 +296,7 @@ header.site .wrap{max-width:1280px;gap:12px}header.site .brand{flex:0 1 auto;min
 .tlist{display:flex;flex-direction:column;gap:8px}.tlist .tchip{min-height:0;padding:9px 14px;font-size:15px;width:100%}
 .ai-note{margin:22px auto 0;font-size:13px;color:#aeb9d8}.ai-note a{color:var(--gold)}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1000px;margin:34px auto 0;padding:0;list-style:none}
-.kpis li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px 16px;font-size:14px;color:#cbd3ea}.kpis strong{display:block;font-size:28px;color:#fff;line-height:1.15}
+.kpis li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;font-size:14px;color:#cbd3ea;transition:border-color .15s,background .15s}.kpis a{display:flex;flex-direction:column;height:100%;box-sizing:border-box;padding:14px 16px;color:inherit;text-decoration:none;border-radius:12px}.kpis strong{display:block;font-size:28px;color:#fff;line-height:1.15}.kpis .go{margin-top:auto;padding-top:8px;color:var(--gold);font-weight:600;font-size:13px}.kpis li:hover,.kpis li:focus-within{border-color:var(--gold);background:rgba(255,255,255,.1)}.kpis a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.kpis li:nth-child(5){grid-column:1/-1}.kpis li:nth-child(5) strong{color:var(--gold)}@media (min-width:961px){.kpis li:nth-child(5) a{flex-direction:row;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:4px 14px}.kpis li:nth-child(5) .go{margin:0;padding:0}}
 @media (max-width:960px){.tgrid{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.hero.ai .wrap{padding:52px 18px 44px}.hero.ai .lead{font-size:17px}.ask{height:64px;padding:0 8px 0 18px;margin-top:30px}.ask input{font-size:16px}.ask button{width:46px;height:46px}
  .tchips{gap:8px}.tchip{font-size:14px;min-height:40px;padding:8px 14px}.tgrid{grid-template-columns:1fr}.tall{padding:20px 16px}}
@@ -674,7 +674,7 @@ def benchmark_band():
 <ul class="bmp-facts"><li><strong>19</strong>regulations in 6 categories</li><li><strong>Free</strong>no fee and no prices requested</li><li><strong>31 Jan 2027</strong>deadline to send your profile</li><li><strong>50</strong>media outlets will receive the report</li></ul></div></div></section>"""
 
 
-def ai_hero(st):
+def ai_hero(st, ay=None, soon30=None):
     """Home hero as an AI entry point (ARGOS style, Ullswater colours): a large question box for the Funding Assistant
     and the 20 key topics of the site as chips. Chips are plain links for crawlers and visitors without JavaScript."""
     top = benchmark_chip() + "".join(topic_chip(t) for t in C.TOPICS if t[7])
@@ -684,8 +684,16 @@ def ai_hero(st):
         groups += f'<div class="tgroup"><h2>{gen}</h2><div class="tlist">{chips}</div></div>'
     kpis = ""
     if st:
-        kpis = (f'<ul class="kpis"><li><strong>{st["open"]}</strong>EU calls open now</li><li><strong>{st["forthcoming"]}</strong>forthcoming calls</li>'
-                f'<li><strong>{st["closingIn30Days"]}</strong>closing in 30 days</li><li><strong>{st["programmes"]}</strong>EU programmes tracked</li></ul>')
+        # Each figure is a link to the list it counts (calls. accepts ?status= and has #filters and #programmes anchors)
+        tiles = [(st["open"], "EU calls open now", f"{C.CALLS}/?status=open#filters", "See the calls →"),
+                 (st["forthcoming"], "forthcoming calls", f"{C.CALLS}/?status=forthcoming#filters", "See the calls →"),
+                 (soon30 if soon30 is not None else st["closingIn30Days"], "closing in 30 days", f"{C.CALLS}/closing-soon/", "See the deadlines →"),
+                 (st["programmes"], "EU programmes tracked", f"{C.CALLS}/#programmes", "See the programmes →")]
+        if ay and ay.get("open"):
+            tiles.append((ay["open"], "grants open in Spain (State and regional)", "/es/ayudas/", "See the grants (in Spanish) →"))
+        kpis = '<ul class="kpis">' + "".join(
+            f'<li><a href="{u}" data-kpi="{i}"><strong>{n}</strong><span>{t}</span><span class="go">{g}</span></a></li>'
+            for i, (n, t, u, g) in enumerate(tiles)) + "</ul>"
     return f"""<section class="hero ai" id="top" aria-labelledby="hero-title"><div class="wrap">
 <p class="pre">European funding advisors · Madrid · Brussels · <span>Funding Assistant · AI</span></p>
 <h1 id="hero-title">Unlock European funding<br>for your innovation.</h1>
@@ -706,7 +714,12 @@ def home(live, themes, ay=None):
     if st:
         stats = (f'<ul class="stats"><li><strong>{st["open"]}</strong>EU calls open now</li><li><strong>{st["forthcoming"]}</strong>forthcoming calls</li>'
                  f'<li><strong>{st["closingIn30Days"]}</strong>closing in 30 days</li><li><strong>{st["programmes"]}</strong>EU programmes tracked</li></ul>')
-    h = ai_hero(st)
+    today = date.today()
+    soon30 = None
+    if live.get("calls"):  # same rule as calls./closing-soon/: open, deadline between today and 30 days ahead
+        soon30 = sum(1 for c in live["calls"] if c.get("status") == "open" and c.get("deadline")
+                     and 0 <= (date.fromisoformat(c["deadline"][:10]) - today).days <= 30)
+    h = ai_hero(st, ay, soon30)
     svc = "".join(f'<a class="card top" href="/{s}/"><div class="num">0{i + 1}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Learn more →</span></a>'
                   for i, (s, t, d) in enumerate(C.SERVICES))
     explore = "".join(f'<a class="card" href="{u}" target="_blank" rel="noopener"><div class="ic" aria-hidden="true">{ic}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Explore ↗</span></a>'
