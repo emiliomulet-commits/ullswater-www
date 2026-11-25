@@ -89,7 +89,7 @@ def load_live():
         for it in root.iter("item"):
             items.append({"title": it.findtext("title"), "url": it.findtext("link"), "summary": it.findtext("description") or "",
                           "category": it.findtext("category") or "", "date": parsedate_to_datetime(it.findtext("pubDate")).date().isoformat()})
-        live["news"] = items[:4]
+        live["news"] = items[:12]  # the home page shows as many as fit beside "Closing soon"
         # Spanish versions of the same articles (news.ullswaterinvestments.com/es/feed.xml), matched by URL
         es_items = {it.findtext("link"): it for it in ET.fromstring(fetch(NEWS + "/es/feed.xml")).iter("item")}
         for n in live["news"]:
@@ -101,7 +101,7 @@ def load_live():
     try:
         ev = json.loads(fetch(EVENTS + "/events.json"))["events"]
         today = date.today().isoformat()
-        live["events"] = sorted([e for e in ev if (e.get("end") or e.get("start", "")) >= today], key=lambda e: e["start"])[:3]
+        live["events"] = sorted([e for e in ev if (e.get("end") or e.get("start", "")) >= today], key=lambda e: e["start"])[:12]
     except Exception as e:
         print("events fetch failed:", e)
     for k, v in cache.items():
@@ -180,7 +180,7 @@ a.card{text-decoration:none;color:inherit;transition:border-color .15s,box-shado
 .list{list-style:none;padding:0;margin:0}.list li{border-bottom:1px solid var(--line);padding:14px 0;display:flex;gap:16px;align-items:baseline}
 .list li:last-child{border-bottom:0}.list .d{flex:0 0 108px;font-weight:700;color:var(--navy);font-size:15px}.list a{font-weight:600;text-decoration:none}.list a:hover{text-decoration:underline}
 .list small{display:block;color:var(--muted);font-size:13px}
-.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px}.livegrid .panel{display:flex;flex-direction:column}.livegrid .panel>.list{flex:1}.livegrid .panel .more{align-self:flex-start}
 .panel h3 a{text-decoration:none}.panel .list li{flex-direction:column;gap:2px}.panel .list .d{flex:none;font-size:13px;color:var(--gold2)}.panel .more{display:inline-block;margin-top:14px;font-weight:700;text-decoration:none}
 table.gt{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 table.gt th{background:var(--navy);color:#fff;text-align:left;padding:10px 14px;font-weight:600}table.gt td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top}
@@ -708,14 +708,28 @@ def home(live, themes, ay=None):
                       for t, d, u, ic in C.EXPLORE)
     soon = "".join(f'<li><span class="d">{fmt(c["deadline"])}</span><span><a href="{C.CALLS}/call/{re.sub(r"[^a-z0-9]+", "-", c["id"].lower()).strip("-")}/">{escape(c["title"])}</a><small>{escape(c["id"])}</small></span></li>'
                    for c in live.get("soon", []))
+    # Fill the news and events columns until they are about as long as "Closing soon" (weight ≈ lines of text per item)
+    def weight(title):
+        return 2.3 + -(-len(title or "") // 34)
+
+    def fit(items, budget):
+        out, used = [], 0.0
+        for it in items:
+            w = weight(it.get("title_es") or it.get("title"))
+            if out and used + w / 2 > budget:
+                break
+            out.append(it)
+            used += w
+        return out
+    budget = max(sum(weight(c["title"]) for c in live.get("soon", [])), 12)
     news = "".join(f'<li><span class="d">{fmt(n["date"])}</span><span><a href="{escape(n["url"])}">{escape(n["title"])}</a><small>{escape(n["category"])}</small></span></li>'
-                   for n in live.get("news", []))
+                   for n in fit(live.get("news", []), budget))
     evs = "".join(f'<li><span class="d">{fmt(e["start"])}</span><span><a href="{C.EVENTS}/">{escape(e["title"])}</a><small>{escape(e.get("location") or e.get("mode") or "")}</small></span></li>'
-                  for e in live.get("events", []))
+                  for e in fit(live.get("events", []), budget))
     upd = fmt(st["updated"]) if st.get("updated") else ""
     live_band = f"""<section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Live from our platforms{f' · updated {upd}' if upd else ''}</p><h2>What's happening in EU funding</h2>
 <p class="sub">Deadlines, news and events, refreshed automatically from the European Commission and our editorial team.</p>
-<div class="grid g3"><div class="panel"><h3><a href="{C.CALLS}/closing-soon/">Closing soon</a></h3><ul class="list">{soon}</ul><a class="more" href="{C.CALLS}/">All open calls →</a></div>
+<div class="grid g3 livegrid"><div class="panel"><h3><a href="{C.CALLS}/closing-soon/">Closing soon</a></h3><ul class="list">{soon}</ul><a class="more" href="{C.CALLS}/">All open calls →</a></div>
 <div class="panel"><h3><a href="{C.NEWS}/">Latest news</a></h3><ul class="list">{news}</ul><a class="more" href="{C.NEWS}/">EU Funding News →</a></div>
 <div class="panel"><h3><a href="{C.EVENTS}/">Upcoming events</a></h3><ul class="list">{evs}</ul><a class="more" href="{C.EVENTS}/">All events →</a></div></div></div></section>"""
     vc = "".join(f'<div class="card"><div class="ic" aria-hidden="true">{i}</div><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for i, t, d in C.VC_DOMAINS)
