@@ -1,9 +1,9 @@
 {
  "stats": {
-  "updated": "2026-11-25T15:30:30+00:00",
+  "updated": "2026-11-25T17:38:34+00:00",
   "open": 222,
-  "forthcoming": 256,
-  "total": 478,
+  "forthcoming": 257,
+  "total": 479,
   "closingIn30Days": 39,
   "programmes": 22,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
@@ -838,16 +838,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48106227"
   },
   {
-   "id": "NASCHA-46827222",
-   "title": "First Open Call",
-   "status": "open",
-   "deadline": "2027-01-18",
-   "programme": "I3",
-   "kind": "cascade",
-   "budget": 600000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
-  },
-  {
    "id": "EIT INNOBC-48939740",
    "title": "FACTORYX",
    "status": "open",
@@ -1046,6 +1036,16 @@
    "kind": "cascade",
    "budget": 11500000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46695847"
+  },
+  {
+   "id": "FARM360TECH-46827222",
+   "title": "FARM360TECH Open Call for Innovative Agritech SMEs",
+   "status": "open",
+   "deadline": "2027-01-29",
+   "programme": "I3",
+   "kind": "cascade",
+   "budget": null,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
   },
   {
    "id": "EDITO 2-47374969",
@@ -2356,6 +2356,16 @@
    "kind": "topic",
    "budget": 6000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-SCHOOLS"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-OFET-TT",
+   "title": "Jean Monnet Actions for other fields of Education and Training: Teacher Training",
+   "status": "forthcoming",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 5100000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-OFET-TT"
   },
   {
    "id": "ERASMUS-JMO-2027-HEI-TCH-RSCH-CHAIR",
@@ -4958,7 +4968,7 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 81,
+   "count": 82,
    "open": 53
   },
   {
