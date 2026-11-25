@@ -274,7 +274,7 @@ PROJECTS_INTRO = ("We do not only advise on European funding. We sit inside the 
                   "The only exception is DR-MBANK, which is already funded and in execution.")
 PROJECTS_OPEN_NOTE = ("Projects marked \u201cOpen to new partners\u201d are in preparation: their consortia can still take on new partners and their "
                       "content reflects the current draft proposal. DR-MBANK is funded and in execution and does not accept new partners.")
-PROJECTS_STATS = [("6", "European R&D projects"), ("14+", "countries in our consortia"), ("3", "leadership roles")]
+PROJECTS_STATS = [("50+", "projects since 2014"), ("14+", "countries in our consortia"), ("3", "leadership roles")]
 PROJECTS_FEATURED = "dataspaces"  # European Data Spaces: our strongest line, in the large featured block
 PROJECTS = [
     # Broad own line of Ullswater and Software in a Box (not an ITEA/Eureka call): federated data spaces in several sectors.

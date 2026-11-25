@@ -60,6 +60,7 @@
 "<strong>{0} Nov {1}</strong>next deadline": "<strong>{0} nov {1}</strong>próximo plazo",
 "<strong>{0} Sep {1}</strong>next deadline": "<strong>{0} sep {1}</strong>próximo plazo",
 "<strong>{0}+</strong>countries in our consortia": "<strong>{0}+</strong>países en nuestros consorcios",
+"<strong>{0}+</strong>projects since {1}": "<strong>+{0}</strong>proyectos desde {1}",
 "<strong>{0}+{1}</strong> pilots and testbed": "<strong>{0}+{1}</strong> pilotos y banco de pruebas",
 "<strong>{0}</strong> EU rules verified: GDPR, EHDS, AI Act": "<strong>{0}</strong> normas de la UE verificadas: RGPD, EEDS y Reglamento de IA",
 "<strong>{0}</strong> core innovations": "<strong>{0}</strong> innovaciones clave",
