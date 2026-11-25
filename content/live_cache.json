@@ -1,21 +1,14 @@
 {
  "stats": {
-  "updated": "2026-11-24T22:42:19+00:00",
-  "open": 222,
+  "updated": "2026-11-25T09:50:26+00:00",
+  "open": 221,
   "forthcoming": 248,
-  "total": 470,
-  "closingIn30Days": 40,
-  "programmes": 23,
+  "total": 469,
+  "closingIn30Days": 39,
+  "programmes": 22,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
  "soon": [
-  {
-   "id": "CEF-DIG-2026-CABLE-REPAIR-CAPACITIES-WORKS",
-   "title": "Submarine Cable Repair Capacities - Works",
-   "deadline": "2026-11-25",
-   "programme": "CEF",
-   "budget": 40000000
-  },
   {
    "id": "HORIZON-CL6-2026-04-GOVERNANCE-01",
    "title": "Additional activities for the European Partnership of Agriculture of Data",
@@ -64,19 +57,16 @@
    "deadline": "2026-12-01",
    "programme": "HORIZON",
    "budget": 30000000
+  },
+  {
+   "id": "HORIZON-CL5-2026-11-D3-23",
+   "title": "Data sharing to support the training and development of AI foundation models in the energy sector",
+   "deadline": "2026-12-01",
+   "programme": "HORIZON",
+   "budget": 30000000
   }
  ],
  "calls": [
-  {
-   "id": "CEF-DIG-2026-CABLE-REPAIR-CAPACITIES-WORKS",
-   "title": "Submarine Cable Repair Capacities - Works",
-   "status": "open",
-   "deadline": "2026-11-25",
-   "programme": "CEF",
-   "kind": "topic",
-   "budget": 40000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/CEF-DIG-2026-CABLE-REPAIR-CAPACITIES-WORKS"
-  },
   {
    "id": "HORIZON-CL6-2026-04-GOVERNANCE-01",
    "title": "Additional activities for the European Partnership of Agriculture of Data",
@@ -848,6 +838,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48106227"
   },
   {
+   "id": "NASCHA-46827222",
+   "title": "First Open Call",
+   "status": "open",
+   "deadline": "2027-01-18",
+   "programme": "I3",
+   "kind": "cascade",
+   "budget": 600000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
+  },
+  {
    "id": "EIT INNOBC-48939740",
    "title": "FACTORYX",
    "status": "open",
@@ -1046,16 +1046,6 @@
    "kind": "cascade",
    "budget": 11500000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46695847"
-  },
-  {
-   "id": "FARM360TECH-46827222",
-   "title": "FARM360TECH Open Call for Innovative Agritech SMEs",
-   "status": "open",
-   "deadline": "2027-01-29",
-   "programme": "I3",
-   "kind": "cascade",
-   "budget": null,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
   },
   {
    "id": "EDITO 2-47374969",
@@ -4790,8 +4780,8 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 43,
-   "open": 43
+   "count": 42,
+   "open": 42
   },
   {
    "slug": "cascade-funding",
@@ -4878,8 +4868,8 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 73,
-   "open": 54
+   "count": 72,
+   "open": 53
   },
   {
    "slug": "international-cooperation",
