@@ -1,9 +1,9 @@
 {
  "stats": {
-  "updated": "2026-11-25T09:50:26+00:00",
-  "open": 221,
-  "forthcoming": 248,
-  "total": 469,
+  "updated": "2026-11-25T15:30:30+00:00",
+  "open": 222,
+  "forthcoming": 256,
+  "total": 478,
   "closingIn30Days": 39,
   "programmes": 22,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
@@ -1778,6 +1778,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EUBA-EFSA-2027-ENREL-01"
   },
   {
+   "id": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
+   "title": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
+   "status": "open",
+   "deadline": "2027-02-25",
+   "programme": "HORIZON",
+   "kind": "topic",
+   "budget": 166000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2027-PATHFINDEROPEN-two-stage"
+  },
+  {
    "id": "CoPower-47589185",
    "title": "Comprehensive and inclusive support for women and girls' victims of GBV",
    "status": "open",
@@ -2298,6 +2308,86 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46906387"
   },
   {
+   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-CANADA",
+   "title": "Jean Monnet Network on external policy: EU-Canada",
+   "status": "forthcoming",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 2400000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-CANADA"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-UA-MLD",
+   "title": "Jean Monnet Network on external policy: EU-Ukraine-Moldova",
+   "status": "forthcoming",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 2400000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-UA-MLD"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-EU-DIG-ECO",
+   "title": "Jean Monnet Networks on internal policy: Strategic autonomy of the European political area – digital and economic independence",
+   "status": "forthcoming",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 6000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-EU-DIG-ECO"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-EU-EDU-CUL",
+   "title": "Jean Monnet Network on internal policy: The role of education and culture for integration and cooperation in Europe",
+   "status": "forthcoming",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 6000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-EU-EDU-CUL"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-NETWORKS-SCHOOLS",
+   "title": "Jean Monnet Networks in other fields of education and training",
+   "status": "forthcoming",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 6000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-SCHOOLS"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-HEI-TCH-RSCH-CHAIR",
+   "title": "ERASMUS-JMO-2027-CHAIR",
+   "status": "forthcoming",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 20050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-HEI-TCH-RSCH-CHAIR"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-HEI-TCH-RSCH-CoE",
+   "title": "ERASMUS-JMO-2027-CoE",
+   "status": "forthcoming",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 20050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-HEI-TCH-RSCH-CoE"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-HEI-TCH-RSCH-MODULE",
+   "title": "ERASMUS-JMO-2027-MODULE",
+   "status": "forthcoming",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 20050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-HEI-TCH-RSCH-MODULE"
+  },
+  {
    "id": "ERASMUS-EDU-2027-PEX-TEACH-ACA",
    "title": "Erasmus + Teacher Academies",
    "status": "forthcoming",
@@ -2306,16 +2396,6 @@
    "kind": "topic",
    "budget": 37500000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-PEX-TEACH-ACA"
-  },
-  {
-   "id": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
-   "title": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
-   "status": "forthcoming",
-   "deadline": "2027-02-25",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 166000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-EIC-2027-PATHFINDEROPEN-two-stage"
   },
   {
    "id": "HORIZON-BRIDGING-2027-05-01",
@@ -2336,6 +2416,16 @@
    "kind": "cascade",
    "budget": 86439583,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44087099"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-PCOOP-ENGO",
+   "title": "Partnerships for Cooperation - Cooperation Partnerships in the field of education and training submitted by European NGOs",
+   "status": "forthcoming",
+   "deadline": "2027-03-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 5000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-PCOOP-ENGO"
   },
   {
    "id": "ERASMUS-SPORT-2027-CB",
@@ -4773,7 +4863,7 @@
    "short": "EIC",
    "old": "/calls/eic-pre-accelerator",
    "count": 8,
-   "open": 6
+   "open": 7
   },
   {
    "slug": "closing-this-year",
@@ -4868,7 +4958,7 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 72,
+   "count": 81,
    "open": 53
   },
   {
@@ -4952,6 +5042,16 @@
    "category_es": "España"
   },
   {
+   "title": "Spain's €600m AI voucher: what it will fund and when it opens",
+   "url": "https://news.ullswaterinvestments.com/2026/11/spain-ai-voucher-600-million-what-smes-need-to-know/",
+   "summary": "Plan IA360's business AI voucher will fund AI services from European tech firms, not licences. A pilot comes in H1 2027 and the general call before end-2027.",
+   "category": "Spain",
+   "date": "2026-11-25",
+   "title_es": "Bono IA de 600 millones: qué financiará y cuándo se abrirá",
+   "summary_es": "El bono empresarial de IA del Plan IA360 financiará servicios de IA de empresas tecnológicas europeas, no licencias. Piloto en el primer semestre de 2027 y convocatoria general antes de final de 2027.",
+   "category_es": "España"
+  },
+  {
    "title": "Madrid hosts the EIT Health Summit 2026 for the first time",
    "url": "https://news.ullswaterinvestments.com/2026/11/madrid-hosts-eit-health-summit-2026/",
    "summary": "The summit, held on 24 and 25 November, marks ten years of EIT Health, the EU-backed health innovation community.",
@@ -4989,16 +5089,6 @@
    "date": "2026-11-25",
    "title_es": "El CDTI ejercerá la Secretaría de la nueva comisión interministerial de soberanía tecnológica",
    "summary_es": "Creada por el Real Decreto-ley 40/2026, la CICTIAP evaluará primero hasta 20 centros de interés nacional y asume la Estrategia Deep Tech.",
-   "category_es": "España"
-  },
-  {
-   "title": "Castilla y León opens €5.4 million ERDF call for applied-science research",
-   "url": "https://news.ullswaterinvestments.com/2026/11/castilla-y-leon-erdf-applied-science-research-call/",
-   "summary": "The call funds applied-science research projects starting in 2027 at universities, public research bodies and health research foundations in the region.",
-   "category": "Spain",
-   "date": "2026-11-25",
-   "title_es": "Castilla y León convoca 5,4 M€ del FEDER para investigación en ciencia aplicada",
-   "summary_es": "La convocatoria financia proyectos de investigación en ciencia aplicada que empiecen en 2027 en universidades, organismos públicos de investigación y fundaciones sanitarias de la comunidad.",
    "category_es": "España"
   }
  ],
