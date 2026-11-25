@@ -684,11 +684,11 @@ def ai_hero(st, ay=None, soon30=None):
         groups += f'<div class="tgroup"><h2>{gen}</h2><div class="tlist">{chips}</div></div>'
     kpis = ""
     if st:
-        # Each figure is a link to the list it counts (calls. accepts ?status= and has #filters and #programmes anchors)
-        tiles = [(st["open"], "EU calls open now", f"{C.CALLS}/?status=open#filters", "See the calls →"),
-                 (st["forthcoming"], "forthcoming calls", f"{C.CALLS}/?status=forthcoming#filters", "See the calls →"),
+        # Each figure links to its own page on calls. (one URL per figure, so Cloudflare Web Analytics counts the clicks of each)
+        tiles = [(st["open"], "EU calls open now", f"{C.CALLS}/open/", "See the calls →"),
+                 (st["forthcoming"], "forthcoming calls", f"{C.CALLS}/forthcoming/", "See the calls →"),
                  (soon30 if soon30 is not None else st["closingIn30Days"], "closing in 30 days", f"{C.CALLS}/closing-soon/", "See the deadlines →"),
-                 (st["programmes"], "EU programmes tracked", f"{C.CALLS}/#programmes", "See the programmes →")]
+                 (st["programmes"], "EU programmes tracked", f"{C.CALLS}/programmes/", "See the programmes →")]
         if ay and ay.get("open"):
             tiles.append((ay["open"], "grants open in Spain (State and regional)", "/es/ayudas/", "See the grants (in Spanish) →"))
         kpis = '<ul class="kpis">' + "".join(
