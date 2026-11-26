@@ -1,9 +1,9 @@
 {
  "stats": {
-  "updated": "2026-11-26T15:04:07+00:00",
+  "updated": "2026-11-26T21:50:26+00:00",
   "open": 244,
-  "forthcoming": 251,
-  "total": 495,
+  "forthcoming": 268,
+  "total": 512,
   "closingIn30Days": 38,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
@@ -2518,6 +2518,116 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46236562"
   },
   {
+   "id": "ERASMUS-EDU-2027-CBHE-CROSS-REGIONAL",
+   "title": "Capacity Building in Higher Education: Cross-Regional",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-CROSS-REGIONAL"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CBHE-REGION-1",
+   "title": "Capacity Building in Higher Education: Western Balkans",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-REGION-1"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CBHE-REGION-10",
+   "title": "Capacity Building in Higher Education: Latin America",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-REGION-10"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CBHE-REGION-11",
+   "title": "Capacity Building in Higher Education: Caribbean",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-REGION-11"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CBHE-REGION-2",
+   "title": "Capacity Building in Higher Education: Neighbourhood East",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-REGION-2"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CBHE-REGION-3",
+   "title": "Capacity Building in Higher Education: South Mediterranean",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-REGION-3"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CBHE-REGION-5a",
+   "title": "Capacity Building in Higher Education: Asia",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-REGION-5a"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CBHE-REGION-6",
+   "title": "Capacity Building in Higher Education: Central Asia",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-REGION-6"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CBHE-REGION-7a",
+   "title": "Capacity Building in Higher Education: Middle East",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-REGION-7a"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CBHE-REGION-8a",
+   "title": "Capacity Building in Higher Education: Pacific",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-REGION-8a"
+  },
+  {
+   "id": "ERASMUS-EDU-2027-CBHE-REGION-9",
+   "title": "Capacity Building in Higher Education: Sub-Saharan Africa",
+   "status": "forthcoming",
+   "deadline": "2027-02-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 106050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CBHE-REGION-9"
+  },
+  {
    "id": "ERASMUS-EDU-2027-PEX-TEACH-ACA",
    "title": "Erasmus + Teacher Academies",
    "status": "forthcoming",
@@ -2526,6 +2636,56 @@
    "kind": "topic",
    "budget": 37500000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-PEX-TEACH-ACA"
+  },
+  {
+   "id": "ERASMUS-YOUTH-2027-YOUTH-TOG",
+   "title": "European Youth Together 2027",
+   "status": "forthcoming",
+   "deadline": "2027-03-02",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 9250000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-YOUTH-2027-YOUTH-TOG"
+  },
+  {
+   "id": "ERASMUS-YOUTH-2027-CB-SSA",
+   "title": "Capacity Building in the field of Youth in Sub-Saharan Africa",
+   "status": "forthcoming",
+   "deadline": "2027-03-02",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 9000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-YOUTH-2027-CB-SSA"
+  },
+  {
+   "id": "ERASMUS-YOUTH-2027-CB-SMC",
+   "title": "Capacity Building in the field of Youth in South Mediterranean Countries",
+   "status": "forthcoming",
+   "deadline": "2027-03-02",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 3000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-YOUTH-2027-CB-SMC"
+  },
+  {
+   "id": "ERASMUS-YOUTH-2027-CB-WB",
+   "title": "Capacity Building in the field of Youth in Western Balkans",
+   "status": "forthcoming",
+   "deadline": "2027-03-02",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 3000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-YOUTH-2027-CB-WB"
+  },
+  {
+   "id": "ERASMUS-YOUTH-2027-CB-NE",
+   "title": "Capacity Building in the field of Youth in Neighborhood East",
+   "status": "forthcoming",
+   "deadline": "2027-03-02",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 2900000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-YOUTH-2027-CB-NE"
   },
   {
    "id": "HORIZON-BRIDGING-2027-05-01",
@@ -2556,6 +2716,16 @@
    "kind": "cascade",
    "budget": 86439583,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/44087099"
+  },
+  {
+   "id": "ERASMUS-YOUTH-2027-PCOOP-ENGO",
+   "title": "Partnerships for Cooperation - Cooperation Partnerships in the field of Youth submitted by European NGOs 2027",
+   "status": "forthcoming",
+   "deadline": "2027-03-09",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 2000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-YOUTH-2027-PCOOP-ENGO"
   },
   {
    "id": "ERASMUS-EDU-2027-PCOOP-ENGO",
@@ -5128,7 +5298,7 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 99,
+   "count": 116,
    "open": 75
   },
   {
