@@ -20,8 +20,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install dependencies
@@ -32,7 +32,7 @@ jobs:
           ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
         run: python scripts/build.py
       - name: Cache embedding model and knowledge-base vectors
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ~/.cache/huggingface
@@ -62,18 +62,18 @@ jobs:
           print("www data version", v)
           PY
 
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
       - name: Wait for the artifact to be visible to the Pages API
         run: sleep 30
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
       - name: Retry deploy once if GitHub could not find the artifact yet
         id: deployment_retry
         if: ${{ failure() && steps.deployment.outcome == 'failure' }}
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
       - name: Notify IndexNow (Bing and others)
         if: ${{ success() }}
         run: python scripts/indexnow.py site/sitemap.xml www.ullswaterinvestments.com

@@ -71,6 +71,45 @@ AGENCIES = {
 CATS = ["I+D+i", "Digitalización", "Energía", "Inversión e industria", "Agroalimentación", "Internacionalización", "Comercio y turismo", "Empleo y formación"]
 
 
+# Programas estatales de convocatoria permanente (no aparecen como convocatorias nuevas en la BDNS). Datos de las fichas
+# oficiales; revisar cuando cambien (fuente y fecha en cada uno).
+PERMANENTES = [
+    {"id": "cdti-pid", "nombre": "CDTI · Proyectos de I+D (PID)", "organismo": "CDTI Innovación", "tipo": "Ayuda parcialmente reembolsable",
+     "que": "Proyectos de I+D empresarial aplicada, individuales o en cooperación (nacional o internacional), con hasta 48 meses en cooperación nacional.",
+     "quien": "Empresas con personalidad jurídica que desarrollen el proyecto en España.",
+     "datos": [["Presupuesto mínimo", "175.000 € por empresa"], ["Financiación", "Hasta el 85 % del presupuesto aprobado"],
+               ["Tramo no reembolsable", "Sí, según disponibilidad de fondos"], ["Duración", "De 12 a 36 meses"]],
+     "url": "https://www.cdti.es/", "fuente": "Ficha CDTI «Proyectos de I+D», julio de 2026",
+     "pdf": "https://www.cdti.es/sites/default/files/2026-09/1._proyectos_de_id_2026_07_0.pdf", "cat": "I+D+i"},
+    {"id": "cdti-lic", "nombre": "CDTI · Línea Directa de Innovación (LIC)", "organismo": "CDTI Innovación", "tipo": "Ayuda parcialmente reembolsable (de minimis)",
+     "que": "Proyectos de innovación tecnológica de 9 a 24 meses: activos fijos nuevos, personal, materiales, servicios externos y gastos generales.",
+     "quien": "Empresas con domicilio fiscal en España (las grandes, con calificación al menos B-).",
+     "datos": [["Presupuesto", "De 175.000 € a 6 millones €"], ["Financiación", "Hasta el 75 % (85 % con FEDER)"],
+               ["Tramo no reembolsable", "7 % (10 % con fondos europeos)"], ["Interés", "Euribor a un año + 0,50 % (5 años) o + 1 % (7 años)"],
+               ["Solicitud", "Continua, todo el año"]],
+     "url": "https://www.cdti.es/", "fuente": "Ficha CDTI «Línea Directa de Innovación», enero de 2026",
+     "pdf": "https://www.cdti.es/sites/default/files/2026-02/3.lic_2026_02.pdf", "cat": "I+D+i"},
+    {"id": "cdti-lica", "nombre": "CDTI · Línea Directa de Expansión (LIC-A)", "organismo": "CDTI Innovación", "tipo": "Ayuda parcialmente reembolsable",
+     "que": "Inversión inicial innovadora en zonas asistidas: nuevo establecimiento, ampliación, diversificación o transformación de la producción.",
+     "quien": "Pymes en zonas «c»; pymes y grandes empresas en zonas «a» (Andalucía, Canarias, Castilla-La Mancha, Extremadura, Murcia, Ceuta y Melilla).",
+     "datos": [["Presupuesto", "De 175.000 € a 30 millones €"], ["Financiación", "Hasta el 75 %"], ["Interés", "Euribor a un año + 0,75 %"],
+               ["Devolución", "9 años, con 1 año de carencia"]],
+     "url": "https://www.cdti.es/", "fuente": "Ficha CDTI «Línea Directa de Expansión», julio de 2026",
+     "pdf": "https://www.cdti.es/sites/default/files/2026-09/4._lica_2026_07.pdf", "cat": "Inversión e industria"},
+    {"id": "enisa", "nombre": "ENISA · Préstamos participativos", "organismo": "ENISA (Ministerio de Industria y Turismo)", "tipo": "Préstamo participativo",
+     "que": "Financiación de proyectos empresariales viables e innovadores de pymes y startups, sin ceder capital. Además de sus líneas generales, tiene líneas temáticas como Emprendedoras Digitales, AgroInnpulso y Audiovisual e Industrias Culturales y Creativas.",
+     "quien": "Pymes y startups con sede en España.",
+     "datos": [["Actividad 2025", "514 préstamos por 86,2 M€ (importe medio de unos 179.000 €)"], ["Solicitud", "Abierta, en la web de ENISA"]],
+     "url": "https://www.enisa.es/", "fuente": "Nota de prensa del Ministerio de Industria y Turismo, 29 de enero de 2026", "cat": "Inversión e industria"},
+    {"id": "ico", "nombre": "ICO · Empresas y Emprendedores", "organismo": "Instituto de Crédito Oficial (a través de los bancos)", "tipo": "Préstamo, leasing, renting o línea de crédito",
+     "que": "Liquidez, inversión en activos fijos nuevos o de segunda mano, vehículos, reformas, tecnología y adquisición de empresas.",
+     "quien": "Autónomos y empresas, públicas y privadas, que operen en España.",
+     "datos": [["Financiación", "Hasta el 100 % de la necesidad (el máximo lo fija el banco)"], ["Plazo", "De 1 a 20 años, con hasta 3 de carencia"],
+               ["Solicitud", "Todo 2026, en las entidades de crédito adheridas"]],
+     "url": "https://www.ico.es/", "fuente": "Ficha de la Línea ICO Empresas y Emprendedores 2026", "cat": "Inversión e industria"},
+]
+
+
 def slug(s):
     import unicodedata
     s = unicodedata.normalize("NFD", s.lower())
@@ -182,7 +221,8 @@ def refresh(today=None):
     lim = (today - timedelta(days=KEEP_CLOSED_DAYS)).isoformat()
     for c in list(items):
         x = items[c]
-        if (x.get("fin") and x["fin"] < lim) or (not x.get("fin") and not x.get("abierto")):
+        fin = x.get("fin") or deadline_hint(x)
+        if (fin and fin < lim) or (not fin and not x.get("abierto")):
             seen[c] = x.get("recibida") or ""
             del items[c]
     old_seen = (today - timedelta(days=400)).isoformat()
@@ -321,6 +361,89 @@ def funds(x):
     return sorted(out)
 
 
+MONTHS = {m: i + 1 for i, ms in enumerate([["enero", "gener", "xaneiro", "urtarrila"], ["febrero", "febrer", "febreiro"], ["marzo", "març", "marzo"],
+          ["abril", "abril"], ["mayo", "maig", "maio"], ["junio", "juny", "xuño"], ["julio", "juliol", "xullo"], ["agosto", "agost"],
+          ["septiembre", "setiembre", "setembre", "setembro"], ["octubre", "outubro"], ["noviembre", "novembre", "novembro"],
+          ["diciembre", "desembre", "decembro"]]) for m in ms}
+_DATE = (r"(\d{1,2})[./-](\d{1,2})[./-](\d{4}|\d{2})\b"
+         r"|(\d{1,2})(?:º|°)? (?:de |d')?(" + "|".join(sorted(MONTHS, key=len, reverse=True)) + r")(?:,)? (?:de |del )?(\d{4})")
+_IA = {}
+
+
+def _dates(t):
+    out = []
+    for m in re.finditer(_DATE, (t or "").lower()):
+        try:
+            if m.group(1):
+                y = int(m.group(3)) + (2000 if len(m.group(3)) == 2 else 0)
+                out.append(date(y, int(m.group(2)), int(m.group(1))))
+            else:
+                out.append(date(int(m.group(6)), MONTHS[m.group(5)], int(m.group(4))))
+        except ValueError:
+            pass
+    return out
+
+
+def ia_ficha(code):
+    if code not in _IA:
+        f = ROOT / "content" / "ayudas_ia" / f"{code}.json"
+        try:
+            _IA[code] = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+        except ValueError:
+            _IA[code] = {}
+    return _IA[code]
+
+
+def deadline_hint(x):
+    """Closing date of a call the BDNS lists without one, read from its «textFin» (e.g. «26.08.2026», «hasta el 9 de octubre de
+    2026») or from the AI ficha («… y termina el 30 de octubre de 2026»). None when the text gives no explicit end date."""
+    got = _dates(x.get("textFin"))
+    if not got:
+        for t in ia_ficha(x["id"]).get("ficha") or []:
+            if t.get("tema", "").startswith("Cómo y cuándo"):
+                for sent in (sn for pt in t.get("puntos") or [] for sn in re.split(r"(?<=\.) ", pt.get("t") or "")):
+                    if not re.search(r"plazo|solicitud|presentaci", sent, re.I) or re.search(r"ejecu|justifica", sent, re.I):
+                        continue
+                    for m in re.finditer(r"(?:termina|finaliza|acaba|concluye|hasta)\b[^.;]{0,30}?((?:\d{1,2}[./-]\d{1,2}[./-]\d{2,4})|(?:\d{1,2} de \w+ de \d{4}))", sent, re.I):
+                        got += _dates(m.group(1))
+    rec = min(d for d in ((x.get("inicio") or "")[:10], (x.get("recibida") or "")[:10], "9999") if d) if (x.get("inicio") or x.get("recibida")) else "2000-01-01"
+    got = [d for d in got if rec <= d.isoformat() <= (date.fromisoformat(rec) + timedelta(days=3 * 366)).isoformat()]
+    return max(got).isoformat() if got else None
+
+
+NUM = {"un": 1, "una": 1, "uno": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "diez": 10, "quince": 15, "veinte": 20, "treinta": 30}
+
+
+def relative_end(x):
+    """Latest plausible end of a call whose deadline is only relative («15 días naturales», «dos meses desde la publicación»),
+    counted from the later of its start date and its registration in the BDNS. Used only to stop showing as open the calls
+    that clearly ended long ago, never as a displayed date."""
+    texts = [x.get("textFin") or ""]
+    for t in ia_ficha(x["id"]).get("ficha") or []:
+        if t.get("tema", "").startswith("Cómo y cuándo"):
+            texts += [pt.get("t") or "" for pt in (t.get("puntos") or [])[:2] if re.search(r"plazo", pt.get("t") or "", re.I)]
+    if re.search(r"periodo|período|convocatoria abierta|hasta agotar|agotamiento", " ".join(texts), re.I):
+        return None  # several application windows or open until funds run out: no single relative deadline
+    best = None
+    for t in texts:
+        for m in re.finditer(r"\b(\d{1,3}|" + "|".join(NUM) + r")\s+(d[ií]as?\s+h[aá]biles|d[ií]as?(?:\s+naturales)?|mes(?:es)?)\b", t.lower()):
+            n = int(m.group(1)) if m.group(1).isdigit() else NUM[m.group(1)]
+            u = m.group(2)
+            days = n * 31 if u.startswith("mes") else (n * 7 + 4) // 5 + 3 if "h" in u.replace("dí", "d").replace("di", "d")[3:] else n
+            if 0 < days <= 400:
+                best = max(best or 0, days)
+    base = max((d for d in ((x.get("inicio") or "")[:10], (x.get("recibida") or "")[:10]) if d), default=None)
+    return (date.fromisoformat(base) + timedelta(days=best + 30)).isoformat() if best and base else None  # 30 days of margin
+
+
+def plazo_text(x):
+    """BDNS free-text deadline («15 días naturales», «UN MES»…), tidied for display."""
+    t = re.sub(r"\s+", " ", x.get("textFin") or "").strip().rstrip(".")
+    t = re.sub(r"\bd(días)\b", r"\1", t)  # «15 ddías»
+    t = cap(t)[:140] if t and not re.fullmatch(r"[\d./ -]+", t) else ""
+    return re.sub(r"\b(boe|bocm|boja|bopa|boib|bocyl|bon|boa|bor|boc|bome|bocce|dogv|dogc|dog|doe|docm|borm|bopv|bdns)\b", lambda m: m.group(1).upper(), t)
+
+
 def view(x, today):
     """Public record of one call, as used by the pages and ayudas.json."""
     region = STATE if x["n1"] == "ESTADO" else REGIONS.get(x["n2"], cap(x["n2"]))
@@ -331,14 +454,19 @@ def view(x, today):
     ben = (["Pyme / autónomo"] if any("PYME" in s for s in b) else []) + (["Gran empresa"] if any("GRAN EMPRESA" in s for s in b) else []) \
         + (["Entidad sin actividad económica"] if any("NO DESARROLLAN" in s and "JURÍDICAS" in s for s in b) else [])
     pres = x.get("presupuesto")
-    fin = x.get("fin")
-    estado = "cerrada" if (fin and fin < today) or (not fin and not x.get("abierto")) else "abierta"
+    fin, fuente = x.get("fin"), "bdns" if x.get("fin") else None
+    if not fin:
+        fin = deadline_hint(x)
+        fuente = "texto" if fin else None
+    rel = None if fin else relative_end(x)
+    estado = "cerrada" if (fin and fin < today) or (not fin and not x.get("abierto")) or (rel and rel < today) else "abierta"
     return {"id": x["id"], "titulo": x.get("titulo_claro") or heuristic_title(x["descripcion"]), "resumen": x.get("resumen") or "",
             "original": x["descripcion"], "organismo": org, "region": region, "ambito": "Estatal" if region == STATE else "Autonómica",
             "presupuesto": round(pres) if pres and pres >= 1000 else None, "inicio": x.get("inicio"), "fin": fin, "estado": estado,
             "finalidad": x.get("finalidad"), "categorias": categories(x), "tipo": tipo,
             "concurrencia": "Competitiva" if "competitiva" in (x.get("tipoConvocatoria") or "") else "Por orden de solicitud",
             "fondos": funds(x), "beneficiarios": ben, "sede": x.get("sede"), "bases": x.get("bases"), "recibida": x.get("recibida"),
+            "fin_fuente": fuente, "plazo_txt": "" if fin else plazo_text(x),
             "url": f"/es/ayudas/convocatoria/{x['id']}/", "bdns": BDNS_URL + x["id"]}
 
 
@@ -429,8 +557,17 @@ CSS = """.ay-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 
 .ay-doc details{border-bottom:1px solid var(--line);padding:4px 0}.ay-doc summary{cursor:pointer;font-weight:700;color:var(--navy);padding:10px 0;font-size:16.5px;list-style-position:outside}
 .ay-doc summary::marker{color:var(--gold)}.ay-doc details ul{margin:0 0 12px;padding-left:20px}.ay-doc details li{margin:6px 0}.ay-ref{display:block;font-size:12.5px;color:var(--muted)}
 .ay-faq p{margin:0 0 8px}.ay-faq .more{font:inherit;font-size:14px;background:none;border:0;color:var(--navy);text-decoration:underline;cursor:pointer;padding:0;margin:0 0 12px}
+.ay-wk{background:#fff8e6;border:1px solid #f0d58a;border-radius:12px;padding:16px 18px;margin:0 0 22px}.ay-wk h2{margin:0 0 8px;font-size:20px}
+.ay-wk ul,.ay-cal ul{list-style:none;margin:0;padding:0}.ay-wk li,.ay-cal li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:8px 0;border-top:1px solid rgba(0,0,0,.07);align-items:baseline}
+.ay-wk li:first-child{border-top:0}.ay-wk time,.ay-cal time{font-weight:700;color:#b42318;font-size:14px}.ay-wk a,.ay-cal a{color:var(--navy);font-weight:600;text-decoration:none}.ay-wk a:hover,.ay-cal a:hover{text-decoration:underline}
+.ay-wk small,.ay-cal small{display:block;color:var(--muted);font-size:13px}.ay-wk .all{display:inline-block;margin-top:8px;font-weight:700}
+.ay-cal h2{font-size:22px;margin:28px 0 6px;padding-bottom:6px;border-bottom:2px solid var(--gold)}.ay-cal time.far{color:var(--ink)}
+.ay-pp{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:14px}.ay-pp .ay-c p{margin:0;font-size:15px}
+.ay-pp dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0;font-size:14px;border-top:1px solid var(--line);padding-top:9px}.ay-pp dt{color:var(--muted)}.ay-pp dd{margin:0;font-weight:600}
+.ay-perm{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:22px 0 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;background:var(--bg)}
+.ay-perm p{margin:0}.ay-perm b{color:var(--navy)}
 @media(max-width:900px){.ay-grid,.ay-doc{grid-template-columns:minmax(0,1fr)}.ay-side{position:static}.ay-hero h1{font-size:34px}}
-@media(max-width:600px){.aia-q button:nth-child(n+5){display:none}.aia{padding:16px}.ay-t .lg{display:none}.ay-t .ab{display:block}.ay-t span{font-size:17px}.ay-map{gap:4px;grid-auto-rows:56px}.ay-fx{grid-template-columns:repeat(2,minmax(0,1fr))}.ay-kv th{width:44%}}
+@media(max-width:600px){.ay-wk li,.ay-cal li{grid-template-columns:minmax(0,1fr);gap:2px}.aia-q button:nth-child(n+5){display:none}.aia{padding:16px}.ay-t .lg{display:none}.ay-t .ab{display:block}.ay-t span{font-size:17px}.ay-map{gap:4px;grid-auto-rows:56px}.ay-fx{grid-template-columns:repeat(2,minmax(0,1fr))}.ay-kv th{width:44%}}
 @media(prefers-reduced-motion:reduce){.ay-t{transition:none}.ay-t:hover{transform:none}}"""
 
 
@@ -439,7 +576,7 @@ def card_html(v, today):
         d = days_left(v["fin"], today)
         plazo = f'<b class="{"ay-urg" if d <= 15 else ""}">{"Hoy" if d == 0 else "Mañana" if d == 1 else f"Quedan {d} días"}</b>{fdate(v["fin"])}'
     else:
-        plazo = "<b>Abierta</b>Sin fecha fija"
+        plazo = f'<b>Consultar bases</b>{escape(v["plazo_txt"][:48]) if v.get("plazo_txt") else "Sin fecha fija"}'
     tags = "".join(f'<span class="ay-tag eu">{escape(f)}</span>' for f in v["fondos"]) + "".join(
         f'<span class="ay-tag">{escape(c)}</span>' for c in v["categorias"] if c != "Otras")
     return (f'<article class="ay-c"><h3><a href="{v["url"]}">{escape(v["titulo"])}</a></h3>'
@@ -594,9 +731,19 @@ def build(site_dir, base, chrome, today=None, cache=None, staging=False, book=""
     for v in open_v:
         counts[v["region"]] = counts.get(v["region"], 0) + 1
     tile_counts = {r: counts.get(r, 0) + nat for r, *_ in TILES}
-    data = json.dumps([{k: v[k] for k in ("id", "titulo", "organismo", "region", "presupuesto", "fin", "categorias", "tipo", "concurrencia", "fondos", "beneficiarios", "url", "bdns", "recibida", "original")} | ({"lineas": v["lineas"]} if v.get("lineas") else {}) for v in open_v],
+    data = json.dumps([{k: v[k] for k in ("id", "titulo", "organismo", "region", "presupuesto", "fin", "categorias", "tipo", "concurrencia", "fondos", "beneficiarios", "url", "bdns", "recibida", "original", "plazo_txt")} | ({"lineas": v["lineas"]} if v.get("lineas") else {}) for v in open_v],
                       ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     first = "".join(card_html(v, today) for v in open_v[:24])
+    lim7 = (date.fromisoformat(today) + timedelta(days=7)).isoformat()
+    week = [v for v in open_v if v["fin"] and v["fin"] <= lim7]
+
+    def row(v):
+        d = days_left(v["fin"], today)
+        when = "Hoy" if d == 0 else "Mañana" if d == 1 else fdate(v["fin"])
+        return (f'<li><time datetime="{v["fin"]}" class="{"" if d <= 15 else "far"}">{when}</time><div><a href="{v["url"]}">{escape(v["titulo"])}</a>'
+                f'<small>{escape(v["organismo"])} · {escape(v["region"])} · {eur(v["presupuesto"])}</small></div></li>')
+    week_html = (f'<section class="ay-wk" aria-labelledby="wk-t"><h2 id="wk-t">Cierran en los próximos 7 días ({len(week)})</h2><ul>'
+                 + "".join(row(v) for v in week[:8]) + f'</ul><a class="all" href="/es/ayudas/cierres/">Calendario completo de cierres →</a></section>') if week else ""
     opts_reg = "".join(f"<option>{escape(r)}</option>" for r, *_ in TILES)
     opts_cat = "".join(f"<option>{escape(c)}</option>" for c in CATS)
     body = f"""<section class="ay-hero"><div class="wrap"><div class="ay-grid"><div>
@@ -609,7 +756,7 @@ def build(site_dir, base, chrome, today=None, cache=None, staging=False, book=""
 <div class="ay-n"><b id="n">{len(open_v)}</b><span id="nl">ayudas abiertas encajan</span></div></div></div>
 <div><div class="ay-map" id="map" role="group" aria-label="Mapa de comunidades autónomas">{tiles_html(tile_counts)}</div>
 <div class="ay-leg"><a class="ay-all on" id="all" href="/es/ayudas/">Toda España</a><span>Ayudas abiertas por comunidad (incluye las {nat} estatales)</span></div></div></div></div></section>
-<div class="wrap body">
+<div class="wrap body">{week_html}
 <div class="ay-rh" id="rh" hidden><h2 id="rh-t"></h2><p id="rh-p"></p></div>
 <div class="ay-f"><label for="f-q">Buscar<input type="search" id="f-q" placeholder="p. ej. eficiencia energética, ferias, I+D"></label>
 <label for="f-tipo">Tipo de ayuda<select id="f-tipo"><option value="">Todas</option><option>Subvención</option><option>Préstamo</option></select></label>
@@ -619,7 +766,8 @@ def build(site_dir, base, chrome, today=None, cache=None, staging=False, book=""
 <label class="ay-ck"><input type="checkbox" id="f-est" checked> Incluir ayudas estatales</label></div>
 <div class="ay-bar"><h2 id="rt">Ayudas abiertas en España</h2><button class="ay-b" id="reset" type="button">Quitar filtros</button></div>
 <div class="ay-list" id="list">{first}</div><div class="ay-more"><button class="ay-b" id="more" type="button">Ver más</button></div>
-<p class="ay-src">¿Buscas también convocatorias europeas? <a href="https://calls.ullswaterinvestments.com/">Convocatorias UE abiertas</a> · <a href="https://calls.ullswaterinvestments.com/spain/">I+D+i en España (en inglés)</a> · <a href="/es/ayudas/ayudas.json">Datos en JSON</a></p>
+<div class="ay-perm"><p><b>Programas abiertos todo el año:</b> CDTI (I+D, innovación y expansión), préstamos participativos de ENISA y líneas ICO. No salen como convocatorias nuevas en la BDNS.</p><a class="ay-b p" href="/es/ayudas/programas-permanentes/">Ver programas permanentes</a></div>
+<p class="ay-src"><a href="/es/ayudas/cierres/">Calendario de cierres</a> · ¿Buscas también convocatorias europeas? <a href="https://calls.ullswaterinvestments.com/">Convocatorias UE abiertas</a> · <a href="https://calls.ullswaterinvestments.com/spain/">I+D+i en España (en inglés)</a> · <a href="/es/ayudas/ayudas.json">Datos en JSON</a></p>
 {src_note}</div>{help_band}
 <script>{{const DATA={data};const AG={json.dumps(AGENCIES, ensure_ascii=False)};const TODAY="{today}";const TILES={json.dumps(TILES, ensure_ascii=False)};const TL={json.dumps(TILE_LABEL, ensure_ascii=False)};
 {JS}}}</script>"""
@@ -629,7 +777,7 @@ def build(site_dir, base, chrome, today=None, cache=None, staging=False, book=""
         en="https://calls.ullswaterinvestments.com/spain/")
 
     # ---- one page per region + State calls
-    regs_links = '<div class="ay-regs">' + "".join(f'<a href="/es/ayudas/{slug(r)}/">{escape(r)}</a>' for r, *_ in TILES) + f'<a href="/es/ayudas/estatales/">Ayudas estatales</a></div>'
+    regs_links = '<div class="ay-regs">' + "".join(f'<a href="/es/ayudas/{slug(r)}/">{escape(r)}</a>' for r, *_ in TILES) + f'<a href="/es/ayudas/estatales/">Ayudas estatales</a><a href="/es/ayudas/cierres/">Calendario de cierres</a><a href="/es/ayudas/programas-permanentes/">Programas permanentes</a></div>'
     for r, *_ in TILES + [[STATE]]:
         own = [v for v in open_v if v["region"] == r]
         state = [v for v in open_v if v["region"] == STATE] if r != STATE else []
@@ -651,6 +799,52 @@ def build(site_dir, base, chrome, today=None, cache=None, staging=False, book=""
             f"{h1}: convocatorias abiertas con plazo, presupuesto, fondos europeos y enlace a la ficha oficial. Actualizado a diario.",
             body, [bc([("Inicio", "/es/"), ("Ayudas en España", "/es/ayudas/"), (h1, p)]), item_list_ld(own + state, base, h1)])
 
+    # ---- calendar of deadlines
+    dated = [v for v in open_v if v["fin"]]
+    undated = [v for v in open_v if not v["fin"]]
+    lim30 = (date.fromisoformat(today) + timedelta(days=30)).isoformat()
+    groups = [("Esta semana", [v for v in dated if v["fin"] <= lim7]), ("En los próximos 30 días", [v for v in dated if lim7 < v["fin"] <= lim30])]
+    later = {}
+    for v in dated:
+        if v["fin"] > lim30:
+            later.setdefault(v["fin"][:7], []).append(v)
+    MES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    groups += [(f"{MES[int(k[5:]) - 1].capitalize()} de {k[:4]}", vs) for k, vs in sorted(later.items())]
+    cal = "".join(f'<h2>{escape(g)} <span class="ay-m">({len(vs)})</span></h2><ul>{"".join(row(v) for v in vs)}</ul>' for g, vs in groups if vs)
+    cal += (f'<h2>Sin fecha de cierre fija <span class="ay-m">({len(undated)})</span></h2><p class="ay-m">Plazos por periodos, hasta agotar el crédito o contados desde la publicación: consulta las bases.</p><ul>'
+            + "".join(f'<li><time class="far">Ver bases</time><div><a href="{v["url"]}">{escape(v["titulo"])}</a><small>{escape(v["organismo"])} · {escape(v["region"])}'
+                      f'{" · " + escape(v["plazo_txt"]) if v.get("plazo_txt") else ""}</small></div></li>' for v in undated) + "</ul>") if undated else ""
+    body = (f'<section class="ay-hero"><div class="wrap"><div class="crumbs"><a href="/es/">Inicio</a> › <a href="/es/ayudas/">Ayudas en España</a> › Calendario de cierres</div>'
+            f'<h1>Calendario de cierres de ayudas</h1><p class="lead">Las {len(open_v)} ayudas estatales y autonómicas abiertas para empresas, ordenadas por fecha de cierre. '
+            f'{len(groups[0][1])} cierran esta semana.</p></div></section><div class="wrap body"><div class="ay-cal">{cal}</div>'
+            f'<div class="ay-bar"><h2>Por comunidad</h2><a class="ay-b" href="/es/ayudas/">Abrir el buscador</a></div>{regs_links}{src_note}</div>{help_band}')
+    doc("/es/ayudas/cierres/", f"Calendario de cierres de ayudas para empresas ({len(groups[0][1])} esta semana) | Ullswater Investments",
+        f"Fechas de cierre de las {len(open_v)} ayudas públicas estatales y autonómicas abiertas para empresas en España, semana a semana. Actualizado a diario.",
+        body, [bc([("Inicio", "/es/"), ("Ayudas en España", "/es/ayudas/"), ("Calendario de cierres", "/es/ayudas/cierres/")]),
+               item_list_ld(dated, base, "Calendario de cierres de ayudas para empresas")])
+
+    # ---- permanent State programmes (CDTI, ENISA, ICO)
+    cards = "".join(
+        f'<article class="ay-c" id="{p["id"]}"><h3><a href="{escape(p["url"])}" target="_blank" rel="noopener">{escape(p["nombre"])}</a></h3>'
+        f'<div class="ay-m">{escape(p["organismo"])} · Toda España</div><div class="ay-tags"><span class="ay-tag eu">{escape(p["tipo"])}</span><span class="ay-tag">{escape(p["cat"])}</span></div>'
+        f'<p>{escape(p["que"])}</p><p class="ay-m"><b>Para quién:</b> {escape(p["quien"])}</p>'
+        f'<dl>{"".join(f"<dt>{escape(k)}</dt><dd>{escape(val)}</dd>" for k, val in p["datos"])}</dl>'
+        f'<div class="ay-links"><a class="ay-b p" href="{escape(p["url"])}" target="_blank" rel="noopener">Web oficial ↗</a>'
+        + (f'<a class="ay-b" href="{escape(p["pdf"])}" target="_blank" rel="noopener">Ficha oficial (PDF) ↗</a>' if p.get("pdf") else "")
+        + f'</div><p class="ay-m" style="font-size:12.5px">Fuente: {escape(p["fuente"])}.</p></article>' for p in PERMANENTES)
+    body = (f'<section class="ay-hero"><div class="wrap"><div class="crumbs"><a href="/es/">Inicio</a> › <a href="/es/ayudas/">Ayudas en España</a> › Programas permanentes</div>'
+            f'<h1>Programas de financiación abiertos todo el año</h1><p class="lead">Instrumentos estatales que se solicitan en cualquier momento y que por eso no aparecen '
+            f'como convocatorias nuevas en la Base de Datos Nacional de Subvenciones: CDTI, ENISA e ICO.</p></div></section>'
+            f'<div class="wrap body"><div class="ay-pp">{cards}</div>'
+            f'<p class="ay-src">Datos resumidos de las fichas oficiales de cada organismo en la fecha indicada. Las condiciones cambian: comprueba siempre la web oficial antes de solicitar. '
+            f'Combinados con las <a href="/es/ayudas/">convocatorias estatales y autonómicas abiertas</a> y con los fondos europeos, permiten financiar buena parte de un proyecto.</p></div>{help_band}')
+    doc("/es/ayudas/programas-permanentes/", "Programas de financiación permanentes: CDTI, ENISA e ICO | Ullswater Investments",
+        "CDTI Proyectos de I+D y Línea Directa de Innovación, préstamos participativos de ENISA y Línea ICO Empresas y Emprendedores: qué financian, para quién y condiciones principales.",
+        body, [bc([("Inicio", "/es/"), ("Ayudas en España", "/es/ayudas/"), ("Programas permanentes", "/es/ayudas/programas-permanentes/")]),
+               {"@type": "ItemList", "name": "Programas de financiación permanentes para empresas en España", "itemListElement": [
+                   {"@type": "ListItem", "position": i + 1, "item": {"@type": "FinancialProduct", "name": p["nombre"], "description": p["que"], "url": p["url"],
+                                                                      "provider": {"@type": "GovernmentOrganization", "name": p["organismo"]}}} for i, p in enumerate(PERMANENTES)]}])
+
     # ---- one page per call (open and recently closed)
     import ayudas_ia
     n_ia = 0
@@ -663,7 +857,10 @@ def build(site_dir, base, chrome, today=None, cache=None, staging=False, book=""
             d = days_left(v["fin"], today)
             plazo = f"Cerrada el {fdate(v['fin'])}" if closed else f"Hasta el {fdate(v['fin'])} ({'hoy' if d == 0 else 'mañana' if d == 1 else f'quedan {d} días'})"
         else:
-            plazo = "Abierta, sin fecha de cierre fija"
+            plazo = (f"Según la convocatoria: {v['plazo_txt'].rstrip('.')}. Consulta las bases para la fecha exacta" if v.get("plazo_txt")
+                     else "Sin fecha de cierre en la BDNS: consulta las bases")
+        if v.get("fin_fuente") == "texto":
+            plazo += ". Fecha tomada del texto de la convocatoria (la BDNS no la recoge)"
         rows = [("Organismo", escape(v["organismo"])), ("Ámbito", escape("Estatal (toda España)" if v["region"] == STATE else f"Autonómico: {v['region']}")),
                 ("Plazo de solicitud", escape((f"Desde el {fdate(v['inicio'])}. " if v["inicio"] else "") + plazo)), ("Presupuesto", eur(v["presupuesto"]) + (f" ({v['lineas']} líneas)" if v.get("lineas") else "")),
                 ("Tipo de ayuda", escape(v["tipo"])), ("Procedimiento", "Concurrencia competitiva" if v["concurrencia"] == "Competitiva" else "Por orden de solicitud o concesión directa"),
@@ -692,7 +889,7 @@ def build(site_dir, base, chrome, today=None, cache=None, staging=False, book=""
                 + ia_det + f'<h2>Título oficial</h2><p>{escape(unglue(v["original"]))}</p>'
                 + (f'<h2>Bases reguladoras</h2><p>{escape(ia.get("titulo_bases") or unglue(x["basesTxt"]))}</p>' if x.get("basesTxt") else "")
                 + f'<div class="ay-links" style="margin-top:18px">{"".join(links)}</div>{src_note}{ia_js}</div>'
-                f'<aside class="ay-side"><div class="ay-m">{"Plazo" if not closed else "Estado"}</div><div class="big">{escape(fdate(v["fin"]) if v["fin"] else "Abierta")}</div>'
+                f'<aside class="ay-side"><div class="ay-m">{"Plazo" if not closed else "Estado"}</div><div class="big">{escape(fdate(v["fin"]) if v["fin"] else "Ver bases")}</div>'
                 f'<div class="ay-m">{escape(plazo)}</div><div class="ay-m">Presupuesto</div><div class="big" style="font-size:22px">{eur(v["presupuesto"])}</div>'
                 f'<a class="ay-b p" href="{book}" target="_blank" rel="noopener">¿Te ayudamos a prepararla?</a><a class="ay-b" href="mailto:{email}?subject=BDNS%20{v["id"]}">{email}</a>'
                 f'<a class="ay-b" href="{rlink}">Más ayudas en {escape(TILE_LABEL.get(v["region"], v["region"]) if v["region"] != STATE else "toda España")}</a></aside></div></div>')
@@ -722,7 +919,7 @@ function ok(x,ign){if(!ign&&st.reg&&x.region!==st.reg&&!(st.est&&x.region==="Tod
 if(st.size&&!x.beneficiarios.includes(st.size))return false;if(st.cat&&!x.categorias.includes(st.cat))return false;if(st.tipo&&x.tipo!==st.tipo)return false;
 if(st.fondo&&!x.fondos.length)return false;if(st.plazo==="sin"&&x.fin)return false;if(st.plazo&&st.plazo!=="sin"&&(!x.fin||days(x.fin)>+st.plazo))return false;
 if(st.q){const h=(x.titulo+" "+x.original+" "+x.organismo+" "+x.categorias.join(" ")).toLowerCase();if(!st.q.toLowerCase().split(/\s+/).every(w=>h.includes(w)))return false}return true}
-function card(x){const d=x.fin?days(x.fin):null;const pl=x.fin?`<b class="${d<=15?"ay-urg":""}">${d===0?"Hoy":d===1?"Mañana":"Quedan "+d+" días"}</b>${fdate(x.fin)}`:`<b>Abierta</b>Sin fecha fija`;
+function card(x){const d=x.fin?days(x.fin):null;const pl=x.fin?`<b class="${d<=15?"ay-urg":""}">${d===0?"Hoy":d===1?"Mañana":"Quedan "+d+" días"}</b>${fdate(x.fin)}`:`<b>Consultar bases</b>${x.plazo_txt?esc(x.plazo_txt.slice(0,48)):"Sin fecha fija"}`;
 return `<article class="ay-c"><h3><a href="${x.url}">${esc(x.titulo)}</a></h3><div class="ay-m">${esc(x.organismo)} · ${esc(x.region)}${x.lineas?` · ${x.lineas} líneas`:""}</div>
 <div class="ay-tags">${x.fondos.map(f=>`<span class="ay-tag eu">${esc(f)}</span>`).join("")}${x.categorias.filter(c=>c!=="Otras").map(c=>`<span class="ay-tag">${esc(c)}</span>`).join("")}</div>
 <div class="ay-fx"><div>${pl}</div><div><b>${eur(x.presupuesto)}</b>Presupuesto</div><div><b>${esc(x.tipo)}</b>${x.concurrencia==="Competitiva"?"Concurrencia competitiva":"Por orden de solicitud"}</div></div>

@@ -42,21 +42,38 @@ VERSION = 3  # bump to regenerate every cached ficha after a prompt change
 
 
 # ---------------------------------------------------------------- documents
-def fetch(url, timeout=60, body=None):
-    req = urllib.request.Request(url, data=body, headers=ayudas.UA)
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.read(), (r.headers.get("Content-Type") or "").lower()
-    except urllib.error.URLError as e:
-        if "SSL" not in str(e):
-            raise
-    # some regional gazettes (portaldogc.gencat.cat) still need older TLS settings; the content is public
+def _get(req, timeout, ctx=None):
+    with urllib.request.urlopen(req, timeout=timeout, context=ctx) as r:
+        return r.read(), (r.headers.get("Content-Type") or "").lower()
+
+
+def _legacy_tls():
+    # some regional gazettes (portaldogc.gencat.cat, boa.aragon.es) still need older TLS settings; the content is public
     import ssl
     ctx = ssl.create_default_context()
     ctx.set_ciphers("DEFAULT@SECLEVEL=1")
     ctx.options |= getattr(ssl, "OP_LEGACY_SERVER_CONNECT", 0x4)
-    with urllib.request.urlopen(req, timeout=timeout, context=ctx) as r:
-        return r.read(), (r.headers.get("Content-Type") or "").lower()
+    return ctx
+
+
+def fetch(url, timeout=90, body=None, tries=3):
+    """GET (or POST) with retries: regional gazettes often time out, reset the connection or cut a PDF short."""
+    req = urllib.request.Request(url, data=body, headers=ayudas.UA)
+    ctx, err = None, None
+    for i in range(tries):
+        try:
+            return _get(req, timeout, ctx)
+        except urllib.error.HTTPError as e:
+            if e.code in (400, 401, 403, 404, 410):
+                raise
+            err = e
+        except Exception as e:  # noqa: BLE001 (timeouts, resets, IncompleteRead, SSL)
+            err = e
+            if "SSL" in str(e) and ctx is None:
+                ctx = _legacy_tls()
+                continue
+        time.sleep(5 * (i + 1))
+    raise err
 
 
 def pdf_text(data):
@@ -131,7 +148,12 @@ def documents(code):
     es = [x for x in docs if re.search(r"castellano|español|bases|extracto", x.get("descripcion") or "", re.I) and not re.search(r"formulario|anexo|modelo", x.get("descripcion") or "", re.I)]
     pick = es or [x for x in docs if not re.search(r"formulario|modelo", x.get("descripcion") or "", re.I)][:1]
     out = []
-    for x in pick[:3]:
+    # scanned PDFs give no text: then also try the other documents (e.g. «Bases reguladoras … anexos»), forms aside
+    rest = [x for x in docs if x not in pick[:3] and not re.search(r"formulario|modelo", x.get("descripcion") or "", re.I)]
+    first = pick[:3]
+    for x in first + rest[:2]:
+        if x not in first and out:
+            break
         try:
             t = doc_text(DOC_URL + str(x["id"]))
         except Exception as e:  # noqa: BLE001
@@ -148,6 +170,7 @@ def documents(code):
                 out.append({"nombre": "Bases reguladoras", "url": d.get("urlBasesReguladoras"), "texto": t})
         except Exception as e:  # noqa: BLE001
             print("ayudas_ia: bases failed", code, bu, e)
+            d["_bases_failed"] = True
     return d, out
 
 
@@ -306,6 +329,15 @@ def wanted(cache, today):
     return [c for c in ids if c in cache["items"]]
 
 
+def missing(cache, today=None, limit=5):
+    """Open grants without a ficha yet (closing soonest first): the www build fills a few on every run, so a grant
+    published in the morning gets its ficha the same day even if the dedicated workflow runs late."""
+    today = (today or date.today()).isoformat()
+    ids = [c for c, x in cache["items"].items() if (x.get("fin") or "9999") >= today and not (load(c) or {}).get("faq")]
+    ids.sort(key=lambda c: cache["items"][c].get("fin") or "9999")
+    return ids[:limit]
+
+
 def update(cache=None, codes=None, today=None):
     """Generate the missing or outdated fichas. Never raises. Returns the number generated."""
     key = os.environ.get("ANTHROPIC_API_KEY")
@@ -333,6 +365,10 @@ def update(cache=None, codes=None, today=None):
             continue
         stamp = sorted(f'{doc.get("id", doc["url"])}:{doc.get("fecha", "")}' for doc in docs)
         if old and old.get("version") == VERSION and old.get("stamp") == stamp:
+            continue
+        if old and old.get("version") == VERSION and d.get("_bases_failed") and set(stamp) <= set(old.get("stamp") or []):
+            # same documents, only the gazette was down this time: keep the ficha made with the bases instead of a poorer one
+            print("ayudas_ia: bases unreachable, keeping the cached ficha of", code)
             continue
         if not docs:
             print("ayudas_ia: no readable documents for", code)

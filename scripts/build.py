@@ -1035,6 +1035,10 @@ def main():
     try:  # AI fichas (FAQ, suggested questions, official text for the chat) for the grants listed in content/ayudas_ia/pilot.txt
         import ayudas_ia
         ayudas_ia.update(ay_cache)
+        gaps = ayudas_ia.missing(ay_cache)  # open grants still without a ficha (e.g. published this morning)
+        if gaps:
+            print("ayudas_ia: filling", len(gaps), "missing fichas:", ", ".join(gaps))
+            ayudas_ia.update(ay_cache, codes=gaps)
     except Exception as e:  # noqa: BLE001
         print("ayudas_ia: failed, using cached fichas:", e)
     pages = {"/": home(live, themes, ayudas.summary(ay_cache)), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
