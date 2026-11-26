@@ -1,9 +1,9 @@
 {
  "stats": {
-  "updated": "2026-11-26T00:09:28+00:00",
-  "open": 243,
+  "updated": "2026-11-26T15:04:07+00:00",
+  "open": 244,
   "forthcoming": 251,
-  "total": 494,
+  "total": 495,
   "closingIn30Days": 38,
   "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
@@ -1316,6 +1316,16 @@
    "kind": "topic",
    "budget": 6000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-SCHOOLS"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-OFET-LEARNING-EU",
+   "title": "Jean Monnet Actions for other fields of Education and Training: Learning EU",
+   "status": "open",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 3900000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-OFET-LEARNING-EU"
   },
   {
    "id": "ERASMUS-JMO-2027-OFET-TT",
@@ -3164,7 +3174,7 @@
    "deadline": "2027-05-12",
    "programme": "ERASMUS",
    "kind": "topic",
-   "budget": 300000,
+   "budget": 500000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CB-VET-CA"
   },
   {
@@ -3184,7 +3194,7 @@
    "deadline": "2027-05-12",
    "programme": "ERASMUS",
    "kind": "topic",
-   "budget": 3800000,
+   "budget": 3600000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-EDU-2027-CB-VET-NE"
   },
   {
@@ -5118,8 +5128,8 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 98,
-   "open": 74
+   "count": 99,
+   "open": 75
   },
   {
    "slug": "international-cooperation",
