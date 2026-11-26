@@ -1,21 +1,14 @@
 {
  "stats": {
-  "updated": "2026-11-25T22:05:19+00:00",
-  "open": 222,
-  "forthcoming": 257,
-  "total": 479,
-  "closingIn30Days": 39,
-  "programmes": 22,
+  "updated": "2026-11-26T00:09:28+00:00",
+  "open": 243,
+  "forthcoming": 251,
+  "total": 494,
+  "closingIn30Days": 38,
+  "programmes": 23,
   "source": "European Commission – Funding & Tenders Portal (SEDIA search API)"
  },
  "soon": [
-  {
-   "id": "HORIZON-CL6-2026-04-GOVERNANCE-01",
-   "title": "Additional activities for the European Partnership of Agriculture of Data",
-   "deadline": "2026-11-26",
-   "programme": "HORIZON",
-   "budget": 60000000
-  },
   {
    "id": "RISTANC-46945037",
    "title": "Mission ocean in Slovenian seas — Call for proposals for the provision of financial support to third parties for the implementation of small-scale projects under the RISTANC project",
@@ -64,19 +57,16 @@
    "deadline": "2026-12-01",
    "programme": "HORIZON",
    "budget": 30000000
+  },
+  {
+   "id": "HORIZON-NEB-2026-01-PARTICIPATION-01",
+   "title": "Addressing homelessness through housing-led approaches aligned with the New European Bauhaus",
+   "deadline": "2026-12-01",
+   "programme": "HORIZON",
+   "budget": 12600000
   }
  ],
  "calls": [
-  {
-   "id": "HORIZON-CL6-2026-04-GOVERNANCE-01",
-   "title": "Additional activities for the European Partnership of Agriculture of Data",
-   "status": "open",
-   "deadline": "2026-11-26",
-   "programme": "HORIZON",
-   "kind": "topic",
-   "budget": 60000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL6-2026-04-GOVERNANCE-01"
-  },
   {
    "id": "RISTANC-46945037",
    "title": "Mission ocean in Slovenian seas — Call for proposals for the provision of financial support to third parties for the implementation of small-scale projects under the RISTANC project",
@@ -838,16 +828,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48106227"
   },
   {
-   "id": "NASCHA-46827222",
-   "title": "First Open Call",
-   "status": "open",
-   "deadline": "2027-01-18",
-   "programme": "I3",
-   "kind": "cascade",
-   "budget": 600000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
-  },
-  {
    "id": "EIT INNOBC-48939740",
    "title": "FACTORYX",
    "status": "open",
@@ -1008,6 +988,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/45704318"
   },
   {
+   "id": "COLOURS-46906387",
+   "title": "COLOURS External Pilots Open Call",
+   "status": "open",
+   "deadline": "2027-01-27",
+   "programme": "HORIZON",
+   "kind": "cascade",
+   "budget": 600000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46906387"
+  },
+  {
    "id": "HORIZON-JU-EUROHPC-2026-QML-07-01",
    "title": "Quantum Machine Learning",
    "status": "open",
@@ -1046,6 +1036,16 @@
    "kind": "cascade",
    "budget": 11500000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46695847"
+  },
+  {
+   "id": "FARM360TECH-46827222",
+   "title": "FARM360TECH Open Call for Innovative Agritech SMEs",
+   "status": "open",
+   "deadline": "2027-01-29",
+   "programme": "I3",
+   "kind": "cascade",
+   "budget": null,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
   },
   {
    "id": "EDITO 2-47374969",
@@ -1266,6 +1266,96 @@
    "kind": "topic",
    "budget": 1000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL4-2027-01-MAT-PROD-50"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-CANADA",
+   "title": "Jean Monnet Network on external policy: EU-Canada",
+   "status": "open",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 2400000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-CANADA"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-UA-MLD",
+   "title": "Jean Monnet Network on external policy: EU-Ukraine-Moldova",
+   "status": "open",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 2400000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-UA-MLD"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-EU-DIG-ECO",
+   "title": "Jean Monnet Networks on internal policy: Strategic autonomy of the European political area – digital and economic independence",
+   "status": "open",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 6000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-EU-DIG-ECO"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-EU-EDU-CUL",
+   "title": "Jean Monnet Network on internal policy: The role of education and culture for integration and cooperation in Europe",
+   "status": "open",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 6000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-EU-EDU-CUL"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-NETWORKS-SCHOOLS",
+   "title": "Jean Monnet Networks in other fields of education and training",
+   "status": "open",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 6000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-SCHOOLS"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-OFET-TT",
+   "title": "Jean Monnet Actions for other fields of Education and Training: Teacher Training",
+   "status": "open",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 5100000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-OFET-TT"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-HEI-TCH-RSCH-CHAIR",
+   "title": "ERASMUS-JMO-2027-CHAIR",
+   "status": "open",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 20050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-HEI-TCH-RSCH-CHAIR"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-HEI-TCH-RSCH-CoE",
+   "title": "ERASMUS-JMO-2027-CoE",
+   "status": "open",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 20050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-HEI-TCH-RSCH-CoE"
+  },
+  {
+   "id": "ERASMUS-JMO-2027-HEI-TCH-RSCH-MODULE",
+   "title": "ERASMUS-JMO-2027-MODULE",
+   "status": "open",
+   "deadline": "2027-02-03",
+   "programme": "ERASMUS",
+   "kind": "topic",
+   "budget": 20050000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-HEI-TCH-RSCH-MODULE"
   },
   {
    "id": "PHORTIFY-46813062",
@@ -1768,6 +1858,66 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/CERV-2026-CITIZENS-VALUES"
   },
   {
+   "id": "EU4H-2027-SANTE-01-PJ-01",
+   "title": "Call for proposals to support action for addressing health inequalities in people with intellectual and developmental disabilities across the EU, focusing on cardiovascular health (DG SANTE) - DP-g-26-09",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 450000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-01"
+  },
+  {
+   "id": "EU4H-2027-SANTE-01-PJ-02",
+   "title": "Call for proposals to address the broader impacts of social media on health and well-being, focusing on the mental health of children and young people (DG SANTE) - DP-g-26-10",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 1000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-02"
+  },
+  {
+   "id": "EU4H-2027-SANTE-01-PJ-03",
+   "title": "Call for proposals to support dissemination and evaluating the awareness level of the 5th edition of the European Code Against Cancer (DG SANTE) - CR/CV&NCD-g-26-13",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 3000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-03"
+  },
+  {
+   "id": "EU4H-2027-SANTE-01-PJ-04",
+   "title": "Call for proposals to support the continued implementation and sustainability of the inter-specialty cancer training programme (DG SANTE) - CR/CV&NCD-g-26-14",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 2440000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-04"
+  },
+  {
+   "id": "EU4H-2027-SANTE-01-PJ-05",
+   "title": "Call for proposals to support an EU flagship programme on cardiovascular diseases: a multidisciplinary and patient-centred approach to prevention, early detection, treatment and care (DG SANTE) - CR/CV&NCD-g-26-15",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 20000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-05"
+  },
+  {
+   "id": "EU4H-2027-SANTE-01-PJ-06",
+   "title": "Call for proposals to facilitate the use of emerging AI tools in primary care and the required health workforce skills (DG SANTE) - HS-g-26-16",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 2500000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-06"
+  },
+  {
    "id": "EUBA-EFSA-2027-ENREL-01",
    "title": "Selection of hosting sites and fellows for EFSA's European Food Risk Assessment Fellowship (EU-FORA) Programme",
    "status": "open",
@@ -1776,6 +1926,56 @@
    "kind": "topic",
    "budget": 825000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EUBA-EFSA-2027-ENREL-01"
+  },
+  {
+   "id": "EU4H-2027-SANTE-01-PJ-07",
+   "title": "Call for proposals for European Health Data Space Readiness Package for secondary use of health data (DG SANTE) - DI-g-26-23",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 14350000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-07"
+  },
+  {
+   "id": "EU4H-2027-SANTE-01-PJ-08",
+   "title": "Call for proposals for Artificial Intelligence for smart European Health Data Space compliance support (DG SANTE) - DI-g-26-24",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 3000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-08"
+  },
+  {
+   "id": "EU4H-2027-SANTE-01-PJ-09",
+   "title": "Call for proposals for advancing Artificial Intelligence in healthcare through local performance assessment (DG SANTE) - DI-g-26-25",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 1000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-09"
+  },
+  {
+   "id": "EU4H-2027-SANTE-01-PJ-10",
+   "title": "Call for proposals for designing the ecosystem for multimodal Artificial Intelligence driven prevention and early detection of neurodegenerative diseases (DG SANTE) - DI-g-26-26",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 1000000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-10"
+  },
+  {
+   "id": "EU4H-2027-SANTE-01-PJ-11",
+   "title": "Call for proposals to contribute to the organisation of conferences (DG SANTE) - OA-g-26-27",
+   "status": "open",
+   "deadline": "2027-02-24",
+   "programme": "EU4H",
+   "kind": "topic",
+   "budget": 600000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/EU4H-2027-SANTE-01-PJ-11"
   },
   {
    "id": "HORIZON-EIC-2027-PATHFINDEROPEN-two-stage",
@@ -2218,6 +2418,16 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46110887"
   },
   {
+   "id": "ESC-HUMAID-2027-QUAL-LABEL",
+   "title": "Quality Label Humanitarian Aid Strand",
+   "status": "open",
+   "deadline": "2027-09-21",
+   "programme": "ESC",
+   "kind": "topic",
+   "budget": null,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ESC-HUMAID-2027-QUAL-LABEL"
+  },
+  {
    "id": "JTM-2026-PSLF-FRAMEWORK-LOANS",
    "title": "Framework Loans",
    "status": "open",
@@ -2298,106 +2508,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46236562"
   },
   {
-   "id": "COLOURS-46906387",
-   "title": "COLOURS External Pilots Open Call",
-   "status": "forthcoming",
-   "deadline": "2027-01-27",
-   "programme": "HORIZON",
-   "kind": "cascade",
-   "budget": 600000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46906387"
-  },
-  {
-   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-CANADA",
-   "title": "Jean Monnet Network on external policy: EU-Canada",
-   "status": "forthcoming",
-   "deadline": "2027-02-03",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 2400000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-CANADA"
-  },
-  {
-   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-UA-MLD",
-   "title": "Jean Monnet Network on external policy: EU-Ukraine-Moldova",
-   "status": "forthcoming",
-   "deadline": "2027-02-03",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 2400000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-NON-EU-UA-MLD"
-  },
-  {
-   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-EU-DIG-ECO",
-   "title": "Jean Monnet Networks on internal policy: Strategic autonomy of the European political area – digital and economic independence",
-   "status": "forthcoming",
-   "deadline": "2027-02-03",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 6000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-EU-DIG-ECO"
-  },
-  {
-   "id": "ERASMUS-JMO-2027-NETWORKS-HEI-EU-EDU-CUL",
-   "title": "Jean Monnet Network on internal policy: The role of education and culture for integration and cooperation in Europe",
-   "status": "forthcoming",
-   "deadline": "2027-02-03",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 6000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-HEI-EU-EDU-CUL"
-  },
-  {
-   "id": "ERASMUS-JMO-2027-NETWORKS-SCHOOLS",
-   "title": "Jean Monnet Networks in other fields of education and training",
-   "status": "forthcoming",
-   "deadline": "2027-02-03",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 6000000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-NETWORKS-SCHOOLS"
-  },
-  {
-   "id": "ERASMUS-JMO-2027-OFET-TT",
-   "title": "Jean Monnet Actions for other fields of Education and Training: Teacher Training",
-   "status": "forthcoming",
-   "deadline": "2027-02-03",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 5100000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-OFET-TT"
-  },
-  {
-   "id": "ERASMUS-JMO-2027-HEI-TCH-RSCH-CHAIR",
-   "title": "ERASMUS-JMO-2027-CHAIR",
-   "status": "forthcoming",
-   "deadline": "2027-02-03",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 20050000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-HEI-TCH-RSCH-CHAIR"
-  },
-  {
-   "id": "ERASMUS-JMO-2027-HEI-TCH-RSCH-CoE",
-   "title": "ERASMUS-JMO-2027-CoE",
-   "status": "forthcoming",
-   "deadline": "2027-02-03",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 20050000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-HEI-TCH-RSCH-CoE"
-  },
-  {
-   "id": "ERASMUS-JMO-2027-HEI-TCH-RSCH-MODULE",
-   "title": "ERASMUS-JMO-2027-MODULE",
-   "status": "forthcoming",
-   "deadline": "2027-02-03",
-   "programme": "ERASMUS",
-   "kind": "topic",
-   "budget": 20050000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ERASMUS-JMO-2027-HEI-TCH-RSCH-MODULE"
-  },
-  {
    "id": "ERASMUS-EDU-2027-PEX-TEACH-ACA",
    "title": "Erasmus + Teacher Academies",
    "status": "forthcoming",
@@ -2416,6 +2526,16 @@
    "kind": "topic",
    "budget": 30000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-BRIDGING-2027-05-01"
+  },
+  {
+   "id": "ESC-SOLID-2027-VTHPA",
+   "title": "ESC-SOLID-2027-VTHPA",
+   "status": "forthcoming",
+   "deadline": "2027-03-04",
+   "programme": "ESC",
+   "kind": "topic",
+   "budget": 5500000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ESC-SOLID-2027-VTHPA"
   },
   {
    "id": "InnovativeSMEs-44087099",
@@ -2906,6 +3026,36 @@
    "kind": "topic",
    "budget": 5000000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2027-03-D5-08"
+  },
+  {
+   "id": "JUST-2027-JCOO-CIVIL-EJN",
+   "title": "Call for proposals for action grants to promote judicial cooperation in civil and criminal matters. Priorities Civil Matters and EJN",
+   "status": "forthcoming",
+   "deadline": "2027-04-21",
+   "programme": "JUST",
+   "kind": "topic",
+   "budget": 5750000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/JUST-2027-JCOO-CIVIL-EJN"
+  },
+  {
+   "id": "JUST-2027-JCOO-CRIMINAL",
+   "title": "Call for proposals for action grants to promote judicial cooperation in civil and criminal matters. Priority Criminal Matters",
+   "status": "forthcoming",
+   "deadline": "2027-04-21",
+   "programme": "JUST",
+   "kind": "topic",
+   "budget": 5750000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/JUST-2027-JCOO-CRIMINAL"
+  },
+  {
+   "id": "ESC-HUMAID-2027-VOLUN",
+   "title": "Volunteering in support of humanitarian aid operations",
+   "status": "forthcoming",
+   "deadline": "2027-04-22",
+   "programme": "ESC",
+   "kind": "topic",
+   "budget": 11400000,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/ESC-HUMAID-2027-VOLUN"
   },
   {
    "id": "HORIZON-CL2-2027-02-DEMOCRACY-09-two-stage",
@@ -4864,8 +5014,8 @@
    "title": "AI and generative AI calls",
    "short": "AI & GenAI",
    "old": "/calls/calls-for-genai",
-   "count": 54,
-   "open": 32
+   "count": 57,
+   "open": 35
   },
   {
    "slug": "eic",
@@ -4880,8 +5030,8 @@
    "title": "EU calls closing before the end of the year",
    "short": "Closing this year",
    "old": "/calls/calls-2026",
-   "count": 42,
-   "open": 42
+   "count": 41,
+   "open": 41
   },
   {
    "slug": "cascade-funding",
@@ -4889,15 +5039,15 @@
    "short": "Cascade funding",
    "old": "/calls/cascade-funding",
    "count": 63,
-   "open": 60
+   "open": 61
   },
   {
    "slug": "health",
    "title": "Health calls: Horizon Europe Cluster 1, IHI and EU4Health",
    "short": "Health",
    "old": "/calls/horizon-health",
-   "count": 19,
-   "open": 15
+   "count": 30,
+   "open": 26
   },
   {
    "slug": "culture-society",
@@ -4936,8 +5086,8 @@
    "title": "Food, bioeconomy, natural resources and environment calls (Cluster 6)",
    "short": "Food & Environment",
    "old": "/calls/horizon-food-environment",
-   "count": 62,
-   "open": 11
+   "count": 61,
+   "open": 10
   },
   {
    "slug": "missions-bridging",
@@ -4968,8 +5118,8 @@
    "title": "Other EU programmes: Creative Europe, CERV, Erasmus+, CEF and more",
    "short": "Other EU programmes",
    "old": "/calls/other-eu-programmes",
-   "count": 82,
-   "open": 53
+   "count": 98,
+   "open": 74
   },
   {
    "slug": "international-cooperation",
@@ -5104,27 +5254,6 @@
  ],
  "events": [
   {
-   "slug": "horizon-europe-cluster-1-health-brokerage",
-   "title": "Horizon Europe Cluster 1 Health brokerage event",
-   "start": "2026-11-24",
-   "end": "2026-11-25",
-   "type": "brokerage",
-   "programme": "cluster-1",
-   "mode": "online",
-   "location": "Online",
-   "organiser": "Horizon Europe Cluster 1 National Contact Points (HNN 3.0)",
-   "summary": "A two-day online event to find international consortium partners for the 2027 Cluster 1 Health calls.",
-   "registration_url": "https://research-innovation-community.ec.europa.eu/events/4kcNbd29FiAhBZf1wLeUr7/overview",
-   "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/events/horizon-europe-cluster-1-health-brokerage/",
-   "url_es": "https://events.ullswaterinvestments.com/es/events/horizon-europe-cluster-1-health-brokerage/",
-   "theme": "health",
-   "calls": [],
-   "title_es": "Evento de brokerage del Clúster 1 Salud de Horizonte Europa",
-   "summary_es": "Evento en línea de dos días para encontrar socios internacionales de consorcio para las convocatorias de 2027 del Clúster 1 Salud.",
-   "location_es": "En línea"
-  },
-  {
    "slug": "bridges-health-thessaloniki",
    "title": "Bridges Health: training and matchmaking for Horizon Europe consortia",
    "start": "2026-11-25",
@@ -5144,27 +5273,6 @@
    "title_es": "Bridges Health: formación y matchmaking para consorcios de Horizonte Europa",
    "summary_es": "Programa presencial de dos días con clases magistrales, matchmaking moderado y redacción de propuestas para consorcios de Horizonte Europa Salud y de la Misión Cáncer.",
    "location_es": "Salónica, Grecia"
-  },
-  {
-   "slug": "ehds-webinar-4-secondary-use-benefits-incentives",
-   "title": "EHDS support to stakeholders. Webinar 4: Stakeholder workshop on Benefits, challenges and incentives of EHDS secondary use",
-   "start": "2026-11-25",
-   "end": "2026-11-25",
-   "type": "webinar",
-   "programme": "other",
-   "mode": "online",
-   "location": "Online",
-   "organiser": "European Commission (EHDS support to stakeholders), delivered by IDOM and IACS",
-   "summary": "An online workshop, part of the Commission's EHDS stakeholder support series, on how the secondary use of health data under the European Health Data Space creates value, and on its benefits, challenges and incentives for each stakeholder group.",
-   "registration_url": "https://events.teams.microsoft.com/event/a9526537-8a2b-448d-9045-59470ebf0b13@b853f977-4183-428f-855c-ffe7328b6f13",
-   "status": "scheduled",
-   "url": "https://events.ullswaterinvestments.com/events/ehds-webinar-4-secondary-use-benefits-incentives/",
-   "url_es": "https://events.ullswaterinvestments.com/es/events/ehds-webinar-4-secondary-use-benefits-incentives/",
-   "theme": "other-eu-programmes",
-   "calls": [],
-   "title_es": "Apoyo del EHDS a las partes interesadas. Webinario 4: taller sobre beneficios, retos e incentivos del uso secundario de datos en el EHDS",
-   "summary_es": "Taller en línea, dentro de la serie de apoyo de la Comisión a las partes interesadas del EHDS, sobre cómo el uso secundario de los datos sanitarios en el Espacio Europeo de Datos Sanitarios crea valor, y sobre sus beneficios, retos e incentivos para cada grupo de interés.",
-   "location_es": "En línea"
   },
   {
    "slug": "horizon-europe-cluster-1-health-info-day",
@@ -5356,6 +5464,48 @@
    "title_es": "ADVANCE EIC Conference 2026",
    "summary_es": "Evento oficial de la Presidencia irlandesa del Consejo de la UE sobre cómo reforzar la base deep tech de Europa y convertir la investigación en empresas europeas.",
    "location_es": "University College Dublin, Belfield, Dublín"
+  },
+  {
+   "slug": "eu-agri-food-days-2026",
+   "title": "EU Agri-Food Days 2026",
+   "start": "2026-12-08",
+   "end": "2026-12-09",
+   "type": "conference",
+   "programme": "other",
+   "mode": "onsite",
+   "location": "Charlemagne Building, Rue de la Loi 170, Brussels",
+   "organiser": "European Commission (DG AGRI)",
+   "summary": "Two days in Brussels on making the European agri-food sector more resilient and on the role of EU policies and the Common Agricultural Policy.",
+   "registration_url": "https://agriculture.ec.europa.eu/eu-agri-food-days_en",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/events/eu-agri-food-days-2026/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/eu-agri-food-days-2026/",
+   "theme": "other-eu-programmes",
+   "calls": [],
+   "title_es": "EU Agri-Food Days 2026",
+   "summary_es": "Dos días en Bruselas sobre cómo hacer más resiliente el sector agroalimentario europeo y sobre el papel de las políticas de la UE y de la PAC.",
+   "location_es": "Edificio Charlemagne, Rue de la Loi 170, Bruselas"
+  },
+  {
+   "slug": "eu4health-sante-action-grants-info-session",
+   "title": "Information session on EU4Health SANTE Action grants – Annual Work Programme 2026",
+   "start": "2026-12-09",
+   "end": "2026-12-09",
+   "type": "info-day",
+   "programme": "other",
+   "mode": "online",
+   "location": "Online",
+   "organiser": "HaDEA (European Health and Digital Executive Agency)",
+   "summary": "A virtual session on the first wave of the EU4Health call for proposals, covering the eleven topics of the 2026 Work Programme.",
+   "registration_url": "https://ecconf.webex.com/weblink/register/r6c6466ee389eb330376f7877b15a5eb5",
+   "status": "scheduled",
+   "url": "https://events.ullswaterinvestments.com/events/eu4health-sante-action-grants-info-session/",
+   "url_es": "https://events.ullswaterinvestments.com/es/events/eu4health-sante-action-grants-info-session/",
+   "theme": "other-eu-programmes",
+   "calls": [],
+   "title_es": "Sesión informativa sobre las subvenciones a acciones SANTE de EU4Health – Programa de Trabajo Anual 2026",
+   "summary_es": "Sesión virtual sobre la primera ola de la convocatoria de propuestas de EU4Health, que abarca los once temas del Programa de Trabajo 2026.",
+   "location_es": "En línea"
   }
  ]
 }
