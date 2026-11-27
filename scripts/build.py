@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from content import *  # noqa: E402,F401,F403
 import content as C  # noqa: E402
 import guides  # noqa: E402
+import shell  # noqa: E402
 import i18n  # noqa: E402
 import ayudas  # noqa: E402
 
@@ -81,7 +82,7 @@ def load_live():
         print("calls fetch failed:", e)
     try:  # tenders.ullswaterinvestments.com (repo ullswater-calls, tenders/): figures for the home tile
         ts = json.loads(fetch(C.TENDERS + "/data/stats.json"))
-        live["tenders"] = {k: ts.get(k) for k in ("updated", "total", "eu", "ted", "closingIn30Days")}
+        live["tenders"] = {k: ts.get(k) for k in ("updated", "total", "eu", "ted", "closingIn30Days", "closingIn7Days", "countries")}
     except Exception as e:
         print("tenders fetch failed:", e)
     try:
@@ -148,6 +149,7 @@ header .btn{padding:9px 15px;font-size:15px}
 .hero .lead{font-size:20px;color:#d5dcef;max-width:760px;margin:0}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .ay-promo{background:linear-gradient(180deg,#fbf6e6 0%,#fff 100%);border-top:4px solid var(--gold);border-bottom:1px solid var(--line)}
+.tn-promo{background:linear-gradient(180deg,#eef2fb 0%,#fff 100%);border-top-color:var(--navy)}
 .ayp{display:grid;grid-template-columns:1.35fr 1fr;gap:44px;align-items:center}.ayp h2{margin-top:0}.ayp .sub{margin-bottom:0}.ayp .actions{margin-top:24px}
 .ayp-new{display:inline-block;background:var(--navy);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;padding:3px 8px;margin-right:8px;vertical-align:1px}
 .ayp-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0;padding:0;list-style:none}
@@ -285,7 +287,7 @@ header.site .wrap{max-width:1280px;gap:12px}header.site .brand{flex:0 1 auto;min
 .hero.ai{text-align:center;background:radial-gradient(720px 520px at 4% 38%,rgba(201,166,70,.16),transparent 65%),radial-gradient(900px 520px at 100% 0%,rgba(91,124,214,.28),transparent 60%),linear-gradient(170deg,#101c40 0%,var(--navy2) 52%,var(--navy) 100%)}
 .hero.ai::after{display:none}.hero.ai .wrap{padding:76px 22px 64px}
 .hero.ai .pre{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:0 0 20px;line-height:1.6}.hero.ai .pre span{color:#fff;opacity:.85}
-.hero.ai h1{font-size:clamp(36px,5vw,64px);line-height:1.08;letter-spacing:-.02em;font-weight:700;margin:0 auto;max-width:1000px}
+.hero.ai h1{font-size:clamp(36px,5vw,64px);line-height:1.08;letter-spacing:-.02em;font-weight:700;margin:0 auto;max-width:1000px}.hero.ai h1.long{font-size:clamp(32px,4.3vw,56px);max-width:1080px}
 .hero.ai .lead{max-width:780px;margin:22px auto 0;color:#d5dcef;font-size:20px;line-height:1.5}
 .ask{max-width:1000px;margin:40px auto 0;display:flex;align-items:center;gap:14px;background:#fff;border-radius:46px;height:80px;padding:0 14px 0 28px;box-shadow:0 18px 50px rgba(0,0,0,.28)}
 .ask .ic{display:flex;color:var(--gold2)}.ask .ic svg{width:24px;height:24px}
@@ -651,6 +653,32 @@ def ayudas_band(ay):
 <p class="ayp-src">Source: BDNS (IGAE, Ministry of Finance) · updated {date.fromisoformat(ay["updated"][:10]):%d/%m/%Y}</p></div></section>"""
 
 
+def tenders_band(tn):
+    """Promotion of tenders.ullswaterinvestments.com (public tenders in Europe) under the home hero, same layout as the grants band."""
+    if not tn or not tn.get("total"):
+        return ""
+    cc = tn.get("countries") or {}
+    names = {"ESP": ("Spain", "es"), "FRA": ("France", "fr"), "DEU": ("Germany", "de"), "ITA": ("Italy", "it"), "POL": ("Poland", "pl"), "PRT": ("Portugal", "pt"),
+             "BEL": ("Belgium", "be"), "NLD": ("Netherlands", "nl"), "AUT": ("Austria", "at"), "SWE": ("Sweden", "se"), "CZE": ("Czechia", "cz"), "ROU": ("Romania", "ro"),
+             "DNK": ("Denmark", "dk"), "FIN": ("Finland", "fi"), "IRL": ("Ireland", "ie"), "GRC": ("Greece", "gr"), "HUN": ("Hungary", "hu"), "NOR": ("Norway", "no")}
+    pills = f'<a href="{C.TENDERS}/country/eu/" data-es-href="{C.TENDERS}/es/pais/eu/">EU institutions<span>{tn.get("eu", 0)}</span></a>' + "".join(
+        f'<a href="{C.TENDERS}/country/{names[k][1]}/" data-es-href="{C.TENDERS}/es/pais/{names[k][1]}/">{names[k][0]}<span>{n}</span></a>'
+        for k, n in sorted(cc.items(), key=lambda kv: -kv[1]) if k in names)
+    soon = tn.get("closingIn7Days")
+    soon_li = (f'<li class="hl"><strong>{soon}</strong>closing in the next 7 days</li>' if soon is not None
+               else f'<li class="hl"><strong>{tn.get("closingIn30Days", 0)}</strong>closing in the next 30 days</li>')
+    upd = str(tn.get("updated") or "")[:10]
+    upd_s = f" · updated {date.fromisoformat(upd):%d/%m/%Y}" if upd else ""
+    return f"""<section class="band ay-promo tn-promo" id="public-tenders"><div class="wrap"><div class="ayp"><div>
+<p class="kicker" style="color:var(--gold2)"><span class="ayp-new">New</span>Public tenders in Europe</p>
+<h2>Every open public tender in Europe, in one place</h2>
+<p class="sub">Every day we collect the calls for tenders of the EU institutions and agencies and the national, regional and local tenders of every European country published in TED, with deadline, buyer, sector (CPV), estimated value and the official notice. Ask our AI assistant or search by country and sector.</p>
+<div class="actions"><a class="btn" href="{C.TENDERS}/" data-es-href="{C.TENDERS}/es/">See the {tn["total"]} open tenders →</a><a class="btn line" href="{C.TENDERS}/country/es/" data-es-href="{C.TENDERS}/es/pais/es/">Tenders in Spain</a></div></div>
+<ul class="ayp-stats"><li><strong>{tn["total"]}</strong>tenders open today</li><li><strong>{tn.get("eu", 0)}</strong>of the EU institutions</li><li><strong>{cc.get("ESP", 0)}</strong>in Spain</li>{soon_li}</ul></div>
+<nav class="ayp-regions" aria-label="Tenders by country">{pills}</nav>
+<p class="ayp-src">Source: EU Funding &amp; Tenders Portal and TED (Publications Office of the EU){upd_s}</p></div></section>"""
+
+
 SEND_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>'
 SPARK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/></svg>'
 
@@ -704,13 +732,13 @@ def ai_hero(st, ay=None, soon30=None, tn=None):
             for i, (n, t, u, g) in enumerate(tiles)) + "</ul>"
     return f"""<section class="hero ai" id="top" aria-labelledby="hero-title"><div class="wrap">
 <p class="pre">European funding advisors · Madrid · Brussels · <span>Funding Assistant · AI</span></p>
-<h1 id="hero-title">Unlock European funding<br>for your innovation.</h1>
-<p class="lead">Ask our AI Funding Assistant about EU calls, grants in Spain, our European projects or our services, or start from one of the 20 key topics.</p>
+<h1 id="hero-title" class="long">Unlock EU funding for your company and bid for public tenders across Europe.</h1>
+<p class="lead">Ask our AI Funding Assistant about EU calls, public tenders across Europe, grants in Spain, our European projects or our services, or start from one of the {len(C.TOPICS)} key topics.</p>
 <form class="ask" id="ai-ask" role="search" action="{C.CALLS}/" method="get">
 <span class="ic" aria-hidden="true">{SPARK_SVG}</span>
-<label for="ai-q" class="vh">Your question</label><input id="ai-q" name="q" type="text" autocomplete="off" maxlength="1000" placeholder="Ask about EU funding, grants or our services…">
+<label for="ai-q" class="vh">Your question</label><input id="ai-q" name="q" type="text" autocomplete="off" maxlength="1000" placeholder="Ask about EU funding, public tenders, grants or our services…">
 <button type="submit" aria-label="Send">{SEND_SVG}</button></form>
-<nav class="tchips" aria-label="Key topics">{top}<button type="button" class="tchip more" aria-expanded="false" aria-controls="tall">See all 20 topics</button></nav>
+<nav class="tchips" aria-label="Key topics">{top}<button type="button" class="tchip more" aria-expanded="false" aria-controls="tall">See all {len(C.TOPICS)} topics</button></nav>
 <div class="tall" id="tall" hidden><div class="tgrid">{groups}</div></div>
 <p class="ai-note">AI answers can be wrong: always check the official source. Prefer a person? <a href="{C.BOOK}" target="_blank" rel="noopener">Talk to an expert ↗</a></p>
 {kpis}</div></section>"""
@@ -759,7 +787,7 @@ def home(live, themes, ay=None):
 <div class="panel"><h3><a href="{C.NEWS}/">Latest news</a></h3><ul class="list">{news}</ul><a class="more" href="{C.NEWS}/">EU Funding News →</a></div>
 <div class="panel"><h3><a href="{C.EVENTS}/">Upcoming events</a></h3><ul class="list">{evs}</ul><a class="more" href="{C.EVENTS}/">All events →</a></div></div></div></section>"""
     vc = "".join(f'<div class="card"><div class="ic" aria-hidden="true">{i}</div><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for i, t, d in C.VC_DOMAINS)
-    body = h + benchmark_band() + ayudas_band(ay) + projects_band() + f"""
+    body = h + benchmark_band() + ayudas_band(ay) + tenders_band(live.get("tenders")) + projects_band() + f"""
 <section class="band"><div class="wrap split"><div><p class="kicker" style="color:var(--gold2)">Who we are</p><h2>Senior advisors for EU grants, loans and equity</h2>
 <p class="sub" style="margin-bottom:0">{escape(C.TEAM)}</p></div><blockquote class="quote">{escape(C.PARTNER_QUOTE)}<cite>Emilio Mulet, Managing Partner</cite></blockquote></div></section>
 <section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Our services</p><h2>From the right call to a funded project</h2><p class="sub">Three complementary services that take you from strategy to signed grant agreement or investment.</p><div class="grid g3">{svc}</div></div></section>
@@ -1084,6 +1112,7 @@ def main():
     (SITE / "404.html").write_text(page("/404.html", "Page not found | Ullswater Investments", "Page not found.",
         hero("404", "Page not found", "The page you are looking for has moved or no longer exists.", actions=f'<a class="btn" href="/">Home</a><a class="btn ghost" href="{C.CALLS}/">Open EU calls</a>'), themes, bilingual=False), encoding="utf-8")
     es_count, missing = build_es(pages, live)
+    print("shell.json for the subdomains:", shell.write_shell(SITE, BASE, CSS, JS), "bytes")
     today = date.today().isoformat()
     ayudas_paths = build_ayudas(ay_cache)
 
