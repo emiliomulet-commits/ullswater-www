@@ -96,12 +96,12 @@ window.SECTORS = [
    "en": [
     "A portable record held outside the clinic, with patient permissions and an access log, avoids rebuilding histories when a chain closes.",
     "Digital clinic–lab–manufacturer workflows need usage rules on scans and images, in a market of about €12.2bn of annual spending in Spain.",
-    "Ullswater brings direct experience from Dental Data, an oral health data space, and from Global Data Care."
+    "Ullswater brings direct experience from Global Data Care, a federated health data space."
    ],
    "es": [
     "Un historial portable y custodiado fuera de la clínica, con permisos del paciente y registro de accesos, evita reconstruirlo cuando una cadena cierra.",
     "Los flujos digitales clínica–laboratorio–fabricante necesitan reglas de uso sobre escaneos e imágenes, en un mercado de unos 12.200 M€ de gasto anual en España.",
-    "Ullswater aporta experiencia directa con Dental Data, un espacio de datos de salud bucal, y con Global Data Care."
+    "Ullswater aporta experiencia directa con Global Data Care, un espacio de datos federado de salud."
    ]
   },
   "example": {
