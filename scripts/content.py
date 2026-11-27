@@ -7,6 +7,7 @@ EMAIL = "eufunding@ullswaterinvestments.com"
 CALLS = "https://calls.ullswaterinvestments.com"
 NEWS = "https://news.ullswaterinvestments.com"
 EVENTS = "https://events.ullswaterinvestments.com"
+TENDERS = "https://tenders.ullswaterinvestments.com"
 
 MISSION = ("Our mission is to empower European innovation and sustainable growth by demystifying and unlocking public finance. "
            "Groundbreaking projects and ambitious companies are the engine of Europe's future, and we help them secure the financial resources they need to thrive.")
@@ -57,6 +58,8 @@ SERVICES = [
      "Find the grant, loan or equity instrument, and the exact call, with the highest probability of success for your project."),
     ("strategic-positioning", "Strategic Positioning",
      "Become a visible, credible partner for the European Commission, the EIB and EU consortia, and turn that position into funded projects."),
+    ("tender-readiness", "Tender Readiness",
+     "Win public contracts of the EU institutions and of national, regional and local buyers across Europe: bid/no-bid, offer writing and consortia."),
 ]
 
 TOOLS = [
@@ -66,7 +69,30 @@ TOOLS = [
     ("Partner board", "Find consortium partners or offer to join one.", CALLS + "/partners/"),
     ("Spain", "National and regional R&D and industry calls from the BDNS.", CALLS + "/spain/"),
     ("Email alerts", "A free weekly email with new calls for your keywords.", CALLS + "/alerts/"),
+    ("EU public tenders", "Open tenders of the EU institutions and of every EU country (TED), updated daily.", TENDERS + "/"),
 ]
+
+# ---------- Tender Readiness ----------
+TR_INTRO = ("Public procurement is the other half of European money. EU institutions and agencies, ministries, regions, cities and hospitals buy services, "
+            "supplies and works through open tenders, and every year thousands of them get few or no bids from SMEs. We help you choose the right tenders, "
+            "write a compliant and competitive offer, and team up when you cannot qualify alone.")
+TR_WHY = [
+    ("Not a grant: a contract", "A tender pays for a service, a supply or a work at a price you set. There is no co-financing and you keep the margin, but the buyer defines the requirements."),
+    ("A huge, under-used market", "Tens of thousands of tenders are open at any time on TED, plus the calls for tenders of the European Commission and the EU agencies. Many receive a single bid."),
+    ("Rules you must get right", "Exclusion and selection criteria, the ESPD, award criteria and deadlines are strict: one missing document is enough to be excluded."),
+]
+TR_STEPS = [
+    ("1", "Watch", "We track the tenders that match your CPV codes, countries and size, from the EU portal and TED, and send you the ones worth a look."),
+    ("2", "Bid / no-bid", "In 48 hours we read the tender documents and tell you if you qualify, what it takes to win, the risks and the effort."),
+    ("3", "Team up", "If you cannot meet the selection criteria alone, we find partners or subcontractors and set up a joint bid."),
+    ("4", "Write and submit", "Technical offer built on the award criteria, price structure, administrative file (ESPD, declarations) and submission through eTendering or the national platform."),
+]
+TR_WHAT = [
+    ("Tenders of the EU institutions", "European Commission, EU agencies, Parliament and other bodies: studies, evaluations, IT, communication, events and framework contracts."),
+    ("National, regional and local tenders", "Buyers in every EU country publish above-threshold tenders in TED: digital services, consulting, engineering, health, energy and works."),
+    ("Framework contracts and DPS", "Long-term framework agreements and dynamic purchasing systems that open a steady flow of specific contracts."),
+]
+
 
 # ---------- Investment Readiness ----------
 IR_INTRO = [
