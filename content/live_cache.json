@@ -5189,12 +5189,12 @@
   }
  ],
  "tenders": {
-  "updated": "2026-11-27T16:29:25+00:00",
-  "total": 35673,
-  "eu": 235,
+  "updated": "2026-11-27T17:44:09+00:00",
+  "total": 35643,
+  "eu": 205,
   "ted": 35438,
-  "closingIn30Days": 26554,
-  "closingIn7Days": null,
+  "closingIn30Days": 26535,
+  "closingIn7Days": 9836,
   "countries": {
    "DEU": 8053,
    "POL": 4411,
