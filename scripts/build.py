@@ -79,6 +79,11 @@ def load_live():
         live["calls"] = [{k: c.get(k) for k in ("id", "title", "status", "deadline", "programme", "kind", "budget", "url")} for c in data["calls"]]
     except Exception as e:  # keep the last good copy
         print("calls fetch failed:", e)
+    try:  # tenders.ullswaterinvestments.com (repo ullswater-calls, tenders/): figures for the home tile
+        ts = json.loads(fetch(C.TENDERS + "/data/stats.json"))
+        live["tenders"] = {k: ts.get(k) for k in ("updated", "total", "eu", "ted", "closingIn30Days")}
+    except Exception as e:
+        print("tenders fetch failed:", e)
     try:
         live["themes"] = json.loads(fetch(CALLS + "/data/themes.json"))
     except Exception as e:
@@ -296,7 +301,7 @@ header.site .wrap{max-width:1280px;gap:12px}header.site .brand{flex:0 1 auto;min
 .tlist{display:flex;flex-direction:column;gap:8px}.tlist .tchip{min-height:0;padding:9px 14px;font-size:15px;width:100%}
 .ai-note{margin:22px auto 0;font-size:13px;color:#aeb9d8}.ai-note a{color:var(--gold)}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1000px;margin:34px auto 0;padding:0;list-style:none}
-.kpis li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;font-size:14px;color:#cbd3ea;transition:border-color .15s,background .15s}.kpis a{display:flex;flex-direction:column;height:100%;box-sizing:border-box;padding:14px 16px;color:inherit;text-decoration:none;border-radius:12px}.kpis strong{display:block;font-size:28px;color:#fff;line-height:1.15}.kpis .go{margin-top:auto;padding-top:8px;color:var(--gold);font-weight:600;font-size:13px}.kpis li:hover,.kpis li:focus-within{border-color:var(--gold);background:rgba(255,255,255,.1)}.kpis a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.kpis li:nth-child(5){grid-column:1/-1}.kpis li:nth-child(5) strong{color:var(--gold)}@media (min-width:961px){.kpis li:nth-child(5) a{flex-direction:row;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:4px 14px}.kpis li:nth-child(5) .go{margin:0;padding:0}}
+.kpis li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;font-size:14px;color:#cbd3ea;transition:border-color .15s,background .15s}.kpis a{display:flex;flex-direction:column;height:100%;box-sizing:border-box;padding:14px 16px;color:inherit;text-decoration:none;border-radius:12px}.kpis strong{display:block;font-size:28px;color:#fff;line-height:1.15}.kpis .go{margin-top:auto;padding-top:8px;color:var(--gold);font-weight:600;font-size:13px}.kpis li:hover,.kpis li:focus-within{border-color:var(--gold);background:rgba(255,255,255,.1)}.kpis a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.kpis li:nth-child(n+5){grid-column:1/-1}.kpis li:nth-child(n+5) strong{color:var(--gold)}@media (min-width:961px){.kpis li:nth-child(n+5) a{flex-direction:row;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:4px 14px}.kpis li:nth-child(n+5) .go{margin:0;padding:0}}
 @media (max-width:960px){.tgrid{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.hero.ai .wrap{padding:52px 18px 44px}.hero.ai .lead{font-size:17px}.ask{height:64px;padding:0 8px 0 18px;margin-top:30px}.ask input{font-size:16px}.ask button{width:46px;height:46px}
  .tchips{gap:8px}.tchip{font-size:14px;min-height:40px;padding:8px 14px}.tgrid{grid-template-columns:1fr}.tall{padding:20px 16px}}
@@ -374,12 +379,13 @@ def header(themes, current):
     return f"""<header class="site"><div class="wrap">
 <a class="brand" href="/" aria-label="Ullswater Investments, home"><img src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26"></a>
 <nav class="main" aria-label="Main">
-<div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>EU calls</button><div class="menu wide"><div>
-<div class="lbl">Live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a><a href="/es/ayudas/"><b>Grants for companies in Spain (Spanish)</b></a><a href="/guides/"><b>EU funding guides</b></a>
-</div><div><div class="lbl">By theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
+<div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>EU opportunities</button><div class="menu wide"><div>
+<div class="lbl">Grants · live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a><a href="/es/ayudas/"><b>Grants for companies in Spain (Spanish)</b></a><a href="/guides/"><b>EU funding guides</b></a>
+</div><div><div class="lbl">Public contracts · tenders</div><a href="{C.TENDERS}/"><b>All open public tenders</b></a><a href="{C.TENDERS}/country/eu/">Tenders of the EU institutions</a><a href="{C.TENDERS}/es/pais/es/">Public tenders in Spain</a><a href="{C.TENDERS}/closing-soon/">Tenders closing soon</a><a href="/tender-readiness/"{cur('tenders')}><b>Tender Readiness: bid with us</b></a>
+<hr><div class="lbl">Grants by theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
 <a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a class="nav-hl" href="/es/ayudas/">Grants in Spain</a><a href="/projects/"{cur('projects')}>Projects</a>
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('services')}>Services</button><div class="menu">
-<a href="{DATASPACES}"><b>Data Spaces: EU data rules &amp; AI agents</b></a><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/"{cur('courses')}>Executive courses</a></div></div><a href="/about/"{cur('about')}>About</a>
+<a href="{DATASPACES}"><b>Data Spaces: EU data rules &amp; AI agents</b></a><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/tender-readiness/">Tender Readiness</a><a href="/courses/"{cur('courses')}>Executive courses</a></div></div><a href="/about/"{cur('about')}>About</a>
 </nav><a class="btn hide-m" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a>
 <button class="burger" type="button" aria-label="Menu" aria-expanded="false">☰</button></div></header>"""
 
@@ -557,9 +563,9 @@ def projects_page(themes):
 FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 <div><img class="flogo" src="/assets/logo.svg" alt="Ullswater Investments" width="200" height="26" loading="lazy"><p style="margin:0 0 10px">European funding advisors in Madrid and Brussels. Grants, loans and equity for innovation.</p>
 <p style="margin:0 0 8px"><b style="color:#fff">Madrid</b> · Calle Ramírez de Arellano 17, 28043 Madrid, Spain</p><p style="margin:0 0 8px"><b style="color:#fff">Brussels</b> · Square de Meeûs 37, 1000 Brussels, Belgium</p><p style="margin:0"><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
-<div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/courses/">Executive courses</a></div>
+<div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/tender-readiness/">Tender Readiness</a><a href="/courses/">Executive courses</a></div>
 <div><h4>Projects</h4>{"".join(f'<a href="{project_url(p)}"' + (' target="_blank" rel="noopener"' if p.get("url") else "") + f'>{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
-<div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="/es/ayudas/">Grants in Spain (ES)</a></div>
+<div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.TENDERS}/">EU public tenders</a><a href="/es/ayudas/">Grants in Spain (ES)</a></div>
 <div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a><a href="{LINKEDIN}" target="_blank" rel="noopener me">LinkedIn ↗</a><a href="{YOUTUBE}" target="_blank" rel="noopener me">YouTube ↗</a></div>
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
 
@@ -674,7 +680,7 @@ def benchmark_band():
 <ul class="bmp-facts"><li><strong>19</strong>regulations in 6 categories</li><li><strong>Free</strong>no fee and no prices requested</li><li><strong>31 Jan 2027</strong>deadline to send your profile</li><li><strong>50</strong>media outlets will receive the report</li></ul></div></div></section>"""
 
 
-def ai_hero(st, ay=None, soon30=None):
+def ai_hero(st, ay=None, soon30=None, tn=None):
     """Home hero as an AI entry point (ARGOS style, Ullswater colours): a large question box for the Funding Assistant
     and the 20 key topics of the site as chips. Chips are plain links for crawlers and visitors without JavaScript."""
     top = benchmark_chip() + "".join(topic_chip(t) for t in C.TOPICS if t[7])
@@ -691,6 +697,8 @@ def ai_hero(st, ay=None, soon30=None):
                  (st["programmes"], "EU programmes tracked", f"{C.CALLS}/programmes/", "See the programmes →")]
         if ay and ay.get("open"):
             tiles.append((ay["open"], "grants open in Spain (State and regional)", "/es/ayudas/", "See the grants (in Spanish) →"))
+        if tn and tn.get("total"):
+            tiles.append((tn["total"], f"public tenders open in Europe ({tn['eu']} of the EU institutions)", f"{C.TENDERS}/", "See the tenders →"))
         kpis = '<ul class="kpis">' + "".join(
             f'<li><a href="{u}" data-kpi="{i}"><strong>{n}</strong><span>{t}</span><span class="go">{g}</span></a></li>'
             for i, (n, t, u, g) in enumerate(tiles)) + "</ul>"
@@ -719,7 +727,7 @@ def home(live, themes, ay=None):
     if live.get("calls"):  # same rule as calls./closing-soon/: open, deadline between today and 30 days ahead
         soon30 = sum(1 for c in live["calls"] if c.get("status") == "open" and c.get("deadline")
                      and 0 <= (date.fromisoformat(c["deadline"][:10]) - today).days <= 30)
-    h = ai_hero(st, ay, soon30)
+    h = ai_hero(st, ay, soon30, live.get("tenders"))
     svc = "".join(f'<a class="card top" href="/{s}/"><div class="num">0{i + 1}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Learn more →</span></a>'
                   for i, (s, t, d) in enumerate(C.SERVICES))
     explore = "".join(f'<a class="card" href="{u}" target="_blank" rel="noopener"><div class="ic" aria-hidden="true">{ic}</div><h3>{escape(t)}</h3><p>{escape(d)}</p><span class="go">Explore ↗</span></a>'
@@ -807,6 +815,27 @@ def fund_matching(themes):
     return page("/eu-fund-matching/", "EU Fund Matching: the right EU grant, loan or equity for your project | Ullswater Investments",
                 "We match your project with the right EU programme and call: Horizon Europe, Digital Europe, LIFE, EIB loans, InvestEU and EIF-backed venture capital.", body, themes, "services",
                 {"@context": "https://schema.org", "@type": "Service", "name": "EU Fund Matching", "provider": {"@id": BASE + "/#org"}, "areaServed": "Europe"})
+
+
+def tender_readiness(themes, live=None):
+    tn = (live or {}).get("tenders") or {}
+    steps = "".join(f'<div><b aria-hidden="true">{i}</b><strong>{escape(t)}</strong><span>{escape(d)}</span></div>' for i, t, d in C.TR_STEPS)
+
+    def cards(items, cls=""):
+        return "".join(f'<div class="card {cls}"><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for t, d in items)
+    live_line = (f'<p class="sub">Right now: <b>{tn["total"]}</b> open public tenders in Europe, <b>{tn["eu"]}</b> of them from the EU institutions and agencies.</p>'
+                 if tn.get("total") else "")
+    body = hero("Service", "Tender Readiness", escape(C.TR_INTRO), crumbs("Tender Readiness"),
+                actions=f'<a class="btn" href="{C.BOOK}" target="_blank" rel="noopener">Book a meeting</a><a class="btn ghost" href="{C.TENDERS}/">Search open tenders</a>') + f"""
+<section class="band"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Public procurement</p><h2>Why tenders deserve a place in your strategy</h2>{live_line}<div class="grid g3">{cards(C.TR_WHY, 'top')}</div></div></section>
+<section class="band alt"><div class="wrap"><h2>How we work</h2><p class="sub">From the right tender to a submitted offer, with you at every step.</p><div class="flow f4">{steps}</div></div></section>
+<section class="band"><div class="wrap"><h2>Which tenders</h2><p class="sub">We work on the three families of European public contracts.</p><div class="grid g3">{cards(C.TR_WHAT)}</div>
+<div class="actions" style="margin-top:22px;align-items:center;gap:18px"><a class="btn" href="{C.TENDERS}/">Open tenders in Europe</a><a href="{C.TENDERS}/country/eu/">Tenders of the EU institutions →</a><a href="{C.TENDERS}/es/pais/es/">Tenders in Spain →</a></div></div></section>
+{cta("Is there a tender you want to win?", "Send us the link: we will tell you within 48 hours whether it is worth bidding and what it takes.", "Book a meeting")}"""
+    return page("/tender-readiness/", "Tender Readiness: win EU and national public tenders | Ullswater Investments",
+                "Bid/no-bid analysis, offer writing and consortium building for tenders of the EU institutions and for national public tenders published in TED.", body, themes, "services",
+                {"@context": "https://schema.org", "@type": "Service", "name": "Tender Readiness", "provider": {"@id": BASE + "/#org"}, "areaServed": "Europe",
+                 "serviceType": "Public procurement bid support"})
 
 
 def strategic_positioning(themes):
@@ -975,7 +1004,7 @@ def build_ayudas(cache=None):
 def write_llms_full(pages):
     """llms-full.txt: the readable English text of every page, so AI assistants can read the whole site in one request."""
     from bs4 import BeautifulSoup
-    order = ["/", "/eu-fund-matching/", "/investment-readiness/", "/strategic-positioning/", "/projects/", "/about/", "/courses/"]
+    order = ["/", "/eu-fund-matching/", "/investment-readiness/", "/strategic-positioning/", "/tender-readiness/", "/projects/", "/about/", "/courses/"]
     paths = order + sorted(p for p in pages if p not in order and p not in ("/privacy/", "/legal/"))
     out = [f"# Ullswater Investments · EU Funding Advisors: full text of {BASE}\n",
            f"> Generated on {date.today().isoformat()}. Spanish versions of every page are under {BASE}/es/. Live EU calls: {C.CALLS}/ · News: {C.NEWS}/ · Events: {C.EVENTS}/\n"]
@@ -1038,7 +1067,7 @@ def main():
     except Exception as e:  # noqa: BLE001
         print("ayudas_ia: failed, using cached fichas:", e)
     pages = {"/": home(live, themes, ayudas.summary(ay_cache)), "/investment-readiness/": investment_readiness(themes), "/eu-fund-matching/": fund_matching(themes),
-             "/strategic-positioning/": strategic_positioning(themes), "/about/": about(themes), "/courses/": courses(themes),
+             "/strategic-positioning/": strategic_positioning(themes), "/tender-readiness/": tender_readiness(themes, live), "/about/": about(themes), "/courses/": courses(themes),
              "/privacy/": privacy(themes), "/legal/": legal(themes), "/projects/": projects_page(themes)}
     pages.update(archive_pages(themes))
     if live.get("calls"):
@@ -1085,6 +1114,7 @@ def main():
 - [Investment Readiness]({BASE}/investment-readiness/)
 - [EU Fund Matching]({BASE}/eu-fund-matching/)
 - [Strategic Positioning]({BASE}/strategic-positioning/)
+- [Tender Readiness]({BASE}/tender-readiness/): bid support for EU and national public tenders · [Open tenders]({C.TENDERS}/)
 - [Executive Programme in EU Funding for Defence and Dual-Use]({BASE}/courses/)
 - [About and company facts]({BASE}/about/)
 

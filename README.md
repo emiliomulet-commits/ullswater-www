@@ -59,5 +59,6 @@ Local build: `pip install beautifulsoup4 && python3 scripts/build.py` → `site/
 
 ## Site structure (Nov 2026)
 - `/sitemap-index.xml` lists every sitemap of the network: www, `/sitemap-projects.xml` (project landings on their own subdomains), calls, news (+ Google News) and events. Submit it once in Search Console (domain property).
-- Main menu order matches the network menu of calls, news and events: EU calls · News · Events · Projects (+ Services, Courses here) · About.
+- Main menu order matches the network menu of calls, news and events: EU opportunities · News · Events · Projects (+ Services, Courses here) · About.
+- «EU opportunities» / «Oportunidades UE» (Nov 2026) has two columns: grants (calls.ullswaterinvestments.com) and public contracts (tenders.ullswaterinvestments.com, built from the ullswater-calls repo, `tenders/`). The home shows the number of open tenders from `tenders./data/stats.json` (tile hidden while it is unreachable) and the service page `/tender-readiness/` sells bid support. Links to tenders. are mapped to its Spanish paths by `scripts/i18n.py`.
 - Calls pages exist only on calls.ullswaterinvestments.com; shared taxonomy in its `/data/taxonomy.json`.

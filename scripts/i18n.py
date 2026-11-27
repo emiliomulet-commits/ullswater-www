@@ -140,6 +140,12 @@ def to_es(html, path, es_paths, t):
             m = re.match(r"(https://(?:news|events)\.ullswaterinvestments\.com)(/[^?#]*)?(.*)$", h)
             if m and not (m.group(2) or "/").startswith(("/es/", "/calls/", "/assets/")) and not re.search(r"\.(ics|json|txt)$", m.group(2) or ""):
                 tag["href"] = m.group(1) + "/es" + (m.group(2) or "/") + m.group(3)
+            # tenders. has Spanish twins with their own paths (repo ullswater-calls, tenders/build_tenders.py)
+            m = re.match(r"https://tenders\.ullswaterinvestments\.com(/[^?#]*)?(.*)$", h)
+            if m:
+                tp = m.group(1) or "/"
+                tp = {"/": "/es/", "/closing-soon/": "/es/cierran-pronto/"}.get(tp) or re.sub(r"^/country/", "/es/pais/", re.sub(r"^/tender/", "/es/licitacion/", tp))
+                tag["href"] = "https://tenders.ullswaterinvestments.com" + tp + m.group(2)
     # Language-specific media: data-es-<attr>="…" replaces <attr> in the Spanish twin (e.g. the Spanish animated
     # presentation instead of the English YouTube video); data-es-text replaces the element's text.
     for tag in body.find_all(True):
