@@ -393,10 +393,10 @@ PROJECT_WAYS = [
 # ---------------------------------------------------------------------------
 # Home hero: AI entry point (Nov 2026). The 20 most important topics of the site, grouped like the top menu.
 # Each chip is a real link (crawlers and visitors without JavaScript follow it); with JavaScript it opens the
-# Funding Assistant with the question already asked. "top": the 14 shown in the hero (three rows), before "See all 20 topics".
+# Funding Assistant with the question already asked. "top": the 14 shown in the hero (three rows), before "See all 22 topics".
 # Fields: (group, label EN, label ES, question EN, question ES, url, url ES or None, top)
 # Review monthly against the assistant's question log (D1 ullswater-ai, table questions).
-TOPIC_GROUPS = [("eu", "EU funding", "Financiación europea"), ("es", "Grants in Spain", "Ayudas en España"),
+TOPIC_GROUPS = [("eu", "EU funding &amp; tenders", "Financiación y licitaciones UE"), ("es", "Grants in Spain", "Ayudas en España"),
                 ("data", "Projects, data &amp; AI", "Proyectos, datos e IA"), ("us", "Working with Ullswater", "Trabajar con Ullswater")]
 TOPICS = [
     ("eu", "Open EU calls", "Convocatorias UE abiertas", "Which EU calls are open right now and which ones fit an innovative SME?", "¿Qué convocatorias europeas están abiertas ahora y cuáles encajan con una pyme innovadora?", CALLS + "/", None, True),
@@ -404,13 +404,15 @@ TOPICS = [
     ("eu", "Horizon Europe", "Horizonte Europa", "How does Horizon Europe work and which clusters have open calls now?", "¿Cómo funciona Horizonte Europa y qué clústeres tienen convocatorias abiertas ahora?", "/guides/horizon-europe-cluster-4-digital-industry-space/", None, True),
     ("eu", "EIC for startups", "EIC para startups", "Which EIC funding (Accelerator, Pathfinder, Transition) fits a deep-tech startup?", "¿Qué financiación del EIC (Accelerator, Pathfinder, Transition) encaja con una startup deep-tech?", "/guides/european-innovation-council-eic/", None, True),
     ("eu", "AI &amp; digital calls", "Convocatorias de IA y digital", "Which open EU calls fund artificial intelligence and digital projects?", "¿Qué convocatorias europeas abiertas financian proyectos de inteligencia artificial y digitales?", CALLS + "/theme/generative-ai/", None, True),
+    ("eu", "Open public tenders", "Licitaciones públicas abiertas", "Which public tenders are open in Europe right now for a company like mine?", "¿Qué licitaciones públicas hay abiertas ahora en Europa para una empresa como la mía?", TENDERS + "/", TENDERS + "/es/", True),
+    ("eu", "Public tenders in Spain", "Licitaciones en España", "Which public tenders in Spain close in the next 30 days?", "¿Qué licitaciones públicas en España cierran en los próximos 30 días?", TENDERS + "/country/es/", TENDERS + "/es/pais/es/", True),
     ("es", "Grants in Spain", "Ayudas en España", "Which State and regional grants for companies are open in Spain today?", "¿Qué ayudas estatales y autonómicas para empresas están abiertas hoy en España?", "/es/ayudas/", None, True),
-    ("es", "Grants in my region", "Ayudas en mi comunidad", "Which grants for SMEs are open in my region of Spain?", "¿Qué ayudas para pymes hay abiertas en mi comunidad autónoma?", "/es/ayudas/", None, True),
+    ("es", "Grants in my region", "Ayudas en mi comunidad", "Which grants for SMEs are open in my region of Spain?", "¿Qué ayudas para pymes hay abiertas en mi comunidad autónoma?", "/es/ayudas/", None, False),
     ("es", "R&amp;D calls in Spain", "I+D en España", "Which national R&D and innovation calls are open in Spain?", "¿Qué convocatorias nacionales de I+D+i están abiertas en España?", CALLS + "/spain/", None, False),
     ("es", "Find my funding", "Encontrar mi financiación", "I have a project idea: help me find the right EU or Spanish funding for it.", "Tengo una idea de proyecto: ayúdame a encontrar la financiación europea o española adecuada.", CALLS + "/finder/", None, True),
     ("es", "AI pre-check of my idea", "Revisión de mi idea con IA", "How does the free AI pre-check of a project idea work?", "¿Cómo funciona la revisión gratuita con IA de una idea de proyecto?", CALLS + "/review/", None, False),
     ("data", "Our European projects", "Nuestros proyectos europeos", "Which European projects does Ullswater run and which ones are open to new partners?", "¿Qué proyectos europeos tiene Ullswater y cuáles admiten nuevos socios?", "/projects/", None, True),
-    ("data", "Join a consortium", "Unirse a un consorcio", "How can my organisation find partners or join a European consortium?", "¿Cómo puede mi organización encontrar socios o unirse a un consorcio europeo?", CALLS + "/partners/", None, True),
+    ("data", "Join a consortium", "Unirse a un consorcio", "How can my organisation find partners or join a European consortium?", "¿Cómo puede mi organización encontrar socios o unirse a un consorcio europeo?", CALLS + "/partners/", None, False),
     ("data", "European data spaces", "Espacios de datos europeos", "What is a European data space and how can my company take part in one?", "¿Qué es un espacio de datos europeo y cómo puede participar mi empresa?", "https://dataspaces.ullswaterinvestments.com/", None, True),
     ("data", "AI Act &amp; EU data rules", "Reglamento de IA y normas de datos", "What do the AI Act, the GDPR and the EHDS mean for my company?", "¿Qué suponen el Reglamento de IA, el RGPD y el EHDS para mi empresa?", "https://dataspaces.ullswaterinvestments.com/", None, True),
     ("data", "EU funding guides", "Guías de financiación UE", "Which EU funding guide should I read first for my sector?", "¿Qué guía de financiación europea debería leer primero para mi sector?", "/guides/", None, False),
@@ -420,7 +422,7 @@ TOPICS = [
     ("us", "Events &amp; info days", "Eventos y jornadas", "Which info days, brokerage events and webinars are coming up?", "¿Qué jornadas informativas, eventos de brokerage y webinars hay próximamente?", EVENTS + "/", None, False),
     ("us", "Executive courses", "Cursos para directivos", "What does the executive course on EU funding cover?", "¿Qué incluye el curso para directivos sobre financiación europea?", "/courses/", None, False),
 ]
-assert len(TOPICS) == 20 and sum(t[7] for t in TOPICS) == 14
+assert len(TOPICS) == 22 and sum(t[7] for t in TOPICS) == 14
 
 
 # ---------------------------------------------------------------------------
