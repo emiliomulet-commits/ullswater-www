@@ -98,11 +98,59 @@ def chunks(text):
     return [re.sub(r"[ \t]+", " ", c).strip() for c in out if len(c.strip()) > 40]
 
 
+PAGES_CACHE = ROOT / ".cache" / "kb" / "pages.json"
+ARTICLE = re.compile(r"^https://news\.ullswaterinvestments\.com/\d{4}/\d{2}/[^/]+/$")
+
+
+def news_archive(have):
+    """Every English news article in the news sitemap that is not already in llms-full.txt (that file only carries the
+    latest 50), so the chat can still find older articles. Page texts are cached by URL + lastmod: only new or edited
+    articles are downloaded on each build."""
+    sm = get(C.NEWS + "/sitemap.xml")
+    urls = re.findall(r"<url><loc>([^<]+)</loc>(?:<lastmod>([^<]*)</lastmod>)?", sm)
+    cache = json.loads(PAGES_CACHE.read_text(encoding="utf-8")) if PAGES_CACHE.exists() else {}
+    out, fresh, fetched = [], {}, 0
+    for u, lm in urls:
+        if not ARTICLE.match(u) or u in have:
+            continue
+        c = cache.get(u)
+        if not c or c.get("lm") != lm:
+            h = get(u)
+            if not h:
+                continue
+            t, x = html_text(h)
+            m = re.search(r'article:published_time" content="(\d{4}-\d{2}-\d{2})', h)
+            c = {"lm": lm, "t": re.sub(r"\s*[|·]\s*EU Funding News.*$", "", t).strip(), "d": m.group(1) if m else "", "x": x}
+            fetched += 1
+        fresh[u] = c
+        if len(c["x"]) > 80:
+            out.append({"t": c["t"], "u": u, "s": "news", "d": c["d"], "x": c["x"]})
+    PAGES_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    PAGES_CACHE.write_text(json.dumps(fresh, ensure_ascii=False), encoding="utf-8")
+    print(f"kb: {len(out)} older news articles added from the sitemap ({fetched} downloaded)")
+    return out
+
+
+def local_page(path, title):
+    """A page of this build that llms-full.txt leaves out (privacy, legal notice)."""
+    f = SITE / path.strip("/") / "index.html"
+    if not f.exists():
+        return None
+    _, x = html_text(f.read_text(encoding="utf-8"))
+    return {"t": title, "u": "https://www.ullswaterinvestments.com" + path, "s": "www", "d": "", "x": x}
+
+
 def main():
     docs = []
     www = (SITE / "llms-full.txt").read_text(encoding="utf-8") if (SITE / "llms-full.txt").exists() else get(C.__dict__.get("BASE", "https://www.ullswaterinvestments.com") + "/llms-full.txt")
     docs += parse_llms(www, "www")
+    for p, t in (("/privacy/", "Privacy policy of Ullswater Investments (website, chat assistant, alerts, forms)"),
+                 ("/legal/", "Legal notice of Ullswater Investments S.L.")):
+        d = local_page(p, t)
+        if d:
+            docs.append(d)
     docs += parse_llms(get(C.NEWS + "/llms-full.txt"), "news")
+    docs += news_archive({d["u"] for d in docs})
     docs += parse_llms(get(C.EVENTS + "/llms-full.txt"), "events")
     wb = get(C.EVENTS + "/webinars/")
     if wb:
