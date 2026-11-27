@@ -85,6 +85,10 @@ def load_live():
         live["tenders"] = {k: ts.get(k) for k in ("updated", "total", "eu", "ted", "closingIn30Days", "closingIn7Days", "countries")}
     except Exception as e:
         print("tenders fetch failed:", e)
+    try:  # Spanish public tenders by level of government (tenders./es/espana/, from PLACSP): home band
+        live["tenders_es"] = json.loads(fetch(C.TENDERS + "/data/es/stats.json"))
+    except Exception as e:
+        print("Spanish tenders fetch failed:", e)
     try:
         live["themes"] = json.loads(fetch(CALLS + "/data/themes.json"))
     except Exception as e:
@@ -383,7 +387,7 @@ def header(themes, current):
 <nav class="main" aria-label="Main">
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('calls')}>EU opportunities</button><div class="menu wide"><div>
 <div class="lbl">Grants · live EU calls</div><a href="{C.CALLS}/"><b>All open EU calls</b></a><a href="{C.CALLS}/closing-soon/">Closing soon</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check of your idea</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.CALLS}/spain/">Spain: national and regional calls</a><a href="/es/ayudas/"><b>Grants for companies in Spain (Spanish)</b></a><a href="/guides/"><b>EU funding guides</b></a>
-</div><div><div class="lbl">Public contracts · tenders</div><a href="{C.TENDERS}/"><b>All open public tenders</b></a><a href="{C.TENDERS}/country/eu/">Tenders of the EU institutions</a><a href="{C.TENDERS}/es/pais/es/">Public tenders in Spain</a><a href="{C.TENDERS}/closing-soon/">Tenders closing soon</a><a href="/tender-readiness/"{cur('tenders')}><b>Tender Readiness: bid with us</b></a>
+</div><div><div class="lbl">Public contracts · tenders</div><a href="{C.TENDERS}/"><b>All open public tenders</b></a><a href="{C.TENDERS}/country/eu/">Tenders of the EU institutions</a><a href="{C.TENDERS}/spain/" data-es-href="{C.TENDERS}/es/espana/"><b>Spain: tenders by level (State, regions, local)</b></a><a href="{C.TENDERS}/closing-soon/">Tenders closing soon</a><a href="/tender-readiness/"{cur('tenders')}><b>Tender Readiness: bid with us</b></a>
 <hr><div class="lbl">Grants by theme</div>{tl}<a href="{C.CALLS}/theme/"><b>All themes →</b></a></div></div></div>
 <a href="{C.NEWS}/">News</a><a href="{C.EVENTS}/">Events</a><a class="nav-hl" href="/es/ayudas/">Grants in Spain</a><a href="/projects/"{cur('projects')}>Projects</a>
 <div class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"{cur('services')}>Services</button><div class="menu">
@@ -567,7 +571,7 @@ FOOTER = f"""<footer class="site"><div class="wrap"><div class="cols">
 <p style="margin:0 0 8px"><b style="color:#fff">Madrid</b> · Calle Ramírez de Arellano 17, 28043 Madrid, Spain</p><p style="margin:0 0 8px"><b style="color:#fff">Brussels</b> · Square de Meeûs 37, 1000 Brussels, Belgium</p><p style="margin:0"><a href="mailto:{C.EMAIL}" style="display:inline">{C.EMAIL}</a></p></div>
 <div><h4>Services</h4><a href="/investment-readiness/">Investment Readiness</a><a href="/eu-fund-matching/">EU Fund Matching</a><a href="/strategic-positioning/">Strategic Positioning</a><a href="/tender-readiness/">Tender Readiness</a><a href="/courses/">Executive courses</a></div>
 <div><h4>Projects</h4>{"".join(f'<a href="{project_url(p)}"' + (' target="_blank" rel="noopener"' if p.get("url") else "") + f'>{escape(p["acronym"])}</a>' for p in C.PROJECTS)}<a href="/projects/"><b>All projects →</b></a></div>
-<div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.TENDERS}/">EU public tenders</a><a href="/es/ayudas/">Grants in Spain (ES)</a></div>
+<div><h4>Free tools</h4><a href="{C.CALLS}/">Open EU calls</a><a href="{C.CALLS}/finder/">Fund Finder</a><a href="{C.CALLS}/review/">AI pre-check</a><a href="{C.CALLS}/partners/">Partner board</a><a href="{C.CALLS}/alerts/">Email alerts</a><a href="{C.TENDERS}/">EU public tenders</a><a href="{C.TENDERS}/spain/" data-es-href="{C.TENDERS}/es/espana/">Public tenders in Spain</a><a href="/es/ayudas/">Grants in Spain (ES)</a></div>
 <div><h4>Insights</h4><a href="{C.NEWS}/">EU Funding News</a><a href="{C.EVENTS}/">EU Funding Events</a><a href="/guides/">EU funding guides</a><a href="/news/archive/">News archive</a><a href="/about/">About us</a><a href="{LINKEDIN}" target="_blank" rel="noopener me">LinkedIn ↗</a><a href="{YOUTUBE}" target="_blank" rel="noopener me">YouTube ↗</a></div>
 </div><div class="legal"><span>© {date.today().year} Ullswater Investments S.L. · CIF B10740942</span><span><a href="/privacy/">Privacy</a><a href="/legal/">Legal notice</a><a href="/sitemap.xml">Sitemap</a></span></div></div></footer>"""
 
@@ -679,6 +683,32 @@ def tenders_band(tn):
 <p class="ayp-src">Source: EU Funding &amp; Tenders Portal and TED (Publications Office of the EU){upd_s}</p></div></section>"""
 
 
+TN_REGION_EN = {"Andalucía": "Andalusia", "Aragón": "Aragon", "Canarias": "Canary Islands", "Castilla y León": "Castile and León",
+                "Castilla-La Mancha": "Castile-La Mancha", "Cataluña": "Catalonia", "Comunidad de Madrid": "Madrid", "Comunitat Valenciana": "Valencian Community",
+                "Illes Balears": "Balearic Islands", "Navarra": "Navarre", "País Vasco": "Basque Country", "Región de Murcia": "Murcia"}
+
+
+def spain_tenders_band(ts):
+    """Promotion of tenders./spain/ (public tenders in Spain by level of government, from PLACSP), same layout as the grants band."""
+    if not ts or not ts.get("total"):
+        return ""
+    lv = ts.get("levels") or {}
+    local = sum(lv.get(k, 0) for k in ("diputacion", "comarca", "ayuntamiento"))
+    pills = "".join(
+        f'<a href="{C.TENDERS}/spain/{ayudas.slug(TN_REGION_EN.get(r, r))}/" data-es-href="{C.TENDERS}/es/espana/{ayudas.slug(r)}/">{escape(TN_REGION_EN.get(r, r))}<span>{n}</span></a>'
+        for r, n in sorted((ts.get("regions") or {}).items(), key=lambda kv: TN_REGION_EN.get(kv[0], kv[0])))
+    upd = str(ts.get("updated") or "")[:10]
+    upd_s = f" · updated {date.fromisoformat(upd):%d/%m/%Y}" if upd else ""
+    return f"""<section class="band ay-promo" id="tenders-spain"><div class="wrap"><div class="ayp"><div>
+<p class="kicker" style="color:var(--gold2)"><span class="ayp-new">New</span>Public tenders in Spain</p>
+<h2>Every open public tender in Spain, from the State to your town council</h2>
+<p class="sub">Every day we read the Public Sector Procurement Platform, with the regional platforms of Catalonia, the Basque Country, Madrid, Galicia, Andalusia and Navarre, and publish every tender open for bids by level of government: State, regional governments, provincial councils, county councils and town councils.</p>
+<div class="actions"><a class="btn" href="{C.TENDERS}/spain/" data-es-href="{C.TENDERS}/es/espana/">See the {ts["total"]} open tenders →</a><a class="btn line" href="{C.TENDERS}/spain/municipal/" data-es-href="{C.TENDERS}/es/espana/ayuntamientos/">Town council tenders</a></div></div>
+<ul class="ayp-stats"><li><strong>{ts["total"]}</strong>tenders open today</li><li><strong>{lv.get("nacional", 0)}</strong>of the State</li><li><strong>{lv.get("autonomico", 0) + local}</strong>regional and local</li><li class="hl"><strong>{ts.get("closingIn7Days", 0)}</strong>closing in the next 7 days</li></ul></div>
+<nav class="ayp-regions" aria-label="Tenders by region">{pills}</nav>
+<p class="ayp-src">Source: Plataforma de Contratación del Sector Público (Ministry of Finance){upd_s}</p></div></section>"""
+
+
 SEND_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>'
 SPARK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/></svg>'
 
@@ -787,7 +817,7 @@ def home(live, themes, ay=None):
 <div class="panel"><h3><a href="{C.NEWS}/">Latest news</a></h3><ul class="list">{news}</ul><a class="more" href="{C.NEWS}/">EU Funding News →</a></div>
 <div class="panel"><h3><a href="{C.EVENTS}/">Upcoming events</a></h3><ul class="list">{evs}</ul><a class="more" href="{C.EVENTS}/">All events →</a></div></div></div></section>"""
     vc = "".join(f'<div class="card"><div class="ic" aria-hidden="true">{i}</div><h3>{escape(t)}</h3><p>{escape(d)}</p></div>' for i, t, d in C.VC_DOMAINS)
-    body = h + benchmark_band() + ayudas_band(ay) + tenders_band(live.get("tenders")) + projects_band() + f"""
+    body = h + benchmark_band() + ayudas_band(ay) + spain_tenders_band(live.get("tenders_es")) + tenders_band(live.get("tenders")) + projects_band() + f"""
 <section class="band"><div class="wrap split"><div><p class="kicker" style="color:var(--gold2)">Who we are</p><h2>Senior advisors for EU grants, loans and equity</h2>
 <p class="sub" style="margin-bottom:0">{escape(C.TEAM)}</p></div><blockquote class="quote">{escape(C.PARTNER_QUOTE)}<cite>Emilio Mulet, Managing Partner</cite></blockquote></div></section>
 <section class="band alt"><div class="wrap"><p class="kicker" style="color:var(--gold2)">Our services</p><h2>From the right call to a funded project</h2><p class="sub">Three complementary services that take you from strategy to signed grant agreement or investment.</p><div class="grid g3">{svc}</div></div></section>
