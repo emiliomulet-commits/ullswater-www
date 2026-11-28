@@ -1,6 +1,6 @@
 {
  "stats": {
-  "updated": "2026-11-28T10:41:11+00:00",
+  "updated": "2026-11-28T12:02:58+00:00",
   "open": 244,
   "forthcoming": 268,
   "total": 512,
@@ -828,16 +828,6 @@
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/48106227"
   },
   {
-   "id": "NASCHA-46827222",
-   "title": "First Open Call",
-   "status": "open",
-   "deadline": "2027-01-18",
-   "programme": "I3",
-   "kind": "cascade",
-   "budget": 600000,
-   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
-  },
-  {
    "id": "EIT INNOBC-48939740",
    "title": "FACTORYX",
    "status": "open",
@@ -1046,6 +1036,16 @@
    "kind": "cascade",
    "budget": 11500000,
    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46695847"
+  },
+  {
+   "id": "FARM360TECH-46827222",
+   "title": "FARM360TECH Open Call for Innovative Agritech SMEs",
+   "status": "open",
+   "deadline": "2027-01-29",
+   "programme": "I3",
+   "kind": "cascade",
+   "budget": null,
+   "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/competitive-calls-cs/46827222"
   },
   {
    "id": "EDITO 2-47374969",
@@ -5189,12 +5189,12 @@
   }
  ],
  "tenders": {
-  "updated": "2026-11-28T10:56:07+00:00",
+  "updated": "2026-11-28T14:32:29+00:00",
   "total": 33994,
   "eu": 203,
   "ted": 33791,
-  "closingIn30Days": 25635,
-  "closingIn7Days": 8251,
+  "closingIn30Days": 25638,
+  "closingIn7Days": 8250,
   "countries": {
    "DEU": 7852,
    "POL": 4068,
@@ -5245,44 +5245,44 @@
   }
  },
  "tenders_es": {
-  "updated": "2026-11-28T11:03:58+00:00",
-  "total": 8148,
+  "updated": "2026-11-28T14:39:43+00:00",
+  "total": 8323,
   "levels": {
    "nacional": 1610,
-   "autonomico": 1737,
-   "diputacion": 472,
-   "comarca": 95,
-   "ayuntamiento": 3649,
-   "otros": 585
+   "autonomico": 1792,
+   "diputacion": 477,
+   "comarca": 99,
+   "ayuntamiento": 3728,
+   "otros": 617
   },
-  "closingIn7Days": 2986,
-  "closingIn30Days": 7596,
+  "closingIn7Days": 2990,
+  "closingIn30Days": 7735,
   "regions": {
-   "Andalucía": 1171,
+   "Andalucía": 1173,
    "Aragón": 263,
    "Asturias": 149,
    "Canarias": 287,
    "Cantabria": 93,
    "Castilla y León": 348,
    "Castilla-La Mancha": 285,
-   "Cataluña": 1197,
+   "Cataluña": 1305,
    "Ceuta": 18,
-   "Comunidad de Madrid": 499,
+   "Comunidad de Madrid": 509,
    "Comunitat Valenciana": 647,
    "Extremadura": 274,
-   "Galicia": 280,
+   "Galicia": 288,
    "Illes Balears": 173,
-   "La Rioja": 70,
+   "La Rioja": 73,
    "Melilla": 20,
-   "Navarra": 88,
-   "País Vasco": 504,
+   "Navarra": 94,
+   "País Vasco": 542,
    "Región de Murcia": 170
   },
   "regionLevels": {
    "Andalucía": {
     "ayuntamiento": 759,
     "otros": 98,
-    "autonomico": 200,
+    "autonomico": 202,
     "diputacion": 102,
     "comarca": 12
    },
@@ -5326,11 +5326,11 @@
     "comarca": 9
    },
    "Cataluña": {
-    "ayuntamiento": 575,
-    "otros": 149,
-    "autonomico": 414,
-    "diputacion": 45,
-    "comarca": 14
+    "ayuntamiento": 629,
+    "otros": 167,
+    "autonomico": 445,
+    "diputacion": 47,
+    "comarca": 17
    },
    "Ceuta": {
     "autonomico": 13,
@@ -5339,7 +5339,7 @@
    },
    "Comunidad de Madrid": {
     "ayuntamiento": 262,
-    "autonomico": 211,
+    "autonomico": 221,
     "otros": 19,
     "comarca": 7
    },
@@ -5358,10 +5358,10 @@
     "comarca": 1
    },
    "Galicia": {
-    "ayuntamiento": 179,
-    "autonomico": 44,
+    "ayuntamiento": 180,
+    "autonomico": 49,
     "diputacion": 22,
-    "otros": 35
+    "otros": 37
    },
    "Illes Balears": {
     "autonomico": 47,
@@ -5372,25 +5372,25 @@
    },
    "La Rioja": {
     "ayuntamiento": 35,
-    "autonomico": 26,
-    "otros": 7,
+    "autonomico": 28,
+    "otros": 8,
     "comarca": 2
    },
    "Melilla": {
     "autonomico": 20
    },
    "Navarra": {
-    "ayuntamiento": 45,
-    "comarca": 2,
-    "autonomico": 22,
-    "otros": 19
+    "ayuntamiento": 47,
+    "comarca": 1,
+    "autonomico": 24,
+    "otros": 22
    },
    "País Vasco": {
-    "otros": 130,
-    "ayuntamiento": 224,
-    "autonomico": 126,
-    "diputacion": 16,
-    "comarca": 8
+    "otros": 138,
+    "ayuntamiento": 246,
+    "autonomico": 129,
+    "diputacion": 19,
+    "comarca": 10
    },
    "Región de Murcia": {
     "ayuntamiento": 110,
@@ -5452,23 +5452,23 @@
    "Ávila": 19
   },
   "nature": {
-   "works": 2007,
-   "services": 3803,
-   "supplies": 2098,
-   "other": 240
+   "works": 2055,
+   "services": 3886,
+   "supplies": 2137,
+   "other": 245
   },
   "funds": {
-   "none": 7734,
-   "eu": 383,
-   "ngeu": 31
+   "none": 7903,
+   "eu": 388,
+   "ngeu": 32
   },
   "award": {
-   "unknown": 2403,
+   "unknown": 2578,
    "quality": 4544,
    "price": 1201
   },
-  "splitIntoLots": 1362,
-  "concessions": 127,
+  "splitIntoLots": 1389,
+  "concessions": 130,
   "duplicatesDropped": 1,
   "source": "Plataforma de Contratación del Sector Público (Ministerio de Hacienda), incl. plataformas autonómicas agregadas"
  },
